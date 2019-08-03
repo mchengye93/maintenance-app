@@ -42,6 +42,7 @@ Subcategory:
     Electrical: Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
                 Room light
     Fixture: Entrance door, Bathroom door, Garage parking door 
+    Furniture: Sofa, Bed
 
 */
 
