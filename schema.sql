@@ -18,7 +18,9 @@ CREATE TABLE issues (
   date TIMESTAMP NOT NULL
   
 );
-
+/*
+Category: Plumbing, Electrical, Furniture, Decoration
+*/
 CREATE TABLE category (
     id serial PRIMARY KEY,
     name varchar(30) NOT NULL,
