@@ -10,6 +10,16 @@ CREATE TABLE rooms (
   parking boolean NOT NULL
 );
 
+CREATE TABLE issues (
+  id serial PRIMARY KEY,
+  roomId INT NOT NULL,
+  category INT NOT NULL,
+  subcategory INT NOT NULL,
+  date TIMESTAMP NOT NULL
+  
+);
+
+
 
 
 
