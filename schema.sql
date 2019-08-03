@@ -43,7 +43,7 @@ Subcategory:
                 Room light, Internet
     Fixture: Floor tile, Entrance door, Bathroom door, Garage parking door 
     Furniture: Sofa, Bed
-    Decoration: Ceiling, Walls, Paintings 
+    Decoration: Ceramics, Ceiling, Walls, Paintings 
 */
 
 CREATE TABLE subcategory (
