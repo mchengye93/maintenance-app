@@ -43,7 +43,7 @@ Subcategory:
                 Room light
     Fixture: Entrance door, Bathroom door, Garage parking door 
     Furniture: Sofa, Bed
-
+    Decoration: Ceiling, Walls, Paintings, 
 */
 
 CREATE TABLE subcategory (
