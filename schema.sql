@@ -22,7 +22,7 @@ CREATE TABLE issues (
   
 );
 /*
-Category: Plumbing, Electrical, Furniture, Decoration
+Category: Plumbing, Electrical, Fixture, Furniture, Decoration
 */
 CREATE TABLE category (
     id serial PRIMARY KEY,
@@ -40,7 +40,8 @@ CREATE TABLE contact (
 Subcategory: 
     Plumbing: Sink, Toilet ,Shower, Jacuzzi, Hot Water
     Electrical: Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
-                Garage light, Room light, Garage door
+                Room light
+    Fixture: Entrance door, Bathroom door, Garage parking door 
 
 */
 
