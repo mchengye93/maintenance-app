@@ -41,9 +41,9 @@ Subcategory:
     Plumbing: Sink, Toilet ,Shower, Jacuzzi, Hot Water
     Electrical: Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
                 Room light
-    Fixture: Entrance door, Bathroom door, Garage parking door 
+    Fixture: Floor tile, Entrance door, Bathroom door, Garage parking door 
     Furniture: Sofa, Bed
-    Decoration: Ceiling, Walls, Paintings, 
+    Decoration: Ceiling, Walls, Paintings 
 */
 
 CREATE TABLE subcategory (
