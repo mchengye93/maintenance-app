@@ -16,6 +16,7 @@ CREATE TABLE issues (
   category INT NOT NULL,
   subcategory INT NOT NULL,
   date TIMESTAMP NOT NULL,
+  photoUrl text,
   description TEXT,
   cost INT ,
   dateFixed TIMESTAMP,
