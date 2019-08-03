@@ -24,6 +24,14 @@ CREATE TABLE category (
     name varchar(30) NOT NULL,
 )
 
+CREATE TABLE contact (
+    id serial PRIMARY KEY,
+    categoryId INT NOT NULL,
+    name varchar(30) NOT NULL,
+    phone varchar(30) NOT NULL,
+    email varchar(30) NOT NULL,
+)
+
 
 
 
