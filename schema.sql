@@ -39,7 +39,9 @@ CREATE TABLE contact (
 /*
 Subcategory: 
     Plumbing: Sink, Toilet ,Shower, Jacuzzi, Hot Water
-    
+    Electrical: Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
+                Garage light, Room light, Garage door
+
 */
 
 CREATE TABLE subcategory (
