@@ -36,9 +36,15 @@ CREATE TABLE contact (
     phone varchar(30) NOT NULL,
     email varchar(30) NOT NULL,
 )
+/*
+Subcategory: 
+    Plumbing: Sink, Toilet ,Shower, Jacuzzi, Hot Water
+    
+*/
 
 CREATE TABLE subcategory (
     id serial PRIMARY KEY,
+    categoryId INT NOT NULL,
     name varchar(30) NOT NULL,
 )
 
