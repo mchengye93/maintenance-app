@@ -15,7 +15,10 @@ CREATE TABLE issues (
   roomId INT NOT NULL,
   category INT NOT NULL,
   subcategory INT NOT NULL,
-  date TIMESTAMP NOT NULL
+  date TIMESTAMP NOT NULL,
+  description TEXT,
+  cost INT ,
+  dateFixed TIMESTAMP,
   
 );
 /*
