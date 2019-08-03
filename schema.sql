@@ -19,6 +19,14 @@ CREATE TABLE issues (
   
 );
 
+CREATE TABLE category (
+    id serial PRIMARY KEY,
+    name varchar(30) NOT NULL,
+)
+
+
+
+
 
 
 
