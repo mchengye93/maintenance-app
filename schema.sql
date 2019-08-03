@@ -39,8 +39,8 @@ CREATE TABLE contact (
 /*
 Subcategory: 
     Plumbing: Sink, Toilet ,Shower, Jacuzzi, Hot Water
-    Electrical: Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
-                Room light
+    Electrical: Telephone, Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
+                Room light, Internet
     Fixture: Floor tile, Entrance door, Bathroom door, Garage parking door 
     Furniture: Sofa, Bed
     Decoration: Ceiling, Walls, Paintings 
