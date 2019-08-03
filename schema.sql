@@ -34,6 +34,10 @@ CREATE TABLE contact (
     email varchar(30) NOT NULL,
 )
 
+CREATE TABLE subcategory (
+    id serial PRIMARY KEY,
+    name varchar(30) NOT NULL,
+)
 
 
 
