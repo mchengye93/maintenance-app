@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mchengye93/maintenance-app/issues"
   },
-  "homepage": "https://github.com/mchengye93/maintenance-app#readme"
+  "homepage": "https://github.com/mchengye93/maintenance-app#readme",
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
 }
