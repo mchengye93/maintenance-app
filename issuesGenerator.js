@@ -33,9 +33,10 @@ for (let i = 1; i <= 1000; i += 1) {
       subcategory = faker.random.number({ min: 22, max: 23 });
       break;
   }
+  const date = faker.date.between('2019-04-01', '2019-8-04');
 
 
-  const issueRecord = `${i},${roomId},${category},${subcategory}\n`;
+  const issueRecord = `${i},${roomId},${category},${subcategory}, ${date}\n`;
   // write some data with a base64 encoding
   //   var stockRecord = {
   //     id: i,
