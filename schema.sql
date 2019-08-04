@@ -63,7 +63,3 @@ CREATE TABLE subcategories (
 
 
 
-/*  Execute this file from the command line by typing:
- *    mysql -u root < server/schema.sql
-      psql -u postgres < server/schema.sql
- *  to create the database and the tables.*/
