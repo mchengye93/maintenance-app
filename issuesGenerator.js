@@ -33,7 +33,7 @@ for (let i = 1; i <= 1000; i += 1) {
       subcategory = faker.random.number({ min: 22, max: 23 });
       break;
   }
-  const date = faker.date.between('2019-04-01', '2019-8-04');
+  const date = faker.date.between('2019-04-01', '2019-8-04').toLocaleString();
 
   const photoUrl = faker.image.imageUrl(400, 400, 'business');
 
@@ -41,7 +41,7 @@ for (let i = 1; i <= 1000; i += 1) {
 
   const cost = faker.random.number({ min: 0, max: 1000 });
 
-  const dateFixed = faker.date.between(date, '2019-10-01');
+  const dateFixed = faker.date.between(date, '2019-10-01').toLocaleString();
 
 
   const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},${description},${cost},${dateFixed}\n`;

@@ -1,0 +1,1 @@
+SELECT issues.room_id, issues.category, categories.category, issues.subcategory, subcategories.subcategory ,issues.date FROM issues INNER JOIN categories ON issues.category= categories.id AND issues.room_id = 10 INNER JOIN subcategories ON issues.subcategory = subcategories.id;

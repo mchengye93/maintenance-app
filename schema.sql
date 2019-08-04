@@ -4,12 +4,16 @@ CREATE DATABASE maintenance;
 
 USE maintenance;
 
+/*
+COPY rooms FROM '/Users/marbocheng/Desktop/maintenance-app/rooms.csv' DELIMITER ',' CSV HEADER;
+*/
 CREATE TABLE rooms (
   id serial PRIMARY KEY,
   vip boolean NOT NULL,
   parking boolean NOT NULL
 );
 
+/*COPY issues FROM '/Users/marbocheng/Desktop/maintenance-app/issues.csv' DELIMITER ',' CSV HEADER;*/
 CREATE TABLE issues (
   id serial PRIMARY KEY,
   room_id INT NOT NULL,
@@ -31,7 +35,7 @@ CREATE TABLE categories (
     category varchar(30) NOT NULL
 );
 
-
+/*COPY contacts FROM '/Users/marbocheng/Desktop/maintenance-app/contacts.csv' DELIMITER ',' CSV HEADER; */
 CREATE TABLE contacts (
     id serial PRIMARY KEY,
     category_id INT NOT NULL,
@@ -49,6 +53,7 @@ Subcategory:
     Furniture: Sofa, Bed
 */
 
+/* COPY subcategories FROM '/Users/marbocheng/Desktop/maintenance-app/subcategories.csv' DELIMITER ',' CSV HEADER; */
 CREATE TABLE subcategories (
     id serial PRIMARY KEY,
     category_id INT NOT NULL,
