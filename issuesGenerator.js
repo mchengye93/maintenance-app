@@ -5,7 +5,7 @@ const writeStream = fs.createWriteStream('issues.csv');
 
 // node --max-old-space-size=8192 second.js
 
-writeStream.write('id,roomId,category,subcategory,date, photoUrl,description,cost,dateFixed\n');
+writeStream.write('id,roomId,category,subcategory,date,photoUrl,description,cost,dateFixed\n');
 
 
 for (let i = 1; i <= 1000; i += 1) {
@@ -41,7 +41,7 @@ for (let i = 1; i <= 1000; i += 1) {
   const dateFixed = faker.date.future(1, date);
 
 
-  const issueRecord = `${i},${roomId},${category},${subcategory}, ${date} , \n`;
+  const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},\n`;
   // write some data with a base64 encoding
   //   var stockRecord = {
   //     id: i,
