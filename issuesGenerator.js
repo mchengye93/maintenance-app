@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const writeStream = fs.createWriteStream('issues.csv');
 
-// node --max-old-space-size=8192 second.js
+// node --max-old-space-size=8192 issues.js
 
 writeStream.write('id,roomId,category,subcategory,date,photoUrl,description,cost,dateFixed\n');
 
