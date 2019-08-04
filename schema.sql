@@ -17,8 +17,8 @@ CREATE TABLE rooms (
 CREATE TABLE issues (
   id serial PRIMARY KEY,
   room_id INT NOT NULL,
-  category INT NOT NULL,
-  subcategory INT NOT NULL,
+  category_id INT NOT NULL,
+  subcategory_id INT NOT NULL,
   date TIMESTAMP NOT NULL,
   photourl text,
   description TEXT,

@@ -5,7 +5,7 @@ const writeStream = fs.createWriteStream('issues.csv');
 
 // node --max-old-space-size=8192 issues.js
 
-writeStream.write('id,room_id,category,subcategory,date,photoUrl,description,cost,dateFixed\n');
+writeStream.write('id,room_id,category_id,subcategory_id,date,photoUrl,description,cost,dateFixed\n');
 
 
 for (let i = 1; i <= 1000; i += 1) {
