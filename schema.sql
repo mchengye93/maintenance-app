@@ -12,11 +12,11 @@ CREATE TABLE rooms (
 
 CREATE TABLE issues (
   id serial PRIMARY KEY,
-  roomId INT NOT NULL,
+  room_id INT NOT NULL,
   category INT NOT NULL,
   subcategory INT NOT NULL,
   date TIMESTAMP NOT NULL,
-  photoUrl text,
+  photourl text,
   description TEXT,
   cost INT ,
   dateFixed TIMESTAMP,
@@ -25,14 +25,14 @@ CREATE TABLE issues (
 /*
 Category: Plumbing, Electrical, Fixture, Furniture, Decoration
 */
-CREATE TABLE category (
+CREATE TABLE categories (
     id serial PRIMARY KEY,
-    name varchar(30) NOT NULL,
+    cateory varchar(30) NOT NULL,
 )
 
-CREATE TABLE contact (
+CREATE TABLE contacts (
     id serial PRIMARY KEY,
-    categoryId INT NOT NULL,
+    category_id INT NOT NULL,
     name varchar(30) NOT NULL,
     phone varchar(30) NOT NULL,
     email varchar(30) NOT NULL,
@@ -49,7 +49,7 @@ Subcategory:
 
 CREATE TABLE subcategory (
     id serial PRIMARY KEY,
-    categoryId INT NOT NULL,
+    category_id INT NOT NULL,
     name varchar(30) NOT NULL,
 )
 
