@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const writeStream = fs.createWriteStream('contacts.csv');
 
-writeStream.write('id,roomId,category,subcategory,date,photoUrl,description,cost,dateFixed\n');
+writeStream.write('id,room_id,category,subcategory,date,photoUrl,description,cost,dateFixed\n');
 
 for (let i = 1; i <= 10; i += 1) {
   const categoryId = faker.random.number({ min: 1, max: 5 });

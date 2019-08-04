@@ -19,24 +19,23 @@ CREATE TABLE issues (
   photourl text,
   description TEXT,
   cost INT ,
-  dateFixed TIMESTAMP,
-  
+  dateFixed TIMESTAMP
 );
 /*
 Category: Plumbing, Electrical, Fixture, Furniture, Decoration
 */
 CREATE TABLE categories (
     id serial PRIMARY KEY,
-    cateory varchar(30) NOT NULL,
-)
+    cateory varchar(30) NOT NULL
+);
 
 CREATE TABLE contacts (
     id serial PRIMARY KEY,
     category_id INT NOT NULL,
     name varchar(30) NOT NULL,
     phone varchar(30) NOT NULL,
-    email varchar(30) NOT NULL,
-)
+    email varchar(30) NOT NULL
+);
 /*
 Subcategory: 
     Electrical: Telephone, Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
@@ -50,12 +49,8 @@ Subcategory:
 CREATE TABLE subcategories (
     id serial PRIMARY KEY,
     category_id INT NOT NULL,
-    subcategory varchar(30) NOT NULL,
-)
-
-
-
-
+    subcategory varchar(30) NOT NULL
+);
 
 
 

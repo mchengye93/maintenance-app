@@ -1,4 +1,4 @@
-id,roomId,category,subcategory,date,photoUrl,description,cost,dateFixed
+id,room_id,category,subcategory,date,photoUrl,description,cost,dateFixed
 1,4,Dr. Dax Tremblay, (490) 626-3422,Armani_Kovacek@yahoo.com
 2,5,Carter Dickens, (453) 202-4599,Elias.Kuvalis@yahoo.com
 3,1,Anais Will PhD, (118) 442-8794,Dejon.Pouros47@gmail.com
