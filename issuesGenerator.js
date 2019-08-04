@@ -37,11 +37,12 @@ for (let i = 1; i <= 1000; i += 1) {
 
   const photoUrl = faker.image.imageUrl(400, 400, 'business');
 
+  const description = faker.lorem.sentence();
 
   const dateFixed = faker.date.future(1, date);
 
 
-  const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},\n`;
+  const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},${description},${dateFixed}\n`;
   // write some data with a base64 encoding
   //   var stockRecord = {
   //     id: i,
