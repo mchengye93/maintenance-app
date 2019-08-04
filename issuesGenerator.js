@@ -41,7 +41,7 @@ for (let i = 1; i <= 1000; i += 1) {
 
   const cost = faker.random.number({ min: 0, max: 1000 });
 
-  const dateFixed = faker.date.future(1, date);
+  const dateFixed = faker.date.between(date, '2019-10-01');
 
 
   const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},${description},${cost},${dateFixed}\n`;
