@@ -1,3 +1,0 @@
-/*
-Setup a seeder script with faker.js
-*/

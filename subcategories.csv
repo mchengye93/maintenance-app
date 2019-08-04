@@ -1,16 +1,24 @@
 id,category
-1,1,Sink
-2,1,Toilet
-3,1,Shower
-4,1,Jacuzzi
-5,1,Hot Water
-6,2,Floor Tile
-7,2,Entrance Door
-8,2,Bathroom Door
-9,2,Garage Parking Door
-10,3,Ceramics
-11,3,Ceiling
-12,3,Walls
-13,3,Paintings
-14,4,Sofa
-15,4,Bed
+1,1,Telephone
+2,1,Airconditioner
+3,1,Bathroom Lights
+4,1,Disco Lights
+5,1,TV
+6,1,TV Remote Control
+7,1,Room Light
+8,1,Internet
+9,2,Sink
+10,2,Toilet
+11,2,Shower
+12,2,Jacuzzi
+13,2,Hot Water
+14,3,Floor Tile
+15,3,Entrance Door
+16,3,Bathroom Door
+17,3,Garage Parking Door
+18,4,Ceramics
+19,4,Ceiling
+20,4,Walls
+21,4,Paintings
+22,5,Sofa
+23,5,Bed
