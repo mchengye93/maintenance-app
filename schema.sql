@@ -39,12 +39,12 @@ CREATE TABLE contact (
 )
 /*
 Subcategory: 
-    Plumbing: Sink, Toilet ,Shower, Jacuzzi, Hot Water
     Electrical: Telephone, Airconditioner, Bathroom lights, Disco lights, TV, TV remote control,
                 Room light, Internet
+    Plumbing: Sink, Toilet ,Shower, Jacuzzi, Hot Water
     Fixture: Floor tile, Entrance door, Bathroom door, Garage parking door 
-    Furniture: Sofa, Bed
     Decoration: Ceramics, Ceiling, Walls, Paintings 
+    Furniture: Sofa, Bed
 */
 
 CREATE TABLE subcategory (
