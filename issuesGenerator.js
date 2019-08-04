@@ -54,7 +54,7 @@ for (let i = 1; i <= 1000; i += 1) {
 
   //   CREATE TABLE issues (
   //     id serial PRIMARY KEY,
-  //     roomId INT NOT NULL,
+  //     room_id INT NOT NULL,
   //     category INT NOT NULL,
   //     subcategory INT NOT NULL,
   //     date TIMESTAMP NOT NULL,

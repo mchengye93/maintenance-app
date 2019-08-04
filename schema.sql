@@ -24,10 +24,13 @@ CREATE TABLE issues (
 /*
 Category: Plumbing, Electrical, Fixture, Furniture, Decoration
 */
+
+/*COPY categories FROM '/Users/marbocheng/Desktop/maintenance-app/categories.csv' DELIMITER ',' CSV HEADER;*/
 CREATE TABLE categories (
     id serial PRIMARY KEY,
-    cateory varchar(30) NOT NULL
+    category varchar(30) NOT NULL
 );
+
 
 CREATE TABLE contacts (
     id serial PRIMARY KEY,
