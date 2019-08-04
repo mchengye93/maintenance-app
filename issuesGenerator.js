@@ -39,10 +39,12 @@ for (let i = 1; i <= 1000; i += 1) {
 
   const description = faker.lorem.sentence();
 
+  const cost = faker.random.number({ min: 0, max: 1000 });
+
   const dateFixed = faker.date.future(1, date);
 
 
-  const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},${description},${dateFixed}\n`;
+  const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},${description},${cost},${dateFixed}\n`;
   // write some data with a base64 encoding
   //   var stockRecord = {
   //     id: i,
@@ -60,7 +62,6 @@ for (let i = 1; i <= 1000; i += 1) {
   //     description TEXT,
   //     cost INT ,
   //     dateFixed TIMESTAMP,
-
   //   );
 
   writeStream.write(issueRecord);
