@@ -7,5 +7,5 @@ INNER JOIN categories ON issues.category_id= categories.id AND issues.room_id = 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id;
 
 /*Return all contact with specific category*/
-SELECT  contacts.category_id, categories.category, contacts.name, FROM contacts
-INNER JOIN categories ON contacts.category_id = categories.id ORDER BY categories ASC;
+SELECT  contacts.category_id, categories.category, contacts.name, contacts.phone, contacts.email FROM contacts
+INNER JOIN categories ON contacts.category_id = categories.id ORDER BY categories.category,contacts.name ASC;
