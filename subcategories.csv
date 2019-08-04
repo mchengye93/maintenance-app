@@ -1,0 +1,16 @@
+id,category
+1,1,Sink
+2,1,Toilet
+3,1,Shower
+4,1,Jacuzzi
+5,1,Hot Water
+6,2,Floor Tile
+7,2,Entrance Door
+8,2,Bathroom Door
+9,2,Garage Parking Door
+10,3,Ceramics
+11,3,Ceiling
+12,3,Walls
+13,3,Paintings
+14,4,Sofa
+15,4,Bed
