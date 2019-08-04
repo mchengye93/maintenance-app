@@ -47,10 +47,10 @@ Subcategory:
     Furniture: Sofa, Bed
 */
 
-CREATE TABLE subcategory (
+CREATE TABLE subcategories (
     id serial PRIMARY KEY,
     category_id INT NOT NULL,
-    name varchar(30) NOT NULL,
+    subcategory varchar(30) NOT NULL,
 )
 
 
