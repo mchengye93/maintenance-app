@@ -35,8 +35,13 @@ for (let i = 1; i <= 1000; i += 1) {
   }
   const date = faker.date.between('2019-04-01', '2019-8-04');
 
+  const photoUrl = faker.image.imageUrl(400, 400, 'business');
 
-  const issueRecord = `${i},${roomId},${category},${subcategory}, ${date}\n`;
+
+  const dateFixed = faker.date.future(1, date);
+
+
+  const issueRecord = `${i},${roomId},${category},${subcategory}, ${date} , \n`;
   // write some data with a base64 encoding
   //   var stockRecord = {
   //     id: i,

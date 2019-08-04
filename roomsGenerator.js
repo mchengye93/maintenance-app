@@ -3,7 +3,7 @@ const fs = require('fs');
 
 const writeStream = fs.createWriteStream('rooms.csv');
 
-// node --max-old-space-size=8192 second.js
+// node --max-old-space-size=8192 roomsGenerator.js
 
 writeStream.write('id,vip,parking\n');
 
@@ -15,7 +15,7 @@ for (let i = 1; i <= 100; i += 1) {
 
   const roomRecord = `${i},${vip},${parking}\n`;
   // write some data with a base64 encoding
-  //   var stockRecord = {
+  //   var roomRecord = {
   //     id: i,
   //     vip: vip,
   //     parking: parking,
