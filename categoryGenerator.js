@@ -12,12 +12,7 @@ for (let i = 1; i <= 5; i += 1) {
 
 
   const categoryRecord = `${i},${category}\n`;
-  // write some data with a base64 encoding
-  //   var roomRecord = {
-  //     id: i,
-  //     vip: vip,
-  //     parking: parking,
-  //   };
+
 
   writeStream.write(categoryRecord);
 }
