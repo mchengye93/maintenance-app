@@ -26,3 +26,6 @@ SELECT * FROM categories;
 
 /* Return all subcategories*/
 SELECT * FROM subcategories;
+
+/* Return all categories with their subcategories
+*/
