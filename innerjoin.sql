@@ -41,3 +41,7 @@ SELECT * FROM subcategories
 INNER JOIN categories 
 ON categories.id = subcategories.category_id
 WHERE category = 'Electrical';
+
+/*
+Return issues by date
+*/
