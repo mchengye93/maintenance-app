@@ -11,4 +11,14 @@ SELECT  contacts.category_id, categories.category, contacts.name, contacts.phone
 INNER JOIN categories ON contacts.category_id = categories.id 
 ORDER BY categories.category,contacts.name ASC;
 
-/* Return all issues by specific category*/
+/* Return all issues by specific category order by date and then room*/
+SELECT issues.room_id, issues.category_id, categories.category, 
+issues.subcategory_id, subcategories.subcategory ,issues.date 
+FROM issues 
+INNER JOIN categories ON issues.category_id= categories.id 
+INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
+WHERE categories.category = 'Plumbing'
+ORDER BY issues.date, issues.room_id  ASC;
+
+/* Return all categories
+*/

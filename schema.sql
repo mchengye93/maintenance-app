@@ -57,7 +57,7 @@ Subcategory:
 CREATE TABLE subcategories (
     id serial PRIMARY KEY,
     category_id INT NOT NULL,
-    subcategory varchar(30) NOT NULL
+    subcategory varchar(30) NOT NULL,
 );
 
 
