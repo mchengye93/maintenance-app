@@ -34,3 +34,8 @@ SELECT * FROM subcategories INNER JOIN categories ON categories.id = subcategori
 /*
 Return all subcategories of specific category
 */
+
+SELECT * FROM subcategories 
+INNER JOIN categories 
+ON categories.id = subcategories.category_id
+WHERE category = 'Electrical';
