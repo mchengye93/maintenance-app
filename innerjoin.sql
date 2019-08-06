@@ -25,3 +25,4 @@ ORDER BY issues.date, issues.room_id  ASC;
 SELECT * FROM categories;
 
 /* Return all subcategories*/
+SELECT * FROM subcategories;
