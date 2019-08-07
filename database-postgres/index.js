@@ -8,7 +8,7 @@ const postgresDb = new Pool({
   port: 5432,
 });
 
-const issues = function (callback) {
+const getAllIssues = (callback) => {
   postgresDb.query(
     'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date'
         + 'FROM issues'
@@ -22,7 +22,13 @@ const issues = function (callback) {
   );
 };
 
+const getAllCategories = (callback) => {
+  postgresDb.query();
+};
+
 module.exports = {
-  issues,
+  getAllIssues,
+  getAllCategories,
+
 
 };
