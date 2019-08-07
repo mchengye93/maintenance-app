@@ -23,7 +23,12 @@ const getAllIssues = (callback) => {
 };
 
 const getAllCategories = (callback) => {
-  postgresDb.query();
+  postgresDb.query('SELECT * FROM categories', (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results.rows);
+  });
 };
 
 module.exports = {
