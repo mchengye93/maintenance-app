@@ -60,3 +60,4 @@ SELECT * FROM issues WHERE CURRENT_DATE > (date + interval '7' day) ;
 /*
 Return all issues that have been for more than two weeks
 */
+SELECT * FROM issues WHERE CURRENT_DATE > (date + interval '14' day) ;
