@@ -56,3 +56,7 @@ SELECT * FROM issues WHERE dateFixed IS NULL;
 Return all unsolved issues that have more than a week without being solved
 */
 SELECT * FROM issues WHERE CURRENT_DATE > (date + interval '7' day) ;
+
+/*
+Return all issues that have been for more than two weeks
+*/
