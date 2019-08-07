@@ -23,6 +23,7 @@
     "eslint-config-airbnb-base": "^13.2.0",
     "eslint-plugin-import": "^2.18.2",
     "express": "^4.17.1",
-    "faker": "^4.1.0"
+    "faker": "^4.1.0",
+    "pg": "^7.12.0"
   }
 }
