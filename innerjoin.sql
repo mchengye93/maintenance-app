@@ -46,3 +46,7 @@ WHERE category = 'Electrical';
 Return issues by date
 */
 SELECT * FROM issues ORDER BY date ASC;
+
+/*
+Return all solver issues
+*/

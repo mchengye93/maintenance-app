@@ -8,7 +8,7 @@ const writeStream = fs.createWriteStream('issues.csv');
 writeStream.write('id,room_id,category_id,subcategory_id,date,photoUrl,description,cost,dateFixed\n');
 
 
-for (let i = 1; i <= 1000; i += 1) {
+for (let i = 1; i <= 500; i += 1) {
   const roomId = faker.random.number({ min: 1, max: 100 });
   const category = faker.random.number({ min: 1, max: 5 });
 
@@ -41,7 +41,13 @@ for (let i = 1; i <= 1000; i += 1) {
 
   const cost = faker.random.number({ min: 0, max: 1000 });
 
-  const dateFixed = faker.date.between(date, '2019-10-01').toLocaleString();
+
+  let dateFixed = '';
+
+  const random = Math.floor(Math.random() * 10);
+  if (random > 5) {
+    dateFixed = faker.date.between(date, '2019-10-01').toLocaleString();
+  }
 
 
   const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},${description},${cost},${dateFixed}\n`;
