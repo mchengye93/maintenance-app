@@ -40,10 +40,12 @@ const getAllSubcategories = (callback) => {
   });
 };
 
+const getAllCategoriesSubcategories = (callback) => {};
+
 module.exports = {
   getAllIssues,
   getAllCategories,
   getAllSubcategories,
-
+  getAllCategoriesSubcategories,
 
 };
