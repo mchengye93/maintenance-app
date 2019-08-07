@@ -48,5 +48,6 @@ Return issues by date
 SELECT * FROM issues ORDER BY date ASC;
 
 /*
-Return all solver issues
+Return all unsolved issues
 */
+SELECT * FROM issues WHERE dateFixed IS NULL;
