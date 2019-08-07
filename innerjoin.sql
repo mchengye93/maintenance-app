@@ -65,3 +65,10 @@ SELECT * FROM issues WHERE CURRENT_DATE > (date + interval '14' day) ;
 /*
 Return all issues by date from earliest
 */
+
+SELECT issues.room_id, issues.category_id, categories.category, 
+issues.subcategory_id, subcategories.subcategory ,issues.date 
+FROM issues 
+INNER JOIN categories ON issues.category_id= categories.id 
+INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
+ORDER BY issues.date, issues.room_id  ASC;
