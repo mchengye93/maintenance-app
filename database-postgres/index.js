@@ -33,13 +33,17 @@ const getAllCategories = (callback) => {
 
 const getAllSubcategories = (callback) => {
   postgresDb.query('SELECT * FROM subcategories', (err, results) => {
-
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results.rows);
   });
 };
 
 module.exports = {
   getAllIssues,
   getAllCategories,
+  getAllSubcategories,
 
 
 };
