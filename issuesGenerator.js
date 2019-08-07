@@ -33,7 +33,7 @@ for (let i = 1; i <= 500; i += 1) {
       subcategory = faker.random.number({ min: 22, max: 23 });
       break;
   }
-  const date = faker.date.between('2019-04-01', '2019-8-04').toLocaleString();
+  const date = faker.date.between('2019-07-25', '2019-08-06').toLocaleString();
 
   const photoUrl = faker.image.imageUrl(400, 400, 'business');
 

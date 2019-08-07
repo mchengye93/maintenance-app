@@ -55,4 +55,4 @@ SELECT * FROM issues WHERE dateFixed IS NULL;
 /*
 Return all unsolved issues that have more than a week without being solved
 */
-SELECT * FROM issues WHERE CURRENT_DATE > (date + 7) ;
+SELECT * FROM issues WHERE CURRENT_DATE > (date + interval '7' day) ;
