@@ -40,7 +40,18 @@ const getAllSubcategories = (callback) => {
   });
 };
 
-const getAllCategoriesSubcategories = (callback) => {};
+const getAllCategoriesSubcategories = (callback) => {
+  postgresDb.query(
+    'SELECT * FROM subcategories '
+        + 'INNER JOIN categories '
+        + 'ON categories.id = subcategories.category_id', (err, results) => {
+      if (err) {
+        callback(err, null);
+      }
+      callback(null, results.rows);
+    },
+  );
+};
 
 module.exports = {
   getAllIssues,
