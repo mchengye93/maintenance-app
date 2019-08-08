@@ -24,14 +24,17 @@ ORDER BY issues.date, issues.room_id  ASC;
 */
 SELECT * FROM categories;
 
-/* Return all subcategories*/
-SELECT * FROM subcategories;
-
 /* Return all categories with their subcategories
 */
 SELECT * FROM subcategories 
 INNER JOIN categories 
 ON categories.id = subcategories.category_id;
+
+
+/* Return all subcategories*/
+SELECT * FROM subcategories;
+
+
 
 /*
 Return all subcategories of specific category
