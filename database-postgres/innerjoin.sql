@@ -24,7 +24,8 @@ issues.subcategory_id, subcategories.subcategory ,issues.date
 FROM issues 
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE CURRENT_DATE > (date + interval '7' day) AND dateFixed IS NULL ;
+WHERE CURRENT_DATE > (date + interval '7' day) AND dateFixed IS NULL 
+ORDER BY date, room_id ASC;
 
 /*
 Return all issues that have been for more than two weeks
