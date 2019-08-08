@@ -6,7 +6,6 @@ FROM issues
 INNER JOIN categories ON issues.category_id= categories.id AND issues.room_id = 10 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id;
 
-
 /*
 Return issues by date
 */
@@ -20,7 +19,12 @@ SELECT * FROM issues WHERE dateFixed IS NULL;
 /*
 Return all unsolved issues that have more than a week without being solved
 */
-SELECT * FROM issues WHERE CURRENT_DATE > (date + interval '7' day) ;
+SELECT issues.room_id, issues.category_id, categories.category, 
+issues.subcategory_id, subcategories.subcategory ,issues.date 
+FROM issues 
+INNER JOIN categories ON issues.category_id= categories.id 
+INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
+WHERE CURRENT_DATE > (date + interval '7' day) AND dateFixed IS NULL ;
 
 /*
 Return all issues that have been for more than two weeks

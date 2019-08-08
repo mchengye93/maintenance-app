@@ -8,7 +8,7 @@ const writeStream = fs.createWriteStream('issues.csv');
 writeStream.write('id,room_id,category_id,subcategory_id,date,photoUrl,description,cost,dateFixed\n');
 
 
-for (let i = 1; i <= 500; i += 1) {
+for (let i = 1; i <= 200; i += 1) {
   const roomId = faker.random.number({ min: 1, max: 100 });
   const category = faker.random.number({ min: 1, max: 5 });
 
