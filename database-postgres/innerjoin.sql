@@ -22,6 +22,16 @@ INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
 WHERE dateFixed IS NULL
 ORDER BY date ASC;
 
+/* Return all details of specific issue
+*/
+SELECT issues.id, issues.room_id, issues.category_id, categories.category, 
+issues.subcategory_id, subcategories.subcategory ,issues.date, 
+issues.description, issues.cost , issues.photourl 
+FROM issues 
+INNER JOIN categories ON issues.category_id= categories.id 
+INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
+WHERE issues.id = 10;
+
 /*
 Return all unsolved issues that have more than a week without being solved
 */
