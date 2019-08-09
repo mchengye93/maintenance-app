@@ -87,6 +87,8 @@ ORDER BY issues.date, issues.room_id  ASC;
 
 
 /* CRUD Contacts */
+/*CREATE contacts*/
+
 /*Return all contact with specific category*/
 SELECT  contacts.category_id, categories.category, contacts.name, contacts.phone, contacts.email FROM contacts
 INNER JOIN categories ON contacts.category_id = categories.id 
@@ -94,6 +96,7 @@ ORDER BY categories.category,contacts.name ASC;
 
 
 /*CRUD Categories*/ 
+
 /*CREATE category*/
 INSERT INTO categories (category) VALUES ('New Category');
 
