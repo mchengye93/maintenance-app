@@ -96,7 +96,7 @@ INNER JOIN categories ON contacts.category_id = categories.id
 ORDER BY categories.category,contacts.name ASC;
 
 /*UPDATE: Update specific contact */
-UPDATE contacts SET category_id = 3, name = 'UpdateName', phone = '(777) 777-7777', email = 'updateemail@email.com' WHERE id = 
+UPDATE contacts SET category_id = 3, name = 'UpdateName', phone = '(777) 777-7777', email = 'updateemail@email.com' WHERE id = 11; 
 
 /*CRUD Categories*/ 
 
