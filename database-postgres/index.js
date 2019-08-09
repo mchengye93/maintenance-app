@@ -1,16 +1,8 @@
-const { Pool } = require('pg');
-
-const postgresDb = new Pool({
-  user: 'marbocheng',
-  host: 'localhost',
-  database: 'maintenance',
-  password: 'mapo',
-  port: 5432,
-});
+const connection = require('./connection.js');
 /* Issues CRUD */
 const getAllIssues = (callback) => {
   console.log('Inside getAllIssues!');
-  postgresDb.query(
+  connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
     + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
@@ -26,7 +18,7 @@ const getAllIssues = (callback) => {
 
 /* CRUD categories */
 const getAllCategories = (callback) => {
-  postgresDb.query('SELECT * FROM categories', (err, results) => {
+  connection.query('SELECT * FROM categories', (err, results) => {
     if (err) {
       callback(err, null);
     }
@@ -36,7 +28,7 @@ const getAllCategories = (callback) => {
 
 const createCategory = (category, callback) => {
   console.log('inside db create category category=', category);
-  postgresDb.query(`INSERT INTO categories (category) VALUES (${category})`, (err, results) => {
+  connection.query(`INSERT INTO categories (category) VALUES (${category})`, (err, results) => {
     if (err) {
       callback(err, null);
     }
@@ -46,7 +38,7 @@ const createCategory = (category, callback) => {
 
 const updateCategory = (categoryId, category, callback) => {
   console.log('inside db update category categoryId=', categoryId, category);
-  postgresDb.query(`UPDATE categories SET category = ${category} WHERE id = ${categoryId}`, (err, results) => {
+  connection.query(`UPDATE categories SET category = ${category} WHERE id = ${categoryId}`, (err, results) => {
     if (err) {
       callback(err, null);
     }
@@ -56,7 +48,7 @@ const updateCategory = (categoryId, category, callback) => {
 
 const deleteCategory = (categoryId, callback) => {
   console.log('inside db delete category categoryId=', categoryId);
-  postgresDb.query(`DELETE FROM categories WHERE id = ${categoryId}`, (err, results) => {
+  connection.query(`DELETE FROM categories WHERE id = ${categoryId}`, (err, results) => {
     if (err) {
       callback(err, null);
     }
@@ -66,7 +58,7 @@ const deleteCategory = (categoryId, callback) => {
 
 /* CRUD subcategories */
 const getAllSubcategories = (callback) => {
-  postgresDb.query('SELECT * FROM subcategories', (err, results) => {
+  connection.query('SELECT * FROM subcategories', (err, results) => {
     if (err) {
       callback(err, null);
     }
@@ -75,7 +67,7 @@ const getAllSubcategories = (callback) => {
 };
 
 const getAllCategoriesSubcategories = (callback) => {
-  postgresDb.query(
+  connection.query(
     'SELECT * FROM subcategories '
         + 'INNER JOIN categories '
         + 'ON categories.id = subcategories.category_id', (err, results) => {
@@ -88,7 +80,7 @@ const getAllCategoriesSubcategories = (callback) => {
 };
 /* CRUD contacts */
 const getAllContact = (callback) => {
-  postgresDb.query('SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, '
+  connection.query('SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, '
 + 'contacts.phone, contacts.email FROM contacts '
 + 'INNER JOIN categories ON contacts.category_id = categories.id '
 + 'ORDER BY categories.category,contacts.name ASC', (err, results) => {
