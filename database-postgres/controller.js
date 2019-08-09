@@ -1,7 +1,6 @@
 const connection = require('./connection.js');
 /* Issues CRUD */
 const getAllIssues = (callback) => {
-  console.log('Inside getAllIssues!');
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
@@ -27,7 +26,6 @@ const getAllCategories = (callback) => {
 };
 
 const createCategory = (category, callback) => {
-  console.log('inside db create category category=', category);
   connection.query(`INSERT INTO categories (category) VALUES (${category})`, (err, results) => {
     if (err) {
       callback(err, null);
@@ -37,7 +35,6 @@ const createCategory = (category, callback) => {
 };
 
 const updateCategory = (categoryId, category, callback) => {
-  console.log('inside db update category categoryId=', categoryId, category);
   connection.query(`UPDATE categories SET category = ${category} WHERE id = ${categoryId}`, (err, results) => {
     if (err) {
       callback(err, null);
@@ -47,7 +44,6 @@ const updateCategory = (categoryId, category, callback) => {
 };
 
 const deleteCategory = (categoryId, callback) => {
-  console.log('inside db delete category categoryId=', categoryId);
   connection.query(`DELETE FROM categories WHERE id = ${categoryId}`, (err, results) => {
     if (err) {
       callback(err, null);
