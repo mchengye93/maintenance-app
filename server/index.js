@@ -44,7 +44,7 @@ app.post('/api/categories', (req, res) => {
   });
 });
 
-app.put('/apu/categories', (req, res) => {
+app.put('/api/categories', (req, res) => {
   issues.updateCategory(req.body.categoryId, req.body.category, (err, data) => {
     if (err) {
       res.status(500);
