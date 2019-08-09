@@ -44,6 +44,16 @@ const createCategory = (category, callback) => {
   });
 };
 
+const updateCategory = (categoryId, category, callback) => {
+  console.log('inside db update category categoryId=', categoryId, category);
+  postgresDb.query(`UPDATE categories SET category = ${category} WHERE id = ${categoryId}`, (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results);
+  });
+};
+
 /* CRUD subcategories */
 const getAllSubcategories = (callback) => {
   postgresDb.query('SELECT * FROM subcategories', (err, results) => {
@@ -86,5 +96,6 @@ module.exports = {
   getAllCategoriesSubcategories,
   getAllContact,
   createCategory,
+  updateCategory,
 
 };
