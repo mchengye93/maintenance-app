@@ -33,4 +33,13 @@ app.get('/api/categories', (req, res) => {
   });
 });
 
+app.get('/api/subcategories', (req, res) => {
+  issues.getAllSubcategories((err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
