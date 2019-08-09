@@ -1,3 +1,4 @@
+/*Return all issues for vip rooms*/
 
 /* Return issues table with category and subcategory */
 SELECT issues.room_id, issues.category_id, categories.category, 
