@@ -84,5 +84,6 @@ module.exports = {
   getAllSubcategories,
   getAllCategoriesSubcategories,
   getAllContact,
+  createCategory,
 
 };
