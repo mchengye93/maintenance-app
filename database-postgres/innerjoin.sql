@@ -95,6 +95,8 @@ SELECT  contacts.category_id, categories.category, contacts.name, contacts.phone
 INNER JOIN categories ON contacts.category_id = categories.id 
 ORDER BY categories.category,contacts.name ASC;
 
+/*UPDATE: Update specific contact */
+
 
 /*CRUD Categories*/ 
 
