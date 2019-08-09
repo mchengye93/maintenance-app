@@ -104,6 +104,9 @@ SELECT * FROM categories;
 UPDATE categories SET category = 'UPDATECategory' WHERE id = 7;
 
 
+/* DELETE category */
+DELETE FROM categories WHERE id = 6;
+
 /*CRUD Subcategories*/
 /* Return all categories with their subcategories
 */
