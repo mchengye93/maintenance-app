@@ -91,12 +91,12 @@ ORDER BY issues.date, issues.room_id  ASC;
 INSERT INTO contacts (category_id, name, phone, email) VALUES (1, 'NameTest', '(888) 888-8888', 'Testemail@email.com');
 
 /*READ: Return all contact with specific category*/
-SELECT  contacts.category_id, categories.category, contacts.name, contacts.phone, contacts.email FROM contacts
+SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, contacts.phone, contacts.email FROM contacts
 INNER JOIN categories ON contacts.category_id = categories.id 
 ORDER BY categories.category,contacts.name ASC;
 
 /*UPDATE: Update specific contact */
-
+UPDATE contacts SET category_id = 3, name = 'UpdateName', phone = '(777) 777-7777', email = 'updateemail@email.com' WHERE id = 
 
 /*CRUD Categories*/ 
 
