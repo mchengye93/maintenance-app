@@ -11,7 +11,10 @@ const postgresDb = new Pool({
 const getAllIssues = (callback) => {
   console.log('Inside getAllIssues!');
   postgresDb.query(
-    'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues INNER JOIN categories ON issues.category_id= categories.id INNER JOIN subcategories ON issues.subcategory_id = subcategories.id ORDER BY date ASC', (err, results) => {
+    'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
+    + 'INNER JOIN categories ON issues.category_id= categories.id '
+    + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+    + 'ORDER BY date ASC', (err, results) => {
       if (err) {
         callback(err, null);
       }

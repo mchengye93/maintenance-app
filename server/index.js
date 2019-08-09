@@ -23,4 +23,14 @@ app.get('/api/issues', (req, res) => {
     res.json(data);
   });
 });
+
+app.get('/api/categories', (req, res) => {
+  issues.getAllCategories((err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
