@@ -90,7 +90,7 @@ ORDER BY issues.date, issues.room_id  ASC;
 /*CREATE contacts*/
 INSERT INTO contacts (category_id, name, phone, email) VALUES (1, 'NameTest', '(888) 888-8888', 'Testemail@email.com');
 
-/*Return all contact with specific category*/
+/*READ: Return all contact with specific category*/
 SELECT  contacts.category_id, categories.category, contacts.name, contacts.phone, contacts.email FROM contacts
 INNER JOIN categories ON contacts.category_id = categories.id 
 ORDER BY categories.category,contacts.name ASC;
