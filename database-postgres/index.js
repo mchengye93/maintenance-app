@@ -54,6 +54,16 @@ const updateCategory = (categoryId, category, callback) => {
   });
 };
 
+const deleteCategory = (categoryId, callback) => {
+  console.log('inside db delete category categoryId=', categoryId);
+  postgresDb.query(`DELETE FROM categories WHERE id = ${categoryId}`, (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results);
+  });
+};
+
 /* CRUD subcategories */
 const getAllSubcategories = (callback) => {
   postgresDb.query('SELECT * FROM subcategories', (err, results) => {
@@ -97,5 +107,6 @@ module.exports = {
   getAllContact,
   createCategory,
   updateCategory,
+  deleteCategory,
 
 };
