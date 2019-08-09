@@ -94,11 +94,14 @@ ORDER BY categories.category,contacts.name ASC;
 
 
 /*CRUD Categories*/ 
-/*Create category*/
-INSERT INTO categories 
+/*CREATE category*/
+INSERT INTO categories (category) VALUES ('New Category');
 
-/* Read: Return all categories */
+/* READ: Return all categories */
 SELECT * FROM categories;
+
+/* UPDATE: Update specific category*/
+UPDATE categories SET category = 'UPDATECategory' WHERE id = 7;
 
 
 /*CRUD Subcategories*/
