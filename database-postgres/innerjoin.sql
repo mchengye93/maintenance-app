@@ -1,3 +1,7 @@
+
+
+/*CRUD Issues*/
+
 /*Return all issues for vip rooms*/
 SELECT rooms.id, rooms.vip, issues.category_id, categories.category, 
 issues.subcategory_id, subcategories.subcategory ,issues.date 
