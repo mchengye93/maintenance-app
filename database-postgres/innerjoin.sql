@@ -88,7 +88,6 @@ INNER JOIN categories ON contacts.category_id = categories.id
 ORDER BY categories.category,contacts.name ASC;
 
 
-
 /* Return all categories
 */
 SELECT * FROM categories;
