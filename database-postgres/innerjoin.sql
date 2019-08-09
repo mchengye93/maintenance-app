@@ -5,7 +5,8 @@ FROM issues
 INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE issues.dateFixed IS NULL;
+WHERE issues.dateFixed IS NULL
+ORDER BY date, rooms.id ASC;
 
 /* Return issues table with category and subcategory */
 SELECT issues.room_id, issues.category_id, categories.category, 
