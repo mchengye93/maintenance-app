@@ -33,6 +33,7 @@ app.get('/api/categories', (req, res) => {
   });
 });
 
+
 app.get('/api/subcategories', (req, res) => {
   issues.getAllSubcategories((err, data) => {
     if (err) {

@@ -34,6 +34,15 @@ const getAllCategories = (callback) => {
   });
 };
 
+const createCategory = (req, callback) => {
+  postgresDb.query(`INSERT INTO categories (category) VALUES (${req.category})`, (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results.rows);
+  });
+};
+
 /* CRUD subcategories */
 const getAllSubcategories = (callback) => {
   postgresDb.query('SELECT * FROM subcategories', (err, results) => {
