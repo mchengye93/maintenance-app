@@ -38,10 +38,20 @@ app.post('/api/categories', (req, res) => {
     if (err) {
       res.status(500);
       res.send(err);
-    } else {
-      res.status(200);
-      res.send(data);
     }
+    res.status(200);
+    res.send(data);
+  });
+});
+
+app.put('/apu/categories', (req, res) => {
+  issues.updateCategory(req.body.categoryId, req.body.category, (err, data) => {
+    if (err) {
+      res.status(500);
+      res.send(err);
+    }
+    res.status(200);
+    res.send(data);
   });
 });
 
