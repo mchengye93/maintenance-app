@@ -14,5 +14,13 @@ app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => res.send('Hello World!'));
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
-;
+
+app.get('/api/issues', (req, res) => {
+  issues.getAllIssues((err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
