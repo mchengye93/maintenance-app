@@ -13,8 +13,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // parse application/json
 app.use(bodyParser.json());
 
 
-app.get('/', (req, res) => res.send('Hello World!'));
-
+app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
+/* Issues API */
 app.get('/api/issues', (req, res) => {
   issues.getAllIssues((err, data) => {
     if (err) {
@@ -23,7 +23,7 @@ app.get('/api/issues', (req, res) => {
     res.json(data);
   });
 });
-
+/* Categories API */
 app.get('/api/categories', (req, res) => {
   issues.getAllCategories((err, data) => {
     if (err) {
