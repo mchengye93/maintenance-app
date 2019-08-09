@@ -88,7 +88,7 @@ ORDER BY issues.date, issues.room_id  ASC;
 
 /* CRUD Contacts */
 /*CREATE contacts*/
-INSERT INTO contacts VALUES (category_id, name, phone, email) VALUES (1, 'NameTest', '(888) 888-8888', 'Testemail@email.com');
+INSERT INTO contacts (category_id, name, phone, email) VALUES (1, 'NameTest', '(888) 888-8888', 'Testemail@email.com');
 
 /*Return all contact with specific category*/
 SELECT  contacts.category_id, categories.category, contacts.name, contacts.phone, contacts.email FROM contacts
