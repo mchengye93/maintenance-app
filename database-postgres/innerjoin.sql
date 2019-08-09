@@ -94,9 +94,12 @@ ORDER BY categories.category,contacts.name ASC;
 
 
 /*CRUD Categories*/ 
-/* Return all categories
-*/
+/*Create category*/
+INSERT INTO categories 
+
+/* Read: Return all categories */
 SELECT * FROM categories;
+
 
 /*CRUD Subcategories*/
 /* Return all categories with their subcategories
