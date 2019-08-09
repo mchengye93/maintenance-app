@@ -58,7 +58,15 @@ const getAllCategoriesSubcategories = (callback) => {
 };
 /* CRUD contacts */
 const getAllContact = (callback) => {
-
+  postgresDb.query('SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, '
++ 'contacts.phone, contacts.email FROM contacts '
++ 'INNER JOIN categories ON contacts.category_id = categories.id '
++ 'ORDER BY categories.category,contacts.name ASC', (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results.rows);
+  });
 };
 
 module.exports = {
