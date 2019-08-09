@@ -56,11 +56,16 @@ const getAllCategoriesSubcategories = (callback) => {
     },
   );
 };
+/* CRUD contacts */
+const getAllContact = (callback) => {
+
+};
 
 module.exports = {
   getAllIssues,
   getAllCategories,
   getAllSubcategories,
   getAllCategoriesSubcategories,
+  getAllContact,
 
 };
