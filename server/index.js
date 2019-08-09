@@ -33,6 +33,17 @@ app.get('/api/categories', (req, res) => {
   });
 });
 
+app.post('/api/categories', (req, res) => {
+  issues.createCategory(req.body.category, (err, data) => {
+    if (err) {
+      res.status(500);
+      res.send(err);
+    } else {
+      res.status(200);
+      res.send(data);
+    }
+  });
+});
 
 app.get('/api/subcategories', (req, res) => {
   issues.getAllSubcategories((err, data) => {

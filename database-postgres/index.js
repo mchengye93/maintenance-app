@@ -34,12 +34,13 @@ const getAllCategories = (callback) => {
   });
 };
 
-const createCategory = (req, callback) => {
-  postgresDb.query(`INSERT INTO categories (category) VALUES (${req.category})`, (err, results) => {
+const createCategory = (category, callback) => {
+  console.log('inside db create category category=', category);
+  postgresDb.query(`INSERT INTO categories (category) VALUES (${category})`, (err, results) => {
     if (err) {
       callback(err, null);
     }
-    callback(null, results.rows);
+    callback(null, results);
   });
 };
 
