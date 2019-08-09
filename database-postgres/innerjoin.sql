@@ -98,6 +98,7 @@ ORDER BY categories.category,contacts.name ASC;
 */
 SELECT * FROM categories;
 
+/*CRUD Subcategories*/
 /* Return all categories with their subcategories
 */
 SELECT * FROM subcategories 
