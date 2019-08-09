@@ -7,7 +7,7 @@ const postgresDb = new Pool({
   password: 'mapo',
   port: 5432,
 });
-
+/* Issues CRUD */
 const getAllIssues = (callback) => {
   console.log('Inside getAllIssues!');
   postgresDb.query(
@@ -24,6 +24,7 @@ const getAllIssues = (callback) => {
   );
 };
 
+/* CRUD categories */
 const getAllCategories = (callback) => {
   postgresDb.query('SELECT * FROM categories', (err, results) => {
     if (err) {
@@ -33,6 +34,7 @@ const getAllCategories = (callback) => {
   });
 };
 
+/* CRUD subcategories */
 const getAllSubcategories = (callback) => {
   postgresDb.query('SELECT * FROM subcategories', (err, results) => {
     if (err) {
