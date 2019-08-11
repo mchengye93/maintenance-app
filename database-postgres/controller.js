@@ -16,14 +16,16 @@ const getAllIssues = (callback) => {
 };
 
 const getIssue = (issueId, callback) => {
-  console.log('inside db getIssue');
+  console.log('inside db getIssue', issueId);
   connection.query(
-    'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
+    `${'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
     + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-    + 'ORDER BY date ASC'
-    + `WHERE issues.id = ${issueId}`, (err, results) => {
+    + 'WHERE issues.id = '}${issueId
+    }${+'ORDER BY date ASC'}`,
+    (err, results) => {
       if (err) {
+        console.log(err);
         callback(err, null);
       }
 
