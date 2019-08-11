@@ -16,7 +16,6 @@ const getAllIssues = (callback) => {
 };
 
 const getIssue = (issueId, callback) => {
-  console.log('inside db getIssue', issueId);
   connection.query(
     `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
@@ -27,7 +26,6 @@ const getIssue = (issueId, callback) => {
         console.log(err);
         callback(err, null);
       }
-
       callback(null, results.rows);
     },
   );
