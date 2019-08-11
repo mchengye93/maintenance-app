@@ -15,6 +15,22 @@ const getAllIssues = (callback) => {
   );
 };
 
+const getIssue = (issueId, callback) => {
+  connection.query(
+    'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
+    + 'INNER JOIN categories ON issues.category_id= categories.id '
+    + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+    + 'ORDER BY date ASC'
+    + `WHERE issues.id = ${issueId}`, (err, results) => {
+      if (err) {
+        callback(err, null);
+      }
+
+      callback(null, results.rows);
+    },
+  );
+};
+
 /* CRUD categories */
 const getAllCategories = (callback) => {
   connection.query('SELECT * FROM categories', (err, results) => {
@@ -89,6 +105,7 @@ const getAllContact = (callback) => {
 
 module.exports = {
   getAllIssues,
+  getIssue,
   getAllCategories,
   getAllSubcategories,
   getAllCategoriesSubcategories,
