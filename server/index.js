@@ -23,6 +23,15 @@ app.get('/api/issues', (req, res) => {
     res.json(data);
   });
 });
+
+app.get('/api/issue', (req, res) => {
+  issues.getIssue(req.body.issueId, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
 /* Categories API */
 app.get('/api/categories', (req, res) => {
   issues.getAllCategories((err, data) => {
