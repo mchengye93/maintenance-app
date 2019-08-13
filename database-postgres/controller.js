@@ -23,7 +23,6 @@ const getIssue = (issueId, callback) => {
     + 'WHERE issues.id ='}${issueId}`,
     (err, results) => {
       if (err) {
-        console.log(err);
         callback(err, null);
       }
       callback(null, results.rows);
