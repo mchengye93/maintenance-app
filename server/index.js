@@ -85,7 +85,7 @@ app.get('/api/subcategories', (req, res) => {
 });
 
 app.get('/api/categoriessubcategories', (req, res) => {
-  issues.getAllCategoriesSubcategories((err, data) => {
+  issues.getAllCategoriesSubcategories(req.body.categoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);
     }
