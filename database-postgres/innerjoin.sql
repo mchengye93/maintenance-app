@@ -124,6 +124,8 @@ SELECT * FROM subcategories
 INNER JOIN categories 
 ON categories.id = subcategories.category_id;
 
+/*DELETE Specific subcategory*/
+DELETE FROM subcategories WHERE id = 100;
 
 /*
 Return all subcategories of specific category
