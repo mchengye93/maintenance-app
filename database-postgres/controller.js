@@ -107,6 +107,9 @@ const getAllCategoriesSubcategories = (callback) => {
   );
 };
 /* CRUD contacts */
+const createContact = (contact, callback) => {
+
+};
 const getAllContact = (callback) => {
   connection.query('SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, '
 + 'contacts.phone, contacts.email FROM contacts '
