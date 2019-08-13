@@ -88,7 +88,12 @@ const getAllSubcategories = (categoryId, callback) => {
 };
 
 const deleteSubcategory = (subcategoryId, callback) => {
-
+  connection.query(`DELETE FROM subcategories WHERE id = ${subcategory}`, (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results.rows);
+  });
 };
 
 const getAllCategoriesSubcategories = (callback) => {
@@ -122,6 +127,7 @@ module.exports = {
   getAllCategories,
   createSubcategory,
   getAllSubcategories,
+  deleteSubcategory,
   getAllCategoriesSubcategories,
   getAllContact,
   createCategory,
