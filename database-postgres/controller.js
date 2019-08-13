@@ -88,10 +88,8 @@ const getAllSubcategories = (categoryId, callback) => {
 };
 
 const deleteSubcategory = (subcategoryId, callback) => {
-  console.log('inside deletesubcategory ', subcategoryId);
   connection.query(`DELETE FROM subcategories WHERE id = ${subcategoryId}`, (err, results) => {
     if (err) {
-      console.log(err);
       callback(err, null);
     }
     callback(null, results.rows);
