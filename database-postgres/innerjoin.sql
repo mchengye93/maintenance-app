@@ -1,4 +1,4 @@
-
+/*SELECT setval('payments_id_seq', 21, true);*/
 
 /*CRUD Issues*/
 
@@ -117,7 +117,7 @@ DELETE FROM categories WHERE id = 6;
 
 /*CRUD Subcategories*/
 /*Create subcategory given categoryId and subcategory*/
-
+INSERT INTO subcategories (category_id, subcategory) VALUES (1,'test');
 /* Return all categories with their subcategories
 */
 SELECT * FROM subcategories 
