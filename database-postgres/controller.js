@@ -69,6 +69,9 @@ const deleteCategory = (categoryId, callback) => {
 };
 
 /* CRUD subcategories */
+const createSubcategory = (categoryId, callback) => {
+
+};
 const getAllSubcategories = (categoryId, callback) => {
   connection.query(`SELECT * FROM subcategories WHERE category_id = ${categoryId}`, (err, results) => {
     if (err) {
@@ -107,6 +110,7 @@ module.exports = {
   getAllIssues,
   getIssue,
   getAllCategories,
+  createSubcategory,
   getAllSubcategories,
   getAllCategoriesSubcategories,
   getAllContact,
