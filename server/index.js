@@ -74,7 +74,7 @@ app.delete('/api/categories', (req, res) => {
     res.send(data);
   });
 });
-app.get('/api/subcategories', (req, res) => {
+app.post('/api/subcategories', (req, res) => {
   issues.createSubcategories(req.body.categoryId, req.body.subcategory, (err, data) => {
     if (err) {
       res.sendStatus(500);
