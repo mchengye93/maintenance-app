@@ -72,7 +72,6 @@ const deleteCategory = (categoryId, callback) => {
 const createSubcategory = (categoryId, subcategory, callback) => {
   connection.query(`INSERT INTO subcategories (category_id, subcategory) VALUES (${categoryId}, '${subcategory}')`, (err, results) => {
     if (err) {
-      console.log(err);
       callback(err, null);
     }
     callback(null, results);
