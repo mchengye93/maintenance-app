@@ -135,6 +135,7 @@ module.exports = {
   getAllSubcategories,
   deleteSubcategory,
   getAllCategoriesSubcategories,
+  createContact,
   getAllContact,
   createCategory,
   updateCategory,
