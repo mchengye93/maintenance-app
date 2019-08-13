@@ -76,7 +76,7 @@ app.delete('/api/categories', (req, res) => {
 });
 
 app.get('/api/subcategories', (req, res) => {
-  issues.getAllSubcategories((err, data) => {
+  issues.getAllSubcategories(req.body.categoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);
     }
@@ -85,7 +85,7 @@ app.get('/api/subcategories', (req, res) => {
 });
 
 app.get('/api/categoriessubcategories', (req, res) => {
-  issues.getAllCategoriesSubcategories(req.body.categoryId, (err, data) => {
+  issues.getAllCategoriesSubcategories((err, data) => {
     if (err) {
       res.sendStatus(500);
     }
