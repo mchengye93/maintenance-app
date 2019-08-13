@@ -70,7 +70,6 @@ const deleteCategory = (categoryId, callback) => {
 
 /* CRUD subcategories */
 const createSubcategory = (categoryId, subcategory, callback) => {
-  console.log('inside createsubcategory!', categoryId, subcategory);
   connection.query(`INSERT INTO subcategories (category_id, subcategory) VALUES (${categoryId}, '${subcategory}')`, (err, results) => {
     if (err) {
       console.log(err);
@@ -86,6 +85,10 @@ const getAllSubcategories = (categoryId, callback) => {
     }
     callback(null, results.rows);
   });
+};
+
+const deleteSubcategory = (subcategoryId, callback) => {
+
 };
 
 const getAllCategoriesSubcategories = (callback) => {
