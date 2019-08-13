@@ -92,6 +92,15 @@ app.get('/api/subcategories', (req, res) => {
   });
 });
 
+app.delete('/api/subcategories', (req, res) => {
+  issues.deleteSubcategory(req.body.subcategoryId, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+
 app.get('/api/categoriessubcategories', (req, res) => {
   issues.getAllCategoriesSubcategories((err, data) => {
     if (err) {
