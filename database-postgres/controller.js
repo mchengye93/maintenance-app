@@ -108,7 +108,12 @@ const getAllCategoriesSubcategories = (callback) => {
 };
 /* CRUD contacts */
 const createContact = (contact, callback) => {
-
+  connection.query(`INSERT INTO contacts (category_id, name, phone, email) VALUES (${contact.categoryId}, '${contact.name}', '${contact.phone}', '${contact.email}')`, (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results.rows);
+  });
 };
 const getAllContact = (callback) => {
   connection.query('SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, '
