@@ -83,6 +83,12 @@ app.post('/api/subcategories', (req, res) => {
   });
 });
 
+app.put('/api/subcategories', (req, res) => {
+  issues.updateSubcategory(req.body, (err, data) => {
+
+  });
+});
+
 app.get('/api/subcategories', (req, res) => {
   issues.getAllSubcategories(req.body.categoryId, (err, data) => {
     if (err) {

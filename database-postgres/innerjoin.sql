@@ -126,7 +126,7 @@ ON categories.id = subcategories.category_id;
 
 
 /*UPDATE subcategory*/
-
+UPDATE subcategories SET category_id = 5, subcategory = 'Subcategory UPDATE' WHERE id = 24;
 /*DELETE Specific subcategory*/
 DELETE FROM subcategories WHERE id = 100;
 
