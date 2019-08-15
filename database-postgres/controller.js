@@ -85,7 +85,7 @@ const getAllSubcategories = (categoryId, callback) => {
   });
 };
 
-const updateSubcategories = (category, callback) => {
+const updateSubcategory = (category, callback) => {
 
 };
 
@@ -154,6 +154,7 @@ module.exports = {
   getIssue,
   getAllCategories,
   createSubcategory,
+  updateSubcategory,
   getAllSubcategories,
   deleteSubcategory,
   getAllCategoriesSubcategories,
