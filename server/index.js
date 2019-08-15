@@ -129,7 +129,10 @@ app.get('/api/contacts', (req, res) => {
 });
 app.put('/api/contacts', (req, res) => {
   issues.updateContact(req.body, (err, data) => {
-
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
   });
 });
 app.delete('/api/contacts', (req, res) => {
