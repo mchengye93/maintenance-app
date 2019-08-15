@@ -112,7 +112,7 @@ const createContact = (contact, callback) => {
     if (err) {
       callback(err, null);
     }
-    callback(null, results.rows);
+    callback(null, results);
   });
 };
 const getAllContact = (callback) => {
