@@ -128,5 +128,9 @@ app.get('/api/contacts', (req, res) => {
   });
 });
 
+app.delete('/api/contacts', (req, res) => {
+
+});
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
