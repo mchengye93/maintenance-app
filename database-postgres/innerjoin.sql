@@ -124,6 +124,9 @@ SELECT * FROM subcategories
 INNER JOIN categories 
 ON categories.id = subcategories.category_id;
 
+
+/*UPDATE subcategory*/
+
 /*DELETE Specific subcategory*/
 DELETE FROM subcategories WHERE id = 100;
 
