@@ -111,6 +111,7 @@ app.get('/api/categoriessubcategories', (req, res) => {
 });
 
 /* CRUD API for contacts */
+
 app.post('/api/contacts', (req, res) => {
   issues.createContact(req.body, (err, data) => {
     if (err) {

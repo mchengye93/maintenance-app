@@ -85,6 +85,10 @@ const getAllSubcategories = (categoryId, callback) => {
   });
 };
 
+const updateSubcategories = (category, callback) => {
+
+};
+
 const deleteSubcategory = (subcategoryId, callback) => {
   connection.query(`DELETE FROM subcategories WHERE id = ${subcategoryId}`, (err, results) => {
     if (err) {
