@@ -85,7 +85,10 @@ app.post('/api/subcategories', (req, res) => {
 
 app.put('/api/subcategories', (req, res) => {
   issues.updateSubcategory(req.body, (err, data) => {
-
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
   });
 });
 
