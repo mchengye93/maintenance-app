@@ -77,7 +77,7 @@ const createSubcategory = (categoryId, subcategory, callback) => {
   });
 };
 const getAllSubcategories = (categoryId, callback) => {
-  connection.query(`SELECT * FROM subcategories WHERE category_id = ${categoryId}`, (err, results) => {
+  connection.query(`SELECT  * FROM subcategories WHERE category_id = ${categoryId}`, (err, results) => {
     if (err) {
       callback(err, null);
     }
