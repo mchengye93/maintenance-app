@@ -127,6 +127,7 @@ app.get('/api/contacts', (req, res) => {
     res.json(data);
   });
 });
+
 app.put('/api/contacts', (req, res) => {
   issues.updateContact(req.body, (err, data) => {
     if (err) {
@@ -135,6 +136,7 @@ app.put('/api/contacts', (req, res) => {
     res.json(data);
   });
 });
+
 app.delete('/api/contacts', (req, res) => {
   issues.deleteContact(req.body.contactId, (err, data) => {
     if (err) {
