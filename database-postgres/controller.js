@@ -128,7 +128,12 @@ const getAllContact = (callback) => {
 };
 
 const deleteContact = (contactId, callback) => {
-
+  connection.query(`DELETE FROM contacts WHERE id = ${contactId}`, (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results);
+  });
 };
 
 module.exports = {
