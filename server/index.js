@@ -110,6 +110,10 @@ app.get('/api/categoriessubcategories', (req, res) => {
   });
 });
 
+app.post('/api/contacts', (req, res) => {
+
+});
+
 app.get('/api/contacts', (req, res) => {
   issues.getAllContact((err, data) => {
     if (err) {

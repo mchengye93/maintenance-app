@@ -13,7 +13,7 @@ CREATE TABLE rooms (
   parking boolean NOT NULL
 );
 
-/*COPY issues FROM '/Users/marbocheng/Desktop/maintenance-app/issues.csv' DELIMITER ',' CSV HEADER;*/
+/*COPY issues FROM '/Users/marbocheng/Desktop/maintenance-app/seeders/issues.csv' DELIMITER ',' CSV HEADER;*/
 CREATE TABLE issues (
   id serial PRIMARY KEY,
   room_id INT NOT NULL,
