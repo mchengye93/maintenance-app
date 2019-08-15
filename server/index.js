@@ -129,7 +129,7 @@ app.get('/api/contacts', (req, res) => {
 });
 
 app.delete('/api/contacts', (req, res) => {
-  issues.deleteContact(req.contactId, (err, data) => {
+  issues.deleteContact(req.body.contactId, (err, data) => {
     if (err) {
       res.sendStatus(500);
     }
