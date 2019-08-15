@@ -86,8 +86,13 @@ const getAllSubcategories = (categoryId, callback) => {
 };
 
 const updateSubcategory = (subcategory, callback) => {
-  connection.query(`UPDATE subcategories SET category_id = ${subcategory.categoryId}, subcategory = '${subcategory.subcategory}' WHERE id = ${subcategory.id}`, (err, results) => {
+  console.log('inside updatesubcategory', subcategory);
+  console.log(subcategory.subcategoryId);
+  console.log(subcategory.categoryId);
+  console.log(subcategory.subcategory);
+  connection.query(`UPDATE subcategories SET category_id= ${subcategory.categoryId}, subcategory= '${subcategory.subcategory}' WHERE id=${subcategory.subcategoryId}`, (err, results) => {
     if (err) {
+      console.log(err);
       callback(err, null);
     }
     callback(null, results);
