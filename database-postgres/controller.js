@@ -127,6 +127,10 @@ const getAllContact = (callback) => {
   });
 };
 
+const deleteContact = (contactId, callback) => {
+
+};
+
 module.exports = {
   getAllIssues,
   getIssue,
@@ -137,6 +141,7 @@ module.exports = {
   getAllCategoriesSubcategories,
   createContact,
   getAllContact,
+  deleteContact,
   createCategory,
   updateCategory,
   deleteCategory,
