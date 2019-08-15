@@ -108,7 +108,7 @@ const getAllCategoriesSubcategories = (callback) => {
 };
 /* CRUD contacts */
 const createContact = (contact, callback) => {
-  connection.query(`INSERT INTO contacts (category_id, name, phone, email) VALUES (${contact.categoryId}, '${contact.name}', '${contact.phone}', '${contact.email}')`, (err, results) => {
+  connection.query(`UPDATE contacts SET category_id = ${contact.categoryId}, name ='${contact.name}', phone='${contact.phone}', email = '${contact.email}' WHERE id = ${contact.id}`, (err, results) => {
     if (err) {
       callback(err, null);
     }
@@ -128,8 +128,14 @@ const getAllContact = (callback) => {
 };
 
 const updateContact = (contact, callback) => {
-
+  connection.query(`INSERT INTO contacts (category_id, name, phone, email) VALUES (${contact.categoryId}, '${contact.name}', '${contact.phone}', '${contact.email}')`, (err, results) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, results);
+  });
 };
+
 const deleteContact = (contactId, callback) => {
   connection.query(`DELETE FROM contacts WHERE id = ${contactId}`, (err, results) => {
     if (err) {
