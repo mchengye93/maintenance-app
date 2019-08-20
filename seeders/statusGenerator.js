@@ -17,8 +17,7 @@ myInterface.on('line', (line) => {
   const issueId = issue[0];
   const categoryId = issue[2];
   const dateIssued = issue[4].split(' ')[0];
-  // const date_resolved = new Date(dateIssued).addDays(Math.floor(Math.random() * 10));
-  // const date_received = faker.date.between(dateIssued, date_resolved).toLocaleString();
+
   const dateReceived = new Date(dateIssued);
   const receivedDays = Math.floor(Math.random() * 3);
   dateReceived.setDate(dateReceived.getDate() + receivedDays);
