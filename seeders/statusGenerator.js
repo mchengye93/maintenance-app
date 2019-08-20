@@ -10,7 +10,9 @@ const myInterface = readline.createInterface({
 });
 
 let lineno = 0;
+let id = 0;
 myInterface.on('line', (line) => {
+  id += 1;
   lineno += 1;
   // console.log(`Line number ${lineno}: ${line}`);
   const issue = line.split(',');
@@ -66,4 +68,11 @@ myInterface.on('line', (line) => {
   console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
   console.log('Contact ID ', contactId);
   console.log(issueId, categoryId, dateIssued);
+
+  if (id > 0) {
+    const statusRecord = `${id},${issueId},${contactId},${dateReceived},${dateResolved}`;
+    writeStream.write(statusRecord);
+  }
 });
+
+writeStream.end();
