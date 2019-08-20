@@ -18,15 +18,23 @@ myInterface.on('line', (line) => {
   const categoryId = issue[2];
   const dateIssued = issue[4].split(' ')[0];
   console.log('Issued date: ', dateIssued);
-  const dateReceived = new Date(dateIssued);
-  const receivedDays = Math.floor(Math.random() * 3);
-  dateReceived.setDate(dateReceived.getDate() + receivedDays);
-  console.log('Date received:', dateReceived);
 
-  const dateResolved = new Date(dateReceived);
+  const probability = Math.floor(Math.random() * 1);
+  let dateReceived = '';
+
+  if (probability) {
+
+  }
+  dateReceived = new Date(dateIssued);
+  const receivedDays = Math.floor(Math.random() * 3) + 1;
+  dateReceived.setDate(dateReceived.getDate() + receivedDays);
+  console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
+
+  let dateResolved = '';
+  dateResolved = new Date(dateReceived);
   const resolvedDays = Math.floor(Math.random() * 15);
   dateResolved.setDate(dateResolved.getDate() + resolvedDays);
-  console.log('Date resolved:', dateResolved);
+  console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
 
 
   console.log(issueId, categoryId, dateIssued);
