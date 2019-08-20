@@ -64,15 +64,16 @@ myInterface.on('line', (line) => {
     const resolvedDays = Math.floor(Math.random() * 14);
     dateResolved.setDate(dateResolved.getDate() + resolvedDays + 1);
   }
-  console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
-  console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
-  console.log('Contact ID ', contactId);
-  console.log(issueId, categoryId, dateIssued);
+  //   console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
+  //   console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
+  //   console.log('Contact ID ', contactId);
+  //   console.log(issueId, categoryId, dateIssued);
 
   if (id > 0) {
     const statusRecord = `${id},${issueId},${contactId},${dateReceived},${dateResolved}`;
-    writeStream.write(statusRecord);
+    console.log(statusRecord);
+    // writeStream.write(statusRecord);
   }
 });
 
-writeStream.end();
+// writeStream.end();
