@@ -17,7 +17,7 @@ myInterface.on('line', (line) => {
   const issueId = issue[0];
   const categoryId = issue[2];
   const dateIssued = issue[4].split(' ')[0];
-
+  console.log('Issued date: ', dateIssued);
   const dateReceived = new Date(dateIssued);
   const receivedDays = Math.floor(Math.random() * 3);
   dateReceived.setDate(dateReceived.getDate() + receivedDays);
