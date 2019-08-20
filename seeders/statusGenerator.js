@@ -73,9 +73,9 @@ myInterface.on('line', (line) => {
   if (id > 0) {
     const statusRecord = `${id},${issueId},${contactId},${dateReceived},${dateResolved}`;
     console.log(statusRecord);
-    // writeStream.write(statusRecord);
+    writeStream.write(statusRecord);
   }
   id += 1;
 });
 
-// writeStream.end();
+writeStream.end();
