@@ -12,14 +12,13 @@ const myInterface = readline.createInterface({
 let lineno = 0;
 let id = 0;
 myInterface.on('line', (line) => {
-  id += 1;
   lineno += 1;
   // console.log(`Line number ${lineno}: ${line}`);
   const issue = line.split(',');
   const issueId = issue[0];
   const categoryId = issue[2];
   const dateIssued = issue[4].split(' ')[0];
-  console.log('Issued date: ', dateIssued);
+  // console.log('Issued date: ', dateIssued);
 
   const probability = Math.floor(Math.random() * 2);
   let dateReceived = '';
@@ -28,9 +27,10 @@ myInterface.on('line', (line) => {
     dateReceived = new Date(dateIssued);
     const receivedDays = Math.floor(Math.random() * 3) + 1;
     dateReceived.setDate(dateReceived.getDate() + receivedDays);
+    dateReceived = dateReceived.toLocaleString().split(' ')[0];
 
     let contacts = [];
-    console.log('categoryid', categoryId);
+    // console.log('categoryid', categoryId);
     switch (categoryId) {
       case '1':
         contacts = [3, 5, 8];
@@ -63,6 +63,7 @@ myInterface.on('line', (line) => {
     dateResolved = new Date(dateReceived);
     const resolvedDays = Math.floor(Math.random() * 14);
     dateResolved.setDate(dateResolved.getDate() + resolvedDays + 1);
+    dateResolved = dateResolved.toLocaleString().split(' ')[0];
   }
   //   console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
   //   console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
@@ -74,6 +75,7 @@ myInterface.on('line', (line) => {
     console.log(statusRecord);
     // writeStream.write(statusRecord);
   }
+  id += 1;
 });
 
 // writeStream.end();
