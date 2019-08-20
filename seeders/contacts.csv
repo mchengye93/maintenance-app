@@ -1,4 +1,4 @@
-id,room_id,category,subcategory,date,photoUrl,description,cost,dateFixed
+id,category_id,name,phone,email
 1,5,Marlen Gutmann,(002) 296-6924,Ignatius40@hotmail.com
 2,3,Mrs. Ervin Funk,(644) 414-2595,Natalia17@yahoo.com
 3,5,Ms. Ernie Hamill,(902) 267-0955,Daryl58@gmail.com
