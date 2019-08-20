@@ -29,6 +29,10 @@ CREATE TABLE issues (
 Category: Plumbing, Electrical, Fixture, Furniture, Decoration
 */
 
+/*
+Status 
+*/
+
 /*COPY categories FROM '/Users/marbocheng/Desktop/maintenance-app/categories.csv' DELIMITER ',' CSV HEADER;*/
 CREATE TABLE categories (
     id serial PRIMARY KEY,
