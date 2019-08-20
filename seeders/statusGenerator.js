@@ -71,11 +71,11 @@ myInterface.on('line', (line) => {
   //   console.log(issueId, categoryId, dateIssued);
 
   if (id > 0) {
-    const statusRecord = `${id},${issueId},${contactId},${dateReceived},${dateResolved}`;
+    const statusRecord = `${id},${issueId},${contactId},${dateReceived},${dateResolved}\n`;
     console.log(statusRecord);
     writeStream.write(statusRecord);
   }
   id += 1;
 });
 
-writeStream.end();
+// writeStream.end();
