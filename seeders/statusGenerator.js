@@ -27,7 +27,7 @@ myInterface.on('line', (line) => {
   const dateResolved = new Date(dateReceived);
   const resolvedDays = Math.floor(Math.random() * 14);
   dateResolved.setDate(dateResolved.getDate() + resolvedDays);
-  console.log(dateResolved);
+  console.log('Date resolved:', dateResolved);
 
 
   console.log(issueId, categoryId, dateIssued);
