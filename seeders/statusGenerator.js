@@ -28,24 +28,25 @@ myInterface.on('line', (line) => {
     dateReceived.setDate(dateReceived.getDate() + receivedDays);
 
     let contacts = [];
+    console.log('categoryid', categoryId);
     switch (categoryId) {
-      case 1:
+      case '1':
         contacts = [3, 5, 8];
         contactId = contacts[Math.floor(Math.random() * 3)];
         break;
-      case 2:
+      case '2':
         contacts = [6, 7];
         contactId = contacts[Math.floor(Math.random() * 2)];
         break;
-      case 3:
+      case '3':
         contacts = [2, 4];
         contactId = contacts[Math.floor(Math.random() * 2)];
         break;
-      case 4:
+      case '4':
         contacts = [1, 10];
         contactId = contacts[Math.floor(Math.random() * 2)];
         break;
-      case 5:
+      case '5':
         contacts = 9;
         contactId = contacts;
         break;
