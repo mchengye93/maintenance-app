@@ -19,14 +19,15 @@ myInterface.on('line', (line) => {
   const dateIssued = issue[4].split(' ')[0];
   // const date_resolved = new Date(dateIssued).addDays(Math.floor(Math.random() * 10));
   // const date_received = faker.date.between(dateIssued, date_resolved).toLocaleString();
-  const date_received = new Date(dateIssued);
-  date_received.setDate(date_received.getDate() + 1);
-  console.log('Date received:', date_received);
+  const dateReceived = new Date(dateIssued);
+  const receivedDays = Math.floor(Math.random() * 3);
+  dateReceived.setDate(dateReceived.getDate() + receivedDays);
+  console.log('Date received:', dateReceived);
 
-  const date_resolved = new Date(date_received);
-  const days = Math.floor(Math.random() * 14);
-  date_resolved.setDate(date_resolved.getDate() + days);
-  console.log(date_resolved);
+  const dateResolved = new Date(dateReceived);
+  const resolvedDays = Math.floor(Math.random() * 14);
+  dateResolved.setDate(dateResolved.getDate() + resolvedDays);
+  console.log(dateResolved);
 
 
   console.log(issueId, categoryId, dateIssued);
