@@ -36,7 +36,7 @@ CREATE TABLE status (
   id serial PRIMARY KEY,
   issue_id INT NOT NULL,
   contact_id INT,
-  date TIMESTAMP NOT NULL,
+  date_received TIMESTAMP NOT NULL,
   date_resolved TIMESTAMP
 );
 
