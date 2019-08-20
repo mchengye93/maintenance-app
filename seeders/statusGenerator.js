@@ -29,6 +29,7 @@ myInterface.on('line', (line) => {
   }
 
   const resolve = Math.floor(Math.random() * 10);
+  const contactId = '';
   let dateResolved = '';
   if (probability === 1 && resolve > 5) {
     dateResolved = new Date(dateReceived);
