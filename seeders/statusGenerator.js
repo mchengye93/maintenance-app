@@ -4,7 +4,7 @@ const fs = require('fs');
 
 const writeStream = fs.createWriteStream('status.csv');
 
-writeStream.write('id,issue_id,contact_id,date_received,date_resolved');
+writeStream.write('id,issue_id,contact_id,date_received,date_resolved\n');
 const myInterface = readline.createInterface({
   input: fs.createReadStream('issues.csv'),
 });
