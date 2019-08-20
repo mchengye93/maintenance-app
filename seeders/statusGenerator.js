@@ -21,15 +21,40 @@ myInterface.on('line', (line) => {
 
   const probability = Math.floor(Math.random() * 2);
   let dateReceived = '';
-
+  let contactId = '';
   if (probability === 1) {
     dateReceived = new Date(dateIssued);
     const receivedDays = Math.floor(Math.random() * 3) + 1;
     dateReceived.setDate(dateReceived.getDate() + receivedDays);
+
+    let contacts = [];
+    switch (categoryId) {
+      case 1:
+        contacts = [3, 5, 8];
+        contactId = contacts[Math.floor(Math.random() * 3)];
+        break;
+      case 2:
+        contacts = [6, 7];
+        contactId = contacts[Math.floor(Math.random() * 2)];
+        break;
+      case 3:
+        contacts = [2, 4];
+        contactId = contacts[Math.floor(Math.random() * 2)];
+        break;
+      case 4:
+        contacts = [1, 10];
+        contactId = contacts[Math.floor(Math.random() * 2)];
+        break;
+      case 5:
+        contacts = 9;
+        contactId = contacts;
+        break;
+      default:
+    }
   }
 
   const resolve = Math.floor(Math.random() * 10);
-  const contactId = '';
+
   let dateResolved = '';
   if (probability === 1 && resolve > 5) {
     dateResolved = new Date(dateReceived);
@@ -38,5 +63,6 @@ myInterface.on('line', (line) => {
   }
   console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
   console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
+  console.log('Contact ID ', contactId);
   console.log(issueId, categoryId, dateIssued);
 });
