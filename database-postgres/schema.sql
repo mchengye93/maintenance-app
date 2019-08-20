@@ -32,6 +32,13 @@ Category: Plumbing, Electrical, Fixture, Furniture, Decoration
 /*
 Status 
 */
+CREATE TABLE status (
+  id serial PRIMARY KEY,
+  issue_id INT NOT NULL,
+  contact_id INT,
+  date TIMESTAMP NOT NULL,
+  date_resolved TIMESTAMP
+);
 
 /*COPY categories FROM '/Users/marbocheng/Desktop/maintenance-app/categories.csv' DELIMITER ',' CSV HEADER;*/
 CREATE TABLE categories (
