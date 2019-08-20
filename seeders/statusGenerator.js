@@ -12,6 +12,10 @@ let lineno = 0;
 myInterface.on('line', (line) => {
   lineno += 1;
   console.log(`Line number ${lineno}: ${line}`);
-  const lineArr = line.split(',');
-  console.log(lineArr);
+  const issue = line.split(',');
+  const issueId = issue[0];
+  const categoryId = issue[2];
+  const dateIssued = issue[4];
+
+  console.log(issueId, categoryId, dateIssued);
 });
