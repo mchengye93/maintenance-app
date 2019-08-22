@@ -5,35 +5,35 @@ const writeStream = fs.createWriteStream('issues.csv');
 
 // node --max-old-space-size=8192 issues.js
 
-writeStream.write('id,room_id,category_id,subcategory_id,date,photoUrl,description,cost,dateFixed\n');
+writeStream.write('id,room_id,category_id,subcategory_id,photoUrl,description,cost,date_issued,contact_id,date_received,date_resolved\n');
 
 
 for (let i = 1; i <= 200; i += 1) {
   const roomId = faker.random.number({ min: 1, max: 100 });
-  const category = faker.random.number({ min: 1, max: 5 });
+  const categoryId = faker.random.number({ min: 1, max: 5 });
 
-  let subcategory = 0;
-  switch (category) {
+  let subcategoryId = 0;
+  switch (categoryId) {
     default:
-      subcategory = 0;
+      subcategoryId = 0;
       break;
     case 1:
-      subcategory = faker.random.number({ min: 1, max: 8 });
+      subcategoryId = faker.random.number({ min: 1, max: 8 });
       break;
     case 2:
-      subcategory = faker.random.number({ min: 9, max: 13 });
+      subcategoryId = faker.random.number({ min: 9, max: 13 });
       break;
     case 3:
-      subcategory = faker.random.number({ min: 14, max: 17 });
+      subcategoryId = faker.random.number({ min: 14, max: 17 });
       break;
     case 4:
-      subcategory = faker.random.number({ min: 18, max: 21 });
+      subcategoryId = faker.random.number({ min: 18, max: 21 });
       break;
     case 5:
-      subcategory = faker.random.number({ min: 22, max: 23 });
+      subcategoryId = faker.random.number({ min: 22, max: 23 });
       break;
   }
-  const date = faker.date.between('2019-07-25', '2019-08-15').toLocaleString();
+  const dateIssued = faker.date.between('2019-07-25', '2019-08-15').toLocaleString();
 
   const photoUrl = faker.image.imageUrl(400, 400, 'business');
 
@@ -42,15 +42,58 @@ for (let i = 1; i <= 200; i += 1) {
   const cost = faker.random.number({ min: 0, max: 1000 });
 
 
-  let dateFixed = '';
+  const probability = Math.floor(Math.random() * 2);
+  let dateReceived = '';
+  let contactId = '';
+  if (probability === 1) {
+    dateReceived = new Date(dateIssued);
+    const receivedDays = Math.floor(Math.random() * 3) + 1;
+    dateReceived.setDate(dateReceived.getDate() + receivedDays);
+    dateReceived = dateReceived.toLocaleString().split(' ')[0];
 
-  const random = Math.floor(Math.random() * 10);
-  if (random > 5) {
-    dateFixed = faker.date.between(date, '2019-10-01').toLocaleString();
+    let contacts = [];
+    // console.log('categoryid', categoryId);
+    switch (categoryId) {
+      case '1':
+        contacts = [3, 5, 8];
+        contactId = contacts[Math.floor(Math.random() * 3)];
+        break;
+      case '2':
+        contacts = [6, 7];
+        contactId = contacts[Math.floor(Math.random() * 2)];
+        break;
+      case '3':
+        contacts = [2, 4];
+        contactId = contacts[Math.floor(Math.random() * 2)];
+        break;
+      case '4':
+        contacts = [1, 10];
+        contactId = contacts[Math.floor(Math.random() * 2)];
+        break;
+      case '5':
+        contacts = 9;
+        contactId = contacts;
+        break;
+      default:
+    }
   }
 
+  const resolve = Math.floor(Math.random() * 10);
 
-  const issueRecord = `${i},${roomId},${category},${subcategory},${date},${photoUrl},${description},${cost},${dateFixed}\n`;
+  let dateResolved = '';
+  if (probability === 1 && resolve > 5) {
+    dateResolved = new Date(dateReceived);
+    const resolvedDays = Math.floor(Math.random() * 14);
+    dateResolved.setDate(dateResolved.getDate() + resolvedDays + 1);
+    dateResolved = dateResolved.toLocaleString().split(' ')[0];
+  }
+  //   console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
+  //   console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
+  //   console.log('Contact ID ', contactId);
+  //   console.log(issueId, categoryId, dateIssued);
+
+
+  const issueRecord = `${i},${roomId},${categoryId},${subcategoryId},${dateIssued},${photoUrl},${description},${cost},${dateFixed}\n`;
   // write some data with a base64 encoding
   //   var stockRecord = {
   //     id: i,

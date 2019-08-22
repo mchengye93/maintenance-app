@@ -19,10 +19,12 @@ CREATE TABLE issues (
   room_id INT NOT NULL,
   category_id INT NOT NULL,
   subcategory_id INT NOT NULL,
-  date TIMESTAMP NOT NULL,
+  
   photourl text,
   description TEXT,
   cost INT ,
+  
+  date_issued TIMESTAMP NOT NULL,
   contact_id INT,
   date_received TIMESTAMP,
   date_resolved TIMESTAMP
