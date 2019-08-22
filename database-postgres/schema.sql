@@ -4,6 +4,7 @@ CREATE DATABASE maintenance;
 
 USE maintenance;
 
+/*SELECT setval('payments_id_seq', 21, true);*/
 /*
 COPY rooms FROM '/Users/marbocheng/Desktop/maintenance-app/rooms.csv' DELIMITER ',' CSV HEADER;
 */
@@ -19,11 +20,9 @@ CREATE TABLE issues (
   room_id INT NOT NULL,
   category_id INT NOT NULL,
   subcategory_id INT NOT NULL,
-  
   photourl text,
   description TEXT,
   cost INT ,
-  
   date_issued TIMESTAMP NOT NULL,
   contact_id INT,
   date_received TIMESTAMP,
@@ -39,7 +38,6 @@ Status
 CREATE TABLE status (
   id serial PRIMARY KEY,
   issue_id INT NOT NULL,
-  
   date_received TIMESTAMP ,
   date_resolved TIMESTAMP
 );
