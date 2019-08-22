@@ -23,6 +23,8 @@ CREATE TABLE issues (
   photourl text,
   description TEXT,
   cost INT ,
+  contact_id INT,
+  date_received TIMESTAMP,
   dateFixed TIMESTAMP
 );
 /*
@@ -35,8 +37,8 @@ Status
 CREATE TABLE status (
   id serial PRIMARY KEY,
   issue_id INT NOT NULL,
-  contact_id INT,
-  date_received TIMESTAMP NOT NULL,
+  
+  date_received TIMESTAMP ,
   date_resolved TIMESTAMP
 );
 
