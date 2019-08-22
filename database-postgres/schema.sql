@@ -25,7 +25,7 @@ CREATE TABLE issues (
   cost INT ,
   contact_id INT,
   date_received TIMESTAMP,
-  dateFixed TIMESTAMP
+  date_resolved TIMESTAMP
 );
 /*
 Category: Plumbing, Electrical, Fixture, Furniture, Decoration
