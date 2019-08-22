@@ -53,7 +53,7 @@ for (let i = 1; i <= 10; i += 1) {
     dateReceived = dateReceived.toLocaleString().split(' ')[0];
 
     let contacts = [];
-    // console.log('categoryid', categoryId);
+
     switch (categoryId) {
       case 1:
         contacts = [3, 5, 8];
@@ -90,31 +90,24 @@ for (let i = 1; i <= 10; i += 1) {
     dateResolved.setDate(dateResolved.getDate() + resolvedDays + 1);
     dateResolved = dateResolved.toLocaleString().split(' ')[0];
   }
-  console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
-  console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
-  console.log('Contact ID ', contactId);
-  // console.log(issueId, categoryId, dateIssued);
 
 
   const issueRecord = `${i},${roomId},${categoryId},${subcategoryId},${photoUrl},${description},${cost},${dateIssued},${contactId},${dateReceived},${dateResolved}\n`;
-  // write some data with a base64 encoding
-  //   var stockRecord = {
-  //     id: i,
-  //     roomId: roomId,
-  //     parking: parking,
-  //   };
 
-  //   CREATE TABLE issues (
-  //     id serial PRIMARY KEY,
-  //     room_id INT NOT NULL,
-  //     category INT NOT NULL,
-  //     subcategory INT NOT NULL,
-  //     date TIMESTAMP NOT NULL,
-  //     photoUrl text,
-  //     description TEXT,
-  //     cost INT ,
-  //     dateFixed TIMESTAMP,
-  //   );
+
+  // CREATE TABLE issues (
+  //   id serial PRIMARY KEY,
+  //   room_id INT NOT NULL,
+  //   category_id INT NOT NULL,
+  //   subcategory_id INT NOT NULL,
+  //   photourl text,
+  //   description TEXT,
+  //   cost INT ,
+  //   date_issued TIMESTAMP NOT NULL,
+  //   contact_id INT,
+  //   date_received TIMESTAMP,
+  //   date_resolved TIMESTAMP
+  // );
 
   writeStream.write(issueRecord);
 }
