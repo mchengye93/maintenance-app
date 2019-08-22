@@ -8,7 +8,7 @@ const writeStream = fs.createWriteStream('issues.csv');
 writeStream.write('id,room_id,category_id,subcategory_id,photoUrl,description,cost,date_issued,contact_id,date_received,date_resolved\n');
 
 
-for (let i = 1; i <= 200; i += 1) {
+for (let i = 1; i <= 10; i += 1) {
   const roomId = faker.random.number({ min: 1, max: 100 });
   const categoryId = faker.random.number({ min: 1, max: 5 });
 
@@ -55,23 +55,23 @@ for (let i = 1; i <= 200; i += 1) {
     let contacts = [];
     // console.log('categoryid', categoryId);
     switch (categoryId) {
-      case '1':
+      case 1:
         contacts = [3, 5, 8];
         contactId = contacts[Math.floor(Math.random() * 3)];
         break;
-      case '2':
+      case 2:
         contacts = [6, 7];
         contactId = contacts[Math.floor(Math.random() * 2)];
         break;
-      case '3':
+      case 3:
         contacts = [2, 4];
         contactId = contacts[Math.floor(Math.random() * 2)];
         break;
-      case '4':
+      case 4:
         contacts = [1, 10];
         contactId = contacts[Math.floor(Math.random() * 2)];
         break;
-      case '5':
+      case 5:
         contacts = 9;
         contactId = contacts;
         break;
@@ -88,10 +88,10 @@ for (let i = 1; i <= 200; i += 1) {
     dateResolved.setDate(dateResolved.getDate() + resolvedDays + 1);
     dateResolved = dateResolved.toLocaleString().split(' ')[0];
   }
-  //   console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
-  //   console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
-  //   console.log('Contact ID ', contactId);
-  //   console.log(issueId, categoryId, dateIssued);
+  console.log('Date received:', dateReceived.toLocaleString().split(' ')[0]);
+  console.log('Date resolved:', dateResolved.toLocaleString().split(' ')[0]);
+  console.log('Contact ID ', contactId);
+  // console.log(issueId, categoryId, dateIssued);
 
 
   const issueRecord = `${i},${roomId},${categoryId},${subcategoryId},${photoUrl},${description},${cost},${dateIssued}, ${contactId}, ${dateReceived},${dateResolved}\n`;
