@@ -46,7 +46,7 @@ for (let i = 1; i <= 10; i += 1) {
   let dateReceived = '';
   let contactId = '';
 
-  if (1) {
+  if (probability === 1) {
     dateReceived = new Date(dateIssued);
     const receivedDays = Math.floor(Math.random() * 3) + 1;
     dateReceived.setDate(dateReceived.getDate() + receivedDays);
@@ -82,7 +82,9 @@ for (let i = 1; i <= 10; i += 1) {
   const resolve = Math.floor(Math.random() * 10);
 
   let dateResolved = '';
-  if (probability === 1 && resolve > 5) {
+
+
+  if (probability === 1 && resolve > 4) {
     dateResolved = new Date(dateReceived);
     const resolvedDays = Math.floor(Math.random() * 14);
     dateResolved.setDate(dateResolved.getDate() + resolvedDays + 1);
