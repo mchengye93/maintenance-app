@@ -31,6 +31,24 @@ const getAllPendingIssues = (callback) => {
     },
   );
 };
+
+const getAllPendingVipIssues = (callback) => {
+  connection.query(
+    'SELECT rooms.id, rooms.vip, issues.category_id, categories.category, '
+    + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued '
+    + 'FROM issues '
+    + 'INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true '
+    + 'INNER JOIN categories ON issues.category_id= categories.id '
+    + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+    + 'WHERE issues.date_resolved IS NULL '
+    + 'ORDER BY date_issued, rooms.id ASC', (err, results) => {
+      if (err) {
+        callback(err, null);
+      }
+      callback(null, results);
+    },
+  );
+};
 const getIssue = (issueId, callback) => {
   connection.query(
     `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
@@ -178,6 +196,7 @@ const deleteContact = (contactId, callback) => {
 module.exports = {
   getAllIssues,
   getAllPendingIssues,
+  getAllPendingVipIssues,
   getIssue,
   getAllCategories,
   createSubcategory,
