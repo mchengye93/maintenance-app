@@ -35,7 +35,7 @@ const getAllPendingIssues = (callback) => {
 const getAllPendingVipIssues = (callback) => {
   connection.query(
     'SELECT rooms.id, rooms.vip, issues.category_id, categories.category, '
-    + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued '
+    + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received '
     + 'FROM issues '
     + 'INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
