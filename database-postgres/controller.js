@@ -2,10 +2,10 @@ const connection = require('./connection.js');
 /* Issues CRUD */
 const getAllIssues = (callback) => {
   connection.query(
-    'SELECT issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
+    'SELECT issues.room_id, issues.category_id, categories.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
     + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-    + 'ORDER BY date ASC', (err, results) => {
+    + 'ORDER BY date_issued ASC', (err, results) => {
       if (err) {
         callback(err, null);
       }
