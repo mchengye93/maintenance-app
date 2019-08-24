@@ -24,6 +24,16 @@ app.get('/api/issues', (req, res) => {
   });
 });
 
+// Return all unsolved issues
+app.get('/api/issues/pending', (req, res) => {
+  issues.getAllPendingIssues((err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+
 // Return specific issues
 app.get('/api/issue', (req, res) => {
   issues.getIssue(req.body.issueId, (err, data) => {
