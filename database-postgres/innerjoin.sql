@@ -29,8 +29,8 @@ issues.subcategory_id, subcategories.subcategory ,issues.date
 FROM issues 
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE dateFixed IS NULL
-ORDER BY date ASC;
+WHERE date_resolved IS NULL
+ORDER BY date_issued ASC;
 
 /* Return all details of specific issue
 */
