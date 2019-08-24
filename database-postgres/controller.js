@@ -16,7 +16,20 @@ const getAllIssues = (callback) => {
 };
 
 const getAllPendingIssues = (callback) => {
-
+  connection.query(
+    'SELECT issues.room_id, issues.category_id, categories.category,'
+    + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued,'
+     + 'issues.date_received FROM issues '
+     + 'INNER JOIN categories ON issues.category_id= categories.id '
+     + 'INNER JOIN subcategories ON  issues.subcategory_id = subcategories.id '
+     + 'WHERE date_resolved IS NULL '
+     + 'ORDER BY date_issued ASC', (err, results) => {
+      if (err) {
+        callback(err, null);
+      }
+      callback(null, results);
+    },
+  );
 };
 const getIssue = (issueId, callback) => {
   connection.query(
