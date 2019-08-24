@@ -8,7 +8,7 @@ writeStream.write('id,category\n');
 
 const subCategories = ['',
   ['Telephone', 'Airconditioner', 'Bathroom Lights', 'Disco Lights', 'TV', 'TV Remote Control',
-    'Room Light', 'Internet'],
+    'Room Light', 'Internet', 'Sound Speakers'],
   ['Sink', 'Toilet', 'Shower', 'Jacuzzi', 'Hot Water'],
   ['Floor Tile', 'Entrance Door', 'Bathroom Door', 'Garage Parking Door'],
   ['Ceramics', 'Ceiling', 'Walls', 'Paintings'],
