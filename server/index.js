@@ -24,6 +24,7 @@ app.get('/api/issues', (req, res) => {
   });
 });
 
+// Return specific issues
 app.get('/api/issue', (req, res) => {
   issues.getIssue(req.body.issueId, (err, data) => {
     if (err) {
