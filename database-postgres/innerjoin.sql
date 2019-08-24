@@ -41,14 +41,8 @@ INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
 WHERE date_resolved IS NULL AND date_received IS NOT NULL
 ORDER BY date_issued ASC;
 
-/* Return all issues that have been resolved */
-SELECT issues.room_id, issues.category_id, categories.category, 
-issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received, issues.date_resolved 
-FROM issues 
-INNER JOIN categories ON issues.category_id= categories.id 
-INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE date_resolved IS NOT NULL
-ORDER BY date_issued ASC;
+
+/*Return all pending issues that  */
 
 /* Return all pending issues received by specific contact_id(eletrician, plumber, maintenance worker)*/
 SELECT issues.room_id, issues.category_id, categories.category, 
@@ -58,6 +52,16 @@ INNER JOIN categories ON issues.category_id= categories.id
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
 WHERE date_received IS NOT NULL AND contact_id = 1 AND date_resolved IS NULL
 ORDER BY date_issued ASC;
+
+/* Return all issues that have been resolved */
+SELECT issues.room_id, issues.category_id, categories.category, 
+issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.contact_id, issues.date_received, issues.date_resolved 
+FROM issues 
+INNER JOIN categories ON issues.category_id= categories.id 
+INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
+WHERE date_resolved IS NOT NULL
+ORDER BY date_issued ASC;
+
 
 /* Return all details of specific issue
 */
