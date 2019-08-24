@@ -32,6 +32,14 @@ INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
 WHERE date_resolved IS NULL
 ORDER BY date_issued ASC;
 
+/* Return all issues that have been received */
+SELECT issues.room_id, issues.category_id, categories.category, 
+issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received 
+FROM issues 
+INNER JOIN categories ON issues.category_id= categories.id 
+INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
+WHERE date_resolved IS NULL AND date_received IS NOT NULL
+ORDER BY date_issued ASC;
 /* Return all details of specific issue
 */
 SELECT issues.id, issues.room_id, issues.category_id, categories.category, 
