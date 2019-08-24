@@ -14,7 +14,7 @@ ORDER BY date, rooms.id ASC;
 
 /* Return issues table with category and subcategory */
 SELECT issues.id,issues.room_id, issues.category_id, categories.category, 
-issues.subcategory_id, subcategories.subcategory ,issues.date 
+issues.subcategory_id, subcategories.subcategory ,issues.date_issued 
 FROM issues 
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
