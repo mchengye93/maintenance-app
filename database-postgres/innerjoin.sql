@@ -58,7 +58,8 @@ issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.con
 FROM issues 
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE date_received IS NOT NULL AND contact_id = 1 AND date_resolved IS NULL
+WHERE date_received IS NOT NULL AND date_resolved IS NULL 
+AND contact_id = 1 
 ORDER BY date_issued ASC;
 
 /* Return all issues that have been resolved */
