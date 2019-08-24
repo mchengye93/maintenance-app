@@ -15,6 +15,9 @@ const getAllIssues = (callback) => {
   );
 };
 
+const getAllPendingIssues = (callback) => {
+
+};
 const getIssue = (issueId, callback) => {
   connection.query(
     `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
@@ -161,6 +164,7 @@ const deleteContact = (contactId, callback) => {
 
 module.exports = {
   getAllIssues,
+  getAllPendingIssues,
   getIssue,
   getAllCategories,
   createSubcategory,
