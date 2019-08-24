@@ -50,9 +50,16 @@ const getAllPendingVipIssues = (callback) => {
   );
 };
 
-const getAllReceivedIssuesByContact = (contact_id, callback) => {
+const getAllReceivedIssuesByContact = (contactId, callback) => {
   connection.query(
-  , (err, results) => {
+    'SELECT issues.room_id, issues.category_id, categories.category, '
++ 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.contact_id, issues.date_received '
++ 'FROM issues '
++ 'INNER JOIN categories ON issues.category_id= categories.id '
++ 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
++ 'WHERE date_received IS NOT NULL AND date_resolved IS NULL '
++ `AND contact_id = ${contactId} `
++ 'ORDER BY date_issued ASC', (err, results) => {
       if (err) {
         callback(err, null);
       }
