@@ -7,18 +7,19 @@ id,category
 6,1,TV Remote Control
 7,1,Room Light
 8,1,Internet
-9,2,Sink
-10,2,Toilet
-11,2,Shower
-12,2,Jacuzzi
-13,2,Hot Water
-14,3,Floor Tile
-15,3,Entrance Door
-16,3,Bathroom Door
-17,3,Garage Parking Door
-18,4,Ceramics
-19,4,Ceiling
-20,4,Walls
-21,4,Paintings
-22,5,Sofa
-23,5,Bed
+9,1,Sound Speakers
+10,2,Sink
+11,2,Toilet
+12,2,Shower
+13,2,Jacuzzi
+14,2,Hot Water
+15,3,Floor Tile
+16,3,Entrance Door
+17,3,Bathroom Door
+18,3,Garage Parking Door
+19,4,Ceramics
+20,4,Ceiling
+21,4,Walls
+22,4,Paintings
+23,5,Sofa
+24,5,Bed

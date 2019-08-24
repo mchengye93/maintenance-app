@@ -66,7 +66,7 @@ Subcategory:
     Furniture: Sofa, Bed
 */
 
-/* COPY subcategories FROM '/Users/marbocheng/Desktop/maintenance-app/subcategories.csv' DELIMITER ',' CSV HEADER; */
+/* COPY subcategories FROM '/Users/marbocheng/Desktop/maintenance-app/seeders/subcategories.csv' DELIMITER ',' CSV HEADER; */
 CREATE TABLE subcategories (
     id serial PRIMARY KEY,
     category_id INT NOT NULL,
