@@ -100,8 +100,8 @@ issues.subcategory_id, subcategories.subcategory ,issues.date_issued
 FROM issues 
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE CURRENT_DATE > (date + interval '14' day) AND dateFixed IS NULL 
-ORDER BY date, room_id ASC;
+WHERE CURRENT_DATE > (date_issued + interval '14' day) AND date_resolved IS NULL 
+ORDER BY date_issued, room_id ASC;
 
 /*
 Return all issues by date from earliest
