@@ -4,7 +4,7 @@
 
 /*Return all issues for vip rooms*/
 SELECT rooms.id, rooms.vip, issues.category_id, categories.category, 
-issues.subcategory_id, subcategories.subcategory ,issues.date_issued 
+issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received 
 FROM issues 
 INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true
 INNER JOIN categories ON issues.category_id= categories.id 
