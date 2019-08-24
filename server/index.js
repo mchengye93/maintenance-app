@@ -36,7 +36,7 @@ app.get('/api/issues/pending', (req, res) => {
 
 // Return all unsolved issues for VIP rooms
 app.get('/api/issues/vip/pending', (req, res) => {
-  issues.getAllPendingIssues((err, data) => {
+  issues.getAllPendingVipIssues((err, data) => {
     if (err) {
       res.sendStatus(500);
     }
