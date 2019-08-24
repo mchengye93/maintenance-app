@@ -44,6 +44,15 @@ app.get('/api/issues/vip/pending', (req, res) => {
   });
 });
 
+// Return all pending issues by contact
+app.get('/api/issues/contact', (req, res) => {
+  issues.getAllReceivedIssuesByContact(req.body.contactId, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
 // Return specific issues
 app.get('/api/issue', (req, res) => {
   issues.getIssue(req.body.issueId, (err, data) => {
