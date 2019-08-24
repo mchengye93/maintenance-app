@@ -50,6 +50,8 @@ INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
 WHERE date_resolved IS NOT NULL
 ORDER BY date_issued ASC;
 
+/* Return all issues received by specific contact_id(eletrician, plumber, maintenance worker)*/
+
 /* Return all details of specific issue
 */
 SELECT issues.id, issues.room_id, issues.category_id, categories.category, 
