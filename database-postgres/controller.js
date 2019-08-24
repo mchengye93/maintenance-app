@@ -49,6 +49,17 @@ const getAllPendingVipIssues = (callback) => {
     },
   );
 };
+
+const getAllReceivedIssuesByContact = (contact_id, callback) => {
+  connection.query(
+  , (err, results) => {
+      if (err) {
+        callback(err, null);
+      }
+      callback(null, results);
+    },
+  );
+};
 const getIssue = (issueId, callback) => {
   connection.query(
     `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
@@ -197,6 +208,7 @@ module.exports = {
   getAllIssues,
   getAllPendingIssues,
   getAllPendingVipIssues,
+  getAllReceivedIssuesByContact,
   getIssue,
   getAllCategories,
   createSubcategory,
