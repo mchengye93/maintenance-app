@@ -115,14 +115,14 @@ INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
 ORDER BY issues.date_issued, issues.room_id  ASC;
 
 
-/* Return all issues by specific category order by date and then room*/
+/* Return all pending issues by specific category order by date and then room*/
 SELECT issues.room_id, issues.category_id, categories.category, 
-issues.subcategory_id, subcategories.subcategory ,issues.date 
+issues.subcategory_id, subcategories.subcategory ,issues.date_issued
 FROM issues 
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE categories.category = 'Plumbing'
-ORDER BY issues.date, issues.room_id  ASC;
+WHERE categories.category = 'Plumbing' AND issues.date_resolved IS NULL
+ORDER BY issues.date_issued, issues.room_id  ASC;
 
 
 /* CRUD Contacts */
