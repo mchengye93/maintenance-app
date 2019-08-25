@@ -61,6 +61,7 @@ const getAllPendingIssuesByCategory = (category, callback) => {
 + `WHERE categories.category = ${category} AND issues.date_resolved IS NULL `
 + 'ORDER BY issues.date_issued, issues.room_id  ASC', (err, results) => {
       if (err) {
+        console.log(err);
         callback(err, null);
       }
       callback(null, results);
