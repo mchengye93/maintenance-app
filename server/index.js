@@ -15,6 +15,17 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 /* Issues API */
+// Create an issue
+app.post('/api/issues', (req, res) => {
+  issues.createIssue(req.body, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+
+// Get all issues
 app.get('/api/issues', (req, res) => {
   issues.getAllIssues((err, data) => {
     if (err) {
