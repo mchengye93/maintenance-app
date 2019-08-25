@@ -1,5 +1,8 @@
 const connection = require('./connection.js');
 /* Issues CRUD */
+const createIssue = (issue, callback) => {
+
+};
 const getAllIssues = (callback) => {
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
@@ -224,6 +227,7 @@ const deleteContact = (contactId, callback) => {
 };
 
 module.exports = {
+  createIssue,
   getAllIssues,
   getAllPendingIssues,
   getAllPendingVipIssues,

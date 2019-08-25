@@ -2,8 +2,11 @@
 
 /*CRUD Issues*/
 
-/*Create issues*/
+/*Create issues (room_id,category_id,subcategory_id,date_issued*/
 INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES (1,1,1,CURRENT_TIMESTAMP);
+
+INSERT INTO issues SET room_id=10, category_id=2, subcategory_id=10, date_issued=CURRENT_TIMESTAMP;
+
 
 /*Return all issues for vip rooms*/
 SELECT rooms.id, rooms.vip, issues.category_id, categories.category, 
