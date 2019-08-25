@@ -76,7 +76,6 @@ app.get('/api/issues/contact', (req, res) => {
 });
 
 // Update issue received
-
 app.put('/api/issue/received', (req, res) => {
   issues.updateReceivedIssue(req.body, (err, data) => {
     if (err) {
