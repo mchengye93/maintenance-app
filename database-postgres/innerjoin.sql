@@ -139,6 +139,7 @@ UPDATE issues SET date_resolved= CURRENT_TIMESTAMP WHERE id = 203;
 
 /*UPDATE issue given a cost and description */
 UPDATE issues SET cost= 99, description='Had to buy new water valve', date_resolved= CURRENT_TIMESTAMP WHERE id = 203;
+
 /* CRUD Contacts */
 /*CREATE contacts*/
 INSERT INTO contacts (category_id, name, phone, email) VALUES (1, 'NameTest', '(888) 888-8888', 'Testemail@email.com');
