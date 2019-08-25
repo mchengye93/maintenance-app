@@ -43,6 +43,15 @@ app.get('/api/issues/vip/pending', (req, res) => {
     res.json(data);
   });
 });
+// Return all pending issues by category
+app.get('/api/issues/contact', (req, res) => {
+  issues.getAllPendingIssuesByCategory(req.body.category, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
 
 // Return all pending issues by contact
 app.get('/api/issues/contact', (req, res) => {
@@ -53,6 +62,7 @@ app.get('/api/issues/contact', (req, res) => {
     res.json(data);
   });
 });
+
 // Return specific issues
 app.get('/api/issue', (req, res) => {
   issues.getIssue(req.body.issueId, (err, data) => {
