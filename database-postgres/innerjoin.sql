@@ -134,7 +134,8 @@ WHERE categories.category = 'Electrical' AND issues.date_resolved IS NULL
 ORDER BY issues.date_issued, issues.room_id  ASC;
 
 
-/*UPDATE issue */
+/*UPDATE issue given an id */
+UPDATE issues SET date_resolved= CURRENT_TIMESTAMP WHERE id = 203;
 
 
 /* CRUD Contacts */
