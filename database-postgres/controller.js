@@ -120,6 +120,15 @@ const updateReceivedIssue = (issue, callback) => {
   );
 };
 
+const deleteIssue = (issueId, callback) => {
+  connection.query(`DELETE FROM issues WHERE id = ${issueId}`, (err, result) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, result);
+  });
+};
+
 /* CRUD categories */
 const getAllCategories = (callback) => {
   connection.query('SELECT * FROM categories', (err, results) => {
@@ -254,6 +263,7 @@ module.exports = {
   getIssue,
   getAllCategories,
   updateReceivedIssue,
+  deleteIssue,
   createSubcategory,
   updateSubcategory,
   getAllSubcategories,
