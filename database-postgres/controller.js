@@ -50,6 +50,10 @@ const getAllPendingVipIssues = (callback) => {
   );
 };
 
+const getAllIssuesByCategory = (categoryId, callback) => {
+
+};
+
 const getAllReceivedIssuesByContact = (contactId, callback) => {
   console.log('inside getall receive issue by contact', contactId);
   connection.query(
