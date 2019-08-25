@@ -75,6 +75,16 @@ app.get('/api/issues/contact', (req, res) => {
   });
 });
 
+// Update issue received
+
+app.put('/api/issue/received', (req, res) => {
+  issues.updateReceivedIssue(req.body, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
 
 // Return specific issues
 app.get('/api/issue', (req, res) => {
