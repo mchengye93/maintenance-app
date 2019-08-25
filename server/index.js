@@ -75,6 +75,7 @@ app.get('/api/issues/contact', (req, res) => {
   });
 });
 
+
 // Return specific issues
 app.get('/api/issue', (req, res) => {
   issues.getIssue(req.body.issueId, (err, data) => {

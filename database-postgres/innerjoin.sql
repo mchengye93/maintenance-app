@@ -171,7 +171,6 @@ SELECT * FROM categories;
 /* UPDATE: Update specific category*/
 UPDATE categories SET category = 'UPDATECategory' WHERE id = 7;
 
-
 /* DELETE category */
 DELETE FROM categories WHERE id = 6;
 

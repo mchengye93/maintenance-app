@@ -108,6 +108,10 @@ const getIssue = (issueId, callback) => {
   );
 };
 
+const updateReceivedIssue = (issue, callback) => {
+
+};
+
 /* CRUD categories */
 const getAllCategories = (callback) => {
   connection.query('SELECT * FROM categories', (err, results) => {
@@ -241,6 +245,7 @@ module.exports = {
   getAllReceivedIssuesByContact,
   getIssue,
   getAllCategories,
+  updateReceivedIssue,
   createSubcategory,
   updateSubcategory,
   getAllSubcategories,
