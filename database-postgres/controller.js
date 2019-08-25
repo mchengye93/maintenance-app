@@ -51,7 +51,6 @@ const getAllPendingVipIssues = (callback) => {
 };
 
 const getAllPendingIssuesByCategory = (category, callback) => {
-  console.log('inside controller pending category', category);
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category,'
 + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued '
@@ -61,7 +60,6 @@ const getAllPendingIssuesByCategory = (category, callback) => {
 + `WHERE categories.category = '${category}' AND issues.date_resolved IS NULL `
 + 'ORDER BY issues.date_issued, issues.room_id  ASC', (err, results) => {
       if (err) {
-        console.log(err);
         callback(err, null);
       }
       callback(null, results);
@@ -70,7 +68,6 @@ const getAllPendingIssuesByCategory = (category, callback) => {
 };
 
 const getAllReceivedIssuesByContact = (contactId, callback) => {
-  console.log('inside getall receive issue by contact', contactId);
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category, '
 + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.contact_id, issues.date_received '
@@ -158,13 +155,8 @@ const getAllSubcategories = (categoryId, callback) => {
 };
 
 const updateSubcategory = (subcategory, callback) => {
-  console.log('inside updatesubcategory', subcategory);
-  console.log(subcategory.subcategoryId);
-  console.log(subcategory.categoryId);
-  console.log(subcategory.subcategory);
   connection.query(`UPDATE subcategories SET category_id= ${subcategory.categoryId}, subcategory= '${subcategory.subcategory}' WHERE id=${subcategory.subcategoryId}`, (err, results) => {
     if (err) {
-      console.log(err);
       callback(err, null);
     }
     callback(null, results);
