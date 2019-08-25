@@ -50,7 +50,7 @@ const getAllPendingVipIssues = (callback) => {
   );
 };
 
-const getAllIssuesByCategory = (categoryId, callback) => {
+const getAllIssuesByCategory = (category, callback) => {
 
 };
 

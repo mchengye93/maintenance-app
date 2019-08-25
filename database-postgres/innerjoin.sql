@@ -122,7 +122,7 @@ issues.subcategory_id, subcategories.subcategory ,issues.date_issued
 FROM issues 
 INNER JOIN categories ON issues.category_id= categories.id 
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
-WHERE categories.category = 'Plumbing' AND issues.date_resolved IS NULL
+WHERE categories.category = 'Electrical' AND issues.date_resolved IS NULL
 ORDER BY issues.date_issued, issues.room_id  ASC;
 
 
