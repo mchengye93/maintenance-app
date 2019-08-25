@@ -17,7 +17,7 @@ app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 /* Issues API */
 
 // Create an issue
-app.post('/api/issues', (req, res) => {
+app.post('/api/issue', (req, res) => {
   console.log(req.body);
   issues.createIssue(req.body, (err, data) => {
     if (err) {
