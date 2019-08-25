@@ -51,6 +51,7 @@ const getAllPendingVipIssues = (callback) => {
 };
 
 const getAllPendingIssuesByCategory = (category, callback) => {
+  console.log('inside controller pending category', category);
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category,'
 + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued '
