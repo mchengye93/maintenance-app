@@ -1,8 +1,10 @@
 const connection = require('./connection.js');
 /* Issues CRUD */
 const createIssue = (issue, callback) => {
+  console.log('inside ctronller create issue', issue);
   connection.query(`INSERT INTO issues SET ${issue}`, (err, result) => {
     if (err) {
+      console.log(err);
       callback(err, null);
     }
     callback(null, result);

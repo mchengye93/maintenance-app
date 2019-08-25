@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 
 app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 /* Issues API */
+
 // Create an issue
 app.post('/api/issues', (req, res) => {
   console.log(req.body);
