@@ -1,7 +1,12 @@
 const connection = require('./connection.js');
 /* Issues CRUD */
 const createIssue = (issue, callback) => {
-
+  connection.query(`INSERT INTO issues SET ${issue}`, (err, result) => {
+    if (err) {
+      callback(err, null);
+    }
+    callback(null, result);
+  });
 };
 const getAllIssues = (callback) => {
   connection.query(
