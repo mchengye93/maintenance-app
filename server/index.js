@@ -18,7 +18,6 @@ app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 
 // Create an issue
 app.post('/api/issue', (req, res) => {
-  console.log(req.body);
   issues.createIssue(req.body, (err, data) => {
     if (err) {
       res.sendStatus(500);
