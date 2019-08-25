@@ -5,9 +5,12 @@
 /*Create issues (room_id,category_id,subcategory_id,date_issued*/
 INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES (1,1,1,CURRENT_TIMESTAMP);
 
-
 /*Only works for MySQL*/
 INSERT INTO issues SET room_id=10, category_id=2, subcategory_id=10, date_issued=CURRENT_TIMESTAMP;
+
+
+/*Create issues given description*/
+INSERT INTO issues (room_id,category_id,subcategory_id,date_issued,description) VALUES (1,1,1,CURRENT_TIMESTAMP,'Need to buy new telephone');
 
 
 /*Return all issues for vip rooms*/
@@ -139,6 +142,9 @@ UPDATE issues SET date_resolved= CURRENT_TIMESTAMP WHERE id = 203;
 
 /*UPDATE issue given a cost and description */
 UPDATE issues SET cost= 99, description='Had to buy new water valve', date_resolved= CURRENT_TIMESTAMP WHERE id = 203;
+
+/*UPDATE issue when someone takes over the issue*/
+UPDATE issues SET contact_id=1, date_received=CURRENT_TIMESTAMP WHERE id = 203;
 
 /* CRUD Contacts */
 /*CREATE contacts*/
