@@ -96,6 +96,15 @@ app.put('/api/issue/received', (req, res) => {
   });
 });
 
+// Delete specific issue
+app.delete('/api/issue/', (req, res) => {
+  issues.updateReceivedIssue(req.body.issueId, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
 
 /* Categories API */
 app.get('/api/categories', (req, res) => {
