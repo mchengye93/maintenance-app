@@ -109,7 +109,15 @@ const getIssue = (issueId, callback) => {
 };
 
 const updateReceivedIssue = (issue, callback) => {
-
+  connection.query(
+    `UPDATE issues SET contact_id=${issue.contactId}, date_received=CURRENT_TIMESTAMP `
+    + `WHERE id = ${issue.issueId}`, (err, result) => {
+      if (err) {
+        callback(err, null);
+      }
+      callback(null, result);
+    },
+  );
 };
 
 /* CRUD categories */
