@@ -2,6 +2,9 @@
 
 /*CRUD Issues*/
 
+/*Create issues*/
+INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES (1,1,1,CURRENT_TIMESTAMP);
+
 /*Return all issues for vip rooms*/
 SELECT rooms.id, rooms.vip, issues.category_id, categories.category, 
 issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received 
@@ -124,6 +127,9 @@ INNER JOIN categories ON issues.category_id= categories.id
 INNER JOIN subcategories ON issues.subcategory_id = subcategories.id
 WHERE categories.category = 'Electrical' AND issues.date_resolved IS NULL
 ORDER BY issues.date_issued, issues.room_id  ASC;
+
+
+
 
 
 /* CRUD Contacts */
