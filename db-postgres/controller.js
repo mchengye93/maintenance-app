@@ -36,7 +36,7 @@ const getAllPendingIssues = (callback) => {
       if (err) {
         callback(err, null);
       }
-      callback(null, results);
+      callback(null, results.rows);
     },
   );
 };
@@ -54,7 +54,7 @@ const getAllPendingVipIssues = (callback) => {
       if (err) {
         callback(err, null);
       }
-      callback(null, results);
+      callback(null, results.rows);
     },
   );
 };
