@@ -1,0 +1,1 @@
+/* CRUD API for rooms */
