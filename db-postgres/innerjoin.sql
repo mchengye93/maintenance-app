@@ -217,3 +217,4 @@ SELECT * FROM rooms WHERE id = 10;
 UPDATE rooms SET parking = false WHERE id = 101;
 
 /*Delete room*/
+DELETE FROM rooms WHERE id = 101;
