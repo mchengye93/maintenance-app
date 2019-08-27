@@ -132,7 +132,7 @@ const deleteIssue = (issueId, callback) => {
 
 /* CRUD categories */
 const getAllCategories = (callback) => {
-  connection.query('SELECT * FROM categories', (err, results) => {
+  connection.query('SELECT * FROM categories ORDER by category ASC', (err, results) => {
     if (err) {
       callback(err, null);
     }
@@ -177,7 +177,7 @@ const createSubcategory = (categoryId, subcategory, callback) => {
   });
 };
 const getAllSubcategories = (categoryId, callback) => {
-  connection.query(`SELECT * FROM subcategories WHERE category_id = ${categoryId}`, (err, results) => {
+  connection.query(`SELECT * FROM subcategories WHERE category_id = ${categoryId} ORDER BY subcategory ASC`, (err, results) => {
     if (err) {
       callback(err, null);
     }
