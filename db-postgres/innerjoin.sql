@@ -214,3 +214,4 @@ SELECT * FROM rooms;
 SELECT * FROM rooms WHERE id = 10;
 
 /*Update rooms info*/
+UPDATE rooms SET parking = false WHERE id = 101;
