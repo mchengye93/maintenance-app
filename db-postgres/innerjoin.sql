@@ -203,4 +203,5 @@ WHERE category = 'Electrical';
 
 
 /*CRUD for rooms*/
+INSERT INTO rooms(id,vip,parking) VALUES (101,true,true);
 
