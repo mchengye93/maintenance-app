@@ -31,7 +31,7 @@ const getAllPendingIssues = (callback) => {
      + 'issues.date_received FROM issues '
      + 'INNER JOIN categories ON issues.category_id= categories.id '
      + 'INNER JOIN subcategories ON  issues.subcategory_id = subcategories.id '
-     + 'WHERE date_resolved IS NULL '
+     + 'WHERE date_resolved IS NULL AND date_received IS NULL'
      + 'ORDER BY date_issued ASC', (err, results) => {
       if (err) {
         callback(err, null);
@@ -49,9 +49,10 @@ const getAllPendingVipIssues = (callback) => {
     + 'INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
     + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-    + 'WHERE issues.date_resolved IS NULL '
+    + 'WHERE issues.date_resolved IS NULL AND issues.date_received IS NULL '
     + 'ORDER BY date_issued, rooms.id ASC', (err, results) => {
       if (err) {
+        console.log(err);
         callback(err, null);
       }
       callback(null, results.rows);
