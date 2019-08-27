@@ -212,3 +212,5 @@ SELECT * FROM rooms;
 
 /*Read a room info*/
 SELECT * FROM rooms WHERE id = 10;
+
+/*Update rooms info*/
