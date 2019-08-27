@@ -9,7 +9,7 @@ class App extends Component {
 
     }
     componentDidMount() {
-        axios.get('/api/issue')
+        axios.get('/api/issues/pending')
         .then((response)=> {
             console.log(response);
         }).catch((error)=> {
