@@ -207,5 +207,8 @@ WHERE category = 'Electrical';
 /*Create a room*/
 INSERT INTO rooms(id,vip,parking) VALUES (101,true,true);
 
+/*Return all room infors*/
+SELECT * FROM rooms;
+
 /*Read a room info*/
 SELECT * FROM rooms WHERE id = 10;
