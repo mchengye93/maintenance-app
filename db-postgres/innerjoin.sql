@@ -201,3 +201,6 @@ INNER JOIN categories
 ON categories.id = subcategories.category_id
 WHERE category = 'Electrical';
 
+
+/*CRUD for rooms*/
+
