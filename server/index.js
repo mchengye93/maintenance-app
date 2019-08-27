@@ -42,7 +42,7 @@ app.get('/api/issues/pending', (req, res) => {
     if (err) {
       res.sendStatus(500);
     }
-    res.json(data);
+    res.json(data.rows);
   });
 });
 
