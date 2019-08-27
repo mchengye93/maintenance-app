@@ -15,7 +15,7 @@ const getAllIssues = (callback) => {
     'SELECT issues.room_id, issues.category_id, issues.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
     + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-    + 'ORDER BY date_issued ASC', (err, results) => {
+    + 'ORDER BY date_issued, room_id ASC', (err, results) => {
       if (err) {
         console.log(err);
         callback(err, null);
