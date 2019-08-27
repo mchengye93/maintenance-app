@@ -208,3 +208,4 @@ WHERE category = 'Electrical';
 INSERT INTO rooms(id,vip,parking) VALUES (101,true,true);
 
 /*Read a room info*/
+SELECT * FROM rooms WHERE id = 10;
