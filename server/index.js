@@ -27,6 +27,7 @@ app.post('/api/issue', (req, res) => {
 
 // Get all issues
 app.get('/api/issues', (req, res) => {
+  console.log('inside api get all issues');
   issues.getAllIssues((err, data) => {
     if (err) {
       res.sendStatus(500);

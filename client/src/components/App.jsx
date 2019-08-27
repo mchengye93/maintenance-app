@@ -9,6 +9,12 @@ class App extends Component {
 
     }
     componentDidMount() {
+        axios.get('/api/issue')
+        .then((response)=> {
+            console.log(response);
+        }).catch((error)=> {
+            console.log(error);
+        });
 
     }
 

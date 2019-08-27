@@ -10,12 +10,14 @@ const createIssue = (issue, callback) => {
   });
 };
 const getAllIssues = (callback) => {
+  console.log('inside controllet get all issues');
   connection.query(
-    'SELECT issues.room_id, issues.category_id, categories.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date FROM issues '
+    'SELECT issues.room_id, issues.category_id, issues.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
     + 'INNER JOIN categories ON issues.category_id= categories.id '
     + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
     + 'ORDER BY date_issued ASC', (err, results) => {
       if (err) {
+        console.log(err);
         callback(err, null);
       }
 
