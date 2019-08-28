@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import CategorySearch from './CategorySearch.jsx';
 import IssuedTable from './IssuedTable.jsx';
 import InProgressTable from './InProgressTable.jsx';
+import ResolvedTable from './ResolvedTable.jsx';
 
 
 
@@ -13,11 +14,12 @@ class App extends Component {
         super(props);
 
         this.state = {
-            status:0,
+            status:2,
             categoryId: 1,
             pendingIssues: [],
             receivedIssues: [],
             solvedIssues: [],
+            resolvedIssues: [],
             categories: [],
         };
 
@@ -25,25 +27,25 @@ class App extends Component {
 
     }
     componentDidMount() {
-        axios.get('api/issues/pending/category',{
-            params:{categoryId: this.state.categoryId}})
-        .then((response)=> {
-            console.log(response);
-            this.setState({pendingIssues: response.data});
-        });
+        // axios.get('api/issues/pending/category',{
+        //     params:{categoryId: this.state.categoryId}})
+        // .then((response)=> {
+        //     console.log(response);
+        //     this.setState({pendingIssues: response.data});
+        // });
         axios.get('/api/categories')
         .then((response)=> {
             console.log(response);
             this.setState({categories: response.data});
         });
 
-        axios.get('api/issues/received/category',{
-            params:{categoryId: this.state.categoryId}})
-        .then((response)=> {
-            console.log(response);
-            this.setState({receivedIssues: response.data});
+        // axios.get('api/issues/received/category',{
+        //     params:{categoryId: this.state.categoryId}})
+        // .then((response)=> {
+        //     console.log(response);
+        //     this.setState({receivedIssues: response.data});
             
-        });
+        // });
   
 
     }
@@ -69,7 +71,17 @@ class App extends Component {
                     receivedIssues: response.data});
                 
             });
-        }
+        } else if (this.state.status === 2) {
+            axios.get('api/issues/resolved/category',{
+                params:{categoryId}})
+            .then((response)=> {
+                console.log(response);
+                this.setState({
+                    categoryId: categoryId,
+                    resolvedIssues: response.data});
+                
+            });
+        } 
        
     }
 
@@ -87,6 +99,13 @@ class App extends Component {
                 <div id="app">
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
+                </div>     
+        );
+        } else if (this.state.status === 2) {
+            return (
+                <div id="app">
+                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
         );
         }

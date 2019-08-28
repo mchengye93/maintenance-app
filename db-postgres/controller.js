@@ -301,7 +301,7 @@ module.exports = {
   getAllPendingVipIssues,
   getAllPendingIssuesByCategoryId,
   getAllReceivedIssuesByCategory,
-  getAllResolvedIssuesByCategory
+  getAllResolvedIssuesByCategory,
   getAllReceivedIssuesByContact,
   getIssue,
   getAllCategories,
