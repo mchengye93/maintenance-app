@@ -11,7 +11,7 @@ import Button from '@material-ui/core/Button';
 import IssueRowData from './IssueRowData.jsx';
 
 
-class InfoTable extends Component {
+class InProgressTable extends Component {
     constructor(props) {
         super(props);
 
@@ -52,4 +52,4 @@ class InfoTable extends Component {
         }
    
 }
-export default InfoTable;
+export default InProgressTable;
