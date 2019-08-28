@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/mchengye93/maintenance-app#readme",
   "dependencies": {
+    "@material-ui/core": "^4.3.3",
     "axios": "^0.19.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
