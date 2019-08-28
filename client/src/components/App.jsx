@@ -41,15 +41,6 @@ class App extends Component {
             this.setState({categories: response.data});
         });
 
-        // axios.get('api/issues/received/category',{
-        //     params:{categoryId: this.state.categoryId}})
-        // .then((response)=> {
-        //     console.log(response);
-        //     this.setState({receivedIssues: response.data});
-            
-        // });
-  
-
     }
     searchCategory(categoryId) {
         console.log(categoryId);

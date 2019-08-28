@@ -32,7 +32,7 @@ const getAllPendingIssues = (callback) => {
      + 'INNER JOIN categories ON issues.category_id= categories.id '
      + 'INNER JOIN subcategories ON  issues.subcategory_id = subcategories.id '
      + 'WHERE date_resolved IS NULL AND date_received IS NULL '
-     + 'ORDER BY date_issued, room_id ASC', (err, results) => {
+     + 'ORDER BY date_issued, room_id ASC LIMIT 15', (err, results) => {
       if (err) {
         console.log(err);
         callback(err, null);
