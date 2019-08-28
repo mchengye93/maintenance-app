@@ -3,7 +3,7 @@ import axios from 'axios';
 
 import Button from '@material-ui/core/Button';
 import CategorySearch from './CategorySearch.jsx';
-import InfoTable from './InfoTable.jsx';
+import IssuedTable from './IssuedTable.jsx';
 import InProgressTable from './InProgressTable.jsx';
 
 
@@ -79,7 +79,7 @@ class App extends Component {
             return (
                 <div id="app">
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                <InfoTable issues={this.state.pendingIssues} status={this.state.status}></InfoTable>
+                <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
         );
         } else if (this.state.status === 1) {
