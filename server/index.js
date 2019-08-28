@@ -81,9 +81,19 @@ app.get('/api/issues/pending/category', (req, res) => {
   });
 });
 
-// Get all received issues
+// Get all received issues by category
 app.get('/api/issues/received/category', (req, res) => {
   issues.getAllReceivedIssuesByCategory(req.query.categoryId, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+
+// GET all resolved issues by category
+app.get('/api/issues/resolved/category', (req, res) => {
+  issues.getAllResolvedIssuesByCategory(req.query.categoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);
     }
