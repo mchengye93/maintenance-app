@@ -13,7 +13,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            status:1,
+            status:0,
             categoryId: 1,
             pendingIssues: [],
             receivedIssues: [],

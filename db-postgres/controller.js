@@ -96,6 +96,26 @@ const getAllReceivedIssuesByCategory = (categoryId, callback) => {
   );
 };
 
+const getAllResolvedIssuesByCategory = (categoryId, callback) => {
+  connection.query(
+    'SELECT issues.room_id, issues.category_id, categories.category, '
++ 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, '
++ 'issues.date_received, issues.cost, issues.date_resolved '
++ 'FROM issues '
++ 'INNER JOIN categories ON issues.category_id= categories.id '
++ 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
++ 'INNER JOIN contacts ON issues.contact_id = contacts.id '
++ `WHERE date_resolved IS NOT NULL AND categories.id=${categoryId} `
++ 'ORDER BY date_issued, date_received, room_id ASC', (err, results) => {
+      if (err) {
+        callback(err, null);
+      }
+      callback(null, results.rows);
+    },
+  );
+};
+
+
 const getAllReceivedIssuesByContact = (contactId, callback) => {
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category, '
@@ -281,6 +301,7 @@ module.exports = {
   getAllPendingVipIssues,
   getAllPendingIssuesByCategoryId,
   getAllReceivedIssuesByCategory,
+  getAllResolvedIssuesByCategory
   getAllReceivedIssuesByContact,
   getIssue,
   getAllCategories,
