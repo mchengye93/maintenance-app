@@ -1,6 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-// import { Button } from '@material-ui/core';
+
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
+
 
 
 
@@ -33,11 +37,9 @@ class CategorySearch extends Component {
                     ))}
                 </span>
                   
-                    
-            
-                
-           
         );
+
+        
     }
 }
 export default CategorySearch;
