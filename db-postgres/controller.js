@@ -68,7 +68,7 @@ const getAllPendingIssuesByCategory = (category, callback) => {
 + 'FROM issues '
 + 'INNER JOIN categories ON issues.category_id= categories.id '
 + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-+ `WHERE categories.category = '${category}' AND issues.date_resolved IS NULL `
++ `WHERE categories.category = '${category}' AND issues.date_resolved IS NULL AND issues.date_received IS NULL `
 + 'ORDER BY issues.date_issued, issues.room_id  ASC', (err, results) => {
       if (err) {
         callback(err, null);

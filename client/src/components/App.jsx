@@ -15,24 +15,32 @@ class App extends Component {
             categories: [],
         };
 
+        this.searchCategory = this.searchCategory.bind(this);
+
     }
     componentDidMount() {
-        axios.get('/api/issues/pending').then((response)=> {
+        axios.get('/api/issues/pending')
+        .then((response)=> {
             console.log(response);
             this.setState({issues: response.data});
         });
-        axios.get('/api/categories').then((response)=> {
+        axios.get('/api/categories')
+        .then((response)=> {
             console.log(response);
             this.setState({categories: response.data});
         })
   
 
     }
+    searchCategory(categoryId) {
+        axios.get('/api/issues/category', {categoryId: categoryId})
+        .then()
+    }
 
     render() {
         return (
                 <div id="app">
-                <CategorySearch categories={this.state.categories}/>
+                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 <InfoTable issues={this.state.issues}></InfoTable>
                 <Button>Test</Button>
                 </div>

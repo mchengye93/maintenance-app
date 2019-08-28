@@ -27,7 +27,7 @@ class IssueRowData extends Component {
             <TableCell>{this.props.issue.room_id}</TableCell>
             <TableCell>{this.props.issue.category}</TableCell>
             <TableCell>{this.props.issue.subcategory}</TableCell>
-            <TableCell>{this.props.issue.date_issued}</TableCell>
+            <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
             <TableCell><Button>Take Issue</Button></TableCell>
             </TableRow>
                          

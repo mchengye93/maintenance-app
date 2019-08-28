@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import { Button } from '@material-ui/core';
+// import { Button } from '@material-ui/core';
 
 
 
@@ -11,12 +11,17 @@ class CategorySearch extends Component {
         this.state = {
           
         };
-        
+        this.handleSearchCategory = this.handleSearchCategory.bind(this);
     }
     componentDidMount() {
   
   
 
+    }
+    handleSearchCategory(e) {
+        e.preventDefault();
+        let categoryId = e.target.value;
+        this.props.searchCategory(categoryId);
     }
 
     render() {
@@ -24,7 +29,7 @@ class CategorySearch extends Component {
         return (
                 <div>
                     {this.props.categories.map(category => (
-                        <Button>{category.category}</Button>
+                        <button onClick={this.handleSearchCategory} value={category.id}>{category.category}</button>
                     ))}
                     
                 </div>
