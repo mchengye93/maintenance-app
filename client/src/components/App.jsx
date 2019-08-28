@@ -15,6 +15,7 @@ class App extends Component {
             status:0,
             categoryId: 1,
             pendingIssues: [],
+            receivedIssues: [],
             categories: [],
         };
 
@@ -37,8 +38,9 @@ class App extends Component {
         axios.get('api/issues/received/category',{
             params:{categoryId: this.state.categoryId}})
         .then((response)=> {
-            console.log(response.data);
+            console.log(response);
             this.setState({receivedIssues: response.data});
+            
         });
   
 
@@ -57,14 +59,20 @@ class App extends Component {
     }
 
     render() {
+        console.log(this.state);
         if (this.state.status === 0) {
             return (
                 <div id="app">
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 <InfoTable issues={this.state.pendingIssues} status={this.state.status}></InfoTable>
-                <Button>Test</Button>
-                </div>
-                
+                </div>     
+        );
+        } else if (this.state.status === 1) {
+            return (
+                <div id="app">
+                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
+                </div>     
         );
         }
       

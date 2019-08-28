@@ -82,7 +82,7 @@ app.get('/api/issues/pending/category', (req, res) => {
 });
 
 // Get all received issues
-app.get('/api/issue/received/category', (req, res) => {
+app.get('/api/issues/received/category', (req, res) => {
   issues.getAllReceivedIssuesByCategory(req.query.categoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);

@@ -91,7 +91,7 @@ const getAllReceivedIssuesByCategory = (categoryId, callback) => {
       if (err) {
         callback(err, null);
       }
-      callback(null, results);
+      callback(null, results.rows);
     },
   );
 };

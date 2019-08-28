@@ -41,7 +41,7 @@ class InfoTable extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.issues.map(issue => (
-                            <IssueRowData issue = {issue}/>
+                            <IssueRowData issue = {issue} status={this.props.status}/>
                         ))}
                     </TableBody>
                 </Table>
