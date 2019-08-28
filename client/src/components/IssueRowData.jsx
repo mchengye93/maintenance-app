@@ -50,6 +50,23 @@ class IssueRowData extends Component {
                              
             );
         }
+
+        else if (this.props.status === 2) {
+            return (
+                <TableRow key={this.props.issue.room_id}>
+                <TableCell>{this.props.issue.room_id}</TableCell>
+                <TableCell>{this.props.issue.category}</TableCell>
+                <TableCell>{this.props.issue.subcategory}</TableCell>
+                <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                <TableCell>{this.props.issue.name}</TableCell>
+                <TableCell>{this.props.issue.date_resolved.split('T')[0]}</TableCell>
+                <TableCell>{this.props.issue.cost}</TableCell>
+                
+                </TableRow>
+                             
+            );
+        }
  
     }
 }
