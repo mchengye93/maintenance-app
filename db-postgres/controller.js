@@ -280,6 +280,7 @@ module.exports = {
   getAllPendingIssues,
   getAllPendingVipIssues,
   getAllPendingIssuesByCategoryId,
+  getAllReceivedIssues,
   getAllReceivedIssuesByContact,
   getIssue,
   getAllCategories,
