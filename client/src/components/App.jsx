@@ -89,7 +89,7 @@ class App extends Component {
     changeIssueStatus(status) {
         if(this.state.status == 0) {
             axios.get('/api/issues/pending/category', {
-                params:this.state.categoryId})
+                params:{categoryId:this.state.categoryId}})
             .then((response)=> {
                 console.log(response.data);
                 this.setState({
@@ -99,7 +99,7 @@ class App extends Component {
             })
         } else if (this.state.status == 1) {
             axios.get('api/issues/received/category',{
-                params:this.state.categoryId})
+                params:{categoryId:this.state.categoryId}})
             .then((response)=> {
                 
                 this.setState({
@@ -109,7 +109,7 @@ class App extends Component {
             });
         } else if (this.state.status == 2) {
             axios.get('api/issues/resolved/category',{
-                params:this.state.categoryId})
+                params:{categoryId:this.state.categoryId}})
             .then((response)=> {
                 console.log(response);
                 this.setState({

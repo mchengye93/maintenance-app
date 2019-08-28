@@ -24,7 +24,7 @@ class IssueRowData extends Component {
 
     render() {
        
-        if(this.props.status=== 0) {
+        if(this.props.status == 0) {
             return (
                 <TableRow key={this.props.issue.room_id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>
@@ -36,7 +36,7 @@ class IssueRowData extends Component {
                              
             );
         }
-        else if (this.props.status === 1) {
+        else if (this.props.status == 1) {
             return (
                 <TableRow key={this.props.issue.room_id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>
@@ -51,7 +51,7 @@ class IssueRowData extends Component {
             );
         }
 
-        else if (this.props.status === 2) {
+        else if (this.props.status == 2) {
             return (
                 <TableRow key={this.props.issue.room_id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>
