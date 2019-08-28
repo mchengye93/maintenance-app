@@ -7,27 +7,42 @@ const issues = require('../db-postgres/controller.js');
 const port = 3000;
 const app = express();
 
+// // Example simple middleware logging function
+// const logRoute = function (req, res, next) {
+//   console.log('Request received');
+//   next();
+// };
+
 app.use(express.static(`${__dirname}/../react-client/dist`));
 
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/json
 app.use(bodyParser.json());
 
+// Custom middleware example
+// app.use(logRoute);
+
+
 app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 /* Issues API */
 
 // Create an issue
-app.post('/api/issue', (req, res) => {
-  issues.createIssue(req.body, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.post('/api/issue', async (req, res) => {
+  try {
+    issues.createIssue(req.body, (err, data) => {
+      if (err) {
+        console.log('Error!');
+        res.status(500);
+        res.send(err);
+      }
+      res.json(data);
+    });
+  } catch (error) {
+    res.status(500).send({ error });
+  }
 });
 
 // Get all issues
 app.get('/api/issues', (req, res) => {
-  console.log('inside api get all issues');
   issues.getAllIssues((err, data) => {
     if (err) {
       res.sendStatus(500);
