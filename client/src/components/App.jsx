@@ -31,7 +31,6 @@ class App extends Component {
     componentDidMount() {
         axios.get('/api/issues/pending')
         .then((response)=> {
-            console.log(response);
             this.setState({pendingIssues: response.data});
         });
         axios.get('/api/categories')
