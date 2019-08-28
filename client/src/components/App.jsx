@@ -32,7 +32,14 @@ class App extends Component {
         .then((response)=> {
             console.log(response);
             this.setState({categories: response.data});
-        })
+        });
+
+        axios.get('api/issues/received/category',{
+            params:{categoryId: this.state.categoryId}})
+        .then((response)=> {
+            console.log(response.data);
+            this.setState({receivedIssues: response.data});
+        });
   
 
     }
