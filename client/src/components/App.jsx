@@ -34,9 +34,12 @@ class App extends Component {
 
     }
     searchCategory(categoryId) {
-        axios.get('/api/issues/category', {categoryId: categoryId})
+        console.log(categoryId);
+        axios.get('/api/issues/category', {
+            params:{categoryId}})
         .then((response)=> {
             console.log(response);
+            
         })
     }
 
