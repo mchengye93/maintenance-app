@@ -4,6 +4,7 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import CategorySearch from './CategorySearch.jsx';
 import InfoTable from './InfoTable.jsx';
+import { compose } from '@material-ui/system';
 
 
 class App extends Component {
@@ -34,7 +35,9 @@ class App extends Component {
     }
     searchCategory(categoryId) {
         axios.get('/api/issues/category', {categoryId: categoryId})
-        .then()
+        .then((response)=> {
+            console.log(response);
+        })
     }
 
     render() {

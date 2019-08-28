@@ -72,7 +72,8 @@ app.get('/api/issues/vip/pending', (req, res) => {
 });
 // Return all pending issues by category
 app.get('/api/issues/category', (req, res) => {
-  issues.getAllPendingIssuesByCategory(req.params.category, (err, data) => {
+  console.log(req.body);
+  issues.getAllPendingIssuesByCategory(req.body.categoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);
     }
