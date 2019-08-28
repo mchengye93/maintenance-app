@@ -8,6 +8,8 @@ import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import Button from '@material-ui/core/Button';
 
+import { makeStyles } from '@material-ui/styles';
+
 import IssueRowData from './IssueRowData.jsx';
 
 
@@ -27,11 +29,11 @@ class IssuedTable extends Component {
 
     render() {
             return (
-                <Table>
+                <Table >
                     <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Pending</TableCell></TableRow></TableHead>
                     <TableHead>
-                        <TableRow>
-                            <TableCell>Room ID</TableCell>
+                        <TableRow >
+                            <TableCell >Room ID</TableCell>
                             <TableCell>Category</TableCell>
                             <TableCell>SubCategory</TableCell>
                             <TableCell>Issued Date</TableCell>

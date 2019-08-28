@@ -29,7 +29,7 @@ class InProgressTable extends Component {
        
             return (
                 <Table>
-                    <TableHead><TableRow><TableCell colSpan={7} align='center' variant='head' style={{backgroundColor:'#98f22d', color: 'white' ,fontSize:'14px'}}>In Progress</TableCell></TableRow></TableHead>
+                    <TableHead><TableRow><TableCell colSpan={7} align='center' variant='head' style={{backgroundColor:'#ffe200', color: 'white' ,fontSize:'14px'}}>In Progress</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>
                             <TableCell>Room ID</TableCell>

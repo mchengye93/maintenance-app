@@ -8,6 +8,8 @@ import InProgressTable from './InProgressTable.jsx';
 import ResolvedTable from './ResolvedTable.jsx';
 import IssuesStatusOptions from './IssuesStatusOptions.jsx';
 
+import AppBar from '@material-ui/core/AppBar';
+
 
 
 class App extends Component {
@@ -71,6 +73,7 @@ class App extends Component {
        
     }
     changeIssueStatus(status) {
+        console.log('App changeissue satus called!', status);
         if(status == 0) {
             axios.get('/api/issues/pending/category', {
                 params:{categoryId:this.state.categoryId}})
@@ -108,24 +111,34 @@ class App extends Component {
         if (this.state.status == 0) {
             return (
                 <div id="app">
-                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <AppBar color="primary" position="static">
+                    <h2>Maintenance App</h2>
+                    <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                    <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                </AppBar>
+
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
         );
         } else if (this.state.status == 1) {
             return (
                 <div id="app">
-                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <AppBar color="primary" position="static">
+                    <h2>Maintenance App</h2>
+                    <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                    <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                </AppBar>
                 <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
                 </div>     
         );
         } else if (this.state.status == 2) {
             return (
                 <div id="app">
-                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <AppBar color="primary" position="static">
+                    <h2>Maintenance App</h2>
+                    <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                    <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                </AppBar>
                 <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
         );

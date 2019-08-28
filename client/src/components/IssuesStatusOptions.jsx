@@ -6,41 +6,10 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
 import { makeStyles, withStyles } from '@material-ui/core/styles';
 
+import Paper from '@material-ui/core/Paper';
+import Tabs from '@material-ui/core/Tabs';
+import Tab from '@material-ui/core/Tab';
 
-const BootstrapInput = withStyles(theme => ({
-    root: {
-      'label + &': {
-        marginTop: theme.spacing(3),
-      },
-    },
-    input: {
-      borderRadius: 4,
-      position: 'relative',
-      backgroundColor: theme.palette.background.paper,
-      border: '1px solid #ced4da',
-      fontSize: 16,
-      padding: '10px 26px 10px 12px',
-      transition: theme.transitions.create(['border-color', 'box-shadow']),
-      // Use the system font instead of the default Roboto font.
-      fontFamily: [
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-      ].join(','),
-      '&:focus': {
-        borderRadius: 4,
-        borderColor: '#80bdff',
-        boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-      },
-    },
-  }))(InputBase);
 
 
 class IssueStatusOptions extends Component {
@@ -58,26 +27,58 @@ class IssueStatusOptions extends Component {
     }
     handleChangeStatus(e) {
         e.preventDefault();
-        let status = e.target.value;
+        console.log(e.target.innerText);
+
+        let statusString = e.target.innerText;
+        let status = 0;
+
+
+
+        if (statusString === 'PENDING') {
+          status = 0
+        }
+        if (statusString === 'IN PROGRESS') {
+          status = 1;
+        }
+
+        if (statusString === 'RESOLVED') {
+          status = 2;
+        }
+
         this.setState({status: status})
+        console.log('handle change status executed!');
        this.props.changeIssueStatus(status);
     }
 
     render() {
         
-        return (
-            <form>
-           
-                <select value ={this.state.value} onChange={this.handleChangeStatus}>
-                  <option value={0}>Pending</option>
-                  <option value={1}>In Progress</option>
-                  <option value={2}>Resolved</option>
-                </select>
+        // return (
+            
+              
+        //         <span> Status: <select name='status' value ={this.state.value} onChange={this.handleChangeStatus}>
+        //           <option value={0}>Pending</option>
+        //           <option value={1}>In Progress</option>
+        //           <option value={2}>Resolved</option>
+        //         </select>
+        //         </span>
      
-            </form>
-                
-                
-           
+        // );
+
+        return(
+          <Paper>
+              <Tabs
+                value={this.state.status}
+                onChange={this.handleChangeStatus}
+                indicatorColor="primary"
+                textColor="primary"
+                centered
+              >
+                <Tab label="Pending" value={0}/>
+                <Tab label="In Progress" value={1}/>
+                <Tab label="Resolved" value={2}/>
+              </Tabs>
+        </Paper>
+
         );
     }
 }
