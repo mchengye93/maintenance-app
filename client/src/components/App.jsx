@@ -6,7 +6,7 @@ import CategorySearch from './CategorySearch.jsx';
 import IssuedTable from './IssuedTable.jsx';
 import InProgressTable from './InProgressTable.jsx';
 import ResolvedTable from './ResolvedTable.jsx';
-
+import IssuesStatusOptions from './IssuesStatusOptions.jsx';
 
 
 
@@ -15,7 +15,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            status:2,
+            status:0,
             categoryId: 1,
             pendingIssues: [],
             receivedIssues: [],
@@ -25,6 +25,7 @@ class App extends Component {
         };
 
         this.searchCategory = this.searchCategory.bind(this);
+        this.changeIssueStatus = this.changeIssueStatus.bind(this);
 
     }
     componentDidMount() {
@@ -85,12 +86,16 @@ class App extends Component {
         } 
        
     }
+    changeIssueStatus(status) {
+        this.setState({status});
+    }
 
     render() {
         console.log(this.state);
         if (this.state.status === 0) {
             return (
                 <div id="app">
+                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
@@ -98,6 +103,7 @@ class App extends Component {
         } else if (this.state.status === 1) {
             return (
                 <div id="app">
+                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
                 </div>     
@@ -105,6 +111,7 @@ class App extends Component {
         } else if (this.state.status === 2) {
             return (
                 <div id="app">
+                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     

@@ -4,6 +4,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 import InputBase from '@material-ui/core/InputBase';
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 
 const BootstrapInput = withStyles(theme => ({
@@ -46,7 +47,7 @@ class IssueStatusOptions extends Component {
     constructor(props) {
         super(props);
         this.state = {
-          
+          status: 0
         };
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
     }
@@ -57,28 +58,23 @@ class IssueStatusOptions extends Component {
     }
     handleChangeStatus(e) {
         e.preventDefault();
-        let categoryId = e.target.value;
-        this.props.changeOptions(optionId);
+        let status = e.target.value;
+        this.setState({status: status})
+        console.log(status);
+       this.props.changeIssueStatus(status);
     }
 
     render() {
         
         return (
             <form>
-            <FormControl className={classes.margin}>
-                <InputLabel htmlFor="age-customized-native-simple">Status</InputLabel>
-                <NativeSelect
-                value={age}
-                onChange={handleChange}
-                input={<BootstrapInput name="age" id="age-customized-native-simple" />}
-                >
-                <option value="" />
-                <option value={0}>Pending</option>
-                <option value={1}>In Progress</option>
-                <option value={2}>Resolved</option>
-                </NativeSelect>
-            </FormControl>
-            
+           
+                <select value ={this.state.value} onChange={this.handleChangeStatus}>
+                  <option value={0}>Pending</option>
+                  <option value={1}>In Progress</option>
+                  <option value={2}>Resolved</option>
+                </select>
+     
             </form>
                 
                 
