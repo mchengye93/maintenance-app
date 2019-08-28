@@ -87,7 +87,7 @@ const getAllReceivedIssuesByCategory = (categoryId, callback) => {
 + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
 + 'INNER JOIN contacts ON issues.contact_id = contacts.id '
 + `WHERE date_received IS NOT NULL AND date_resolved IS NULL AND categories.id=${categoryId} `
-+ 'ORDER BY date_issued, date_received ASC', (err, results) => {
++ 'ORDER BY date_issued, date_received, room_id ASC', (err, results) => {
       if (err) {
         callback(err, null);
       }
