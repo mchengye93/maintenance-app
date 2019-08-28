@@ -7,6 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
+import IssueRowData from './IssueRowData.jsx';
 
 class InfoTable extends Component {
     constructor(props) {
@@ -31,9 +32,14 @@ class InfoTable extends Component {
                         <TableCell>Category</TableCell>
                         <TableCell>SubCategory</TableCell>
                         <TableCell>Issued Date</TableCell>
-                        <TableCell><Button>Take Issue</Button></TableCell>
+                        <TableCell></TableCell>
                     </TableRow>
                 </TableHead>
+                <TableBody>
+                    {this.props.issues.map(issue => (
+                        <IssueRowData issue = {issue}/>
+                    ))}
+                </TableBody>
             </Table>
                
                 

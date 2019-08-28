@@ -10,13 +10,14 @@ class App extends Component {
         super(props);
 
         this.state = {
-        
+            issues: []
         };
 
     }
     componentDidMount() {
         axios.get('/api/issues/pending').then((response)=> {
             console.log(response);
+            this.setState({issues: response.data});
         })
   
 
@@ -24,10 +25,8 @@ class App extends Component {
 
     render() {
         return (
-            
-              
                 <div id="app">
-                <InfoTable></InfoTable>
+                <InfoTable issues={this.state.issues}></InfoTable>
                 <Button>Test</Button>
                 </div>
                 
