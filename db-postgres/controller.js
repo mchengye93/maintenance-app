@@ -81,10 +81,11 @@ const getAllPendingIssuesByCategoryId = (categoryId, callback) => {
 const getAllReceivedIssuesByContact = (contactId, callback) => {
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category, '
-+ 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.contact_id, issues.date_received '
++ 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, issues.date_received '
 + 'FROM issues '
 + 'INNER JOIN categories ON issues.category_id= categories.id '
 + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
++ 'INNER JOIN contacts ON issues.contact_id = contacts.id '
 + 'WHERE date_received IS NOT NULL AND date_resolved IS NULL '
 + `AND contact_id = ${contactId} `
 + 'ORDER BY date_issued ASC', (err, results) => {

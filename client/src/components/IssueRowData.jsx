@@ -24,16 +24,33 @@ class IssueRowData extends Component {
 
     render() {
        
-        return (
-            <TableRow key={this.props.issue.room_id}>
-            <TableCell>{this.props.issue.room_id}</TableCell>
-            <TableCell>{this.props.issue.category}</TableCell>
-            <TableCell>{this.props.issue.subcategory}</TableCell>
-            <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-            <TableCell><Button variant="outlined" >Take Issue</Button></TableCell>
-            </TableRow>
-                         
-        );
+        if(this.props.status=== 0) {
+            return (
+                <TableRow key={this.props.issue.room_id}>
+                <TableCell>{this.props.issue.room_id}</TableCell>
+                <TableCell>{this.props.issue.category}</TableCell>
+                <TableCell>{this.props.issue.subcategory}</TableCell>
+                <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                <TableCell><Button variant="outlined" >Take Issue</Button></TableCell>
+                </TableRow>
+                             
+            );
+        }
+        else if (this.props.status === 1) {
+            return (
+                <TableRow key={this.props.issue.room_id}>
+                <TableCell>{this.props.issue.room_id}</TableCell>
+                <TableCell>{this.props.issue.category}</TableCell>
+                <TableCell>{this.props.issue.subcategory}</TableCell>
+                <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                <TableCell>{this.props.issue.name.split('T')[0]}</TableCell>
+                <TableCell><Button variant="outlined" >Take Issue</Button></TableCell>
+                </TableRow>
+                             
+            );
+        }
+ 
     }
 }
 export default IssueRowData;
