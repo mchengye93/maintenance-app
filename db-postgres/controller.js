@@ -39,12 +39,10 @@ const getAllPendingIssues = (callback) => {
       query += ' UNION ALL';
     }
   }
-  console.log(query);
 
 
   connection.query(query, (err, results) => {
     if (err) {
-      console.log(err);
       callback(err, null);
     }
     callback(null, results.rows);
@@ -62,7 +60,6 @@ const getAllPendingVipIssues = (callback) => {
     + 'WHERE issues.date_resolved IS NULL AND issues.date_received IS NULL '
     + 'ORDER BY date_issued, rooms.id ASC', (err, results) => {
       if (err) {
-        console.log(err);
         callback(err, null);
       }
       callback(null, results.rows);
