@@ -71,7 +71,7 @@ app.get('/api/issues/vip/pending', (req, res) => {
   });
 });
 // Return all pending issues by category
-app.get('/api/issues/category', (req, res) => {
+app.get('/api/issues/pending/category', (req, res) => {
   console.log(req.query.categoryId);
   issues.getAllPendingIssuesByCategoryId(req.query.categoryId, (err, data) => {
     if (err) {

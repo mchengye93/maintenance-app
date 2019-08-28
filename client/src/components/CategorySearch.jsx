@@ -28,6 +28,7 @@ class CategorySearch extends Component {
         console.log(this.props.categories);
         return (
                 <div>
+                    
                     {this.props.categories.map(category => (
                         <button onClick={this.handleSearchCategory} value={category.id}>{category.category}</button>
                     ))}

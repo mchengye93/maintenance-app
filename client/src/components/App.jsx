@@ -12,7 +12,8 @@ class App extends Component {
         super(props);
 
         this.state = {
-            issues: [],
+            categoryId: 1,
+            pendingIssues: [],
             categories: [],
         };
 
@@ -20,10 +21,11 @@ class App extends Component {
 
     }
     componentDidMount() {
-        axios.get('/api/issues/pending')
+        axios.get('api/issues/pending/category',{
+            params:{categoryId: this.state.categoryId}})
         .then((response)=> {
             console.log(response);
-            this.setState({issues: response.data});
+            this.setState({pendingIssues: response.data});
         });
         axios.get('/api/categories')
         .then((response)=> {
@@ -35,11 +37,13 @@ class App extends Component {
     }
     searchCategory(categoryId) {
         console.log(categoryId);
-        axios.get('/api/issues/category', {
+        axios.get('/api/issues/pending/category', {
             params:{categoryId}})
         .then((response)=> {
             console.log(response.data);
-            this.setState({issues: response.data});
+            this.setState({
+                categoryId: categoryId,
+                pendingIssues: response.data});
             
         })
     }
@@ -48,7 +52,7 @@ class App extends Component {
         return (
                 <div id="app">
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                <InfoTable issues={this.state.issues}></InfoTable>
+                <InfoTable issues={this.state.pendingIssues}></InfoTable>
                 <Button>Test</Button>
                 </div>
                 

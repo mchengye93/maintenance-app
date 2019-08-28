@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import IssueRowData from './IssueRowData.jsx';
 
+
+
 class InfoTable extends Component {
     constructor(props) {
         super(props);
@@ -27,6 +29,7 @@ class InfoTable extends Component {
     render() {
         return (
             <Table>
+                <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'red', color: 'white' ,fontSize:'14px'}}>Pending</TableCell></TableRow></TableHead>
                 <TableHead>
                     <TableRow>
                         <TableCell>Room ID</TableCell>

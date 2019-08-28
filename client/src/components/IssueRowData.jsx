@@ -7,6 +7,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
 
+
 class IssueRowData extends Component {
     constructor(props) {
         super(props);
@@ -22,13 +23,14 @@ class IssueRowData extends Component {
     }
 
     render() {
+       
         return (
             <TableRow key={this.props.issue.room_id}>
             <TableCell>{this.props.issue.room_id}</TableCell>
             <TableCell>{this.props.issue.category}</TableCell>
             <TableCell>{this.props.issue.subcategory}</TableCell>
             <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-            <TableCell><Button>Take Issue</Button></TableCell>
+            <TableCell><Button variant="outlined" >Take Issue</Button></TableCell>
             </TableRow>
                          
         );
