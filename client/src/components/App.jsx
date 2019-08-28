@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import Button from '@material-ui/core/Button';
 import CategorySearch from './CategorySearch.jsx';
 import IssuedTable from './IssuedTable.jsx';
 import InProgressTable from './InProgressTable.jsx';
@@ -112,14 +111,12 @@ class App extends Component {
         if (this.state.status == 0) {
             return (
                 <div id="app">
-                <CreateIssueForm/> 
                 <AppBar color="primary" position="static">
                     <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
                 </AppBar>
-                    <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                    <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                
-
+                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <CreateIssueForm/> 
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
         );
@@ -129,9 +126,9 @@ class App extends Component {
                 <AppBar color="primary" position="static">
                     <h2 style={{textAlign: 'center'}}>Maintenance App</h2>
                 </AppBar>
-                    <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                    <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                
+                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <CreateIssueForm/> 
                 <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
                 </div>     
         );
@@ -141,9 +138,9 @@ class App extends Component {
                 <AppBar color="primary" position="static">
                     <h2 style={{textAlign: 'center'}}>Maintenance App</h2>
                 </AppBar>
-                    <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                    <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                
+                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                <CreateIssueForm/> 
                 <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
         );
