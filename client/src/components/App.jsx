@@ -12,6 +12,7 @@ class App extends Component {
         super(props);
 
         this.state = {
+            status:0,
             categoryId: 1,
             pendingIssues: [],
             categories: [],
@@ -49,15 +50,18 @@ class App extends Component {
     }
 
     render() {
-        return (
+        if(this.state.status === 0) {
+            return (
                 <div id="app">
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                <InfoTable issues={this.state.pendingIssues}></InfoTable>
+                <InfoTable issues={this.state.pendingIssues} status={this.state.status}></InfoTable>
                 <Button>Test</Button>
                 </div>
                 
            
         );
+        }
+      
     }
 }
 export default App;

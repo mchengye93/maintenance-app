@@ -27,28 +27,73 @@ class InfoTable extends Component {
     }
 
     render() {
-        return (
-            <Table>
-                <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Pending</TableCell></TableRow></TableHead>
-                <TableHead>
-                    <TableRow>
-                        <TableCell>Room ID</TableCell>
-                        <TableCell>Category</TableCell>
-                        <TableCell>SubCategory</TableCell>
-                        <TableCell>Issued Date</TableCell>
-                        <TableCell></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {this.props.issues.map(issue => (
-                        <IssueRowData issue = {issue}/>
-                    ))}
-                </TableBody>
-            </Table>
-               
-                
-           
-        );
+        if (this.props.status === 0) {
+            return (
+                <Table>
+                    <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Pending</TableCell></TableRow></TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Room ID</TableCell>
+                            <TableCell>Category</TableCell>
+                            <TableCell>SubCategory</TableCell>
+                            <TableCell>Issued Date</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.props.issues.map(issue => (
+                            <IssueRowData issue = {issue}/>
+                        ))}
+                    </TableBody>
+                </Table>
+       
+            );
+        }
+        else if (this.props.status === 1) {
+            return (
+                <Table>
+                    <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#98f22d', color: 'white' ,fontSize:'14px'}}>In Progress</TableCell></TableRow></TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Room ID</TableCell>
+                            <TableCell>Category</TableCell>
+                            <TableCell>SubCategory</TableCell>
+                            <TableCell>Issued Date</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.props.issues.map(issue => (
+                            <IssueRowData issue = {issue}/>
+                        ))}
+                    </TableBody>
+                </Table>
+       
+            );
+        }
+        else if (this.props.status === 2) {
+            return (
+                <Table>
+                    <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#0ba922', color: 'white' ,fontSize:'14px'}}>Completed</TableCell></TableRow></TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Room ID</TableCell>
+                            <TableCell>Category</TableCell>
+                            <TableCell>SubCategory</TableCell>
+                            <TableCell>Issued Date</TableCell>
+                            <TableCell></TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {this.props.issues.map(issue => (
+                            <IssueRowData issue = {issue}/>
+                        ))}
+                    </TableBody>
+                </Table>
+       
+            );
+        }
+
     }
 }
 export default InfoTable;
