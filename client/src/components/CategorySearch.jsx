@@ -6,7 +6,7 @@ import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
 
-
+import Button from '@material-ui/core/Button';
 
 
 class CategorySearch extends Component {
@@ -24,7 +24,8 @@ class CategorySearch extends Component {
     }
     handleSearchCategory(e) {
         e.preventDefault();
-        let categoryId = e.target.value;
+        //console.log(e.currentTarget.value);
+        let categoryId = e.currentTarget.value;
         this.props.searchCategory(categoryId);
     }
 
@@ -33,7 +34,7 @@ class CategorySearch extends Component {
             <div style={{textAlign:'center'}}>
                 <span>
                       {this.props.categories.map(category => (
-                        <button onClick={this.handleSearchCategory} value={category.id}>{category.category}</button>
+                        <Button onClick={this.handleSearchCategory} value={category.id}>{category.category}</Button>
                     ))}
                 </span>
             </div>
