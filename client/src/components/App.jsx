@@ -53,7 +53,7 @@ class App extends Component {
     }
     searchCategory(categoryId) {
         console.log(categoryId);
-        if(this.state.status === 0) {
+        if(this.state.status == 0) {
             axios.get('/api/issues/pending/category', {
                 params:{categoryId}})
             .then((response)=> {
@@ -63,7 +63,7 @@ class App extends Component {
                     pendingIssues: response.data});
                 
             })
-        } else if (this.state.status === 1) {
+        } else if (this.state.status == 1) {
             axios.get('api/issues/received/category',{
                 params:{categoryId}})
             .then((response)=> {
@@ -73,7 +73,7 @@ class App extends Component {
                     receivedIssues: response.data});
                 
             });
-        } else if (this.state.status === 2) {
+        } else if (this.state.status == 2) {
             axios.get('api/issues/resolved/category',{
                 params:{categoryId}})
             .then((response)=> {
@@ -87,12 +87,43 @@ class App extends Component {
        
     }
     changeIssueStatus(status) {
-        this.setState({status});
+        if(this.state.status == 0) {
+            axios.get('/api/issues/pending/category', {
+                params:this.state.categoryId})
+            .then((response)=> {
+                console.log(response.data);
+                this.setState({
+                    status: status,
+                    pendingIssues: response.data});
+                
+            })
+        } else if (this.state.status == 1) {
+            axios.get('api/issues/received/category',{
+                params:this.state.categoryId})
+            .then((response)=> {
+                
+                this.setState({
+                    status: status,
+                    receivedIssues: response.data});
+                
+            });
+        } else if (this.state.status == 2) {
+            axios.get('api/issues/resolved/category',{
+                params:this.state.categoryId})
+            .then((response)=> {
+                console.log(response);
+                this.setState({
+                    status: status,
+                    resolvedIssues: response.data});
+                
+            });
+        } 
+        this.setState({status: status});
     }
 
     render() {
         console.log(this.state);
-        if (this.state.status === 0) {
+        if (this.state.status == 0) {
             return (
                 <div id="app">
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
@@ -100,7 +131,7 @@ class App extends Component {
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
         );
-        } else if (this.state.status === 1) {
+        } else if (this.state.status == 1) {
             return (
                 <div id="app">
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
@@ -108,7 +139,7 @@ class App extends Component {
                 <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
                 </div>     
         );
-        } else if (this.state.status === 2) {
+        } else if (this.state.status == 2) {
             return (
                 <div id="app">
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
