@@ -15,6 +15,9 @@ class App extends Component {
 
     }
     componentDidMount() {
+        axios.get('/api/issues/pending').then((response)=> {
+            console.log(response);
+        })
   
 
     }

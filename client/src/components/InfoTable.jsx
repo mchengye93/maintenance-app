@@ -18,7 +18,7 @@ class InfoTable extends Component {
 
     }
     componentDidMount() {
-  
+        
 
     }
 
@@ -32,7 +32,6 @@ class InfoTable extends Component {
                         <TableCell>SubCategory</TableCell>
                         <TableCell>Issued Date</TableCell>
                         <TableCell><Button>Take Issue</Button></TableCell>
-
                     </TableRow>
                 </TableHead>
             </Table>
