@@ -35,18 +35,15 @@ class App extends Component {
         });
         axios.get('/api/categories')
         .then((response)=> {
-            console.log(response);
             this.setState({categories: response.data});
         });
 
     }
     searchCategory(categoryId) {
-        console.log(categoryId);
         if(this.state.status == 0) {
             axios.get('/api/issues/pending/category', {
                 params:{categoryId}})
             .then((response)=> {
-                console.log(response.data);
                 this.setState({
                     categoryId: categoryId,
                     pendingIssues: response.data});
@@ -56,7 +53,6 @@ class App extends Component {
             axios.get('api/issues/received/category',{
                 params:{categoryId}})
             .then((response)=> {
-                
                 this.setState({
                     categoryId: categoryId,
                     receivedIssues: response.data});
@@ -66,7 +62,6 @@ class App extends Component {
             axios.get('api/issues/resolved/category',{
                 params:{categoryId}})
             .then((response)=> {
-                console.log(response);
                 this.setState({
                     categoryId: categoryId,
                     resolvedIssues: response.data});
@@ -80,7 +75,6 @@ class App extends Component {
             axios.get('/api/issues/pending/category', {
                 params:{categoryId:this.state.categoryId}})
             .then((response)=> {
-                console.log(response.data);
                 this.setState({
                     status: status,
                     pendingIssues: response.data});
@@ -100,7 +94,6 @@ class App extends Component {
             axios.get('api/issues/resolved/category',{
                 params:{categoryId:this.state.categoryId}})
             .then((response)=> {
-                console.log(response);
                 this.setState({
                     status: status,
                     resolvedIssues: response.data});
@@ -111,7 +104,7 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state);
+    
         if (this.state.status == 0) {
             return (
                 <div id="app">
