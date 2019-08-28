@@ -40,7 +40,7 @@ class IssuedTable extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.issues.map(issue => (
-                            <IssueRowData issue = {issue} status={this.props.status}/>
+                            <IssueRowData key ={issue.id}issue = {issue} status={this.props.status}/>
                         ))}
                     </TableBody>
                 </Table>

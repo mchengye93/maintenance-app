@@ -60,7 +60,6 @@ class IssueStatusOptions extends Component {
         e.preventDefault();
         let status = e.target.value;
         this.setState({status: status})
-        console.log(status);
        this.props.changeIssueStatus(status);
     }
 

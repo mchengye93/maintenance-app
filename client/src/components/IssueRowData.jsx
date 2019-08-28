@@ -26,7 +26,7 @@ class IssueRowData extends Component {
        
         if(this.props.status == 0) {
             return (
-                <TableRow key={this.props.issue.room_id}>
+                <TableRow key={this.props.issue.id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>
                 <TableCell>{this.props.issue.category}</TableCell>
                 <TableCell>{this.props.issue.subcategory}</TableCell>
@@ -38,7 +38,7 @@ class IssueRowData extends Component {
         }
         else if (this.props.status == 1) {
             return (
-                <TableRow key={this.props.issue.room_id}>
+                <TableRow key={this.props.issue.id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>
                 <TableCell>{this.props.issue.category}</TableCell>
                 <TableCell>{this.props.issue.subcategory}</TableCell>
@@ -53,7 +53,7 @@ class IssueRowData extends Component {
 
         else if (this.props.status == 2) {
             return (
-                <TableRow key={this.props.issue.room_id}>
+                <TableRow key={this.props.issue.id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>
                 <TableCell>{this.props.issue.category}</TableCell>
                 <TableCell>{this.props.issue.subcategory}</TableCell>
