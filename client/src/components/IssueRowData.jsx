@@ -31,7 +31,7 @@ class IssueRowData extends Component {
                 <TableCell>{this.props.issue.category}</TableCell>
                 <TableCell>{this.props.issue.subcategory}</TableCell>
                 <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                <TableCell><Button variant="outlined" >Take Issue</Button></TableCell>
+                <TableCell><Button variant="contained" color='primary'>Take Issue</Button></TableCell>
                 </TableRow>
                              
             );
@@ -45,7 +45,7 @@ class IssueRowData extends Component {
                 <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
                 <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
                 <TableCell>{this.props.issue.name}</TableCell>
-                <TableCell><Button variant="outlined" >Solve</Button></TableCell>
+                <TableCell><Button variant="contained" color='primary' >Solve</Button></TableCell>
                 </TableRow>
                              
             );
