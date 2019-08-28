@@ -37,8 +37,8 @@ class ResolvedTable extends Component {
                             <TableCell>SubCategory</TableCell>
                             <TableCell>Issued Date</TableCell>
                             <TableCell>Received Date</TableCell>
+                            <TableCell>Resolved Date</TableCell> 
                             <TableCell>Contact</TableCell>
-                            <TableCell>Resolved Date</TableCell>
                             <TableCell>Cost</TableCell>
                         </TableRow>
                     </TableHead>
