@@ -1,11 +1,8 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
+
 import Button from '@material-ui/core/Button';
+import InfoTable from './InfoTable.jsx';
 
 
 class App extends Component {
@@ -27,7 +24,7 @@ class App extends Component {
             
               
                 <div id="app">
-                <MaterialTable data={this.state.data}></MaterialTable>
+                <InfoTable></InfoTable>
                 <Button>Test</Button>
                 </div>
                 
