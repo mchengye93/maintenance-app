@@ -36,7 +36,7 @@ class InProgressTable extends Component {
                             <TableCell>Category</TableCell>
                             <TableCell>SubCategory</TableCell>
                             <TableCell>Issued Date</TableCell>
-                            <TableCell>Issued Received</TableCell>
+                            <TableCell>Received Date</TableCell>
                             <TableCell>Contact</TableCell>
                             <TableCell></TableCell>
                         </TableRow>
