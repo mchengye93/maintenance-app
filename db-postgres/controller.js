@@ -25,21 +25,30 @@ const getAllIssues = (callback) => {
 };
 
 const getAllPendingIssues = (callback) => {
-  connection.query(
-    'SELECT issues.room_id, issues.category_id, categories.category,'
-    + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued,'
-     + 'issues.date_received FROM issues '
-     + 'INNER JOIN categories ON issues.category_id= categories.id '
-     + 'INNER JOIN subcategories ON  issues.subcategory_id = subcategories.id '
-     + 'WHERE date_resolved IS NULL AND date_received IS NULL '
-     + 'ORDER BY date_issued, room_id ASC LIMIT 15', (err, results) => {
-      if (err) {
-        console.log(err);
-        callback(err, null);
-      }
-      callback(null, results.rows);
-    },
-  );
+  let query = '';
+
+  for (let i = 1; i <= 5; i += 1) {
+    query += '(SELECT issues.room_id, issues.category_id, categories.category,'
+     + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued,'
+      + 'issues.date_received FROM issues '
+      + 'INNER JOIN categories ON issues.category_id= categories.id '
+      + 'INNER JOIN subcategories ON  issues.subcategory_id = subcategories.id '
+      + `WHERE categories.id = ${i} AND date_resolved IS NULL AND date_received IS NULL `
+      + 'ORDER BY date_issued, categories.category, room_id ASC LIMIT 3)';
+    if (i !== 5) {
+      query += ' UNION ALL';
+    }
+  }
+  console.log(query);
+
+
+  connection.query(query, (err, results) => {
+    if (err) {
+      console.log(err);
+      callback(err, null);
+    }
+    callback(null, results.rows);
+  });
 };
 
 const getAllPendingVipIssues = (callback) => {
