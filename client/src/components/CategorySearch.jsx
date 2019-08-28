@@ -9,24 +9,22 @@ class CategorySearch extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            categories: []
+          
         };
         
     }
     componentDidMount() {
-        axios.get('/api/categories').then((response)=> {
-            console.log(response);
-            this.setState({categories: response.data});
-        })
+  
   
 
     }
 
     render() {
+        console.log(this.props.categories);
         return (
                 <div>
-                    {this.state.categories.map(category => (
-                        <Button>{category}</Button>
+                    {this.props.categories.map(category => (
+                        <Button>{category.category}</Button>
                     ))}
                     
                 </div>
