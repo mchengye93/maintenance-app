@@ -78,6 +78,24 @@ const getAllPendingIssuesByCategoryId = (categoryId, callback) => {
   );
 };
 
+const getAllReceivedIssues = (contactId, callback) => {
+  connection.query(
+    'SELECT issues.room_id, issues.category_id, categories.category, '
++ 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, issues.date_received '
++ 'FROM issues '
++ 'INNER JOIN categories ON issues.category_id= categories.id '
++ 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
++ 'INNER JOIN contacts ON issues.contact_id = contacts.id '
++ 'WHERE date_received IS NOT NULL AND date_resolved IS NULL '
++ 'ORDER BY date_issued, date_received ASC', (err, results) => {
+      if (err) {
+        callback(err, null);
+      }
+      callback(null, results);
+    },
+  );
+};
+
 const getAllReceivedIssuesByContact = (contactId, callback) => {
   connection.query(
     'SELECT issues.room_id, issues.category_id, categories.category, '
