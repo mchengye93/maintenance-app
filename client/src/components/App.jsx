@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 
 import Button from '@material-ui/core/Button';
+import CategorySearch from './CategorySearch.jsx';
 import InfoTable from './InfoTable.jsx';
 
 
@@ -12,6 +13,7 @@ class App extends Component {
         this.state = {
             issues: []
         };
+
 
     }
     componentDidMount() {
@@ -26,6 +28,7 @@ class App extends Component {
     render() {
         return (
                 <div id="app">
+                <CategorySearch/>
                 <InfoTable issues={this.state.issues}></InfoTable>
                 <Button>Test</Button>
                 </div>
