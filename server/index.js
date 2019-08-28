@@ -81,6 +81,17 @@ app.get('/api/issues/pending/category', (req, res) => {
   });
 });
 
+// Get all received issues
+app.get('/api/issue/received/category', (req, res) => {
+  issues.getAllReceivedIssuesByCategory(req.query.categoryId, (err, data) => {
+    if (err) {
+      res.sendStatus(500);
+    }
+    res.json(data);
+  });
+});
+
+
 // Return all pending issues by contact
 app.get('/api/issues/contact', (req, res) => {
   issues.getAllReceivedIssuesByContact(req.body.contactId, (err, data) => {
