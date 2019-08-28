@@ -9,6 +9,7 @@ import ResolvedTable from './ResolvedTable.jsx';
 import IssuesStatusOptions from './IssuesStatusOptions.jsx';
 
 import AppBar from '@material-ui/core/AppBar';
+import CreateIssueForm from './CreateIssueForm.jsx';
 
 
 
@@ -111,6 +112,7 @@ class App extends Component {
         if (this.state.status == 0) {
             return (
                 <div id="app">
+                <CreateIssueForm/> 
                 <AppBar color="primary" position="static">
                     <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
                 </AppBar>
