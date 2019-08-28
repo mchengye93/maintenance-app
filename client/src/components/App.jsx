@@ -50,7 +50,7 @@ class App extends Component {
     }
 
     render() {
-        if(this.state.status === 0) {
+        if (this.state.status === 0) {
             return (
                 <div id="app">
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
@@ -58,7 +58,6 @@ class App extends Component {
                 <Button>Test</Button>
                 </div>
                 
-           
         );
         }
       

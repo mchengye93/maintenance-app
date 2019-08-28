@@ -7,7 +7,7 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import TableFooter from '@material-ui/core/TableFooter';
 import Button from '@material-ui/core/Button';
-import Paper from '@material-ui/core/Paper';
+
 import IssueRowData from './IssueRowData.jsx';
 
 
