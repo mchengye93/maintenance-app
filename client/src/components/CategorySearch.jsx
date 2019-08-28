@@ -29,15 +29,33 @@ class CategorySearch extends Component {
     }
 
     render() {
-   
         return (
+            <div style={{textAlign:'center'}}>
                 <span>
                       {this.props.categories.map(category => (
                         <button onClick={this.handleSearchCategory} value={category.id}>{category.category}</button>
                     ))}
                 </span>
+            </div>
+             
                   
         );
+        // return(
+        //     <Paper>
+        //         <Tabs
+        //           value={this.state.status}
+        //           onChange={this.handleChangeStatus}
+        //           indicatorColor="primary"
+        //           textColor="primary"
+        //           centered
+        //         >
+        //           <Tab label="Pending" value={0}/>
+        //           <Tab label="In Progress" value={1}/>
+        //           <Tab label="Resolved" value={2}/>
+        //         </Tabs>
+        //   </Paper>
+  
+        //   );
 
         
     }

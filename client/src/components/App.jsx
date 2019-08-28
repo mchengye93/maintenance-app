@@ -125,7 +125,7 @@ class App extends Component {
             return (
                 <div id="app">
                 <AppBar color="primary" position="static">
-                    <h2>Maintenance App</h2>
+                    <h2 style={{textAlign: 'center'}}>Maintenance App</h2>
                 </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
@@ -137,7 +137,7 @@ class App extends Component {
             return (
                 <div id="app">
                 <AppBar color="primary" position="static">
-                    <h2>Maintenance App</h2>
+                    <h2 style={{textAlign: 'center'}}>Maintenance App</h2>
                 </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
