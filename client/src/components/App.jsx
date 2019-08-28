@@ -4,7 +4,8 @@ import axios from 'axios';
 import Button from '@material-ui/core/Button';
 import CategorySearch from './CategorySearch.jsx';
 import InfoTable from './InfoTable.jsx';
-import { compose } from '@material-ui/system';
+import InProgressTable from './InProgressTable.jsx';
+
 
 
 class App extends Component {
@@ -12,7 +13,7 @@ class App extends Component {
         super(props);
 
         this.state = {
-            status:0,
+            status:1,
             categoryId: 1,
             pendingIssues: [],
             receivedIssues: [],
@@ -47,15 +48,28 @@ class App extends Component {
     }
     searchCategory(categoryId) {
         console.log(categoryId);
-        axios.get('/api/issues/pending/category', {
-            params:{categoryId}})
-        .then((response)=> {
-            console.log(response.data);
-            this.setState({
-                categoryId: categoryId,
-                pendingIssues: response.data});
-            
-        })
+        if(this.state.status === 0) {
+            axios.get('/api/issues/pending/category', {
+                params:{categoryId}})
+            .then((response)=> {
+                console.log(response.data);
+                this.setState({
+                    categoryId: categoryId,
+                    pendingIssues: response.data});
+                
+            })
+        } else if (this.state.status === 1) {
+            axios.get('api/issues/received/category',{
+                params:{categoryId}})
+            .then((response)=> {
+                
+                this.setState({
+                    categoryId: categoryId,
+                    receivedIssues: response.data});
+                
+            });
+        }
+       
     }
 
     render() {

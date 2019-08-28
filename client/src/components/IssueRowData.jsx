@@ -44,7 +44,7 @@ class IssueRowData extends Component {
                 <TableCell>{this.props.issue.subcategory}</TableCell>
                 <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
                 <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
-                <TableCell>{this.props.issue.name.split('T')[0]}</TableCell>
+                <TableCell>{this.props.issue.name}</TableCell>
                 <TableCell><Button variant="outlined" >Take Issue</Button></TableCell>
                 </TableRow>
                              
