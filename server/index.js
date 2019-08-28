@@ -13,7 +13,7 @@ const app = express();
 //   next();
 // };
 
-app.use(express.static(`${__dirname}/../react-client/dist`));
+app.use(express.static(`${__dirname}/../client/dist`));
 
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/json
 app.use(bodyParser.json());

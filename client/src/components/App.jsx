@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import Button from '@material-ui/core/Button';
 
 class App extends Component {
     constructor(props) {
@@ -9,22 +10,21 @@ class App extends Component {
 
     }
     componentDidMount() {
-        axios.get('/api/issues/vip/pending')
-        .then((response)=> {
-            console.log(response);
-        }).catch((error)=> {
-            console.log(error);
-        });
+  
 
     }
 
     render() {
         return (
-            <div>
-                <div id="app"></div>
-                <h1>Maintenance Application</h1>
-            </div>
-        )
+            
+              
+                <div id="app">
+                <MaterialTable data={this.state.data}></MaterialTable>
+                <Button>Test</Button>
+                </div>
+                
+           
+        );
     }
 }
 export default App;
