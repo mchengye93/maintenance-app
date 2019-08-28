@@ -113,9 +113,10 @@ class App extends Component {
                 <div id="app">
                 <AppBar color="primary" position="static">
                     <h2>Maintenance App</h2>
+                </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                </AppBar>
+                
 
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
@@ -125,9 +126,10 @@ class App extends Component {
                 <div id="app">
                 <AppBar color="primary" position="static">
                     <h2>Maintenance App</h2>
+                </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                </AppBar>
+                
                 <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
                 </div>     
         );
@@ -136,9 +138,10 @@ class App extends Component {
                 <div id="app">
                 <AppBar color="primary" position="static">
                     <h2>Maintenance App</h2>
+                </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                </AppBar>
+                
                 <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
         );
