@@ -17,11 +17,13 @@ class CreateIssueForm extends Component {
 
         this.state = {
         open: false,
+        categoryId: 1,
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
+        this.handleInputChange = this.handleInputChange.bind(this);
 
     }
     componentDidMount() {
@@ -43,7 +45,24 @@ class CreateIssueForm extends Component {
         this.setState({open: false});
     }
 
+  
+
+    handleInputChange(event) {
+        const target = event.target;
+        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const name = target.name;
+        console.log(target);
+        console.log(name);
+        console.log(value);
+        this.setState({
+          [name]: value
+        });
+      }
+
     render() {
+        console.log(this.props.categories);
+        console.log(this.state);
+        
        
             return (
                 <div>
@@ -51,30 +70,42 @@ class CreateIssueForm extends Component {
                   Create
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-                  <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                  <DialogTitle id="form-dialog-title">Create Issue</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      To subscribe to this website, please enter your email address here. We will send updates
-                      occasionally.
+                      Please put corresponding information for the issue.
                     </DialogContentText>
-                    <TextField
-                      autoFocus
-                      margin="dense"
-                      id="name"
-                      label="Email Address"
-                      type="email"
-                      fullWidth
-                    />
+                   
                     <form> 
                     <TextField
                       autoFocus
                       margin="dense"
                       id="roomId"
                       label="Room No."
+                      name="roomId"
+                      onChange={this.handleInputChange}
                       type="Number"
                       margin="normal"
                       variant="outlined"
+                      inputProps={{ min: "1", max: "100"}}
                     />
+                    <TextField
+                        id="outlined-select-categories"
+                        select
+                        label="Select"
+                        value={this.state.categoryId}
+                        onChange={this.handleInputChange}
+                        helperText="Please select your category"
+                        margin="normal"
+                        variant="outlined"
+                        name='categoryId'
+                    >
+                        {this.props.categories.map(category => (
+                        <MenuItem key={category.id} value={category.id} >
+                            {category.category}
+                        </MenuItem>
+                        ))}
+                    </TextField>
                         
                     </form>
                   </DialogContent>

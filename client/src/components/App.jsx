@@ -109,6 +109,7 @@ class App extends Component {
     render() {
     
         if (this.state.status == 0) {
+            console.log(this.state.categories);
             return (
                 <div id="app">
                 <AppBar color="primary" position="static">
