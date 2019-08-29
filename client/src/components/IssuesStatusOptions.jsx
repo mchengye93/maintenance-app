@@ -21,8 +21,7 @@ class IssueStatusOptions extends Component {
     }
     handleChangeStatus(e) {
         e.preventDefault();
-        console.log(e.target.innerText);
-
+    
         let statusString = e.target.innerText;
         let status = 0;
 
@@ -40,7 +39,6 @@ class IssueStatusOptions extends Component {
         }
 
         this.setState({status: status})
-        console.log('handle change status executed!');
        this.props.changeIssueStatus(status);
     }
 
