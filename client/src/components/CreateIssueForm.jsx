@@ -6,7 +6,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import axios from 'axios';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
@@ -18,6 +18,8 @@ class CreateIssueForm extends Component {
         this.state = {
         open: false,
         categoryId: 1,
+        subcategoryId: 0,
+        subcategories: []
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -27,6 +29,13 @@ class CreateIssueForm extends Component {
 
     }
     componentDidMount() {
+        axios.get('/api/subcategories', {params:{categoryId: this.state.categoryId}})
+        .then((response)=> {
+            console.log(response.data);
+            this.setState({
+                subcategoryId: response.data[0].id,
+                subcategories: response.data});
+        });
         
 
     }
@@ -54,9 +63,24 @@ class CreateIssueForm extends Component {
         console.log(target);
         console.log(name);
         console.log(value);
-        this.setState({
-          [name]: value
-        });
+        
+        if (name === 'categoryId') {
+            console.log('categoryId change!', value)
+            axios.get('/api/subcategories', {params:{categoryId: value}})
+            .then((response)=> {
+                console.log(response.data);
+                this.setState({
+                    subcategoryId: response.data[0].id,
+                    subcategories: response.data,
+                    [name]: value});
+                    
+            });
+        } else {
+            this.setState({
+                [name]: value
+              });
+        }
+
       }
 
     render() {
@@ -92,10 +116,10 @@ class CreateIssueForm extends Component {
                     <TextField
                         id="outlined-select-categories"
                         select
-                        label="Select"
+                        label="Category"
                         value={this.state.categoryId}
                         onChange={this.handleInputChange}
-                        helperText="Please select your category"
+                        helperText="Please select a category"
                         margin="normal"
                         variant="outlined"
                         name='categoryId'
@@ -103,6 +127,23 @@ class CreateIssueForm extends Component {
                         {this.props.categories.map(category => (
                         <MenuItem key={category.id} value={category.id} >
                             {category.category}
+                        </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField
+                        id="outlined-select-subcategories"
+                        select
+                        label="Subcategory"
+                        value={this.state.subcategoryId}
+                        onChange={this.handleInputChange}
+                        helperText="Please select a subcategory"
+                        margin="normal"
+                        variant="outlined"
+                        name='subcategoryId'
+                    >
+                        {this.state.subcategories.map(subcategory => (
+                        <MenuItem key={subcategory.id} value={subcategory.id} >
+                            {subcategory.subcategory}
                         </MenuItem>
                         ))}
                     </TextField>

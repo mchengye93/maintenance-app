@@ -204,7 +204,7 @@ app.put('/api/subcategories', (req, res) => {
 });
 
 app.get('/api/subcategories', (req, res) => {
-  issues.getAllSubcategories(req.body.categoryId, (err, data) => {
+  issues.getAllSubcategories(req.query.categoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);
     }
