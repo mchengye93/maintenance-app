@@ -116,7 +116,7 @@ class App extends Component {
                 </AppBar>
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                <CreateIssueForm/> 
+                <CreateIssueForm categories={this.state.categories}/> 
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
         );
@@ -128,7 +128,7 @@ class App extends Component {
                 </AppBar>
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                <CreateIssueForm/> 
+                <CreateIssueForm categories={this.state.categories}/> 
                 <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
                 </div>     
         );
@@ -140,7 +140,7 @@ class App extends Component {
                 </AppBar>
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                <CreateIssueForm/> 
+                <CreateIssueForm categories={this.state.categories}/> 
                 <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
         );
