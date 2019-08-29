@@ -7,6 +7,10 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
+
+import MenuItem from '@material-ui/core/MenuItem';
+
+
 class CreateIssueForm extends Component {
     constructor(props) {
         super(props);
@@ -61,6 +65,18 @@ class CreateIssueForm extends Component {
                       type="email"
                       fullWidth
                     />
+                    <form> 
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="roomId"
+                      label="Room No."
+                      type="Number"
+                      margin="normal"
+                      variant="outlined"
+                    />
+                        
+                    </form>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
