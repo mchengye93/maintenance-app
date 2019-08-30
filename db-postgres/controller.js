@@ -326,6 +326,7 @@ module.exports = {
   deleteIssue,
   createSubcategory,
   updateSubcategory,
+  getAllSubcategories,
   getAllSubcategoriesByCategoryId,
   deleteSubcategory,
   getAllCategoriesSubcategories,

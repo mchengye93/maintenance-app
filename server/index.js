@@ -201,8 +201,8 @@ app.put('/api/subcategories', (req, res) => {
 
 app.get('/api/subcategories', async (req, res) => {
   try {
-    const rows = await issues.getAllIssues();
-    res.status(200).send(rows);
+    const subcategories = await issues.getAllSubcategories();
+    res.status(200).send(subcategories.rows);
   } catch (e) {
     res.status(400).send(e);
   }

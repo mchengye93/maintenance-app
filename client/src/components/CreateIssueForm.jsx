@@ -20,34 +20,36 @@ class CreateIssueForm extends Component {
         categoryId: 1,
         subcategoryId: 0,
         subcategories: [],
-        categories: []
+        subcategoriesByCategory: []
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleCreate = this.handleCreate.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
+        this.handleUpdateSubcategories = this.handleUpdateSubcategories.bind(this);
 
     }
     componentDidMount() {
-
-        axios.get('/api/subcategories', {params:{categoryId: this.state.categoryId}})
+        this.setState({categories: this.props.categories});
+        axios.get('/api/subcategories')
         .then((response)=> {
-            console.log(response.data);
+           
             this.setState({
-                categories: this.props.categories,
-                subcategoryId: response.data[0].id,
-                subcategories: response.data});
+                subcategories: response.data
+             });
+             this.handleUpdateSubcategories(1);
         });
+        
 
-        axios.get('/api/subcategories/categoryId', {params:{categoryId: this.state.categoryId}})
-        .then((response)=> {
-            console.log(response.data);
-            this.setState({
-                categories: this.props.categories,
-                subcategoryId: response.data[0].id,
-                subcategories: response.data});
-        });
+        // axios.get('/api/subcategories/categoryId', {params:{categoryId: this.state.categoryId}})
+        // .then((response)=> {
+        //     console.log(response.data);
+        //     this.setState({
+        //         categories: this.props.categories,
+        //         subcategoryId: response.data[0].id,
+        //         subcategories: response.data});
+        // });
         
 
     }
@@ -66,6 +68,23 @@ class CreateIssueForm extends Component {
         this.setState({open: false});
     }
 
+    handleUpdateSubcategories(categoryId) {
+        console.log('inside handle update subcategories!');
+        //on categorychange update currentSubcategoryChoice 
+        const subcategories = this.state.subcategories;
+        let subcategoriesByCategory = [];
+
+        for (let i = 0; i < subcategories.length; i++) {
+            if (subcategories[i]['category_id'] === categoryId) {
+                subcategoriesByCategory.push(subcategories[i]);
+            }
+        }
+        this.setState({
+            subcategoriesByCategory,
+            subcategoryId: subcategoriesByCategory[0].id});
+
+    }
+
   
 
     handleInputChange(event) {
@@ -77,16 +96,10 @@ class CreateIssueForm extends Component {
         console.log(value);
         
         if (name === 'categoryId') {
-            console.log('categoryId change!', value)
-            axios.get('/api/subcategories', {params:{categoryId: value}})
-            .then((response)=> {
-                console.log(response.data);
-                this.setState({
-                    subcategoryId: response.data[0].id,
-                    subcategories: response.data,
-                    [name]: value});
-                    
-            });
+            console.log('categoryId change!', value);
+            this.handleUpdateSubcategories(value);
+            this.setState({categoryId: value});
+          
         } else {
             this.setState({
                 [name]: value
@@ -96,7 +109,7 @@ class CreateIssueForm extends Component {
       }
 
     render() {
-        //console.log(this.props.categories);
+        console.log(this.props.categories);
         console.log(this.state);
         
        
@@ -136,7 +149,7 @@ class CreateIssueForm extends Component {
                         variant="outlined"
                         name='categoryId'
                     >
-                        {this.state.categories.map(category => (
+                        {this.props.categories.map(category => (
                         <MenuItem key={category.id} value={category.id} >
                             {category.category}
                         </MenuItem>
@@ -153,7 +166,7 @@ class CreateIssueForm extends Component {
                         variant="outlined"
                         name='subcategoryId'
                     >
-                        {this.state.subcategories.map(subcategory => (
+                        {this.state.subcategoriesByCategory.map(subcategory => (
                         <MenuItem key={subcategory.id} value={subcategory.id} >
                             {subcategory.subcategory}
                         </MenuItem>
