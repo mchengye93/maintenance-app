@@ -31,7 +31,7 @@ class TakeIssueForm extends Component {
     }
     componentDidMount() {
 
-        axios.get('/api/contacts/categoryId', {params: {categoryId: this.props.categoryId}})
+        axios.get('/api/contacts/categoryId', {params: {categoryId: this.props.issue.category_id}})
         .then((response)=> {
             this.setState({
                 contacts: response.data.rows
@@ -53,7 +53,7 @@ class TakeIssueForm extends Component {
         //Verify that all input has been defined
         let issue = {
             contactId: this.state.contactId,
-            issueId: this.props.issueId
+            issueId: this.props.issue.id
         }
   
         axios.put('/api/issue/received', issue).then((response)=> {
@@ -92,10 +92,16 @@ class TakeIssueForm extends Component {
                   Take Issue
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-                  <DialogTitle id="form-dialog-title">Issue #{this.props.issueId}</DialogTitle>
+                  <DialogTitle id="form-dialog-title">
+                  Issue #{this.props.issue.id}
+                  </DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      Please pick person who will take over issue# {this.props.issueId}.
+                      Please pick the person who will take over issue #{this.props.issue.id}. <br></br>
+                      Room No.{this.props.issue.room_id} <br></br>
+                      Category: {this.props.issue.category} <br></br>
+                      Subcategory: {this.props.issue.subcategory} <br></br>
+                      Issued Date: {this.props.issue.date_issued.split('T')[0]}
                     </DialogContentText>
                    
                     <form> 
