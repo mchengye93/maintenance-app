@@ -119,7 +119,7 @@ class CreateIssueForm extends Component {
                         label="Category"
                         value={this.state.categoryId}
                         onChange={this.handleInputChange}
-                        helperText="Please select a category"
+                        helperText="Select a category"
                         margin="normal"
                         variant="outlined"
                         name='categoryId'
@@ -136,7 +136,7 @@ class CreateIssueForm extends Component {
                         label="Subcategory"
                         value={this.state.subcategoryId}
                         onChange={this.handleInputChange}
-                        helperText="Please select a subcategory"
+                        helperText="Select a subcategory"
                         margin="normal"
                         variant="outlined"
                         name='subcategoryId'

@@ -1,12 +1,22 @@
 const connection = require('./connection.js');
 /* Issues CRUD */
 const createIssue = (issue, callback) => {
-  connection.query(`INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES  
-  (${issue.roomId},${issue.categoryId}, ${issue.subcategoryId}, ${issue.dateIssued})`, (err, result) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, result);
+  const query = `INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES  
+  (${issue.roomId},${issue.categoryId}, ${issue.subcategoryId}, ${issue.dateIssued})`;
+
+  // connection.query(query, (err, result) => {
+  //   if (err) {
+  //     callback(err, null);
+  //   }
+  //   callback(null, result);
+  // });
+
+  // use promises
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, res) => {
+      if (err) return reject(err);
+      resolve(res);
+    });
   });
 };
 const getAllIssues = (callback) => {

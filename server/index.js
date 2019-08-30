@@ -27,17 +27,12 @@ app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 
 // Create an issue
 app.post('/api/issue', async (req, res) => {
+  const issue = req.body;
   try {
-    issues.createIssue(req.body, (err, data) => {
-      if (err) {
-        console.log('Error!');
-        res.status(500);
-        res.send(err);
-      }
-      res.json(data);
-    });
-  } catch (error) {
-    res.status(500).send({ error });
+    const rows = await issues.createIssue(issue);
+    res.status(200).send(rows);
+  } catch (e) {
+    res.status(404).send(e);
   }
 });
 
