@@ -19,7 +19,8 @@ class CreateIssueForm extends Component {
         open: false,
         categoryId: 1,
         subcategoryId: 0,
-        subcategories: []
+        subcategories: [],
+        categories: []
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -29,10 +30,21 @@ class CreateIssueForm extends Component {
 
     }
     componentDidMount() {
+
         axios.get('/api/subcategories', {params:{categoryId: this.state.categoryId}})
         .then((response)=> {
             console.log(response.data);
             this.setState({
+                categories: this.props.categories,
+                subcategoryId: response.data[0].id,
+                subcategories: response.data});
+        });
+
+        axios.get('/api/subcategories/categoryId', {params:{categoryId: this.state.categoryId}})
+        .then((response)=> {
+            console.log(response.data);
+            this.setState({
+                categories: this.props.categories,
                 subcategoryId: response.data[0].id,
                 subcategories: response.data});
         });
@@ -84,7 +96,7 @@ class CreateIssueForm extends Component {
       }
 
     render() {
-        console.log(this.props.categories);
+        //console.log(this.props.categories);
         console.log(this.state);
         
        
@@ -124,7 +136,7 @@ class CreateIssueForm extends Component {
                         variant="outlined"
                         name='categoryId'
                     >
-                        {this.props.categories.map(category => (
+                        {this.state.categories.map(category => (
                         <MenuItem key={category.id} value={category.id} >
                             {category.category}
                         </MenuItem>

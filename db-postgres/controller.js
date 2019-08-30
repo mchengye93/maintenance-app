@@ -8,7 +8,7 @@ const createIssue = (issue, callback) => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, res) => {
       if (err) return reject(err);
-      return resolve(res);
+      resolve(res);
     });
   });
 };
@@ -21,7 +21,7 @@ const getAllIssues = () => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      resolve(results);
+      return resolve(results);
     });
   });
 };
@@ -81,7 +81,7 @@ const getAllPendingIssuesByCategoryId = (categoryId, callback) => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      resolve(results);
+      return resolve(results);
     });
   });
 };
@@ -224,7 +224,16 @@ const createSubcategory = (categoryId, subcategory, callback) => {
     callback(null, results);
   });
 };
-const getAllSubcategories = (categoryId, callback) => {
+const getAllSubcategories = () => {
+  const query = 'SELECT * FROM subcategories';
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      return resolve(results);
+    });
+  });
+};
+const getAllSubcategoriesByCategoryId = (categoryId, callback) => {
   connection.query(`SELECT * FROM subcategories WHERE category_id = ${categoryId} ORDER BY subcategory ASC`, (err, results) => {
     if (err) {
       callback(err, null);
@@ -317,7 +326,7 @@ module.exports = {
   deleteIssue,
   createSubcategory,
   updateSubcategory,
-  getAllSubcategories,
+  getAllSubcategoriesByCategoryId,
   deleteSubcategory,
   getAllCategoriesSubcategories,
   createContact,

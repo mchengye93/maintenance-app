@@ -70,7 +70,8 @@ app.get('/api/issues/pending/category', async (req, res) => {
   const { categoryId } = req.query;
   try {
     const pendingIssues = await issues.getAllPendingIssuesByCategoryId(categoryId);
-    res.status(200).send(pendingIssues);
+    console.log(pendingIssues);
+    res.status(200).send(pendingIssues.rows);
   } catch (e) {
     res.status(400).send(e);
   }
@@ -198,8 +199,17 @@ app.put('/api/subcategories', (req, res) => {
   });
 });
 
-app.get('/api/subcategories', (req, res) => {
-  issues.getAllSubcategories(req.query.categoryId, (err, data) => {
+app.get('/api/subcategories', async (req, res) => {
+  try {
+    const rows = await issues.getAllIssues();
+    res.status(200).send(rows);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+app.get('/api/subcategories/categoryId', (req, res) => {
+  issues.getAllSubcategoriesByCategoryId(req.query.categoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);
     }
