@@ -41,17 +41,7 @@ class CreateIssueForm extends Component {
              });
              this.handleUpdateSubcategories(1);
         });
-        
-
-        // axios.get('/api/subcategories/categoryId', {params:{categoryId: this.state.categoryId}})
-        // .then((response)=> {
-        //     console.log(response.data);
-        //     this.setState({
-        //         categories: this.props.categories,
-        //         subcategoryId: response.data[0].id,
-        //         subcategories: response.data});
-        // });
-        
+                
 
     }
     handleClickOpen() {
@@ -74,8 +64,13 @@ class CreateIssueForm extends Component {
                 subcategoryId: this.state.subcategoryId,
                 roomId: this.state.roomId,
             }
-            axios.post('/api/issue', issue)
-            this.setState({open: false});
+
+            axios.post('/api/issue', issue).then((response)=> {
+                this.setState({open: false});
+            }).catch((error)=> {
+                alert('Error creating issue');
+            })
+            
         }
       
     }
@@ -96,7 +91,6 @@ class CreateIssueForm extends Component {
 
     }
 
-  
 
     handleInputChange(event) {
         const target = event.target;
