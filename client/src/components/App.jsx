@@ -28,6 +28,7 @@ class App extends Component {
 
         this.searchCategory = this.searchCategory.bind(this);
         this.changeIssueStatus = this.changeIssueStatus.bind(this);
+      
 
     }
     componentDidMount() {
@@ -105,6 +106,8 @@ class App extends Component {
         this.setState({status: status});
     }
 
+   
+
     render() {
     
         if (this.state.status == 0) {
@@ -118,7 +121,7 @@ class App extends Component {
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 
-                <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
+                <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></IssuedTable>
                 </div>     
         );
         } else if (this.state.status == 1) {

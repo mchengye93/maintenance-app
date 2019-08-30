@@ -56,10 +56,13 @@ class TakeIssueForm extends Component {
             contactId: this.state.contactId,
             issueId: this.props.issueId
         }
+        console.log(issue);
         axios.put('/api/issue/received', issue).then((response)=> {
             this.setState({open: false});
+            this.props.changeIssueStatus(0);
            
         }).catch((error)=> {
+            console.log(error);
             alert('Error taking issue');
         })
             
