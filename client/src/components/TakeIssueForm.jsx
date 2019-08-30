@@ -58,7 +58,7 @@ class TakeIssueForm extends Component {
         }
         axios.put('/api/issue/received', issue).then((response)=> {
             this.setState({open: false});
-           alert('Issue received!');
+           
         }).catch((error)=> {
             alert('Error taking issue');
         })
