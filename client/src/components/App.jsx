@@ -115,12 +115,11 @@ class App extends Component {
                 <div id="app">
                 <AppBar color="primary" position="static">
                 <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
-                <CreateIssueForm categories={this.state.categories}/> 
                 </AppBar>
                 
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                
+                <CreateIssueForm categories={this.state.categories}/> 
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></IssuedTable>
                 </div>     
         );
