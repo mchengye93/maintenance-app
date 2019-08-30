@@ -23,7 +23,6 @@ class IssueRowData extends Component {
     render() {
        
         if(this.props.status == 0) {
-            console.log(this.props.issue);
             return (
                 <TableRow key={this.props.issue.id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>

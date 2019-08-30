@@ -33,7 +33,6 @@ class TakeIssueForm extends Component {
 
         axios.get('/api/contacts/categoryId', {params: {categoryId: this.props.categoryId}})
         .then((response)=> {
-           console.log(response.data.rows)
             this.setState({
                 contacts: response.data.rows
              });
@@ -50,19 +49,19 @@ class TakeIssueForm extends Component {
         this.setState({open: false});
       }
     handleUpdateIssue() {
-       console.log('Inside handleUpdateIssue', this.state);
+       
         //Verify that all input has been defined
         let issue = {
             contactId: this.state.contactId,
             issueId: this.props.issueId
         }
-        console.log(issue);
+  
         axios.put('/api/issue/received', issue).then((response)=> {
             this.setState({open: false});
             this.props.changeIssueStatus(0);
            
         }).catch((error)=> {
-            console.log(error);
+        
             alert('Error taking issue');
         })
             
@@ -75,10 +74,7 @@ class TakeIssueForm extends Component {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        console.log(target);
-        console.log(name);
-        console.log(value);
-        
+       
      
         this.setState({
                 [name]: value
