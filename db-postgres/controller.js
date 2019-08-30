@@ -69,7 +69,7 @@ const getAllPendingVipIssues = (callback) => {
   );
 };
 
-const getAllPendingIssuesByCategoryId = (categoryId, callback) => {
+const getAllPendingIssuesByCategoryId = (categoryId) => {
   const query = 'SELECT issues.id,issues.room_id, issues.category_id, categories.category,'
   + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued '
   + 'FROM issues '
