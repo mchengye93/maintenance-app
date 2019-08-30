@@ -66,14 +66,14 @@ app.get('/api/issues/vip/pending', (req, res) => {
   });
 });
 // Return all pending issues by category
-app.get('/api/issues/pending/category', (req, res) => {
-  console.log(req.query.categoryId);
-  issues.getAllPendingIssuesByCategoryId(req.query.categoryId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issues/pending/category', async (req, res) => {
+  const { categoryId } = req.query;
+  try {
+    const pendingIssues = await issues.getAllPendingIssuesByCategoryId(categoryId);
+    res.status(200).send(pendingIssues);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 // Get all received issues by category
