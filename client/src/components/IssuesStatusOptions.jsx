@@ -43,18 +43,6 @@ class IssueStatusOptions extends Component {
     }
 
     render() {
-        
-        // return (
-            
-              
-        //         <span> Status: <select name='status' value ={this.state.value} onChange={this.handleChangeStatus}>
-        //           <option value={0}>Pending</option>
-        //           <option value={1}>In Progress</option>
-        //           <option value={2}>Resolved</option>
-        //         </select>
-        //         </span>
-     
-        // );
 
         return(
           <Paper>
