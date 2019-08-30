@@ -96,9 +96,12 @@ class CreateIssueForm extends Component {
         console.log(value);
         
         if (name === 'categoryId') {
+            var t0 = performance.now();
             console.log('categoryId change!', value);
             this.handleUpdateSubcategories(value);
             this.setState({categoryId: value});
+            var t1 = performance.now();
+            console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
           
         } else {
             this.setState({
