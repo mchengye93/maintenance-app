@@ -4,13 +4,6 @@ const createIssue = (issue, callback) => {
   const query = `INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES  
   (${issue.roomId},${issue.categoryId}, ${issue.subcategoryId}, ${issue.dateIssued})`;
 
-  // connection.query(query, (err, result) => {
-  //   if (err) {
-  //     callback(err, null);
-  //   }
-  //   callback(null, result);
-  // });
-
   // use promises
   return new Promise((resolve, reject) => {
     connection.query(query, (err, res) => {
@@ -19,19 +12,18 @@ const createIssue = (issue, callback) => {
     });
   });
 };
-const getAllIssues = (callback) => {
-  connection.query(
-    'SELECT issues.room_id, issues.category_id, issues.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
-    + 'INNER JOIN categories ON issues.category_id= categories.id '
-    + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-    + 'ORDER BY date_issued, room_id ASC', (err, results) => {
-      if (err) {
-        callback(err, null);
-      }
+const getAllIssues = () => {
+  const query = 'SELECT issues.room_id, issues.category_id, issues.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
+  + 'INNER JOIN categories ON issues.category_id= categories.id '
+  + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+  + 'ORDER BY date_issued, room_id ASC';
 
-      callback(null, results.rows);
-    },
-  );
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results);
+    });
+  });
 };
 
 const getAllPendingIssues = (callback) => {

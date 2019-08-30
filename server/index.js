@@ -30,20 +30,20 @@ app.post('/api/issue', async (req, res) => {
   const issue = req.body;
   try {
     const rows = await issues.createIssue(issue);
-    res.status(200).send(rows);
+    res.status(201).send(rows);
   } catch (e) {
     res.status(404).send(e);
   }
 });
 
 // Get all issues
-app.get('/api/issues', (req, res) => {
-  issues.getAllIssues((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issues', async (req, res) => {
+  try {
+    const rows = await issues.getAllIssues();
+    res.status(200).send(rows);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 // Return all unsolved issues
