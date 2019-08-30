@@ -19,6 +19,7 @@ class TakeIssueForm extends Component {
         this.state = {
         open: false,
         contactId: 1,
+        contacts: []
 
         };
 
@@ -30,13 +31,13 @@ class TakeIssueForm extends Component {
     }
     componentDidMount() {
 
-        axios.get('/api/')
+        axios.get('/api/contacts/categoryId', {params: {categoryId: this.props.categoryId}})
         .then((response)=> {
-           
+           console.log(response.data.rows)
             this.setState({
-                subcategories: response.data
+                contacts: response.data.rows
              });
-             this.handleUpdateSubcategories(1);
+          
         });
                 
 
@@ -49,15 +50,15 @@ class TakeIssueForm extends Component {
         this.setState({open: false});
       }
     handleUpdateIssue() {
-       
+       console.log('Inside handleUpdateIssue', this.state);
         //Verify that all input has been defined
         let issue = {
             contactId: this.state.contactId,
             issueId: this.props.issueId
         }
-        axios.update('/api/issue/received', issue).then((response)=> {
+        axios.put('/api/issue/received', issue).then((response)=> {
             this.setState({open: false});
-            alert('Issue received!');
+           alert('Issue received!');
         }).catch((error)=> {
             alert('Error taking issue');
         })
@@ -88,14 +89,14 @@ class TakeIssueForm extends Component {
         
             return (
                 <div>
-                <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
+                <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
                   Take Issue
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-                  <DialogTitle id="form-dialog-title">Take Issue</DialogTitle>
+                  <DialogTitle id="form-dialog-title">Issue #{this.props.issueId}</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      Please pick person who will take over issue.
+                      Please pick person who will take over issue# {this.props.issueId}.
                     </DialogContentText>
                    
                     <form> 
@@ -104,7 +105,7 @@ class TakeIssueForm extends Component {
                         id="outlined-select-categories"
                         select
                         label="Contact"
-                        value={this.state.contacts[0].id}
+                        value={this.state.contactId}
                         onChange={this.handleInputChange}
                         helperText="Select a contact person"
                         margin="normal"
