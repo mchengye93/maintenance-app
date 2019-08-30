@@ -73,7 +73,6 @@ class App extends Component {
        
     }
     changeIssueStatus(status) {
-        console.log('App changeissue satus called!', status);
         if(status == 0) {
             axios.get('/api/issues/pending/category', {
                 params:{categoryId:this.state.categoryId}})
@@ -109,15 +108,16 @@ class App extends Component {
     render() {
     
         if (this.state.status == 0) {
-            console.log(this.state.categories);
             return (
                 <div id="app">
                 <AppBar color="primary" position="static">
-                    <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
+                <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
+                <CreateIssueForm categories={this.state.categories}/> 
                 </AppBar>
+                
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                <CreateIssueForm categories={this.state.categories}/> 
+                
                 <IssuedTable issues={this.state.pendingIssues} status={this.state.status}></IssuedTable>
                 </div>     
         );

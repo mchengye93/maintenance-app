@@ -119,7 +119,7 @@ class CreateIssueForm extends Component {
         
             return (
                 <div>
-                <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
+                <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
                   Create
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">

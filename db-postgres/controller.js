@@ -13,7 +13,7 @@ const createIssue = (issue) => {
   });
 };
 const getAllIssues = () => {
-  const query = 'SELECT issues.room_id, issues.category_id, issues.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
+  const query = 'SELECT issues.id,issues.room_id, issues.category_id, issues.category_id, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
   + 'INNER JOIN categories ON issues.category_id= categories.id '
   + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
   + 'ORDER BY date_issued, room_id ASC';
@@ -30,7 +30,7 @@ const getAllPendingIssues = (callback) => {
   let query = '';
 
   for (let i = 1; i <= 5; i += 1) {
-    query += '(SELECT issues.room_id, issues.category_id, categories.category,'
+    query += '(SELECT issues.id,issues.room_id, issues.category_id, categories.category,'
      + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued,'
       + 'issues.date_received FROM issues '
       + 'INNER JOIN categories ON issues.category_id= categories.id '
@@ -53,7 +53,7 @@ const getAllPendingIssues = (callback) => {
 
 const getAllPendingVipIssues = (callback) => {
   connection.query(
-    'SELECT rooms.id, rooms.vip, issues.category_id, categories.category, '
+    'SELECT issues.id,rooms.id, rooms.vip, issues.category_id, categories.category, '
     + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received '
     + 'FROM issues '
     + 'INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true '
@@ -70,7 +70,7 @@ const getAllPendingVipIssues = (callback) => {
 };
 
 const getAllPendingIssuesByCategoryId = (categoryId, callback) => {
-  const query = 'SELECT issues.room_id, issues.category_id, categories.category,'
+  const query = 'SELECT issues.id,issues.room_id, issues.category_id, categories.category,'
   + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued '
   + 'FROM issues '
   + 'INNER JOIN categories ON issues.category_id= categories.id '
@@ -88,7 +88,7 @@ const getAllPendingIssuesByCategoryId = (categoryId, callback) => {
 
 const getAllReceivedIssuesByCategory = (categoryId, callback) => {
   connection.query(
-    'SELECT issues.room_id, issues.category_id, categories.category, '
+    'SELECT issues.id, issues.room_id, issues.category_id, categories.category, '
 + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, issues.date_received '
 + 'FROM issues '
 + 'INNER JOIN categories ON issues.category_id= categories.id '
@@ -106,7 +106,7 @@ const getAllReceivedIssuesByCategory = (categoryId, callback) => {
 
 const getAllResolvedIssuesByCategory = (categoryId, callback) => {
   connection.query(
-    'SELECT issues.room_id, issues.category_id, categories.category, '
+    'SELECT issues.id,issues.room_id, issues.category_id, categories.category, '
 + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, '
 + 'issues.date_received, issues.cost, issues.date_resolved '
 + 'FROM issues '
@@ -293,6 +293,17 @@ const getAllContact = (callback) => {
   });
 };
 
+const getAllContactByCategoryId = (categoryId) => {
+  const query = `SELECT * FROM contacts WHERE category_id = ${categoryId}`;
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      return resolve(results);
+    });
+  });
+};
+
 const updateContact = (contact, callback) => {
   connection.query(`UPDATE contacts SET category_id = ${contact.categoryId}, name ='${contact.name}', phone='${contact.phone}', email = '${contact.email}' WHERE id = ${contact.id}`, (err, results) => {
     if (err) {
@@ -332,6 +343,7 @@ module.exports = {
   getAllCategoriesSubcategories,
   createContact,
   getAllContact,
+  getAllContactByCategoryId,
   updateContact,
   deleteContact,
   createCategory,

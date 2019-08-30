@@ -3,6 +3,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
+import TakeIssueForm from './TakeIssueForm.jsx';
 
 
 class IssueRowData extends Component {
@@ -22,13 +23,14 @@ class IssueRowData extends Component {
     render() {
        
         if(this.props.status == 0) {
+            console.log(this.props.issue);
             return (
                 <TableRow key={this.props.issue.id}>
                 <TableCell>{this.props.issue.room_id}</TableCell>
                 <TableCell>{this.props.issue.category}</TableCell>
                 <TableCell>{this.props.issue.subcategory}</TableCell>
                 <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                <TableCell><Button variant="contained" color='primary'>Take Issue</Button></TableCell>
+                <TableCell><TakeIssueForm issueId={this.props.issue.id} categoryId={this.props.issue.category_id} /></TableCell>
                 </TableRow>
                              
             );

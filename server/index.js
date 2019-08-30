@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 /* Issues API */
 
-// Create an issue
+// CREATE an issue
 app.post('/api/issue', async (req, res) => {
   const issue = req.body;
   try {
@@ -36,7 +36,7 @@ app.post('/api/issue', async (req, res) => {
   }
 });
 
-// Get all issues
+// GET all issues
 app.get('/api/issues', async (req, res) => {
   try {
     const rows = await issues.getAllIssues();
@@ -46,7 +46,7 @@ app.get('/api/issues', async (req, res) => {
   }
 });
 
-// Return all unsolved issues
+// GET all pending issues
 app.get('/api/issues/pending', (req, res) => {
   issues.getAllPendingIssues((err, data) => {
     if (err) {
@@ -56,7 +56,7 @@ app.get('/api/issues/pending', (req, res) => {
   });
 });
 
-// Return all unsolved issues for VIP rooms
+// GET all pending issues for VIP rooms
 app.get('/api/issues/vip/pending', (req, res) => {
   issues.getAllPendingVipIssues((err, data) => {
     if (err) {
@@ -65,7 +65,8 @@ app.get('/api/issues/vip/pending', (req, res) => {
     res.json(data);
   });
 });
-// Return all pending issues by category
+
+// GET all pending issues by category
 app.get('/api/issues/pending/category', async (req, res) => {
   const { categoryId } = req.query;
   try {
@@ -77,7 +78,7 @@ app.get('/api/issues/pending/category', async (req, res) => {
   }
 });
 
-// Get all received issues by category
+// GET all received issues by category
 app.get('/api/issues/received/category', (req, res) => {
   issues.getAllReceivedIssuesByCategory(req.query.categoryId, (err, data) => {
     if (err) {
@@ -98,7 +99,7 @@ app.get('/api/issues/resolved/category', (req, res) => {
 });
 
 
-// Return all pending issues by contact
+// GET all pending issues by contact
 app.get('/api/issues/contact', (req, res) => {
   issues.getAllReceivedIssuesByContact(req.body.contactId, (err, data) => {
     if (err) {
@@ -255,6 +256,15 @@ app.get('/api/contacts', (req, res) => {
   });
 });
 
+app.get('/api/contacts/categoryId', async (req, res) => {
+  const { categoryId } = req.query;
+  try {
+    const rows = await issues.getAllContactByCategoryId(categoryId);
+    res.status(200).send(rows);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
 app.put('/api/contacts', (req, res) => {
   issues.updateContact(req.body, (err, data) => {
     if (err) {
