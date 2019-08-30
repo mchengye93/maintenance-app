@@ -1,6 +1,6 @@
 const connection = require('./connection.js');
 /* Issues CRUD */
-const createIssue = (issue, callback) => {
+const createIssue = (issue) => {
   const query = `INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES  
   (${issue.roomId},${issue.categoryId}, ${issue.subcategoryId}, ${issue.dateIssued})`;
 
