@@ -20,7 +20,8 @@ class CreateIssueForm extends Component {
         categoryId: 1,
         subcategoryId: 0,
         subcategories: [],
-        subcategoriesByCategory: []
+        subcategoriesByCategory: [],
+        roomId: 1,
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -54,22 +55,32 @@ class CreateIssueForm extends Component {
 
     }
     handleClickOpen() {
-        
         this.setState({open: true});
       }
 
     handleClose() {
-       
         this.setState({open: false});
       }
     handleCreate() {
-        //create called!
-
-        this.setState({open: false});
+       
+        //Verify that all input has been defined
+        if(!(this.state.roomId > 0 && this.state.roomId <= 100)) {
+            alert('Please put in the correct Room Number!');
+        }
+        else {
+        
+            const issue = {
+                categoryId: this.state.categoryId,
+                subcategoryId: this.state.subcategoryId,
+                roomId: this.state.roomId,
+            }
+            axios.post('/api/issue', issue)
+            this.setState({open: false});
+        }
+      
     }
 
     handleUpdateSubcategories(categoryId) {
-        console.log('inside handle update subcategories!');
         //on categorychange update currentSubcategoryChoice 
         const subcategories = this.state.subcategories;
         let subcategoriesByCategory = [];
@@ -96,12 +107,10 @@ class CreateIssueForm extends Component {
         console.log(value);
         
         if (name === 'categoryId') {
-            var t0 = performance.now();
-            console.log('categoryId change!', value);
+    
             this.handleUpdateSubcategories(value);
             this.setState({categoryId: value});
-            var t1 = performance.now();
-            console.log("Call to doSomething took " + (t1 - t0) + " milliseconds.")
+  
           
         } else {
             this.setState({
@@ -112,10 +121,8 @@ class CreateIssueForm extends Component {
       }
 
     render() {
-        console.log(this.props.categories);
-        console.log(this.state);
+   
         
-       
             return (
                 <div>
                 <Button variant="outlined" color="primary" onClick={this.handleClickOpen}>
@@ -140,6 +147,7 @@ class CreateIssueForm extends Component {
                       margin="normal"
                       variant="outlined"
                       inputProps={{ min: "1", max: "100"}}
+                      value = {this.state.roomId}
                     />
                     <TextField
                         id="outlined-select-categories"
