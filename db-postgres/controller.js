@@ -276,7 +276,8 @@ const deleteSubcategory = (subcategoryId) => {
 const getAllCategoriesSubcategories = () => {
   const query = 'SELECT * FROM subcategories '
   + 'INNER JOIN categories '
-  + 'ON categories.id = subcategories.category_id';
+  + 'ON categories.id = subcategories.category_id '
+  + 'ORDER BY categories.category, subcategories.subcategory ASC';
 
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
