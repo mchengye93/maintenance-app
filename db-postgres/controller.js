@@ -264,12 +264,13 @@ const updateSubcategory = (subcategory) => {
 
 const deleteSubcategory = (subcategoryId, callback) => {
   const query = `DELETE FROM subcategories WHERE id = ${subcategoryId}`;
-  connection.query(query, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results.rows);
-  });
+  return new Promise((resolve,reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+    });
+  }
+ 
 };
 
 const getAllCategoriesSubcategories = (callback) => {
