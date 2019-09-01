@@ -252,12 +252,13 @@ const getAllSubcategoriesByCategoryId = (categoryId, callback) => {
   });
 };
 
-const updateSubcategory = (subcategory, callback) => {
-  connection.query(`UPDATE subcategories SET category_id= ${subcategory.categoryId}, subcategory= '${subcategory.subcategory}' WHERE id=${subcategory.subcategoryId}`, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results);
+const updateSubcategory = (subcategory) => {
+  const query = `UPDATE subcategories SET category_id= ${subcategory.categoryId}, subcategory= '${subcategory.subcategory}' WHERE id=${subcategory.subcategoryId}`;
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results);
+    });
   });
 };
 
