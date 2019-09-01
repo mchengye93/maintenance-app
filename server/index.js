@@ -259,13 +259,13 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
-app.get('/api/contacts', (req, res) => {
-  issues.getAllContact((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/contacts', async (req, res) => {
+  try {
+    const contacts = await issues.getAllContact();
+    res.status(200).send(contacts);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.get('/api/contacts/categoryId', async (req, res) => {
