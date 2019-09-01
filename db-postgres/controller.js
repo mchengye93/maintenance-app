@@ -173,11 +173,13 @@ const updateReceivedIssue = (issue) => {
 };
 
 const deleteIssue = (issueId, callback) => {
-  connection.query(`DELETE FROM issues WHERE id = ${issueId}`, (err, result) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, result);
+  const query = `DELETE FROM issues WHERE id = ${issueId}`;
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
   });
 };
 
