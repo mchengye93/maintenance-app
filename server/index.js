@@ -124,6 +124,17 @@ app.get('/api/issue', async (req, res) => {
   }
 });
 
+// UPDATE issue
+app.put('/api/issue/', async (req, res) => {
+  const issue = req.body;
+  try {
+    const updateIssue = await issues.updateIssue(issue);
+    res.status(200).send(updateIssue);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 // Update issue received
 app.put('/api/issue/received', async (req, res) => {
   const issue = req.body;
