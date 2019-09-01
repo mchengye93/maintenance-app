@@ -288,8 +288,7 @@ const getAllCategoriesSubcategories = () => {
 };
 /* CRUD contacts */
 const createContact = (contact) => {
-  const query = `INSERT INTO contacts (category_id, name, phone, email) ${
-    +` VALUES (${contact.categoryId}, '${contact.name}', '${contact.phone}', '${contact.email}')`}`;
+  const query = `INSERT INTO contacts (category_id, name, phone, email) VALUES (${contact.categoryId}, '${contact.name}', '${contact.phone}', '${contact.email}')`;
 
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
