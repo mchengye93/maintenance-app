@@ -172,7 +172,7 @@ const updateReceivedIssue = (issue) => {
   });
 };
 
-const deleteIssue = (issueId, callback) => {
+const deleteIssue = (issueId) => {
   const query = `DELETE FROM issues WHERE id = ${issueId}`;
 
   return new Promise((resolve, reject) => {

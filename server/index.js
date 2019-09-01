@@ -136,13 +136,14 @@ app.put('/api/issue/received', async (req, res) => {
 });
 
 // Delete specific issue
-app.delete('/api/issue/', (req, res) => {
-  issues.deleteIssue(req.body.issueId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.delete('/api/issue/', async (req, res) => {
+  const { issueId } = req.body;
+  try {
+    const issueDelete = await issues.deleteIssue(issueId);
+    res.status(200).send(issueDelete);
+  } catch (e) {
+    res.status(500).send(e);
+  }
 });
 
 /* Categories API */
