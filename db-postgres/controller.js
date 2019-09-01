@@ -150,12 +150,12 @@ const getIssue = (issueId) => {
   + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
   + 'WHERE issues.id ='}${issueId}`;
 
-  return new Promise((resolve,reject) => {
+  return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
       resolve(results.rows);
+    });
   });
-  
 };
 
 const updateReceivedIssue = (issue, callback) => {
