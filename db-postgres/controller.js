@@ -1,10 +1,10 @@
 const connection = require('./connection.js');
+
 /* Issues CRUD */
 const createIssue = (issue) => {
   const query = `INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES  
   (${issue.roomId},${issue.categoryId}, ${issue.subcategoryId}, CURRENT_TIMESTAMP)`;
 
-  // use promises
   return new Promise((resolve, reject) => {
     connection.query(query, (err, res) => {
       if (err) return reject(err);
@@ -183,7 +183,7 @@ const deleteIssue = (issueId) => {
   });
 };
 
-/* CRUD categories */
+/* Categories  CRUD */
 const getAllCategories = () => {
   const query = 'SELECT * FROM categories ORDER by category ASC';
   return new Promise((resolve, reject) => {
