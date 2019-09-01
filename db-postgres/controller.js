@@ -184,12 +184,13 @@ const deleteIssue = (issueId) => {
 };
 
 /* CRUD categories */
-const getAllCategories = (callback) => {
-  connection.query('SELECT * FROM categories ORDER by category ASC', (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results.rows);
+const getAllCategories = () => {
+  const query = 'SELECT * FROM categories ORDER by category ASC';
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+    });
   });
 };
 
