@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
-/*CRUD API for Issues */
+/* CRUD API for Issues */
 
 // CREATE an issue
 app.post('/api/issue', async (req, res) => {
@@ -157,7 +157,7 @@ app.get('/api/categories', async (req, res) => {
   }
 });
 
-app.post('/api/categories', async (req, res) => {
+app.post('/api/category', async (req, res) => {
   const { category } = req.body;
   try {
     const createCategory = await issues.createCategory(category);
@@ -167,7 +167,7 @@ app.post('/api/categories', async (req, res) => {
   }
 });
 
-app.put('/api/categories', async (req, res) => {
+app.put('/api/category', async (req, res) => {
   const { categoryId } = req.body;
   const { category } = req.body;
   try {
@@ -178,7 +178,7 @@ app.put('/api/categories', async (req, res) => {
   }
 });
 
-app.delete('/api/categories', async (req, res) => {
+app.delete('/api/category', async (req, res) => {
   const { categoryId } = req.body;
   try {
     const deleteCategory = await issues.deleteCategory(categoryId);
