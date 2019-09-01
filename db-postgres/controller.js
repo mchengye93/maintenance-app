@@ -51,22 +51,22 @@ const getAllPendingIssues = () => {
   });
 };
 
-const getAllPendingVipIssues = (callback) => {
-  connection.query(
-    'SELECT issues.id,rooms.id, rooms.vip, issues.category_id, categories.category, '
-    + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received '
-    + 'FROM issues '
-    + 'INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true '
-    + 'INNER JOIN categories ON issues.category_id= categories.id '
-    + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-    + 'WHERE issues.date_resolved IS NULL AND issues.date_received IS NULL '
-    + 'ORDER BY date_issued, rooms.id ASC', (err, results) => {
-      if (err) {
-        callback(err, null);
-      }
-      callback(null, results.rows);
-    },
-  );
+const getAllPendingVipIssues = () => {
+  const query = 'SELECT issues.id,rooms.id, rooms.vip, issues.category_id, categories.category, '
+  + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.date_received '
+  + 'FROM issues '
+  + 'INNER JOIN rooms ON rooms.id = issues.room_id AND rooms.vip = true '
+  + 'INNER JOIN categories ON issues.category_id= categories.id '
+  + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+  + 'WHERE issues.date_resolved IS NULL AND issues.date_received IS NULL '
+  + 'ORDER BY date_issued, rooms.id ASC';
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+    });
+  });
 };
 
 const getAllPendingIssuesByCategoryId = (categoryId) => {

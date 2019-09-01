@@ -57,13 +57,13 @@ app.get('/api/issues/pending', async (req, res) => {
 });
 
 // GET all pending issues for VIP rooms
-app.get('/api/issues/vip/pending', (req, res) => {
-  issues.getAllPendingVipIssues((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issues/vip/pending', async (req, res) => {
+  try {
+    const vipPendingIssues = await issues.getAllPendingVipIssues();
+    res.status(200).send(vipPendingIssues);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 // GET all pending issues by category
@@ -104,7 +104,6 @@ app.get('/api/issues/resolved/category', async (req, res) => {
 // GET all pending issues by contact
 app.get('/api/issues/contact', async (req, res) => {
   const { contactId } = req.query;
-  console.log(contactId);
   try {
     const receivedIssuesByContactId = await issues.getAllReceivedIssuesByContact(contactId);
     res.status(200).send(receivedIssuesByContactId);
