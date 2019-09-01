@@ -243,12 +243,13 @@ const getAllSubcategories = () => {
     });
   });
 };
-const getAllSubcategoriesByCategoryId = (categoryId, callback) => {
-  connection.query(`SELECT * FROM subcategories WHERE category_id = ${categoryId} ORDER BY subcategory ASC`, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results.rows);
+const getAllSubcategoriesByCategoryId = (categoryId) => {
+  const query = `SELECT * FROM subcategories WHERE category_id = ${categoryId} ORDER BY subcategory ASC`;
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+    });
   });
 };
 
@@ -267,7 +268,7 @@ const deleteSubcategory = (subcategoryId) => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      resolve(results.rows);
+      resolve(results);
     });
   });
 };
