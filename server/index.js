@@ -187,13 +187,16 @@ app.delete('/api/categories', async (req, res) => {
     res.status(400).send(e);
   }
 });
-app.post('/api/subcategories', (req, res) => {
-  issues.createSubcategory(req.body.categoryId, req.body.subcategory, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.post('/api/subcategories', async (req, res) => {
+  const { categoryId } = req.body;
+  const { subcategory } = req.body;
+
+  try {
+    const createSubcategory = await issues.createSubcategory(categoryId, subcategory);
+    res.status(201).send(createSubcategory);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.put('/api/subcategories', (req, res) => {
