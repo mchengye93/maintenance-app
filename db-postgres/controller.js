@@ -144,19 +144,18 @@ const getAllReceivedIssuesByContact = (contactId) => {
     });
   });
 };
-const getIssue = (issueId, callback) => {
-  connection.query(
-    `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
-    + 'INNER JOIN categories ON issues.category_id= categories.id '
-    + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-    + 'WHERE issues.id ='}${issueId}`,
-    (err, results) => {
-      if (err) {
-        callback(err, null);
-      }
-      callback(null, results.rows);
-    },
-  );
+const getIssue = (issueId) => {
+  const query = `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
+  + 'INNER JOIN categories ON issues.category_id= categories.id '
+  + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+  + 'WHERE issues.id ='}${issueId}`;
+
+  return new Promise((resolve,reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+  });
+  
 };
 
 const updateReceivedIssue = (issue, callback) => {
