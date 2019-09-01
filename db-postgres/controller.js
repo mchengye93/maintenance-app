@@ -205,7 +205,7 @@ const createCategory = (category) => {
 };
 
 const updateCategory = (categoryId, category) => {
-  const query = `UPDATE categories SET category = ${category} WHERE id = ${categoryId}`;
+  const query = `UPDATE categories SET category = '${category}' WHERE id = ${categoryId}`;
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
