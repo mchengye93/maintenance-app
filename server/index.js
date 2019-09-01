@@ -218,13 +218,14 @@ app.get('/api/subcategories', async (req, res) => {
   }
 });
 
-app.get('/api/subcategories/categoryId', (req, res) => {
-  issues.getAllSubcategoriesByCategoryId(req.query.categoryId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/subcategories/categoryId', async (req, res) => {
+  const { categoryId } = req.query;
+  try {
+    const issuesByCategoryId = await issues.getAllSubcategoriesByCategoryId(categoryId);
+    res.status(200).send(issuesByCategoryId);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.delete('/api/subcategory', async (req, res) => {
