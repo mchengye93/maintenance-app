@@ -249,13 +249,14 @@ app.get('/api/categoriessubcategories', async (req, res) => {
 
 /* CRUD API for contacts */
 
-app.post('/api/contacts', (req, res) => {
-  issues.createContact(req.body, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.post('/api/contacts', async (req, res) => {
+  const contact = req.body;
+  try {
+    const createContact = await issues.createContact(contact);
+    res.status(201).send(createContact);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.get('/api/contacts', (req, res) => {
