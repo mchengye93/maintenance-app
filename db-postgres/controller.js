@@ -195,7 +195,7 @@ const getAllCategories = () => {
 };
 
 const createCategory = (category) => {
-  const query = `INSERT INTO categories (category) VALUES (${category})`;
+  const query = `INSERT INTO categories (category) VALUES ('${category}')`;
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
