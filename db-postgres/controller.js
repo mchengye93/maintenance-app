@@ -160,8 +160,9 @@ const getIssue = (issueId) => {
   });
 };
 const updateIssue = (issue) => {
-  const query = `UPDATE issues SET category_id=${issue.categoryId}, room_id = ${issue.roomId} `
-  + ` description = ${issue.description}, date_issued = CURRENT_TIMESTAMP WHERE id = ${issue.issueId}`;
+  const query = `UPDATE issues SET category_id=${issue.categoryId}, room_id = ${issue.roomId}, `
+  + ` subcategory_id = ${issue.subcategoryId}, description = '${issue.description}', date_issued = CURRENT_TIMESTAMP `
+  + ` WHERE id = ${issue.issueId}`;
 
   return new Promise((resolve, reject) => {
     connection.query(query, (err, result) => {
