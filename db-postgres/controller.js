@@ -159,6 +159,17 @@ const getIssue = (issueId) => {
     });
   });
 };
+const updateIssue = (issue) => {
+  const query = `UPDATE issues SET category_id=${issue.categoryId}, room_id = ${issue.roomId} `
+  + ` description = ${issue.description}, date_issued = CURRENT_TIMESTAMP WHERE id = ${issue.issueId}`;
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+};
 
 const updateReceivedIssue = (issue) => {
   const query = `UPDATE issues SET contact_id=${issue.contactId}, date_received=CURRENT_TIMESTAMP `
