@@ -297,15 +297,17 @@ const createContact = (contact) => {
     });
   });
 };
-const getAllContact = (callback) => {
-  connection.query('SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, '
-+ 'contacts.phone, contacts.email FROM contacts '
-+ 'INNER JOIN categories ON contacts.category_id = categories.id '
-+ 'ORDER BY categories.category,contacts.name ASC', (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results.rows);
+const getAllContact = () => {
+  const query = 'SELECT  contacts.id, contacts.category_id, categories.category, contacts.name, '
+  + 'contacts.phone, contacts.email FROM contacts '
+  + 'INNER JOIN categories ON contacts.category_id = categories.id '
+  + 'ORDER BY categories.category,contacts.name ASC';
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+    });
   });
 };
 

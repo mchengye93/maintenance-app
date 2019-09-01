@@ -255,7 +255,6 @@ app.post('/api/contact', async (req, res) => {
     const createContact = await issues.createContact(contact);
     res.status(201).send(createContact);
   } catch (e) {
-    console.log(e);
     res.status(400).send(e);
   }
 });
