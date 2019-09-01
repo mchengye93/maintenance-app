@@ -113,7 +113,7 @@ app.get('/api/issues/contact', async (req, res) => {
 });
 
 
-// Return specific issues
+// Return specific issuesId
 app.get('/api/issue', async (req, res) => {
   const { issueId } = req.query;
   try {
