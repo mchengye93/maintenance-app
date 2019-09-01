@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 
 
 app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
-/* Issues API */
+/*CRUD API for Issues */
 
 // CREATE an issue
 app.post('/api/issue', async (req, res) => {
@@ -147,7 +147,7 @@ app.delete('/api/issue/', async (req, res) => {
   }
 });
 
-/* Categories API */
+/* CRUD API for Categories */
 app.get('/api/categories', async (req, res) => {
   try {
     const categories = await issues.getAllCategories();
@@ -248,7 +248,6 @@ app.get('/api/categoriessubcategories', async (req, res) => {
 });
 
 /* CRUD API for contacts */
-
 app.post('/api/contact', async (req, res) => {
   const contact = req.body;
   try {
@@ -287,7 +286,7 @@ app.put('/api/contact', async (req, res) => {
   }
 });
 
-app.delete('/api/contacts', async (req, res) => {
+app.delete('/api/contact', async (req, res) => {
   const { contactId } = req.body;
   try {
     const deleteContact = await issues.deleteContact(contactId);
