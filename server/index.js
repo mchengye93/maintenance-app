@@ -199,13 +199,14 @@ app.post('/api/subcategories', async (req, res) => {
   }
 });
 
-app.put('/api/subcategories', (req, res) => {
-  issues.updateSubcategory(req.body, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.put('/api/subcategories', async (req, res) => {
+  const subcategory = req.body;
+  try {
+    const updateSubcategory = await issues.updateSubcategory(subcategory);
+    res.status(200).send(updateSubcategory);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.get('/api/subcategories', async (req, res) => {
