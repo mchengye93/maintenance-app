@@ -287,13 +287,14 @@ app.put('/api/contact', async (req, res) => {
   }
 });
 
-app.delete('/api/contacts', (req, res) => {
-  issues.deleteContact(req.body.contactId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.delete('/api/contacts', async (req, res) => {
+  const { contactId } = req.body;
+  try {
+    const deleteContact = await issues.deleteContact(contactId);
+    res.status(200).send(deleteContact);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 
