@@ -273,17 +273,17 @@ const deleteSubcategory = (subcategoryId) => {
   });
 };
 
-const getAllCategoriesSubcategories = (callback) => {
-  connection.query(
-    'SELECT * FROM subcategories '
-        + 'INNER JOIN categories '
-        + 'ON categories.id = subcategories.category_id', (err, results) => {
-      if (err) {
-        callback(err, null);
-      }
-      callback(null, results.rows);
-    },
-  );
+const getAllCategoriesSubcategories = () => {
+  const query = 'SELECT * FROM subcategories '
+  + 'INNER JOIN categories '
+  + 'ON categories.id = subcategories.category_id';
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+    });
+  });
 };
 /* CRUD contacts */
 const createContact = (contact, callback) => {
