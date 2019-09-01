@@ -187,7 +187,7 @@ app.delete('/api/categories', async (req, res) => {
     res.status(400).send(e);
   }
 });
-app.post('/api/subcategories', async (req, res) => {
+app.post('/api/subcategory', async (req, res) => {
   const { categoryId } = req.body;
   const { subcategory } = req.body;
 
@@ -199,7 +199,7 @@ app.post('/api/subcategories', async (req, res) => {
   }
 });
 
-app.put('/api/subcategories', async (req, res) => {
+app.put('/api/subcategory', async (req, res) => {
   const subcategory = req.body;
   try {
     const updateSubcategory = await issues.updateSubcategory(subcategory);
