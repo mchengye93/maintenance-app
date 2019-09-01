@@ -145,7 +145,9 @@ const getAllReceivedIssuesByContact = (contactId) => {
   });
 };
 const getIssue = (issueId) => {
-  const query = `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.subcategory_id, subcategories.subcategory ,issues.date_issued FROM issues '
+  const query = `${'SELECT issues.id, issues.room_id, issues.category_id, categories.category, '
+  + 'issues.subcategory_id, subcategories.subcategory ,issues.description, issues.cost, '
+  + 'issues.date_issued FROM issues '
   + 'INNER JOIN categories ON issues.category_id= categories.id '
   + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
   + 'WHERE issues.id ='}${issueId}`;
