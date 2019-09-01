@@ -90,13 +90,14 @@ app.get('/api/issues/received/category', async (req, res) => {
 });
 
 // GET all resolved issues by category
-app.get('/api/issues/resolved/category', (req, res) => {
-  issues.getAllResolvedIssuesByCategory(req.query.categoryId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issues/resolved/category', async (req, res) => {
+  const { categoryId } = req.query;
+  try {
+    const receivedIssues = await issues.getAllResolvedIssuesByCategory(categoryId);
+    res.status(200).send(receivedIssues);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 
