@@ -159,7 +159,6 @@ app.get('/api/categories', async (req, res) => {
 
 app.post('/api/categories', async (req, res) => {
   const { category } = req.body;
-  console.log(req.body.category);
   try {
     const createCategory = await issues.createCategory(category);
     res.status(201).send(createCategory);
