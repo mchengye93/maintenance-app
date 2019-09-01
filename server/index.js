@@ -277,13 +277,14 @@ app.get('/api/contacts/categoryId', async (req, res) => {
     res.status(400).send(e);
   }
 });
-app.put('/api/contacts', (req, res) => {
-  issues.updateContact(req.body, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.put('/api/contacts', async (req, res) => {
+  const contact = req.body;
+  try {
+    const updateIssue = await issues.updateContact(contact);
+    res.status(200).send(updateIssue);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.delete('/api/contacts', (req, res) => {
