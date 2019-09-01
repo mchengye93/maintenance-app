@@ -323,11 +323,14 @@ const getAllContactByCategoryId = (categoryId) => {
 };
 
 const updateContact = (contact, callback) => {
-  connection.query(`UPDATE contacts SET category_id = ${contact.categoryId}, name ='${contact.name}', phone='${contact.phone}', email = '${contact.email}' WHERE id = ${contact.id}`, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results);
+  const query = `UPDATE contacts SET category_id = ${contact.categoryId}, name ='${contact.name}', `
+  + ` phone='${contact.phone}', email = '${contact.email}' WHERE id = ${contact.id}`;
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results);
+    });
   });
 };
 
