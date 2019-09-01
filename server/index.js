@@ -178,15 +178,14 @@ app.put('/api/categories', async (req, res) => {
   }
 });
 
-app.delete('/api/categories', (req, res) => {
-  issues.deleteCategory(req.body.categoryId, (err, data) => {
-    if (err) {
-      res.status(500);
-      res.send(err);
-    }
-    res.status(200);
-    res.send(data);
-  });
+app.delete('/api/categories', async (req, res) => {
+  const { categoryId } = req.body;
+  try {
+    const deleteCategory = await issues.deleteCategory(categoryId);
+    res.send(200).send(deleteCategory);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 app.post('/api/subcategories', (req, res) => {
   issues.createSubcategory(req.body.categoryId, req.body.subcategory, (err, data) => {

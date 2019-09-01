@@ -214,7 +214,7 @@ const updateCategory = (categoryId, category) => {
   });
 };
 
-const deleteCategory = (categoryId, callback) => {
+const deleteCategory = (categoryId) => {
   const query = `DELETE FROM categories WHERE id = ${categoryId}`;
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
