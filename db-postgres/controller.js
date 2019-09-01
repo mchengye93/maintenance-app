@@ -324,7 +324,7 @@ const getAllContactByCategoryId = (categoryId) => {
 
 const updateContact = (contact) => {
   const query = `UPDATE contacts SET category_id = ${contact.categoryId}, name ='${contact.name}', `
-  + ` phone='${contact.phone}', email = '${contact.email}' WHERE id = ${contact.id}`;
+  + ` phone='${contact.phone}', email = '${contact.email}' WHERE id = ${contact.contactId}`;
 
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
