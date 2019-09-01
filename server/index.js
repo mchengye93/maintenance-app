@@ -227,7 +227,7 @@ app.get('/api/subcategories/categoryId', (req, res) => {
   });
 });
 
-app.delete('/api/subcategories', (req, res) => {
+app.delete('/api/subcategory', (req, res) => {
   issues.deleteSubcategory(req.body.subcategoryId, (err, data) => {
     if (err) {
       res.sendStatus(500);
