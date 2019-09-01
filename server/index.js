@@ -54,12 +54,6 @@ app.get('/api/issues/pending', async (req, res) => {
   } catch (e) {
     res.status(400).send(e);
   }
-  // issues.getAllPendingIssues((err, data) => {
-  //   if (err) {
-  //     res.sendStatus(500);
-  //   }
-  //   res.json(data);
-  // });
 });
 
 // GET all pending issues for VIP rooms
@@ -77,7 +71,7 @@ app.get('/api/issues/pending/category', async (req, res) => {
   const { categoryId } = req.query;
   try {
     const pendingIssues = await issues.getAllPendingIssuesByCategoryId(categoryId);
-    console.log(pendingIssues);
+
     res.status(200).send(pendingIssues.rows);
   } catch (e) {
     res.status(400).send(e);
@@ -85,13 +79,14 @@ app.get('/api/issues/pending/category', async (req, res) => {
 });
 
 // GET all received issues by category
-app.get('/api/issues/received/category', (req, res) => {
-  issues.getAllReceivedIssuesByCategory(req.query.categoryId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issues/received/category', async (req, res) => {
+  const { categoryId } = req.query;
+  try {
+    const receviedIssues = await issues.getAllReceivedIssuesByCategory(categoryId);
+    res.status(200).send(receviedIssues);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 // GET all resolved issues by category
