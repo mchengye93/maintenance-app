@@ -287,12 +287,15 @@ const getAllCategoriesSubcategories = () => {
   });
 };
 /* CRUD contacts */
-const createContact = (contact, callback) => {
-  connection.query(`INSERT INTO contacts (category_id, name, phone, email) VALUES (${contact.categoryId}, '${contact.name}', '${contact.phone}', '${contact.email}')`, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results);
+const createContact = (contact) => {
+  const query = `INSERT INTO contacts (category_id, name, phone, email) ${
+    +` VALUES (${contact.categoryId}, '${contact.name}', '${contact.phone}', '${contact.email}')`}`;
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results);
+    });
   });
 };
 const getAllContact = (callback) => {
