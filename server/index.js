@@ -227,13 +227,14 @@ app.get('/api/subcategories/categoryId', (req, res) => {
   });
 });
 
-app.delete('/api/subcategory', (req, res) => {
-  issues.deleteSubcategory(req.body.subcategoryId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.delete('/api/subcategory', async (req, res) => {
+  const { subcategoryId } = req.body;
+  try {
+    const deleteSubcategory = await issues.deleteSubcategory(subcategoryId);
+    res.status(200).send(deleteSubcategory);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.get('/api/categoriessubcategories', (req, res) => {

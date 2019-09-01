@@ -262,7 +262,7 @@ const updateSubcategory = (subcategory) => {
   });
 };
 
-const deleteSubcategory = (subcategoryId, callback) => {
+const deleteSubcategory = (subcategoryId) => {
   const query = `DELETE FROM subcategories WHERE id = ${subcategoryId}`;
   return new Promise((resolve,reject) => {
     connection.query(query, (err, results) => {
