@@ -21,7 +21,7 @@ const getAllIssues = () => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      return resolve(results);
+      resolve(results);
     });
   });
 };
@@ -46,7 +46,7 @@ const getAllPendingIssues = () => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      return resolve(results.rows);
+      resolve(results.rows);
     });
   });
 };
@@ -81,7 +81,7 @@ const getAllPendingIssuesByCategoryId = (categoryId) => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      return resolve(results);
+      resolve(results);
     });
   });
 };
@@ -99,7 +99,7 @@ const getAllReceivedIssuesByCategory = (categoryId) => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      return resolve(results.rows);
+      resolve(results.rows);
     });
   });
 };
@@ -118,29 +118,31 @@ const getAllResolvedIssuesByCategory = (categoryId) => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      return resolve(results.rows);
+      resolve(results.rows);
     });
   });
 };
 
 
-const getAllReceivedIssuesByContact = (contactId, callback) => {
-  connection.query(
-    'SELECT issues.room_id, issues.category_id, categories.category, '
-+ 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, issues.date_received '
-+ 'FROM issues '
-+ 'INNER JOIN categories ON issues.category_id= categories.id '
-+ 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
-+ 'INNER JOIN contacts ON issues.contact_id = contacts.id '
-+ 'WHERE date_received IS NOT NULL AND date_resolved IS NULL '
-+ `AND contact_id = ${contactId} `
-+ 'ORDER BY date_issued ASC', (err, results) => {
+const getAllReceivedIssuesByContact = (contactId) => {
+  const query = 'SELECT issues.room_id, issues.category_id, categories.category, '
+  + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, issues.date_received '
+  + 'FROM issues '
+  + 'INNER JOIN categories ON issues.category_id= categories.id '
+  + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+  + 'INNER JOIN contacts ON issues.contact_id = contacts.id '
+  + 'WHERE date_received IS NOT NULL AND date_resolved IS NULL '
+  + `AND contact_id = ${contactId} `
+  + 'ORDER BY date_issued ASC';
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
       if (err) {
-        callback(err, null);
+        return reject(err);
       }
-      callback(null, results);
-    },
-  );
+      resolve(results.rows);
+    });
+  });
 };
 const getIssue = (issueId, callback) => {
   connection.query(

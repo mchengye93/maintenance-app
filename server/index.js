@@ -102,13 +102,15 @@ app.get('/api/issues/resolved/category', async (req, res) => {
 
 
 // GET all pending issues by contact
-app.get('/api/issues/contact', (req, res) => {
-  issues.getAllReceivedIssuesByContact(req.body.contactId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issues/contact', async (req, res) => {
+  const { contactId } = req.query;
+  console.log(contactId);
+  try {
+    const receivedIssuesByContactId = await issues.getAllReceivedIssuesByContact(contactId);
+    res.status(200).send(receivedIssuesByContactId);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 
