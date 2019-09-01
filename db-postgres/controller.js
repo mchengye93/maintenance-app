@@ -215,11 +215,12 @@ const updateCategory = (categoryId, category) => {
 };
 
 const deleteCategory = (categoryId, callback) => {
-  connection.query(`DELETE FROM categories WHERE id = ${categoryId}`, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results);
+  const query = `DELETE FROM categories WHERE id = ${categoryId}`;
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results);
+    });
   });
 };
 
