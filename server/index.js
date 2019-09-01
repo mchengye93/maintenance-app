@@ -238,13 +238,13 @@ app.delete('/api/subcategory', async (req, res) => {
   }
 });
 
-app.get('/api/categoriessubcategories', (req, res) => {
-  issues.getAllCategoriesSubcategories((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/categoriessubcategories', async (req, res) => {
+  try {
+    const categoriesSubcategories = await issues.getAllCategoriesSubcategories();
+    res.status(200).send(categoriesSubcategories);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 /* CRUD API for contacts */
