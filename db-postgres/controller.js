@@ -158,16 +158,16 @@ const getIssue = (issueId) => {
   });
 };
 
-const updateReceivedIssue = (issue, callback) => {
-  connection.query(
-    `UPDATE issues SET contact_id=${issue.contactId}, date_received=CURRENT_TIMESTAMP `
-    + `WHERE id = ${issue.issueId}`, (err, result) => {
-      if (err) {
-        callback(err, null);
-      }
-      callback(null, result);
-    },
-  );
+const updateReceivedIssue = (issue) => {
+  const query = `UPDATE issues SET contact_id=${issue.contactId}, date_received=CURRENT_TIMESTAMP `
+  + `WHERE id = ${issue.issueId}`;
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
 };
 
 const deleteIssue = (issueId, callback) => {
