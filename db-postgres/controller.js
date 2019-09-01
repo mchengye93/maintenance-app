@@ -204,7 +204,7 @@ const createCategory = (category) => {
   });
 };
 
-const updateCategory = (categoryId, category, callback) => {
+const updateCategory = (categoryId, category) => {
   connection.query(`UPDATE categories SET category = ${category} WHERE id = ${categoryId}`, (err, results) => {
     if (err) {
       callback(err, null);
