@@ -283,7 +283,6 @@ app.put('/api/contact', async (req, res) => {
     const updateIssue = await issues.updateContact(contact);
     res.status(200).send(updateIssue);
   } catch (e) {
-    console.log(e);
     res.status(400).send(e);
   }
 });

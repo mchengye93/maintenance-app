@@ -334,12 +334,13 @@ const updateContact = (contact) => {
   });
 };
 
-const deleteContact = (contactId, callback) => {
-  connection.query(`DELETE FROM contacts WHERE id = ${contactId}`, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results);
+const deleteContact = (contactId) => {
+  const query = `DELETE FROM contacts WHERE id = ${contactId}`;
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
   });
 };
 
