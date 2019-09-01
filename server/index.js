@@ -148,13 +148,13 @@ app.delete('/api/issue/', async (req, res) => {
 });
 
 /* Categories API */
-app.get('/api/categories', (req, res) => {
-  issues.getAllCategories((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/categories', async (req, res) => {
+  try {
+    const categories = await issues.getAllCategories();
+    res.status(200).send(categories);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.post('/api/categories', (req, res) => {
