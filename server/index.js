@@ -114,13 +114,14 @@ app.get('/api/issues/contact', async (req, res) => {
 
 
 // Return specific issues
-app.get('/api/issue', (req, res) => {
-  issues.getIssue(req.body.issueId, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issue', async (req, res) => {
+  const { issueId } = req.query;
+  try {
+    const issue = await issues.getIssue(issueId);
+    res.status(200).send(issue);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 // Update issue received
