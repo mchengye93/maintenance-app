@@ -225,13 +225,13 @@ const deleteCategory = (categoryId) => {
 };
 
 /* CRUD subcategories */
-const createSubcategory = (categoryId, subcategory, callback) => {
+const createSubcategory = (categoryId, subcategory) => {
   const query = `INSERT INTO subcategories (category_id, subcategory) VALUES (${categoryId}, '${subcategory}')`;
-  connection.query(query, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results);
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
   });
 };
 const getAllSubcategories = () => {
