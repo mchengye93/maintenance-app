@@ -1,13 +1,15 @@
+/* eslint-disable */
 import React, {Component} from 'react';
 import axios from 'axios';
+
+
+import AppBar from '@material-ui/core/AppBar';
 
 import CategorySearch from './CategorySearch.jsx';
 import IssuedTable from './IssuedTable.jsx';
 import InProgressTable from './InProgressTable.jsx';
 import ResolvedTable from './ResolvedTable.jsx';
 import IssuesStatusOptions from './IssuesStatusOptions.jsx';
-
-import AppBar from '@material-ui/core/AppBar';
 import CreateIssueForm from './CreateIssueForm.jsx';
 
 

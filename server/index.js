@@ -47,13 +47,19 @@ app.get('/api/issues', async (req, res) => {
 });
 
 // GET all pending issues
-app.get('/api/issues/pending', (req, res) => {
-  issues.getAllPendingIssues((err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.get('/api/issues/pending', async (req, res) => {
+  try {
+    const pendingIssues = await issues.getAllPendingIssues();
+    res.status(200).send(pendingIssues);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+  // issues.getAllPendingIssues((err, data) => {
+  //   if (err) {
+  //     res.sendStatus(500);
+  //   }
+  //   res.json(data);
+  // });
 });
 
 // GET all pending issues for VIP rooms

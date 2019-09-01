@@ -43,11 +43,11 @@ const getAllPendingIssues = (callback) => {
   }
 
 
-  connection.query(query, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results.rows);
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      return resolve(results.rows);
+    });
   });
 };
 

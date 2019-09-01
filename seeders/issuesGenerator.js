@@ -1,3 +1,4 @@
+/* eslint-disable prefer-destructuring */
 const faker = require('faker');
 const fs = require('fs');
 
