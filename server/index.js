@@ -125,13 +125,14 @@ app.get('/api/issue', async (req, res) => {
 });
 
 // Update issue received
-app.put('/api/issue/received', (req, res) => {
-  issues.updateReceivedIssue(req.body, (err, data) => {
-    if (err) {
-      res.sendStatus(500);
-    }
-    res.json(data);
-  });
+app.put('/api/issue/received', async (req, res) => {
+  const issue = req.body;
+  try {
+    const issueUpdate = await issues.updateReceivedIssue(issue);
+    res.status(200).send(issueUpdate);
+  } catch (e) {
+    res.status(500).send(e);
+  }
 });
 
 // Delete specific issue
