@@ -136,8 +136,8 @@ app.put('/api/issue/received', async (req, res) => {
 });
 
 // Delete specific issue
-app.delete('/api/issue/', async (req, res) => {
-  const { issueId } = req.query;
+app.delete('/api/issue', async (req, res) => {
+  const { issueId } = req.body;
 
   try {
     const issueDelete = await issues.deleteIssue(issueId);
