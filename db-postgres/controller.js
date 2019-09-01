@@ -194,12 +194,13 @@ const getAllCategories = () => {
   });
 };
 
-const createCategory = (category, callback) => {
-  connection.query(`INSERT INTO categories (category) VALUES (${category})`, (err, results) => {
-    if (err) {
-      callback(err, null);
-    }
-    callback(null, results);
+const createCategory = (category) => {
+  const query = `INSERT INTO categories (category) VALUES (${category})`;
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results);
+    });
   });
 };
 

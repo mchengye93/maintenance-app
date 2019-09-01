@@ -157,15 +157,14 @@ app.get('/api/categories', async (req, res) => {
   }
 });
 
-app.post('/api/categories', (req, res) => {
-  issues.createCategory(req.body.category, (err, data) => {
-    if (err) {
-      res.status(500);
-      res.send(err);
-    }
-    res.status(200);
-    res.send(data);
-  });
+app.post('/api/categories', async (req, res) => {
+  const { category } = req.body;
+  try {
+    const createCategory = await issues.createCategory(category);
+    res.status(201).send(createCategory);
+  } catch (e) {
+    res.status(400).send(e);
+  }
 });
 
 app.put('/api/categories', (req, res) => {
