@@ -129,7 +129,7 @@ class CreateIssueForm extends Component {
                       Please put corresponding information for the issue.
                     </DialogContentText>
                    
-                    <form> 
+                    <form enctype="multipart/form-data"> 
                     <TextField
                       autoFocus
                       margin="dense"
@@ -177,6 +177,16 @@ class CreateIssueForm extends Component {
                         </MenuItem>
                         ))}
                     </TextField>
+                    
+                    
+                      <input 
+                      type="file" 
+                      accept="image/*"
+                      name="imageFile"
+                      id ="imageFile"
+                       />
+                      
+                    
                         
                     </form>
                   </DialogContent>
