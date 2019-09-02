@@ -21,16 +21,17 @@ class IssueRowData extends Component {
         if(this.props.status == 0) {
             return (
                 <TableRow key={this.props.issue.id}>
-                <TableCell>{this.props.issue.room_id}</TableCell>
-                <TableCell>{this.props.issue.category}</TableCell>
-                <TableCell>{this.props.issue.subcategory}</TableCell>
-                <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                <TableCell><TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/></TableCell>
+                    <TableCell>{this.props.issue.room_id}</TableCell>
+                    <TableCell>{this.props.issue.category}</TableCell>
+                    <TableCell>{this.props.issue.subcategory}</TableCell>
+                    <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                    <TableCell>
+                        <TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/>
+                    </TableCell>
                 </TableRow>
                              
             );
-        }
-        else if (this.props.status == 1) {
+        } else if (this.props.status == 1) {
             return (
                 <TableRow key={this.props.issue.id}>
                     <TableCell>{this.props.issue.room_id}</TableCell>
@@ -39,13 +40,13 @@ class IssueRowData extends Component {
                     <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
                     <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
                     <TableCell>{this.props.issue.name}</TableCell>
-                    <TableCell><SolveForm issue= {this.props.issue} changeIssueStatus = {this.props.changeIssueStatus}/></TableCell>
+                    <TableCell>
+                        <SolveForm issue= {this.props.issue} changeIssueStatus = {this.props.changeIssueStatus}/>
+                    </TableCell>
                 </TableRow>
                              
             );
-        }
-
-        else if (this.props.status == 2) {
+        } else if (this.props.status == 2) {
             return (
                 <TableRow key={this.props.issue.id}>
                     <TableCell>{this.props.issue.room_id}</TableCell>
@@ -61,4 +62,5 @@ class IssueRowData extends Component {
         }
     }
 }
+
 export default IssueRowData;
