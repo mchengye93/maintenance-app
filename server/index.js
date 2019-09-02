@@ -167,6 +167,17 @@ app.put('/api/issue/received', async (req, res) => {
   }
 });
 
+// Update issue resolved add comments and cost to issue
+app.put('/api/issue/solve', async (req, res) => {
+  const issue = req.body;
+  try {
+    const solveIssue = await issues.updateSolveIssue(issue);
+    res.status(200).send(solveIssue);
+  } catch (e) {
+    res.status(500).send(e);
+  }
+});
+
 // Delete specific issue
 app.delete('/api/issue', async (req, res) => {
   const { issueId } = req.body;
