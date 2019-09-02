@@ -22,6 +22,7 @@ CREATE TABLE issues (
   subcategory_id INT NOT NULL,
   photourl text,
   description TEXT,
+  comment TEXT,
   cost INT ,
   date_issued TIMESTAMP NOT NULL,
   contact_id INT,
