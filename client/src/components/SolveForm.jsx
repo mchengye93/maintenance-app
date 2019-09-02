@@ -25,7 +25,7 @@ class SolveForm extends Component {
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleSolveIssue = this.handleSolveIssue.bind(this);
+        this.handleResolveIssue = this.handleSolveIssue.bind(this);
 
     }
     componentDidMount() {
@@ -44,16 +44,16 @@ class SolveForm extends Component {
        
         //Verify that all input has been defined
         let issue = {
-            contactId: this.state.contactId,
+            cost:this.state.cost,
+            comment:this.state.comment,
             issueId: this.props.issue.id
         }
   
-        axios.put('/api/issue/received', issue).then((response)=> {
+        axios.put('/api/issue/resolve', issue).then((response)=> {
             this.setState({open: false});
-            this.props.changeIssueStatus(0);
+            this.props.changeIssueStatus(1);
            
         }).catch((error)=> {
-        
             alert('Error taking issue');
         })
             
@@ -81,7 +81,7 @@ class SolveForm extends Component {
             return (
                 <div>
                 <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                  Solve
+                  Resolve
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
                   <DialogTitle id="form-dialog-title">
@@ -126,7 +126,7 @@ class SolveForm extends Component {
                       Cancel
                     </Button>
                     <Button onClick={this.handleSolveIssue} color="primary">
-                      Solve
+                      Resolve
                     </Button>
                   </DialogActions>
                 </Dialog>
