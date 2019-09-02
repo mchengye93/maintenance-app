@@ -26,31 +26,36 @@ class ResolvedTable extends Component {
     }
 
     render() {
-       
-            return (
-                <Table>
-                    <TableHead><TableRow><TableCell colSpan={8} align='center' variant='head' style={{backgroundColor:'#006600', color: 'white' ,fontSize:'14px'}}>Resolved</TableCell></TableRow></TableHead>
-                    <TableHead>
-                        <TableRow>
-                            <TableCell>Room ID</TableCell>
-                            <TableCell>Category</TableCell>
-                            <TableCell>SubCategory</TableCell>
-                            <TableCell>Issued Date</TableCell>
-                            <TableCell>Received Date</TableCell>
-                            <TableCell>Resolved Date</TableCell> 
-                            <TableCell>Contact</TableCell>
-                            <TableCell>Cost</TableCell>
-                        </TableRow>
-                    </TableHead>
-                    <TableBody>
-                        {this.props.issues.map(issue => (
-                            <IssueRowData issue = {issue} status={2}/>
-                        ))}
-                    </TableBody>
-                </Table>
-       
+        
+        return (
+            <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell colSpan={8} align='center' variant='head' style={{backgroundColor:'#006600', color: 'white' ,fontSize:'14px'}}>
+                        Resolved
+                        </TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableHead>
+                    <TableRow>
+                        <TableCell>Room ID</TableCell>
+                        <TableCell>Category</TableCell>
+                        <TableCell>SubCategory</TableCell>
+                        <TableCell>Issued Date</TableCell>
+                        <TableCell>Received Date</TableCell>
+                        <TableCell>Resolved Date</TableCell> 
+                        <TableCell>Contact</TableCell>
+                        <TableCell>Cost</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {this.props.issues.map(issue => (
+                        <IssueRowData issue = {issue} status={2}/>
+                    ))}
+                </TableBody>
+            </Table>
             );
-        }
-   
+    }
 }
+
 export default ResolvedTable;
