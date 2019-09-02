@@ -7,18 +7,15 @@ import TableRow from '@material-ui/core/TableRow';
 
 import IssueRowData from './IssueRowData.jsx';
 
-
 class InProgressTable extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-        
         };
 
     }
     componentDidMount() {
-        
 
     }
 
@@ -26,7 +23,13 @@ class InProgressTable extends Component {
        
             return (
                 <Table>
-                    <TableHead><TableRow><TableCell colSpan={7} align='center' variant='head' style={{backgroundColor:'#bda800', color: 'white' ,fontSize:'14px'}}>In Progress</TableCell></TableRow></TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell colSpan={7} align='center' variant='head' style={{backgroundColor:'#bda800', color: 'white' ,fontSize:'14px'}}>
+                            In Progress
+                            </TableCell>
+                        </TableRow>
+                    </TableHead>
                     <TableHead>
                         <TableRow>
                             <TableCell>Room ID</TableCell>
@@ -44,9 +47,8 @@ class InProgressTable extends Component {
                         ))}
                     </TableBody>
                 </Table>
-       
             );
-        }
-   
+        } 
 }
+
 export default InProgressTable;
