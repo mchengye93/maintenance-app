@@ -8,7 +8,6 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import axios from 'axios';
 
-import MenuItem from '@material-ui/core/MenuItem';
 
 
 
@@ -18,15 +17,15 @@ class SolveForm extends Component {
 
         this.state = {
         open: false,
-        contactId: 1,
-        contacts: []
+        comment: '',
+        cost: 0
 
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleUpdateIssue = this.handleUpdateIssue.bind(this);
+        this.handleSolveIssue = this.handleSolveIssue.bind(this);
 
     }
     componentDidMount() {
@@ -48,7 +47,7 @@ class SolveForm extends Component {
     handleClose() {
         this.setState({open: false});
       }
-    handleUpdateIssue() {
+    handleSolveIssue() {
        
         //Verify that all input has been defined
         let issue = {
@@ -97,7 +96,6 @@ class SolveForm extends Component {
                   </DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      Please pick the person who will take over issue #{this.props.issue.id}. <br></br>
                       Room No.{this.props.issue.room_id} <br></br>
                       Category: {this.props.issue.category} <br></br>
                       Subcategory: {this.props.issue.subcategory} <br></br>
@@ -105,32 +103,37 @@ class SolveForm extends Component {
                     </DialogContentText>
                    
                     <form> 
-                   
                     <TextField
-                        id="outlined-select-categories"
-                        select
-                        label="Contact"
-                        value={this.state.contactId}
-                        onChange={this.handleInputChange}
-                        helperText="Select a contact person"
-                        margin="normal"
-                        variant="outlined"
-                        name='contactId'
-                    >
-                        {this.state.contacts.map(contact => (
-                        <MenuItem key={contact.id} value={contact.id} >
-                            {contact.name}
-                        </MenuItem>
-                        ))}
-                    </TextField>                     
+                      margin="dense"
+                      id="cost"
+                      label="Cost"
+                      name="cost"
+                      onChange={this.handleInputChange}
+                      type="Number"
+                      margin="normal"
+                      variant="outlined"
+                      value = {this.state.cost}
+                    />  <br/>  
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Comments"
+                      multiline
+                      rows="4"
+                      placeholder="Repair details"
+                      margin="dense"
+                      variant="outlined"
+                      name="comment"
+                      onChange={this.handleInputChange}
+                    />
+                           
                     </form>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={this.handleUpdateIssue} color="primary">
-                      Take Issue
+                    <Button onClick={this.handleSolveIssue} color="primary">
+                      Solve
                     </Button>
                   </DialogActions>
                 </Dialog>

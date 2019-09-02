@@ -85,7 +85,6 @@ class TakeIssueForm extends Component {
 
     render() {
    
-      console.log(this.props.issue);
             return (
               
                 <div>

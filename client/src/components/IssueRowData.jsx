@@ -4,7 +4,7 @@ import TableRow from '@material-ui/core/TableRow';
 import Button from '@material-ui/core/Button';
 
 import TakeIssueForm from './TakeIssueForm.jsx';
-
+import SolveForm from './SolveForm.jsx';
 
 class IssueRowData extends Component {
     constructor(props) {
@@ -29,7 +29,7 @@ class IssueRowData extends Component {
                 <TableCell>{this.props.issue.category}</TableCell>
                 <TableCell>{this.props.issue.subcategory}</TableCell>
                 <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                <TableCell><TakeIssueForm issue= {this.props.issue} issueId={this.props.issue.id} categoryId={this.props.issue.category_id} changeIssueStatus = {this.props.changeIssueStatus}/></TableCell>
+                <TableCell><TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/></TableCell>
                 </TableRow>
                              
             );
@@ -43,7 +43,7 @@ class IssueRowData extends Component {
                 <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
                 <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
                 <TableCell>{this.props.issue.name}</TableCell>
-                <TableCell><Button variant="contained" color='primary' >Solve</Button></TableCell>
+                <TableCell><SolveForm issue= {this.props.issue} /></TableCell>
                 </TableRow>
                              
             );
