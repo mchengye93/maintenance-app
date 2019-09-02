@@ -184,6 +184,11 @@ const updateReceivedIssue = (issue) => {
   });
 };
 
+const updateSolveIssue = (issue) => {
+  const query = `UPDATE issues SET cost=${issue.cost}, comment =${issue.comment}, date_solved=CURRENT_TIMESTAMP `
+  + `WHERE id = ${issue.issueId}`;
+};
+
 const deleteIssue = (issueId) => {
   const query = `DELETE FROM issues WHERE id = ${issueId}`;
 
