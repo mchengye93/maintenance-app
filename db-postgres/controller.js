@@ -190,6 +190,7 @@ const updateResolveIssue = (issue) => {
 
   return new Promise((resolve, reject) => {
     connection(query, (err, result) => {
+      console.log(err);
       if (err) return reject(err);
       resolve(result);
     });
