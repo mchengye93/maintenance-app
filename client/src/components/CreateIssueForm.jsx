@@ -32,6 +32,7 @@ class CreateIssueForm extends Component {
         this.handleUpdateSubcategories = this.handleUpdateSubcategories.bind(this);
 
     }
+
     componentDidMount() {
         this.setState({categories: this.props.categories});
         axios.get('/api/subcategories')
@@ -41,10 +42,9 @@ class CreateIssueForm extends Component {
                 subcategories: response.data
              });
              this.handleUpdateSubcategories(1);
-        });
-                
-
+        });       
     }
+
     handleClickOpen() {
         this.setState({open: true});
       }
@@ -52,9 +52,9 @@ class CreateIssueForm extends Component {
     handleClose() {
         this.setState({open: false});
       }
+
     handleCreate(event) {
-       
-        //Verify that all input has been defined
+    
             const issue = {
                 categoryId: this.state.categoryId,
                 subcategoryId: this.state.subcategoryId,
@@ -67,9 +67,7 @@ class CreateIssueForm extends Component {
             }).catch((error)=> {
                 alert('Error creating issue');
             })
-           
-        
-      
+
     }
 
     handleUpdateSubcategories(categoryId) {
@@ -88,32 +86,24 @@ class CreateIssueForm extends Component {
 
     }
 
-
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-        console.log(target);
-        console.log(name);
-        console.log(value);
-        
+ 
         if (name === 'categoryId') {
-    
             this.handleUpdateSubcategories(value);
             this.setState({categoryId: value});
-  
           
         } else {
             this.setState({
                 [name]: value
               });
         }
-
       }
 
     render() {
    
-        
             return (
                 <div>
                 <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
@@ -183,9 +173,7 @@ class CreateIssueForm extends Component {
                       name="description"
                       onChange={this.handleInputChange}
                     />
-
-                    
-                    
+                               
 {/*                     
                       <input 
                       type="file" 
@@ -206,9 +194,8 @@ class CreateIssueForm extends Component {
                   </DialogActions>
                 </Dialog>
               </div>
-       
             );
         }
-   
 }
+
 export default CreateIssueForm;
