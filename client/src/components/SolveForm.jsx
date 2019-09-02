@@ -25,7 +25,7 @@ class SolveForm extends Component {
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleResolveIssue = this.handleSolveIssue.bind(this);
+        this.handleResolveIssue = this.handleResolveIssue.bind(this);
 
     }
     componentDidMount() {
@@ -40,11 +40,12 @@ class SolveForm extends Component {
     handleClose() {
         this.setState({open: false});
       }
-    handleSolveIssue() {
+    handleResolveIssue() {
+      console.log(this.state);
        
         //Verify that all input has been defined
         let issue = {
-            cost:this.state.cost,
+            cost: this.state.cost,
             comment:this.state.comment,
             issueId: this.props.issue.id
         }
@@ -125,7 +126,7 @@ class SolveForm extends Component {
                     <Button onClick={this.handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={this.handleSolveIssue} color="primary">
+                    <Button onClick={this.handleResolveIssue} color="primary">
                       Resolve
                     </Button>
                   </DialogActions>
