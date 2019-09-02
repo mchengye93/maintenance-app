@@ -1,3 +1,9 @@
+// File Upload
+const multer = require('multer');
+
+const upload = multer({ dest: './uploads/' });
+
+// Server
 const express = require('express');
 const bodyParser = require('body-parser');
 
