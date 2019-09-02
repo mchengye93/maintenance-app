@@ -42,6 +42,7 @@ class SolveForm extends Component {
       }
     handleResolveIssue() {
       console.log(this.state);
+      console.log(this.props);
        
         //Verify that all input has been defined
         let issue = {
@@ -78,6 +79,7 @@ class SolveForm extends Component {
 
     render() {
       console.log(this.state);
+      console.log(this.props);
         
             return (
                 <div>

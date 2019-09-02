@@ -43,7 +43,7 @@ class IssueRowData extends Component {
                 <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
                 <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
                 <TableCell>{this.props.issue.name}</TableCell>
-                <TableCell><SolveForm issue= {this.props.issue} /></TableCell>
+                <TableCell><SolveForm issue= {this.props.issue} changeIssueStatus = {this.props.changeIssueStatus}/></TableCell>
                 </TableRow>
                              
             );

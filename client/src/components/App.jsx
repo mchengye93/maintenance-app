@@ -134,7 +134,7 @@ class App extends Component {
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                 <CreateIssueForm categories={this.state.categories}/> 
-                <InProgressTable issues={this.state.receivedIssues} status={this.state.status}></InProgressTable>
+                <InProgressTable issues={this.state.receivedIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></InProgressTable>
                 </div>     
         );
         } else if (this.state.status == 2) {

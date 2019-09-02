@@ -40,7 +40,7 @@ class InProgressTable extends Component {
                     </TableHead>
                     <TableBody>
                         {this.props.issues.map(issue => (
-                            <IssueRowData issue = {issue} status={1}/>
+                            <IssueRowData issue = {issue} status={1} changeIssueStatus = {this.props.changeIssueStatus}/>
                         ))}
                     </TableBody>
                 </Table>

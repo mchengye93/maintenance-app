@@ -170,10 +170,12 @@ app.put('/api/issue/received', async (req, res) => {
 // Update issue resolved add comments and cost to issue
 app.put('/api/issue/resolve', async (req, res) => {
   const issue = req.body;
+  console.log(issue);
   try {
-    const solveIssue = await issues.updateResolveIssue(issue);
-    res.status(200).send(solveIssue);
+    const resolveIssue = await issues.updateResolveIssue(issue);
+    res.status(200).send(resolveIssue);
   } catch (e) {
+    console.log(e);
     res.status(500).send(e);
   }
 });

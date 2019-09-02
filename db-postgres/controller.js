@@ -185,11 +185,11 @@ const updateReceivedIssue = (issue) => {
 };
 
 const updateResolveIssue = (issue) => {
-  const query = `UPDATE issues SET cost=${issue.cost}, comment =${issue.comment}, date_resolved=CURRENT_TIMESTAMP `
+  const query = `UPDATE issues SET cost=${issue.cost}, comment ='${issue.comment}', date_resolved=CURRENT_TIMESTAMP `
   + `WHERE id = ${issue.issueId}`;
-
+  console.log(issue);
   return new Promise((resolve, reject) => {
-    connection(query, (err, result) => {
+    connection.query(query, (err, result) => {
       console.log(err);
       if (err) return reject(err);
       resolve(result);
