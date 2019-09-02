@@ -1,7 +1,7 @@
 // File Upload
 const multer = require('multer');
 
-const upload = multer({ dest: './uploads/' });
+const upload = multer({ dest: 'uploads/' });
 
 // Server
 const express = require('express');
@@ -21,8 +21,12 @@ const app = express();
 
 app.use(express.static(`${__dirname}/../client/dist`));
 
+// allow upload file access
+app.use('/uploads', express.static('uploads'));
+
 app.use(bodyParser.urlencoded({ extended: true })); // parse application/json
 app.use(bodyParser.json());
+
 
 // Custom middleware example
 // app.use(logRoute);
@@ -35,6 +39,7 @@ app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 app.post('/api/issue', upload.single('imageFile'), async (req, res) => {
   const { file } = req;
   console.log(file.filename);
+  const newFileName = new Date().toDateString() + file.filename;
   const issue = req.body;
   try {
     const rows = await issues.createIssue(issue);
