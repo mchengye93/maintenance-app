@@ -26,8 +26,8 @@ class IssuedTable extends Component {
                 <Table >
                     <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Pending</TableCell></TableRow></TableHead>
                     <TableHead>
-                        <TableRow >
-                            <TableCell >Room ID</TableCell>
+                        <TableRow>
+                            <TableCell>Room ID</TableCell>
                             <TableCell>Category</TableCell>
                             <TableCell>SubCategory</TableCell>
                             <TableCell>Issued Date</TableCell>
@@ -40,9 +40,8 @@ class IssuedTable extends Component {
                         ))}
                     </TableBody>
                 </Table>
-       
             );
-        
     }
 }
+
 export default IssuedTable;
