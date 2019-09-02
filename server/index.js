@@ -45,9 +45,9 @@ app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 /* CRUD API for Issues */
 
 // CREATE an issue
-app.post('/api/issue', upload.single('file'), async (req, res) => {
-  const { file } = req;
-  console.log(req.file);
+app.post('/api/issue', async (req, res) => {
+  // const { file } = req;
+
   const issue = req.body;
   try {
     const rows = await issues.createIssue(issue);

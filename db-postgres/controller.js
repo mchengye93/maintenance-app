@@ -2,8 +2,8 @@ const connection = require('./connection.js');
 
 /* Issues CRUD */
 const createIssue = (issue) => {
-  const query = `INSERT INTO issues (room_id,category_id,subcategory_id,date_issued) VALUES  
-  (${issue.roomId},${issue.categoryId}, ${issue.subcategoryId}, CURRENT_TIMESTAMP)`;
+  const query = `INSERT INTO issues (room_id,category_id,subcategory_id,description,date_issued) VALUES  
+  (${issue.roomId},${issue.categoryId}, ${issue.subcategoryId}, '${issue.description}', CURRENT_TIMESTAMP)`;
 
   return new Promise((resolve, reject) => {
     connection.query(query, (err, res) => {

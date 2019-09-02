@@ -55,12 +55,11 @@ class CreateIssueForm extends Component {
     handleCreate(event) {
        
         //Verify that all input has been defined
-       
-          console.log(event.target.files[0]);
             const issue = {
                 categoryId: this.state.categoryId,
                 subcategoryId: this.state.subcategoryId,
                 roomId: this.state.roomId,
+                description: this.state.description
             }
 
             axios.post('/api/issue', issue).then((response)=> {
@@ -182,6 +181,7 @@ class CreateIssueForm extends Component {
                       margin="normal"
                       variant="outlined"
                       name="description"
+                      onChange={this.handleInputChange}
                     />
 
                     
