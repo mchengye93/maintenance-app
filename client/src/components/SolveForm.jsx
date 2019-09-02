@@ -30,14 +30,7 @@ class SolveForm extends Component {
     }
     componentDidMount() {
 
-        axios.get('/api/contacts/categoryId', {params: {categoryId: this.props.issue.category_id}})
-        .then((response)=> {
-            this.setState({
-                contacts: response.data.rows
-             });
-          
-        });
-                
+       
 
     }
     handleClickOpen() {
@@ -83,7 +76,7 @@ class SolveForm extends Component {
       }
 
     render() {
-   
+      console.log(this.state);
         
             return (
                 <div>
@@ -96,9 +89,9 @@ class SolveForm extends Component {
                   </DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      Room No.{this.props.issue.room_id} <br></br>
-                      Category: {this.props.issue.category} <br></br>
-                      Subcategory: {this.props.issue.subcategory} <br></br>
+                      Room No.{this.props.issue.room_id} <br/>
+                      Category: {this.props.issue.category} <br/>
+                      Subcategory: {this.props.issue.subcategory} <br/>
                       Issued Date: {this.props.issue.date_issued.split('T')[0]}
                     </DialogContentText>
                    

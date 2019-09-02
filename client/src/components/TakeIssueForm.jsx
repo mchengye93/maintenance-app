@@ -61,7 +61,6 @@ class TakeIssueForm extends Component {
             this.props.changeIssueStatus(0);
            
         }).catch((error)=> {
-        
             alert('Error taking issue');
         })
             
