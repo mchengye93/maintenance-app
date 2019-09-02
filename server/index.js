@@ -1,7 +1,16 @@
 // File Upload
 const multer = require('multer');
 
-const upload = multer({ dest: 'uploads/' });
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, './uploads/');
+  },
+  filename: (req, file, cb) => {
+    cb(null, new Date().toISOString() + file.originalname);
+  },
+});
+
+const upload = multer({ storage });
 
 // Server
 const express = require('express');
@@ -36,10 +45,9 @@ app.get('/', (req, res) => res.send('Welcome to Maintenance App!'));
 /* CRUD API for Issues */
 
 // CREATE an issue
-app.post('/api/issue', upload.single('imageFile'), async (req, res) => {
+app.post('/api/issue', upload.single('file'), async (req, res) => {
   const { file } = req;
-  console.log(file.filename);
-  const newFileName = new Date().toDateString() + file.filename;
+  console.log(req.file);
   const issue = req.body;
   try {
     const rows = await issues.createIssue(issue);

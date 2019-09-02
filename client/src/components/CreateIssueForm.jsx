@@ -22,6 +22,7 @@ class CreateIssueForm extends Component {
         subcategories: [],
         subcategoriesByCategory: [],
         roomId: 1,
+        description:'',
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
@@ -51,14 +52,11 @@ class CreateIssueForm extends Component {
     handleClose() {
         this.setState({open: false});
       }
-    handleCreate() {
+    handleCreate(event) {
        
         //Verify that all input has been defined
-        if(!(this.state.roomId > 0 && this.state.roomId <= 100)) {
-            alert('Please put in the correct Room Number!');
-        }
-        else {
-        
+       
+          console.log(event.target.files[0]);
             const issue = {
                 categoryId: this.state.categoryId,
                 subcategoryId: this.state.subcategoryId,
@@ -70,8 +68,8 @@ class CreateIssueForm extends Component {
             }).catch((error)=> {
                 alert('Error creating issue');
             })
-            
-        }
+           
+        
       
     }
 
@@ -129,7 +127,7 @@ class CreateIssueForm extends Component {
                       Please put corresponding information for the issue.
                     </DialogContentText>
                    
-                    <form enctype="multipart/form-data"> 
+                    <form  enctype="multipart/form-data" > 
                     <TextField
                       autoFocus
                       margin="dense"
@@ -149,7 +147,6 @@ class CreateIssueForm extends Component {
                         label="Category"
                         value={this.state.categoryId}
                         onChange={this.handleInputChange}
-                        helperText="Select a category"
                         margin="normal"
                         variant="outlined"
                         name='categoryId'
@@ -166,7 +163,6 @@ class CreateIssueForm extends Component {
                         label="Subcategory"
                         value={this.state.subcategoryId}
                         onChange={this.handleInputChange}
-                        helperText="Select a subcategory"
                         margin="normal"
                         variant="outlined"
                         name='subcategoryId'
@@ -177,17 +173,27 @@ class CreateIssueForm extends Component {
                         </MenuItem>
                         ))}
                     </TextField>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Comments"
+                      multiline
+                      rows="4"
+                      placeholder="Additional details"
+                      margin="normal"
+                      variant="outlined"
+                      name="description"
+                    />
+
                     
                     
+{/*                     
                       <input 
                       type="file" 
                       accept="image/*"
-                      name="imageFile"
-                      id ="imageFile"
-                       />
-                      
-                    
-                        
+                      id="raised-button-file" 
+                      name="file"
+                       /> */}
+                     
                     </form>
                   </DialogContent>
                   <DialogActions>
