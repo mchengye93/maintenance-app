@@ -93,15 +93,16 @@ class TakeIssueForm extends Component {
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
                   <DialogTitle id="form-dialog-title">
-                  Issue #{this.props.issue.id}
+                  Issue #{this.props.issue.id} - {this.props.issue.category} - {this.props.issue.subcategory}
                   </DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      Please pick the person who will take over issue #{this.props.issue.id}. <br></br>
+                      
                       Room No.{this.props.issue.room_id} <br></br>
                       Category: {this.props.issue.category} <br></br>
                       Subcategory: {this.props.issue.subcategory} <br></br>
-                      Issued Date: {this.props.issue.date_issued.split('T')[0]}
+                      Issued Date: {this.props.issue.date_issued.split('T')[0]} <br></br> <br></br>
+                      Please pick the person in charge of issue #{this.props.issue.id}. <br></br>
                     </DialogContentText>
                    
                     <form> 
