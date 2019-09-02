@@ -3,7 +3,6 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
-
 class CategorySearch extends Component {
     constructor(props) {
         super(props);
@@ -12,11 +11,11 @@ class CategorySearch extends Component {
         };
         this.handleSearchCategory = this.handleSearchCategory.bind(this);
     }
+
     componentDidMount() {
   
-  
-
     }
+
     handleSearchCategory(e) {
         e.preventDefault();
         let categoryId = e.currentTarget.value;
@@ -32,8 +31,8 @@ class CategorySearch extends Component {
                     ))}
                     </ButtonGroup>
                 </Grid>
-            
         );        
     }
 }
+
 export default CategorySearch;
