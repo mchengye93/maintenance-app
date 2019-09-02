@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -6,11 +8,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import axios from 'axios';
+
 
 import MenuItem from '@material-ui/core/MenuItem';
-
-
 
 class TakeIssueForm extends Component {
     constructor(props) {
@@ -39,18 +39,18 @@ class TakeIssueForm extends Component {
           
         });
                 
-
     }
+
     handleClickOpen() {
         this.setState({open: true});
-      }
+    }
 
     handleClose() {
         this.setState({open: false});
-      }
+    }
+
     handleUpdateIssue() {
        
-        //Verify that all input has been defined
         let issue = {
             contactId: this.state.contactId,
             issueId: this.props.issue.id
@@ -63,12 +63,10 @@ class TakeIssueForm extends Component {
         }).catch((error)=> {
             alert('Error taking issue');
         })
-            
-        
+ 
       
     }
 
-  
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
@@ -78,15 +76,14 @@ class TakeIssueForm extends Component {
         this.setState({
                 [name]: value
               });
-        
-
+      
       }
 
     render() {
    
             return (
               
-                <div>
+              <div>
                 <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
                   Take Issue
                 </Button>
@@ -138,7 +135,7 @@ class TakeIssueForm extends Component {
               </div>
        
             );
-        }
-   
+        } 
 }
+
 export default TakeIssueForm;
