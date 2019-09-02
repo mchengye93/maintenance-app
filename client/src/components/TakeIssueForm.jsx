@@ -85,24 +85,26 @@ class TakeIssueForm extends Component {
 
     render() {
    
-        
+      console.log(this.props.issue);
             return (
+              
                 <div>
                 <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
                   Take Issue
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
                   <DialogTitle id="form-dialog-title">
-                  Issue #{this.props.issue.id} - {this.props.issue.category} - {this.props.issue.subcategory}
+                  <b>Issue #{this.props.issue.id} - {this.props.issue.category} - {this.props.issue.subcategory}</b>
                   </DialogTitle>
                   <DialogContent>
                     <DialogContentText>
                       
-                      Room No.{this.props.issue.room_id} <br></br>
-                      Category: {this.props.issue.category} <br></br>
-                      Subcategory: {this.props.issue.subcategory} <br></br>
-                      Issued Date: {this.props.issue.date_issued.split('T')[0]} <br></br> <br></br>
-                      Please pick the person in charge of issue #{this.props.issue.id}. <br></br>
+                    <b>Room No.</b>{this.props.issue.room_id} <br></br>
+                    <b>Category:</b> {this.props.issue.category} <br></br>
+                    <b>Subcategory:</b> {this.props.issue.subcategory} <br></br>
+                    <b>Issued Date:</b> {this.props.issue.date_issued.split('T')[0]} <br></br>
+                    <b>Details:</b> {this.props.issue.description} <br></br> <br></br>
+                     <b>Please pick the person in charge of issue #{this.props.issue.id}.</b> <br></br>
                     </DialogContentText>
                    
                     <form> 

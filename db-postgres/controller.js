@@ -31,7 +31,7 @@ const getAllPendingIssues = () => {
 
   for (let i = 1; i <= 5; i += 1) {
     query += '(SELECT issues.id,issues.room_id, issues.category_id, categories.category,'
-     + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued,'
+     + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.description, '
       + 'issues.date_received FROM issues '
       + 'INNER JOIN categories ON issues.category_id= categories.id '
       + 'INNER JOIN subcategories ON  issues.subcategory_id = subcategories.id '
@@ -71,7 +71,7 @@ const getAllPendingVipIssues = () => {
 
 const getAllPendingIssuesByCategoryId = (categoryId) => {
   const query = 'SELECT issues.id,issues.room_id, issues.category_id, categories.category,'
-  + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued '
+  + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, issues.description '
   + 'FROM issues '
   + 'INNER JOIN categories ON issues.category_id= categories.id '
   + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
