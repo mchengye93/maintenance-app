@@ -185,8 +185,15 @@ const updateReceivedIssue = (issue) => {
 };
 
 const updateSolveIssue = (issue) => {
-  const query = `UPDATE issues SET cost=${issue.cost}, comment =${issue.comment}, date_solved=CURRENT_TIMESTAMP `
+  const query = `UPDATE issues SET cost=${issue.cost}, comment =${issue.comment}, date_resolved=CURRENT_TIMESTAMP `
   + `WHERE id = ${issue.issueId}`;
+
+  return new Promise((resolve, reject) => {
+    connection(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
 };
 
 const deleteIssue = (issueId) => {
@@ -373,6 +380,7 @@ module.exports = {
   getIssue,
   updateIssue,
   updateReceivedIssue,
+  updateSolveIssue,
   deleteIssue,
   createSubcategory,
   updateSubcategory,
