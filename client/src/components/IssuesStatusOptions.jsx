@@ -4,8 +4,6 @@ import Paper from '@material-ui/core/Paper';
 import Tabs from '@material-ui/core/Tabs';
 import Tab from '@material-ui/core/Tab';
 
-
-
 class IssueStatusOptions extends Component {
     constructor(props) {
         super(props);
@@ -16,16 +14,12 @@ class IssueStatusOptions extends Component {
     }
     componentDidMount() {
   
-  
-
     }
     handleChangeStatus(e) {
         e.preventDefault();
     
         let statusString = e.target.innerText;
         let status = 0;
-
-
 
         if (statusString === 'PENDING') {
           status = 0
@@ -58,8 +52,8 @@ class IssueStatusOptions extends Component {
                 <Tab label="Resolved" value={2}/>
               </Tabs>
         </Paper>
-
         );
     }
 }
+
 export default IssueStatusOptions;
