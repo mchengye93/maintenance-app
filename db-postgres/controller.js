@@ -184,7 +184,7 @@ const updateReceivedIssue = (issue) => {
   });
 };
 
-const updateSolveIssue = (issue) => {
+const updateResolveIssue = (issue) => {
   const query = `UPDATE issues SET cost=${issue.cost}, comment =${issue.comment}, date_resolved=CURRENT_TIMESTAMP `
   + `WHERE id = ${issue.issueId}`;
 
@@ -380,7 +380,7 @@ module.exports = {
   getIssue,
   updateIssue,
   updateReceivedIssue,
-  updateSolveIssue,
+  updateResolveIssue,
   deleteIssue,
   createSubcategory,
   updateSubcategory,
