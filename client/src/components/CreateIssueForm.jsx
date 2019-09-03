@@ -109,7 +109,7 @@ class CreateIssueForm extends Component {
     render() {
    
             return (
-                <div>
+                <span>
                 <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
                   Create
                 </Button>
@@ -197,7 +197,7 @@ class CreateIssueForm extends Component {
                     </Button>
                   </DialogActions>
                 </Dialog>
-              </div>
+              </span>
             );
         }
 }

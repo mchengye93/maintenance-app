@@ -32,6 +32,10 @@ class IssueStatusOptions extends Component {
           status = 2;
         }
 
+        if (statusString === 'REPORT') {
+          status = 3;
+        }
+
         this.setState({status: status})
        this.props.changeIssueStatus(status);
     }
@@ -50,6 +54,7 @@ class IssueStatusOptions extends Component {
                 <Tab label="Pending" value={0}/>
                 <Tab label="In Progress" value={1}/>
                 <Tab label="Resolved" value={2}/>
+                <Tab label="Report" value={3}/>
               </Tabs>
         </Paper>
         );

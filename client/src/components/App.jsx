@@ -104,12 +104,14 @@ class App extends Component {
                     resolvedIssues: response.data});
                 
             });
-        } 
+        } else if (status == 3) {
+            //Show d3.js chart
+        }
         this.setState({status: status});
     }
 
     render() {
-    
+        console.log(this.state);
         if (this.state.status == 0) {
 
             return (
@@ -134,6 +136,7 @@ class App extends Component {
                     </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
+                    
                     <CreateIssueForm categories={this.state.categories}/>
                     <AddContactForm categories={this.state.categories}/> 
                     <InProgressTable issues={this.state.receivedIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></InProgressTable>
@@ -154,7 +157,19 @@ class App extends Component {
                     <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
                 );
-        }    
+        } else if (this.state.status == 3) {
+            return (
+                <div id ="app">
+                    <AppBar color="primary" position="static">
+                        <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
+                    </AppBar> 
+                    <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                    <div id="report">
+                    Show some D3.js data visualization
+                    </div>
+                </div>
+            )
+        }   
     }
 }
 export default App;

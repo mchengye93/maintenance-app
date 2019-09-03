@@ -86,7 +86,7 @@ class AddContactForm extends Component {
     render() {
    
             return (
-                <div>
+                <span style={{textAlign:'left'}}>
                 <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
                   Add Contact
                 </Button>
@@ -165,11 +165,11 @@ class AddContactForm extends Component {
                       Cancel
                     </Button>
                     <Button onClick={this.handleCreateContact} color="primary">
-                      Create
+                      Add
                     </Button>
                   </DialogActions>
                 </Dialog>
-              </div>
+              </span>
             );
         }
 }
