@@ -63,7 +63,11 @@ class CreateIssueForm extends Component {
             }
 
             axios.post('/api/issue', issue).then((response)=> {
-                this.setState({open: false});
+                this.setState({
+                    open: false,
+                    description: '',
+                    roomId: 0,
+                });
             }).catch((error)=> {
                 alert('Error creating issue');
             })
