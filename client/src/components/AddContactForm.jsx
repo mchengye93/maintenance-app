@@ -10,39 +10,31 @@ import axios from 'axios';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
+import MaskedInput from 'react-input-mask';
 
-class ContactForm extends Component {
+
+class AddContactForm extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
         open: false,
+        name: '',
         categoryId: 1,
-        subcategoryId: 0,
-        subcategories: [],
-        subcategoriesByCategory: [],
-        roomId: 1,
-        description:'',
+        email: '',
+        phone: '',
+       
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
-        this.handleCreate = this.handleCreate.bind(this);
+        this.handleCreateContact = this.handleCreateContact.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleUpdateSubcategories = this.handleUpdateSubcategories.bind(this);
 
     }
 
     componentDidMount() {
-        this.setState({categories: this.props.categories});
-        axios.get('/api/subcategories')
-        .then((response)=> {
-           
-            this.setState({
-                subcategories: response.data
-             });
-             this.handleUpdateSubcategories(1);
-        });       
+         
     }
 
     handleClickOpen() {
@@ -53,16 +45,16 @@ class ContactForm extends Component {
         this.setState({open: false});
       }
 
-    handleCreate(event) {
+    handleCreateContact(event) {
     
-            const issue = {
+            const contact = {
                 categoryId: this.state.categoryId,
-                subcategoryId: this.state.subcategoryId,
-                roomId: this.state.roomId,
-                description: this.state.description
+                email: this.state.email,
+                phone: this.state.phone,
+                name: this.state.name,
             }
 
-            axios.post('/api/issue', issue).then((response)=> {
+            axios.post('/api/contact', contact).then((response)=> {
                 this.setState({open: false});
             }).catch((error)=> {
                 alert('Error creating issue');
@@ -70,36 +62,17 @@ class ContactForm extends Component {
 
     }
 
-    handleUpdateSubcategories(categoryId) {
-        //on categorychange update currentSubcategoryChoice 
-        const subcategories = this.state.subcategories;
-        let subcategoriesByCategory = [];
-
-        for (let i = 0; i < subcategories.length; i++) {
-            if (subcategories[i]['category_id'] === categoryId) {
-                subcategoriesByCategory.push(subcategories[i]);
-            }
-        }
-        this.setState({
-            subcategoriesByCategory,
-            subcategoryId: subcategoriesByCategory[0].id});
-
-    }
 
     handleInputChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.value;
         const name = target.name;
  
-        if (name === 'categoryId') {
-            this.handleUpdateSubcategories(value);
-            this.setState({categoryId: value});
-          
-        } else {
-            this.setState({
+  
+        this.setState({
                 [name]: value
               });
-        }
+        
       }
 
     render() {
@@ -107,28 +80,26 @@ class ContactForm extends Component {
             return (
                 <div>
                 <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
-                  Create
+                  Add Contact
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
                   <DialogTitle id="form-dialog-title">Create Issue</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      Please put corresponding information for the issue.
+                      Please put corresponding information for the contact.
                     </DialogContentText>
                    
                     <form  enctype="multipart/form-data" > 
                     <TextField
                       autoFocus
-                      margin="dense"
-                      id="roomId"
-                      label="Room No."
-                      name="roomId"
+                      margin="normal"
+                      id="name"
+                      label="Name"
+                      name="name"
                       onChange={this.handleInputChange}
-                      type="Number"
                       margin="normal"
                       variant="outlined"
-                      inputProps={{ min: "1", max: "100"}}
-                      value = {this.state.roomId}
+                      value = {this.state.name}
                     />
                     <TextField
                         id="outlined-select-categories"
@@ -146,41 +117,34 @@ class ContactForm extends Component {
                         </MenuItem>
                         ))}
                     </TextField>
+
                     <TextField
-                        id="outlined-select-subcategories"
-                        select
-                        label="Subcategory"
-                        value={this.state.subcategoryId}
-                        onChange={this.handleInputChange}
-                        margin="normal"
-                        variant="outlined"
-                        name='subcategoryId'
-                    >
-                        {this.state.subcategoriesByCategory.map(subcategory => (
-                        <MenuItem key={subcategory.id} value={subcategory.id} >
-                            {subcategory.subcategory}
-                        </MenuItem>
-                        ))}
-                    </TextField>
-                    <TextField
-                      id="outlined-multiline-static"
-                      label="Comments"
-                      multiline
-                      rows="4"
-                      placeholder="Additional details"
+                      autoFocus
+                      margin="normal"
+                      id="outlined-email-input"
+                      label="Email"
+                      type="email"
+                      name="email"
+                      onChange={this.handleInputChange}
                       margin="normal"
                       variant="outlined"
-                      name="description"
-                      onChange={this.handleInputChange}
+                      value = {this.state.email}
                     />
-                               
-{/*                     
-                      <input 
-                      type="file" 
-                      accept="image/*"
-                      id="raised-button-file" 
-                      name="file"
-                       /> */}
+                    
+                    <TextField
+                      margin="normal"
+                      id="outline-phone-input"
+                      label="Phone"
+                      name="phone"
+                      type="text"
+                      onChange={this.handleInputChange}
+                      margin="normal"
+                      variant="outlined"
+                      value = {this.state.phone}
+                    >
+                    <MaskedInput mask="(999) 999-9999" maskChar=" " />
+                    </TextField>
+                
                      
                     </form>
                   </DialogContent>
@@ -198,4 +162,4 @@ class ContactForm extends Component {
         }
 }
 
-export default ContactForm;
+export default AddContactForm;
