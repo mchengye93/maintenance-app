@@ -1,12 +1,28 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+import { BarChart } from "react-d3-components";
+
 
 class ReportData extends Component {
     constructor(props) {
         super(props);
         this.state = {
           issues: [],
+          data: [
+            {
+            label: 'somethingA',
+            values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
+            },
+            {
+            label: 'somethingB',
+            values: [{x: 'SomethingA', y: 6}, {x: 'SomethingB', y: 8}, {x: 'SomethingC', y: 5}]
+            },
+            {
+            label: 'somethingC',
+            values: [{x: 'SomethingA', y: 6}, {x: 'SomethingB', y: 8}, {x: 'SomethingC', y: 5}]
+            }
+        ]
         };
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
         this.parseIssues = this.parseIssues.bind(this);
@@ -64,7 +80,14 @@ class ReportData extends Component {
         return(
             <div id="report">
                 Inside report data!
+                <BarChart
+                    groupedBars
+                    data={this.state.data}
+                    width={400}
+                    height={400}
+                    margin={{top: 10, bottom: 50, left: 50, right: 10}}/>
             </div>
+     
         
         );
     }
