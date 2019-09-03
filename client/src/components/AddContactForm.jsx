@@ -56,11 +56,17 @@ class AddContactForm extends Component {
             }
             console.log(contact);
 
-            // axios.post('/api/contact', contact).then((response)=> {
-            //     this.setState({open: false});
-            // }).catch((error)=> {
-            //     alert('Error creating issue');
-            // })
+            axios.post('/api/contact', contact).then((response)=> {
+                this.setState({
+                  open: false,
+                  phone:'',
+                  name: '',
+                  email: ''
+
+                });
+            }).catch((error)=> {
+                alert('Error adding contact');
+            })
 
     }
 
@@ -105,7 +111,7 @@ class AddContactForm extends Component {
                       value = {this.state.name}
                     />
                     <TextField
-                        required
+                        required 
                         id="outlined-select-categories"
                         select
                         label="Category"
@@ -125,7 +131,7 @@ class AddContactForm extends Component {
 
                     
                     <TextField
-                      required
+                      required 
                       margin="normal"
                       id="outline-phone-input"
                       label="Phone"
