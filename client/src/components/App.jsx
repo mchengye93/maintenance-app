@@ -9,6 +9,7 @@ import IssuedTable from './IssuedTable.jsx';
 import InProgressTable from './InProgressTable.jsx';
 import ResolvedTable from './ResolvedTable.jsx';
 import IssuesStatusOptions from './IssuesStatusOptions.jsx';
+import ReportData from './ReportData.jsx';
 
 import CreateIssueForm from './CreateIssueForm.jsx';
 import AddContactForm from './AddContactForm.jsx';
@@ -164,9 +165,9 @@ class App extends Component {
                         <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
                     </AppBar> 
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                    <div id="report">
-                    Show some D3.js data visualization
-                    </div>
+                    
+                    <ReportData/>
+                
                 </div>
             )
         }   
