@@ -10,7 +10,8 @@ import axios from 'axios';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
-import MaskedInput from 'react-input-mask';
+// import MaskedInput from 'react-input-mask';
+
 
 
 class AddContactForm extends Component {
@@ -53,12 +54,13 @@ class AddContactForm extends Component {
                 phone: this.state.phone,
                 name: this.state.name,
             }
+            console.log(contact);
 
-            axios.post('/api/contact', contact).then((response)=> {
-                this.setState({open: false});
-            }).catch((error)=> {
-                alert('Error creating issue');
-            })
+            // axios.post('/api/contact', contact).then((response)=> {
+            //     this.setState({open: false});
+            // }).catch((error)=> {
+            //     alert('Error creating issue');
+            // })
 
     }
 
@@ -89,19 +91,21 @@ class AddContactForm extends Component {
                       Please put corresponding information for the contact.
                     </DialogContentText>
                    
-                    <form  enctype="multipart/form-data" > 
+                    <form > 
                     <TextField
-                      autoFocus
+                      required
                       margin="normal"
                       id="name"
                       label="Name"
                       name="name"
+                      placeholder="Full name"
                       onChange={this.handleInputChange}
                       margin="normal"
                       variant="outlined"
                       value = {this.state.name}
                     />
                     <TextField
+                        required
                         id="outlined-select-categories"
                         select
                         label="Category"
@@ -118,41 +122,43 @@ class AddContactForm extends Component {
                         ))}
                     </TextField>
 
-                    <TextField
-                      autoFocus
-                      margin="normal"
-                      id="outlined-email-input"
-                      label="Email"
-                      type="email"
-                      name="email"
-                      onChange={this.handleInputChange}
-                      margin="normal"
-                      variant="outlined"
-                      value = {this.state.email}
-                    />
+
                     
                     <TextField
+                      required
                       margin="normal"
                       id="outline-phone-input"
                       label="Phone"
                       name="phone"
                       type="text"
+                      
                       onChange={this.handleInputChange}
                       margin="normal"
                       variant="outlined"
+                      placeholder = "(999) 999-9999"
                       value = {this.state.phone}
-                    >
-                    <MaskedInput mask="(999) 999-9999" maskChar=" " />
-                    </TextField>
-                
-                     
+                    />
+                  
+                    <TextField
+                        margin="normal"
+                        id="outlined-email-input"
+                        label="Email"
+                        type="email"
+                        name="email"
+                        placeholder="youremail@gmail.com"
+                        onChange={this.handleInputChange}
+                        margin="normal"
+                        variant="outlined"
+                        value = {this.state.email}
+                      />
+                 
                     </form>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={this.handleCreate} color="primary">
+                    <Button onClick={this.handleCreateContact} color="primary">
                       Create
                     </Button>
                   </DialogActions>
