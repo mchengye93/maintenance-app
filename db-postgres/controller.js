@@ -123,6 +123,24 @@ const getAllResolvedIssuesByCategory = (categoryId) => {
   });
 };
 
+const getAllResolvedIssues = () => {
+  const query = 'SELECT categories.category, '
+  + 'subcategories.subcategory, issues.date_resolved, issues.cost'
+  + 'FROM issues '
+  + 'INNER JOIN categories ON issues.category_id= categories.id '
+  + 'INNER JOIN subcategories ON issues.subcategory_id = subcategories.id '
+  + 'INNER JOIN contacts ON issues.contact_id = contacts.id '
+  + 'WHERE date_resolved IS NOT NULL '
+  + 'ORDER BY date_resolved DESC';
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, results) => {
+      if (err) return reject(err);
+      resolve(results.rows);
+    });
+  });
+};
+
 
 const getAllReceivedIssuesByContact = (contactId) => {
   const query = 'SELECT issues.room_id, issues.category_id, categories.category, '
@@ -377,6 +395,7 @@ module.exports = {
   getAllPendingIssuesByCategoryId,
   getAllReceivedIssuesByCategory,
   getAllResolvedIssuesByCategory,
+  getAllResolvedIssues,
   getAllReceivedIssuesByContact,
   getIssue,
   updateIssue,
