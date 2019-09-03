@@ -110,12 +110,23 @@ app.get('/api/issues/received/category', async (req, res) => {
   }
 });
 
+
 // GET all resolved issues by category
 app.get('/api/issues/resolved/category', async (req, res) => {
   const { categoryId } = req.query;
   try {
-    const receivedIssues = await issues.getAllResolvedIssuesByCategory(categoryId);
-    res.status(200).send(receivedIssues);
+    const resolvedIssues = await issues.getAllResolvedIssuesByCategory(categoryId);
+    res.status(200).send(resolvedIssues);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
+// GET all resolved issues
+app.get('/api/issues/resolved', async (req, res) => {
+  try {
+    const resolvedIssues = await issues.getAllResolvedIssues();
+    res.status(200).send(resolvedIssues);
   } catch (e) {
     res.status(400).send(e);
   }
