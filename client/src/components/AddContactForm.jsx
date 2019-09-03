@@ -91,7 +91,7 @@ class AddContactForm extends Component {
                   Add Contact
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-                  <DialogTitle id="form-dialog-title">Create Issue</DialogTitle>
+                  <DialogTitle id="form-dialog-title">Add Contact</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
                       Please put corresponding information for the contact.
