@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
-import { BarChart } from "react-d3-components";
+import { PieChart } from "react-d3-components";
 
 
 class ReportData extends Component {
@@ -9,20 +9,16 @@ class ReportData extends Component {
         super(props);
         this.state = {
           issues: [],
-          data: [
+          data: 
             {
-            label: 'somethingA',
-            values: [{x: 'SomethingA', y: 10}, {x: 'SomethingB', y: 4}, {x: 'SomethingC', y: 3}]
-            },
-            {
-            label: 'somethingB',
-            values: [{x: 'SomethingA', y: 6}, {x: 'SomethingB', y: 8}, {x: 'SomethingC', y: 5}]
-            },
-            {
-            label: 'somethingC',
-            values: [{x: 'SomethingA', y: 6}, {x: 'SomethingB', y: 8}, {x: 'SomethingC', y: 5}]
+            label: '7/19',
+            values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
             }
-        ]
+         
+   
+            
+            
+        
         };
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
         this.parseIssues = this.parseIssues.bind(this);
@@ -77,15 +73,21 @@ class ReportData extends Component {
 
     render() {
         console.log(this.state);
+        var tooltipBar = function(label,y) {
+            return " Cost: " + y ;
+        };
+        let sort = null;
         return(
             <div id="report">
                 Inside report data!
-                <BarChart
-                    groupedBars
-                    data={this.state.data}
-                    width={400}
-                    height={400}
-                    margin={{top: 10, bottom: 50, left: 50, right: 10}}/>
+                <PieChart
+                data={this.state.data}
+                tooltipHtml={tooltipBar}
+                width={600}
+                height={400}
+                margin={{top: 10, bottom: 10, left: 100, right: 100}}
+                sort={sort}
+                />
             </div>
      
         

@@ -218,3 +218,22 @@ UPDATE rooms SET parking = false WHERE id = 101;
 
 /*Delete room*/
 DELETE FROM rooms WHERE id = 101;
+
+
+
+/*Report Data */
+/*GET total cost for issues resolved*/
+SELECT categories.category, SUM(cost) 
+FROM issues 
+INNER JOIN categories ON issues.category_id = categories.id 
+WHERE issues.date_resolved IS NOT NULL
+GROUP BY categories.category;
+
+DATEPART(month,issues.date_resolved)
+
+SELECT date_trunc('month', date_resolved) AS month_resolved,categories.category, SUM(cost) 
+FROM issues 
+INNER JOIN categories ON issues.category_id = categories.id 
+WHERE issues.date_resolved IS NOT NULL
+GROUP BY month_resolved,categories.category
+ORDER BY month_resolved ASC, category ASC;
