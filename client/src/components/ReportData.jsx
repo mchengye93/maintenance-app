@@ -22,6 +22,7 @@ class ReportData extends Component {
         };
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
         this.parseIssues = this.parseIssues.bind(this);
+        this.parseCost = this.parseCost.bind(this);
     }
     componentDidMount() {
         // axios.get('/api/issues/resolved')
@@ -37,6 +38,7 @@ class ReportData extends Component {
             this.setState({
                 cost: response.data
             });
+            this.parseCosts(response.data);
             //this.parseIssues(response.data);
         })
     }
@@ -48,11 +50,11 @@ class ReportData extends Component {
     parseCosts(costs) {
         let costByCategoryMonth = {};
 
-        {
-            "month_resolved": "2019-07-01T07:00:00.000Z",
-            "category": "Fixture",
-            "sum": "916"
-        },
+        // {
+        //     "month_resolved": "2019-07-01T07:00:00.000Z",
+        //     "category": "Fixture",
+        //     "sum": "916"
+        // },
 
 
         for (let i = 0; i < costs.length; i++) {
@@ -60,8 +62,14 @@ class ReportData extends Component {
             let monthYear = costs[i]["month_resolved"].split("-01")[0];
             let cost = costs[i]["sum"];
             
+            if (costByCategoryMonth[monthYear]) {
+                costByCategoryMonth[monthYear]['values'].push({x: category, y: cost});
+            } else {
+                costByCategoryMonth[monthYear] = [{x: category, y: cost}];
+            }
             
         }
+        console.log(costByCategoryMonth);
 
     }
     parseIssues(issues) {
