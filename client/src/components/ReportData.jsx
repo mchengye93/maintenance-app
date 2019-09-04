@@ -24,12 +24,20 @@ class ReportData extends Component {
         this.parseIssues = this.parseIssues.bind(this);
     }
     componentDidMount() {
-        axios.get('/api/issues/resolved')
+        // axios.get('/api/issues/resolved')
+        // .then((response)=> {
+        //     this.setState({
+        //         issues: response.data
+        //     });
+        //     this.parseIssues(response.data);
+        // })
+
+        axios.get('/api/cost/category')
         .then((response)=> {
             this.setState({
-                issues: response.data
+                cost: response.data
             });
-            this.parseIssues(response.data);
+            //this.parseIssues(response.data);
         })
     }
     handleChangeStatus(e) {
