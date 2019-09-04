@@ -22,7 +22,7 @@ class ReportData extends Component {
         };
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
         this.parseIssues = this.parseIssues.bind(this);
-        this.parseCost = this.parseCost.bind(this);
+        this.parseCosts = this.parseCosts.bind(this);
     }
     componentDidMount() {
         // axios.get('/api/issues/resolved')
