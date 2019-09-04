@@ -352,5 +352,14 @@ app.delete('/api/contact', async (req, res) => {
   }
 });
 
+app.get('/api/cost/category', async (req, res) => {
+  try {
+    const costByCategory = await issues.getCostByMonthCategory();
+    res.status(200).send(costByCategory);
+  } catch (e) {
+    res.status(400).send(e);
+  }
+});
+
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
