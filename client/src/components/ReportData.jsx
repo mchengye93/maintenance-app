@@ -45,6 +45,25 @@ class ReportData extends Component {
     
         
     }
+    parseCosts(costs) {
+        let costByCategoryMonth = {};
+
+        {
+            "month_resolved": "2019-07-01T07:00:00.000Z",
+            "category": "Fixture",
+            "sum": "916"
+        },
+
+
+        for (let i = 0; i < costs.length; i++) {
+            let category = costs[i]["category"];
+            let monthYear = costs[i]["month_resolved"].split("-01")[0];
+            let cost = costs[i]["sum"];
+            
+            
+        }
+
+    }
     parseIssues(issues) {
         //parse through issue and calculate total cost for each category
         let costByCategory = {};
