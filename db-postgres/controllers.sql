@@ -236,4 +236,4 @@ FROM issues
 INNER JOIN categories ON issues.category_id = categories.id 
 WHERE issues.date_resolved IS NOT NULL
 GROUP BY month_resolved,categories.category
-ORDER BY month_resolved ASC, category ASC;
+ORDER BY month_resolved , category;
