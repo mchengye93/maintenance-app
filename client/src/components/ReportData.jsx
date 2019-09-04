@@ -10,10 +10,15 @@ class ReportData extends Component {
         this.state = {
           issues: [],
           data: 
-            {
+           [ {
             // label: '7/19',
             values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
-            }
+            },
+            {
+                // label: '7/19',
+                values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
+                },
+        ]
          
    
             
@@ -107,14 +112,29 @@ class ReportData extends Component {
     }
 
     render() {
+        const pieCharts = [];
         console.log(this.state);
         var tooltipBar = function(label,y) {
             return " Cost: " + y ;
         };
+        for (let i = 0; i < this.state.data.length; i++) {
+            pieCharts.push(   
+            <PieChart
+                data={this.state.data[i]}
+                tooltipHtml={tooltipBar}
+                width={600}
+                height={400}
+                margin={{top: 10, bottom: 10, left: 100, right: 100}}
+                sort={sort}
+                />)
+        }
+      
         let sort = null;
         return(
+            
             <div id="report">
                 Inside report data!
+{/* 
                 <PieChart
                 data={this.state.data}
                 tooltipHtml={tooltipBar}
@@ -122,7 +142,9 @@ class ReportData extends Component {
                 height={400}
                 margin={{top: 10, bottom: 10, left: 100, right: 100}}
                 sort={sort}
-                />
+                /> */}
+                {pieCharts}
+                 
             </div>
      
         
