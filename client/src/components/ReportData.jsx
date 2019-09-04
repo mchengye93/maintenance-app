@@ -11,7 +11,7 @@ class ReportData extends Component {
           issues: [],
           data: 
             {
-            label: '7/19',
+            // label: '7/19',
             values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
             }
          
@@ -63,9 +63,9 @@ class ReportData extends Component {
             let cost = costs[i]["sum"];
             
             if (costByCategoryMonth[monthYear]) {
-                costByCategoryMonth[monthYear][values].push({x: category, y: cost});
+                costByCategoryMonth[monthYear]['values'].push({x: category, y: cost});
             } else {
-                costByCategoryMonth[monthYear] = {values:[{x: category, y: cost}]};
+                costByCategoryMonth[monthYear] = {'values':[{x: category, y: cost}]};
             }
             
         }
