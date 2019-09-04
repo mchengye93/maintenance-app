@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import * as d3 from 'd3'
 
 import { PieChart } from "react-d3-components";
 
@@ -56,7 +57,6 @@ class ReportData extends Component {
         //     "category": "Fixture",
         //     "sum": "916"
         // },
-
 
         for (let i = 0; i < costs.length; i++) {
             let category = costs[i]["category"];
