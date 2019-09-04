@@ -397,9 +397,9 @@ const getCostByMonthCategory = () => {
   + 'ORDER BY month_resolved , category';
 
   return new Promise((resolve, reject) => {
-    connection.query(query, (err, result) => {
+    connection.query(query, (err, results) => {
       if (err) return reject(err);
-      resolve(result);
+      resolve(results.rows);
     });
   });
 };
