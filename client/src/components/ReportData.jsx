@@ -18,7 +18,8 @@ class ReportData extends Component {
                 // label: '7/19',
                 values: [{x: 'Electrical', y: 100}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
                 },
-        ]
+        ],
+        
          
    
             
@@ -40,9 +41,9 @@ class ReportData extends Component {
 
         axios.get('/api/cost/category')
         .then((response)=> {
-            this.setState({
-                cost: response.data
-            });
+            // this.setState({
+            //     cost: response.data
+            // });
             this.parseCosts(response.data);
             //this.parseIssues(response.data);
         })
@@ -76,7 +77,7 @@ class ReportData extends Component {
             }
             
         }
-        this.setState({cost: costByCategoryMonth};)
+        this.setState({cost: costByCategoryMonth});
 
     }
     parseIssues(issues) {
@@ -119,17 +120,20 @@ class ReportData extends Component {
         var tooltipBar = function(label,y) {
             return " Cost: " + y ;
         };
-        for (key in this.state.cost) {
-            pieCharts.push(   
-            <PieChart
-                data={this.state.cost[key]}
-                tooltipHtml={tooltipBar}
-                width={600}
-                height={400}
-                margin={{top: 10, bottom: 10, left: 100, right: 100}}
-                sort={sort}
-                />)
+        if (this.state.cost !== undefined) {
+            for (let key in this.state.cost) {
+                pieCharts.push(   
+                <PieChart
+                    data={this.state.cost[key]}
+                    tooltipHtml={tooltipBar}
+                    width={600}
+                    height={400}
+                    margin={{top: 0, bottom: 0, left: 0, right: 0}}
+                    sort={sort}
+                    />)
+            }
         }
+       
       
         let sort = null;
         return(
