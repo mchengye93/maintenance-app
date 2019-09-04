@@ -16,7 +16,7 @@ class ReportData extends Component {
             },
             {
                 // label: '7/19',
-                values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
+                values: [{x: 'Electrical', y: 100}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
                 },
         ]
          
@@ -70,11 +70,13 @@ class ReportData extends Component {
             if (costByCategoryMonth[monthYear]) {
                 costByCategoryMonth[monthYear]['values'].push({x: category, y: cost});
             } else {
-                costByCategoryMonth[monthYear] = {'values':[{x: category, y: cost}]};
+                costByCategoryMonth[monthYear] = {
+                    'label': monthYear,
+                    'values':[{x: category, y: cost}]};
             }
             
         }
-        console.log(costByCategoryMonth);
+        this.setState({cost: costByCategoryMonth};)
 
     }
     parseIssues(issues) {
@@ -117,10 +119,10 @@ class ReportData extends Component {
         var tooltipBar = function(label,y) {
             return " Cost: " + y ;
         };
-        for (let i = 0; i < this.state.data.length; i++) {
+        for (key in this.state.cost) {
             pieCharts.push(   
             <PieChart
-                data={this.state.data[i]}
+                data={this.state.cost[key]}
                 tooltipHtml={tooltipBar}
                 width={600}
                 height={400}
