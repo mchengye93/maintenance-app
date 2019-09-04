@@ -387,6 +387,23 @@ const deleteContact = (contactId) => {
   });
 };
 
+
+const getCostByMonthCategory = () => {
+  const query = "SELECT date_trunc('month', date_resolved) AS month_resolved,categories.category, SUM(cost) "
+  + 'FROM issues '
+  + 'INNER JOIN categories ON issues.category_id = categories.id '
+  + 'WHERE issues.date_resolved IS NOT NULL '
+  + 'GROUP BY month_resolved,categories.category '
+  + 'ORDER BY month_resolved , category';
+
+  return new Promise((resolve, reject) => {
+    connection.query(query, (err, result) => {
+      if (err) return reject(err);
+      resolve(result);
+    });
+  });
+};
+
 module.exports = {
   createIssue,
   getAllIssues,
