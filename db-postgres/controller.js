@@ -434,5 +434,6 @@ module.exports = {
   createCategory,
   updateCategory,
   deleteCategory,
+  getCostByMonthCategory,
 
 };
