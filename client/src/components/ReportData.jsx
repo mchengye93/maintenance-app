@@ -9,22 +9,17 @@ class ReportData extends Component {
         super(props);
         this.state = {
           issues: [],
-          data: 
-           [ {
-            // label: '7/19',
-            values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
-            },
-            {
-                // label: '7/19',
-                values: [{x: 'Electrical', y: 100}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
-                },
-        ],
-        
-         
-   
-            
-            
-        
+        //   data: 
+        //    [ {
+        //        label: '7/19',
+        //         values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
+        //     },
+        //     {
+        //         label: '8/19',
+        //         values: [{x: 'Electrical', y: 100}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
+        //         },
+        //     ],
+     
         };
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
         this.parseIssues = this.parseIssues.bind(this);
@@ -118,19 +113,22 @@ class ReportData extends Component {
         const pieCharts = [];
         console.log(this.state);
         var tooltipBar = function(label,y) {
-            return " Cost: " + y ;
+            return  label + ': ' + y ;
         };
         if (this.state.cost !== undefined) {
             for (let key in this.state.cost) {
-                pieCharts.push(   
+                pieCharts.push(
+                <div>
+                <h3 style={{margin:'0px 180px'}}> Maintenance Cost Report for {this.state.cost[key].label}</h3>   
                 <PieChart
                     data={this.state.cost[key]}
                     tooltipHtml={tooltipBar}
                     width={600}
                     height={400}
-                    margin={{top: 0, bottom: 0, left: 0, right: 0}}
+                    margin={{top: 10, bottom: 10, left: 10, right: 10}}
                     sort={sort}
-                    />)
+                    />
+                </div>)
             }
         }
        
@@ -139,16 +137,7 @@ class ReportData extends Component {
         return(
             
             <div id="report">
-                Inside report data!
-{/* 
-                <PieChart
-                data={this.state.data}
-                tooltipHtml={tooltipBar}
-                width={600}
-                height={400}
-                margin={{top: 10, bottom: 10, left: 100, right: 100}}
-                sort={sort}
-                /> */}
+ 
                 {pieCharts}
                  
             </div>
