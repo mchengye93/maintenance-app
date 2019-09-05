@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import  d3 from 'd3'
 
-import { PieChart } from "react-d3-components";
-import BarChart from "./BarChart.jsx";
 import GroupedBarChart from './GroupedBarChart.jsx';
 
 
