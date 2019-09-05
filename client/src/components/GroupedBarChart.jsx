@@ -2,92 +2,101 @@ import React, { Component } from 'react'
 // import * as d3 from 'd3';
 
 class GroupedBarChart extends Component {
+    constructor(props) {
+        super(props);
+       this.drawBarChart = this.drawBarChart.bind(this);
+    }
     componentDidMount() {
-        const data = [
-            {
-                "monthYear": "7/19", 
-                "values": [
-                    {
-                        "cost": 10, 
-                        "category": "Electrical"
-                    }, 
-                    {
-                        "cost": 4, 
-                        "category": "Plumbing"
-                    }, 
-                    {
-                        "cost": 12, 
-                        "category": "Fixture"
-                    }, 
-                    {
-                        "cost": 6, 
-                        "category": "Furniture"
-                    }, 
-                    {
-                        "cost": 2, 
-                        "category": "Decoration"
-                    }
-                ]
-            }, 
-            {
-                "monthYear": "Liberal Profession", 
-                "values": [
-                    {
-                        "cost": 1, 
-                        "category": "Electrical"
-                    }, 
-                    {
-                        "cost": 21, 
-                        "category": "Plumbing"
-                    }, 
-                    {
-                        "cost": 13, 
-                        "category": "Fixture"
-                    }, 
-                    {
-                        "cost": 18, 
-                        "category": "Furniture"
-                    }, 
-                    {
-                        "cost": 6, 
-                        "category": "Decoration"
-                    }
-                ]
-            }, 
-            {
-                "monthYear": "Salaried Staff", 
-                "values": [
-                    {
-                        "cost": 3, 
-                        "category": "Electrical"
-                    }, 
-                    {
-                        "cost": 22, 
-                        "category": "Plumbing"
-                    }, 
-                    {
-                        "cost": 6, 
-                        "category": "Fixture"
-                    }, 
-                    {
-                        "cost": 15, 
-                        "category": "Furniture"
-                    }, 
-                    {
-                        "cost": 3, 
-                        "category": "Decoration"
-                    }
-                ]
-            }, 
+        // const data = [
+        //     {
+        //         "monthYear": "7/19", 
+        //         "values": [
+        //             {
+        //                 "cost": 10, 
+        //                 "category": "Electrical"
+        //             }, 
+        //             {
+        //                 "cost": 4, 
+        //                 "category": "Plumbing"
+        //             }, 
+        //             {
+        //                 "cost": 12, 
+        //                 "category": "Fixture"
+        //             }, 
+        //             {
+        //                 "cost": 6, 
+        //                 "category": "Furniture"
+        //             }, 
+        //             {
+        //                 "cost": 2, 
+        //                 "category": "Decoration"
+        //             }
+        //         ]
+        //     }, 
+        //     {
+        //         "monthYear": "Liberal Profession", 
+        //         "values": [
+        //             {
+        //                 "cost": 1, 
+        //                 "category": "Electrical"
+        //             }, 
+        //             {
+        //                 "cost": 21, 
+        //                 "category": "Plumbing"
+        //             }, 
+        //             {
+        //                 "cost": 13, 
+        //                 "category": "Fixture"
+        //             }, 
+        //             {
+        //                 "cost": 18, 
+        //                 "category": "Furniture"
+        //             }, 
+        //             {
+        //                 "cost": 6, 
+        //                 "category": "Decoration"
+        //             }
+        //         ]
+        //     }, 
+        //     {
+        //         "monthYear": "Salaried Staff", 
+        //         "values": [
+        //             {
+        //                 "cost": 3, 
+        //                 "category": "Electrical"
+        //             }, 
+        //             {
+        //                 "cost": 22, 
+        //                 "category": "Plumbing"
+        //             }, 
+        //             {
+        //                 "cost": 6, 
+        //                 "category": "Fixture"
+        //             }, 
+        //             {
+        //                 "cost": 15, 
+        //                 "category": "Furniture"
+        //             }, 
+        //             {
+        //                 "cost": 3, 
+        //                 "category": "Decoration"
+        //             }
+        //         ]
+        //     }, 
           
       
-        ]
-        
-        this.drawBarChart(data);
+        // ]
+        console.log(this.props);
+        if(this.props.data !== []) {
+            
+            this.drawBarChart(this.props.data);
+        }
+   
     }
+
     drawBarChart(data)  {
         <script src="https://d3js.org/d3.v3.min.js"></script>
-        console.log(d3);
+    
         var margin = {top: 20, right: 20, bottom: 30, left: 40},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
@@ -164,7 +173,7 @@ class GroupedBarChart extends Component {
               d3.select(this).style("fill", d3.rgb(color(d.category)).darker(1));
               svg.append("text").attr({
                 id: "t" + d.category + "-" + d.cost,  
-                 x: function() { return x1(d.category); },
+                 x: function() { return x1(d.category);},
                  y: function() { return  y(d.cost); }
              })
              .text(function() {

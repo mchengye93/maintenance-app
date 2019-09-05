@@ -12,6 +12,7 @@ class ReportData extends Component {
         super(props);
         this.state = {
           issues: [],
+          cost: []
         //   data: 
         //    [ {
         //        label: '7/19',
@@ -116,42 +117,46 @@ class ReportData extends Component {
     }
 
     render() {
-        const pieCharts = [];
-        console.log(this.state);
-        var tooltipBar = function(label,y) {
-            return  label + ': ' + y ;
-        };
-        if (this.state.cost !== undefined) {
-            for (let key in this.state.cost) {
-                pieCharts.push(
-                <div>
-                <h3 style={{margin:'0px 180px'}}> Maintenance Cost Report for {this.state.cost[key].label}</h3>   
-                <PieChart
-                    data={this.state.cost[key]}
-                    tooltipHtml={tooltipBar}
-                    width={600}
-                    height={400}
-                    margin={{top: 10, bottom: 10, left: 10, right: 10}}
-                    sort={sort}
-                    />
-                </div>)
-            }
-        }
+        // const pieCharts = [];
+        // console.log(this.state);
+        // var tooltipBar = function(label,y) {
+        //     return  label + ': ' + y ;
+        // };
+        // if (this.state.cost !== undefined) {
+        //     for (let key in this.state.cost) {
+        //         pieCharts.push(
+        //         <div>
+        //         <h3 style={{margin:'0px 180px'}}> Maintenance Cost Report for {this.state.cost[key].label}</h3>   
+        //         <PieChart
+        //             data={this.state.cost[key]}
+        //             tooltipHtml={tooltipBar}
+        //             width={600}
+        //             height={400}
+        //             margin={{top: 10, bottom: 10, left: 10, right: 10}}
+        //             sort={sort}
+        //             />
+        //         </div>)
+        //     }
+        // }
+        
        
       
         let sort = null;
-        return(
+        if (this.state.cost !== []){
+            return(
             
-            <div id="report">
- 
-                {/* {pieCharts} */}
-                {/* <BarChart/> */}
-                <GroupedBarChart/>
-                 
-            </div>
+                <div id="report">
      
-        
-        );
+                    {/* {pieCharts} */}
+                    {/* <BarChart/> */}
+                    <GroupedBarChart data={this.state.cost}/>
+                     
+                </div>
+         
+            
+            );
+        }
+   
     }
 }
 
