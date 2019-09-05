@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-// import * as d3 from 'd3';
 
 class GroupedBarChart extends Component {
     constructor(props) {
@@ -7,12 +6,8 @@ class GroupedBarChart extends Component {
        this.drawBarChart = this.drawBarChart.bind(this);
     }
     componentDidMount() {
-  
-        console.log(this.props);
-        if(this.props.data !== []) {
-            
+      
             this.drawBarChart(this.props.data);
-        }
    
     }
 
