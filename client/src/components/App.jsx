@@ -112,7 +112,7 @@ class App extends Component {
     }
 
     render() {
-        console.log(this.state);
+
         if (this.state.status == 0) {
 
             return (

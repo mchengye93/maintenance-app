@@ -85,7 +85,8 @@ class GroupedBarChart extends Component {
     
       slice.selectAll("rect")
           .data(function(d) { return d.values; })
-      .enter().append("rect")
+          .enter().append("rect")
+          .attr("id",function(d) { return "rect"+d.category} )
           .attr("width", x1.rangeBand())
           .attr("x", function(d) { return x1(d.category); })
           .style("fill", function(d) { return color(d.category) })
