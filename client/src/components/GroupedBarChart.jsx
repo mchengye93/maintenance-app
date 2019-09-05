@@ -8,24 +8,24 @@ class GroupedBarChart extends Component {
                 "monthYear": "7/19", 
                 "values": [
                     {
-                        "value": 10, 
-                        "rate": "Electrical"
+                        "cost": 10, 
+                        "category": "Electrical"
                     }, 
                     {
-                        "value": 4, 
-                        "rate": "Plumbing"
+                        "cost": 4, 
+                        "category": "Plumbing"
                     }, 
                     {
-                        "value": 12, 
-                        "rate": "Fixture"
+                        "cost": 12, 
+                        "category": "Fixture"
                     }, 
                     {
-                        "value": 6, 
-                        "rate": "Furniture"
+                        "cost": 6, 
+                        "category": "Furniture"
                     }, 
                     {
-                        "value": 2, 
-                        "rate": "Decoration"
+                        "cost": 2, 
+                        "category": "Decoration"
                     }
                 ]
             }, 
@@ -33,24 +33,24 @@ class GroupedBarChart extends Component {
                 "monthYear": "Liberal Profession", 
                 "values": [
                     {
-                        "value": 1, 
-                        "rate": "Electrical"
+                        "cost": 1, 
+                        "category": "Electrical"
                     }, 
                     {
-                        "value": 21, 
-                        "rate": "Plumbing"
+                        "cost": 21, 
+                        "category": "Plumbing"
                     }, 
                     {
-                        "value": 13, 
-                        "rate": "Fixture"
+                        "cost": 13, 
+                        "category": "Fixture"
                     }, 
                     {
-                        "value": 18, 
-                        "rate": "Furniture"
+                        "cost": 18, 
+                        "category": "Furniture"
                     }, 
                     {
-                        "value": 6, 
-                        "rate": "Decoration"
+                        "cost": 6, 
+                        "category": "Decoration"
                     }
                 ]
             }, 
@@ -58,24 +58,24 @@ class GroupedBarChart extends Component {
                 "monthYear": "Salaried Staff", 
                 "values": [
                     {
-                        "value": 3, 
-                        "rate": "Electrical"
+                        "cost": 3, 
+                        "category": "Electrical"
                     }, 
                     {
-                        "value": 22, 
-                        "rate": "Plumbing"
+                        "cost": 22, 
+                        "category": "Plumbing"
                     }, 
                     {
-                        "value": 6, 
-                        "rate": "Fixture"
+                        "cost": 6, 
+                        "category": "Fixture"
                     }, 
                     {
-                        "value": 15, 
-                        "rate": "Furniture"
+                        "cost": 15, 
+                        "category": "Furniture"
                     }, 
                     {
-                        "value": 3, 
-                        "rate": "Decoration"
+                        "cost": 3, 
+                        "category": "Decoration"
                     }
                 ]
             }, 
@@ -121,11 +121,11 @@ class GroupedBarChart extends Component {
     
     
       var categoriesNames = data.map(function(d) { return d.monthYear; });
-      var rateNames = data[0].values.map(function(d) { return d.rate; });
+      var rateNames = data[0].values.map(function(d) { return d.category; });
     
       x0.domain(categoriesNames);
       x1.domain(rateNames).rangeRoundBands([0, x0.rangeBand()]);
-      y.domain([0, d3.max(data, function(monthYear) { return d3.max(monthYear.values, function(d) { return d.value; }); })]);
+      y.domain([0, d3.max(data, function(monthYear) { return d3.max(monthYear.values, function(d) { return d.cost; }); })]);
     
       svg.append("g")
           .attr("class", "x axis")
@@ -142,7 +142,7 @@ class GroupedBarChart extends Component {
           .attr("dy", ".71em")
           .style("text-anchor", "end")
           .style('font-weight','bold')
-          .text("Value");
+          .text("Cost");
     
       svg.select('.y').transition().duration(500).delay(1300).style('opacity','1');
     
@@ -156,27 +156,27 @@ class GroupedBarChart extends Component {
           .data(function(d) { return d.values; })
       .enter().append("rect")
           .attr("width", x1.rangeBand())
-          .attr("x", function(d) { return x1(d.rate); })
-          .style("fill", function(d) { return color(d.rate) })
+          .attr("x", function(d) { return x1(d.category); })
+          .style("fill", function(d) { return color(d.category) })
           .attr("y", function(d) { return y(0); })
           .attr("height", function(d) { return height - y(0); })
           .on("mouseover", function(d) {
-              d3.select(this).style("fill", d3.rgb(color(d.rate)).darker(2));
+              d3.select(this).style("fill", d3.rgb(color(d.category)).darker(1));
           })
           .on("mouseout", function(d) {
-              d3.select(this).style("fill", color(d.rate));
+              d3.select(this).style("fill", color(d.category));
           });
     
       slice.selectAll("rect")
           .transition()
           .delay(function (d) {return Math.random()*1000;})
           .duration(1000)
-          .attr("y", function(d) { return y(d.value); })
-          .attr("height", function(d) { return height - y(d.value); });
+          .attr("y", function(d) { return y(d.cost); })
+          .attr("height", function(d) { return height - y(d.cost); });
     
       //Legend
       var legend = svg.selectAll(".legend")
-          .data(data[0].values.map(function(d) { return d.rate; }).reverse())
+          .data(data[0].values.map(function(d) { return d.category; }).reverse())
       .enter().append("g")
           .attr("class", "legend")
           .attr("transform", function(d,i) { return "translate(0," + i * 20 + ")"; })
