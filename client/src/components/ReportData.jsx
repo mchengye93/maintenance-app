@@ -74,7 +74,11 @@ class ReportData extends Component {
             }
             
         }
-        this.setState({cost: costByCategoryMonth});
+        let monthResults = [];
+        for (let key in costByCategoryMonth) {
+            monthResults.push(costByCategoryMonth[key]);
+        }
+        this.setState({cost: monthResults});
 
     }
     parseIssues(issues) {

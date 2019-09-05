@@ -5,155 +5,82 @@ class GroupedBarChart extends Component {
     componentDidMount() {
         const data = [
             {
-                "categorie": "Student", 
+                "monthYear": "7/19", 
                 "values": [
                     {
                         "value": 10, 
-                        "rate": "Not at all"
+                        "rate": "Electrical"
                     }, 
                     {
                         "value": 4, 
-                        "rate": "Not very much"
+                        "rate": "Plumbing"
                     }, 
                     {
                         "value": 12, 
-                        "rate": "Medium"
+                        "rate": "Fixture"
                     }, 
                     {
                         "value": 6, 
-                        "rate": "Very much"
-                    }, 
-                    {
-                        "value": 0, 
-                        "rate": "Tremendously"
-                    }
-                ]
-            }, 
-            {
-                "categorie": "Liberal Profession", 
-                "values": [
-                    {
-                        "value": 1, 
-                        "rate": "Not at all"
-                    }, 
-                    {
-                        "value": 21, 
-                        "rate": "Not very much"
-                    }, 
-                    {
-                        "value": 13, 
-                        "rate": "Medium"
-                    }, 
-                    {
-                        "value": 18, 
-                        "rate": "Very much"
-                    }, 
-                    {
-                        "value": 6, 
-                        "rate": "Tremendously"
-                    }
-                ]
-            }, 
-            {
-                "categorie": "Salaried Staff", 
-                "values": [
-                    {
-                        "value": 3, 
-                        "rate": "Not at all"
-                    }, 
-                    {
-                        "value": 22, 
-                        "rate": "Not very much"
-                    }, 
-                    {
-                        "value": 6, 
-                        "rate": "Medium"
-                    }, 
-                    {
-                        "value": 15, 
-                        "rate": "Very much"
-                    }, 
-                    {
-                        "value": 3, 
-                        "rate": "Tremendously"
-                    }
-                ]
-            }, 
-            {
-                "categorie": "Employee", 
-                "values": [
-                    {
-                        "value": 12, 
-                        "rate": "Not at all"
-                    }, 
-                    {
-                        "value": 7, 
-                        "rate": "Not very much"
-                    }, 
-                    {
-                        "value": 18, 
-                        "rate": "Medium"
-                    }, 
-                    {
-                        "value": 13, 
-                        "rate": "Very much"
-                    }, 
-                    {
-                        "value": 6, 
-                        "rate": "Tremendously"
-                    }
-                ]
-            }, 
-            {
-                "categorie": "Craftsman", 
-                "values": [
-                    {
-                        "value": 6, 
-                        "rate": "Not at all"
-                    }, 
-                    {
-                        "value": 15, 
-                        "rate": "Not very much"
-                    }, 
-                    {
-                        "value": 9, 
-                        "rate": "Medium"
-                    }, 
-                    {
-                        "value": 12, 
-                        "rate": "Very much"
-                    }, 
-                    {
-                        "value": 3, 
-                        "rate": "Tremendously"
-                    }
-                ]
-            }, 
-            {
-                "categorie": "Inactive", 
-                "values": [
-                    {
-                        "value": 6, 
-                        "rate": "Not at all"
-                    }, 
-                    {
-                        "value": 6, 
-                        "rate": "Not very much"
-                    }, 
-                    {
-                        "value": 6, 
-                        "rate": "Medium"
+                        "rate": "Furniture"
                     }, 
                     {
                         "value": 2, 
-                        "rate": "Very much"
+                        "rate": "Decoration"
+                    }
+                ]
+            }, 
+            {
+                "monthYear": "Liberal Profession", 
+                "values": [
+                    {
+                        "value": 1, 
+                        "rate": "Electrical"
+                    }, 
+                    {
+                        "value": 21, 
+                        "rate": "Plumbing"
+                    }, 
+                    {
+                        "value": 13, 
+                        "rate": "Fixture"
+                    }, 
+                    {
+                        "value": 18, 
+                        "rate": "Furniture"
+                    }, 
+                    {
+                        "value": 6, 
+                        "rate": "Decoration"
+                    }
+                ]
+            }, 
+            {
+                "monthYear": "Salaried Staff", 
+                "values": [
+                    {
+                        "value": 3, 
+                        "rate": "Electrical"
+                    }, 
+                    {
+                        "value": 22, 
+                        "rate": "Plumbing"
+                    }, 
+                    {
+                        "value": 6, 
+                        "rate": "Fixture"
+                    }, 
+                    {
+                        "value": 15, 
+                        "rate": "Furniture"
                     }, 
                     {
                         "value": 3, 
-                        "rate": "Tremendously"
+                        "rate": "Decoration"
                     }
                 ]
-            }
+            }, 
+          
+      
         ]
         
         this.drawBarChart(data);
@@ -193,12 +120,12 @@ class GroupedBarChart extends Component {
     
     
     
-      var categoriesNames = data.map(function(d) { return d.categorie; });
+      var categoriesNames = data.map(function(d) { return d.monthYear; });
       var rateNames = data[0].values.map(function(d) { return d.rate; });
     
       x0.domain(categoriesNames);
       x1.domain(rateNames).rangeRoundBands([0, x0.rangeBand()]);
-      y.domain([0, d3.max(data, function(categorie) { return d3.max(categorie.values, function(d) { return d.value; }); })]);
+      y.domain([0, d3.max(data, function(monthYear) { return d3.max(monthYear.values, function(d) { return d.value; }); })]);
     
       svg.append("g")
           .attr("class", "x axis")
@@ -223,7 +150,7 @@ class GroupedBarChart extends Component {
           .data(data)
           .enter().append("g")
           .attr("class", "g")
-          .attr("transform",function(d) { return "translate(" + x0(d.categorie) + ",0)"; });
+          .attr("transform",function(d) { return "translate(" + x0(d.monthYear) + ",0)"; });
     
       slice.selectAll("rect")
           .data(function(d) { return d.values; })
