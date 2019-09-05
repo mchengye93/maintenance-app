@@ -131,18 +131,14 @@ class GroupedBarChart extends Component {
           .attr("height", 18)
           .style("fill", function(d) { return color(d); })
           .on("mouseover", function(d) {
-            //   console.log(d);
-            //   console.log("Mouseover rect", d);
             d3.selectAll(".rect"+d).style("fill","grey");
             
            })
         .on("mouseout", function(d) {
             d3.selectAll(".rect"+d).style("fill", color(d) )
-            
-            
+       
         });
-          ;
-    
+  
       legend.append("text")
           .attr("x", width - 24)
           .attr("y", 9)
