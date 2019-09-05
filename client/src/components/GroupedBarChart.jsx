@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import { PieChart } from "react-d3-components";
 
 class GroupedBarChart extends Component {
     constructor(props) {
@@ -14,7 +14,6 @@ class GroupedBarChart extends Component {
 
     drawBarChart(data)  {
 
-        <script src="http://d3js.org/d3.v3.min.js" ></script>
     
         var margin = {top: 20, right: 20, bottom: 30, left: 60},
         width = 960 - margin.left - margin.right,
