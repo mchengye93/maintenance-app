@@ -3,6 +3,7 @@ import axios from 'axios';
 import * as d3 from 'd3'
 
 import { PieChart } from "react-d3-components";
+import BarChart from "./BarChart.jsx";
 
 
 class ReportData extends Component {
@@ -138,7 +139,8 @@ class ReportData extends Component {
             
             <div id="report">
  
-                {pieCharts}
+                {/* {pieCharts} */}
+                <BarChart/>
                  
             </div>
      
