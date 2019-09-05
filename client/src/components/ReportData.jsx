@@ -72,7 +72,7 @@ class ReportData extends Component {
             return(
             
                 <div id="report">
-              
+                    <h2 style={{textAlign:'center'}}>Maintenance Montly Cost Report</h2>
                     <GroupedBarChart data={this.state.cost}/>       
                 </div>
            

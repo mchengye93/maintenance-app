@@ -10,7 +10,7 @@ class GroupedBarChart extends Component {
     }
     componentDidMount() {
         
-        
+        this.drawBarChart();
         window.addEventListener("resize", this.drawBarChart);
          
    
@@ -20,9 +20,9 @@ class GroupedBarChart extends Component {
     drawBarChart()  {
         let data = this.props.data;
     
-        let margin = {top: 20, right: 20, bottom: 30, left: 60},
-        width = window.innerWidth*0.75 - margin.left - margin.right,
-        height = window.innerHeight*0.60 - margin.top - margin.bottom;
+        let margin = {top: 60, right: 20, bottom: 30, left: 60},
+        width = window.innerWidth*0.85 - margin.left - margin.right,
+        height = window.innerHeight*0.65 - margin.top - margin.bottom;
     
     var x0 = d3.scale.ordinal()
         .rangeRoundBands([0, width], .1);
