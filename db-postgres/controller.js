@@ -398,7 +398,6 @@ const getCostByMonthCategory = () => {
 
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
-      console.log(err);
       if (err) return reject(err);
       resolve(results.rows);
     });
