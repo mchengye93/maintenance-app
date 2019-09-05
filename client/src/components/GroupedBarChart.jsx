@@ -134,7 +134,7 @@ class GroupedBarChart extends Component {
     
       x0.domain(categoriesNames);
       x1.domain(categoryNames).rangeRoundBands([0, x0.rangeBand()]);
-      y.domain([0, d3.max(data, function(monthYear) { return d3.max(monthYear.values, function(d) { return d.cost; }); })]);
+      y.domain([0, d3.max(data, function(monthYear) { return d3.max(monthYear.values, function(d) { return parseInt(d.cost); }); })]);
     
       svg.append("g")
           .attr("class", "x axis")
@@ -174,7 +174,7 @@ class GroupedBarChart extends Component {
               svg.append("text").attr({
                 id: "t" + d.category + "-" + d.cost,  
                  x: function() { return x1(d.category);},
-                 y: function() { return  y(d.cost); }
+                 y: function() { return  y(parseInt(d.cost)); }
              })
              .text(function() {
                return x1(d.category)+ ' ,'+d.cost; 
@@ -189,8 +189,8 @@ class GroupedBarChart extends Component {
           .transition()
           .delay(function (d) {return Math.random()*1000;})
           .duration(1000)
-          .attr("y", function(d) { return y(d.cost); })
-          .attr("height", function(d) { return height - y(d.cost); });
+          .attr("y", function(d) { return y(parseInt(d.cost)); })
+          .attr("height", function(d) { return height - y(parseInt(d.cost)); });
     
       //Legend
       var legend = svg.selectAll(".legend")
