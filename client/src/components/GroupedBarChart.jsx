@@ -86,7 +86,8 @@ class GroupedBarChart extends Component {
       slice.selectAll("rect")
           .data(function(d) { return d.values; })
           .enter().append("rect")
-          .attr("id",function(d) { return "rect"+d.category} )
+          .attr("class",function(d) { return "rect"+d.category} )
+          .attr("id",function(d) { return 'cost-'+d.cost} )
           .attr("width", x1.rangeBand())
           .attr("x", function(d) { return x1(d.category); })
           .style("fill", function(d) { return color(d.category) })
@@ -130,14 +131,14 @@ class GroupedBarChart extends Component {
           .attr("height", 18)
           .style("fill", function(d) { return color(d); })
           .on("mouseover", function(d) {
-              console.log(d);
-              console.log("Mouseover rect", d);
-            d3.selectAll("#rect"+d).style("fill","grey");
-            console.log(d3.selectAll("#rect"+d));
+            //   console.log(d);
+            //   console.log("Mouseover rect", d);
+            d3.selectAll(".rect"+d).style("fill","grey");
+            
            })
         .on("mouseout", function(d) {
-            d3.selectAll("#rect"+d).style("fill", color(d) )
-            d3.selectAll("#rect"+d)
+            d3.selectAll(".rect"+d).style("fill", color(d) )
+            
             
         });
           ;
