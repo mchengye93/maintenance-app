@@ -392,7 +392,7 @@ const getCostByMonthCategory = () => {
   const query = "SELECT date_trunc('month', date_resolved) AS month_resolved,categories.category, SUM(cost) "
   + 'FROM issues '
   + 'INNER JOIN categories ON issues.category_id = categories.id '
-  + "WHERE issues.date_resolved IS NOT NULL AND issues.date_resolved >= date_trunc('month', CURRENT_TIMESTAMP) "
+  + "WHERE issues.date_resolved IS NOT NULL AND issues.date_resolved >= date_trunc('month', current_date - interval '1' month) "
   + 'GROUP BY month_resolved,categories.category '
   + 'ORDER BY month_resolved , category';
 
