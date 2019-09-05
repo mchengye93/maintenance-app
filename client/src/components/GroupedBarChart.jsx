@@ -121,10 +121,10 @@ class GroupedBarChart extends Component {
     
     
       var categoriesNames = data.map(function(d) { return d.monthYear; });
-      var rateNames = data[0].values.map(function(d) { return d.category; });
+      var categoryNames = data[0].values.map(function(d) { return d.category; });
     
       x0.domain(categoriesNames);
-      x1.domain(rateNames).rangeRoundBands([0, x0.rangeBand()]);
+      x1.domain(categoryNames).rangeRoundBands([0, x0.rangeBand()]);
       y.domain([0, d3.max(data, function(monthYear) { return d3.max(monthYear.values, function(d) { return d.cost; }); })]);
     
       svg.append("g")
@@ -162,9 +162,18 @@ class GroupedBarChart extends Component {
           .attr("height", function(d) { return height - y(0); })
           .on("mouseover", function(d) {
               d3.select(this).style("fill", d3.rgb(color(d.category)).darker(1));
+              svg.append("text").attr({
+                id: "t" + d.category + "-" + d.cost,  
+                 x: function() { return x1(d.category); },
+                 y: function() { return  y(d.cost); }
+             })
+             .text(function() {
+               return x1(d.category)+ ' ,'+d.cost; 
+             });
           })
           .on("mouseout", function(d) {
               d3.select(this).style("fill", color(d.category));
+              d3.select("#t"+ d.category + "-" + d.cost).remove();
           });
     
       slice.selectAll("rect")
