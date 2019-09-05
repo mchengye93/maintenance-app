@@ -14,7 +14,7 @@ class GroupedBarChart extends Component {
     drawBarChart(data)  {
         <script src="https://d3js.org/d3.v3.min.js"></script>
     
-        var margin = {top: 20, right: 20, bottom: 30, left: 40},
+        var margin = {top: 20, right: 20, bottom: 30, left: 60},
         width = 960 - margin.left - margin.right,
         height = 500 - margin.top - margin.bottom;
     
@@ -86,15 +86,16 @@ class GroupedBarChart extends Component {
           .style("fill", function(d) { return color(d.category) })
           .attr("y", function(d) { return y(0); })
           .attr("height", function(d) { return height - y(0); })
-          .on("mouseover", function(d) {
+          .on("mouseover", function(d,i) {
               d3.select(this).style("fill", d3.rgb(color(d.category)).darker(1));
               svg.append("text").attr({
-                id: "t" + d.category + "-" + d.cost,  
-                 x: function() { return x1(d.category);},
+                id: "t" + d.category + "-" + d.cost ,  
+                 x: function() { return d3.mouse(this)[0];},
                  y: function() { return  y(parseInt(d.cost)); }
              })
              .text(function() {
-               return x1(d.category)+ ' ,'+d.cost; 
+                 console.log(d3.mouse(this)[0]);
+               return d.category+ ':'+d.cost; 
              });
           })
           .on("mouseout", function(d) {
