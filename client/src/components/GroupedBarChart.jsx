@@ -20,8 +20,8 @@ class GroupedBarChart extends Component {
     drawBarChart()  {
         let data = this.props.data;
     
-        let margin = {top: 60, right: 20, bottom: 30, left: 60},
-        width = window.innerWidth*0.85 - margin.left - margin.right,
+        let margin = {top: 60, right: 20, bottom: 30, left: 80},
+        width = window.innerWidth*0.80 - margin.left - margin.right,
         height = window.innerHeight*0.65 - margin.top - margin.bottom;
     
     var x0 = d3.scale.ordinal()
