@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 
+
 import GroupedBarChart from './GroupedBarChart.jsx';
 
 
@@ -9,9 +10,21 @@ class ReportData extends Component {
         super(props);
         this.state = {
           issues: [],
-
+          
+        //   data: 
+        //    [ {
+        //        label: '7/19',
+        //         values: [{x: 'Electrical', y: 10}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
+        //     },
+        //     {
+        //         label: '8/19',
+        //         values: [{x: 'Electrical', y: 100}, {x: 'Plumbing', y: 4}, {x: 'Fixture', y: 3}]
+        //         },
+        //     ],
+     
         };
         this.handleChangeStatus = this.handleChangeStatus.bind(this);
+        
         this.parseCosts = this.parseCosts.bind(this);
     }
     componentDidMount() {
@@ -59,6 +72,7 @@ class ReportData extends Component {
             return(
             
                 <div id="report">
+              
                     <GroupedBarChart data={this.state.cost}/>       
                 </div>
            

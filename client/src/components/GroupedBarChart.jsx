@@ -1,18 +1,20 @@
 import React, { Component } from 'react'
 
+
 class GroupedBarChart extends Component {
     constructor(props) {
         super(props);
        this.drawBarChart = this.drawBarChart.bind(this);
     }
     componentDidMount() {
-      
+        
             this.drawBarChart(this.props.data);
    
     }
 
     drawBarChart(data)  {
-        <script src="https://d3js.org/d3.v3.min.js"></script>
+
+        <script src="http://d3js.org/d3.v3.min.js" ></script>
     
         var margin = {top: 20, right: 20, bottom: 30, left: 60},
         width = 960 - margin.left - margin.right,
@@ -43,7 +45,6 @@ class GroupedBarChart extends Component {
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-    
     
     
       var categoriesNames = data.map(function(d) { return d.monthYear; });
