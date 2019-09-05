@@ -4,20 +4,25 @@ import { PieChart } from "react-d3-components";
 class GroupedBarChart extends Component {
     constructor(props) {
         super(props);
+        this.state= {};
        this.drawBarChart = this.drawBarChart.bind(this);
+  
     }
     componentDidMount() {
         
-            this.drawBarChart(this.props.data);
+        
+        window.addEventListener("resize", this.drawBarChart);
+         
    
     }
-
-    drawBarChart(data)  {
-
     
-        var margin = {top: 20, right: 20, bottom: 30, left: 60},
-        width = 960 - margin.left - margin.right,
-        height = 500 - margin.top - margin.bottom;
+
+    drawBarChart()  {
+        let data = this.props.data;
+    
+        let margin = {top: 20, right: 20, bottom: 30, left: 60},
+        width = window.innerWidth*0.75 - margin.left - margin.right,
+        height = window.innerHeight*0.60 - margin.top - margin.bottom;
     
     var x0 = d3.scale.ordinal()
         .rangeRoundBands([0, width], .1);
@@ -38,7 +43,7 @@ class GroupedBarChart extends Component {
     
     var color = d3.scale.ordinal()
         .range(["#ca0020","#f4a582","#d5d5d5","#92c5de","#0571b0"]);
-    
+        d3.select("svg").remove();
     var svg = d3.select(this.refs.canvas).append("svg")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
@@ -94,7 +99,7 @@ class GroupedBarChart extends Component {
                  y: function() { return  y(parseInt(d.cost)); }
              })
              .text(function() {
-                 console.log(d3.mouse(this)[0]);
+                //  console.log(d3.mouse(this)[0]);
                return d.category+ ':'+d.cost; 
              });
           })
