@@ -392,12 +392,13 @@ const getCostByMonthCategory = () => {
   const query = "SELECT date_trunc('month', date_resolved) AS month_resolved,categories.category, SUM(cost) "
   + 'FROM issues '
   + 'INNER JOIN categories ON issues.category_id = categories.id '
-  + 'WHERE issues.date_resolved IS NOT NULL AND issues.date_resolved >= date_trunc("month", CURRENT_DATE); '
+  + 'WHERE issues.date_resolved IS NOT NULL AND issues.date_resolved >= date_trunc("month", CURRENT_TIMESTAMP) '
   + 'GROUP BY month_resolved,categories.category '
   + 'ORDER BY month_resolved , category';
 
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
+      console.log(err);
       if (err) return reject(err);
       resolve(results.rows);
     });
