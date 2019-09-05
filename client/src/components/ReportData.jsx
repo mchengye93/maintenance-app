@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import axios from 'axios';
-import * as d3 from 'd3'
+import  d3 from 'd3'
 
 import { PieChart } from "react-d3-components";
 import BarChart from "./BarChart.jsx";
+import GroupedBarChart from './GroupedBarChart.jsx';
 
 
 class ReportData extends Component {
@@ -140,7 +141,8 @@ class ReportData extends Component {
             <div id="report">
  
                 {/* {pieCharts} */}
-                <BarChart/>
+                {/* <BarChart/> */}
+                <GroupedBarChart/>
                  
             </div>
      
