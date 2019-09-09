@@ -36,6 +36,9 @@ class IssueStatusOptions extends Component {
           status = 3;
         }
 
+        if (statusString === 'CONTACTS') {
+          status = 4;
+        }
         this.setState({status: status})
        this.props.changeIssueStatus(status);
     }
