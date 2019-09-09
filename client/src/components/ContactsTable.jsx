@@ -5,7 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
-
+import axios from 'axios';
 
 
 class ContactsTable extends Component {
@@ -18,25 +18,31 @@ class ContactsTable extends Component {
 
     }
     componentDidMount() {
+        axios.get('/api/subcategories')
+        .then((response)=> {
+           
+            this.setState({
+                contacts: response.data
+             });
+        });   
         
     }
 
     render() {
             return (
                 <Table >
-                    <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Pending</TableCell></TableRow></TableHead>
+                    <TableHead><TableRow><TableCell colSpan={4} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Contacts</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Room ID</TableCell>
+                            <TableCell>Name</TableCell>
                             <TableCell>Category</TableCell>
-                            <TableCell>SubCategory</TableCell>
-                            <TableCell>Issued Date</TableCell>
-                            <TableCell></TableCell>
+                            <TableCell>Phone</TableCell>
+                            <TableCell>Email</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.props.issues.map(issue => (
-                            <IssueRowData key ={issue.id} issue ={issue} status={this.props.status} changeIssueStatus = {this.props.changeIssueStatus}/>
+                        {this.state.contacts.map(contact => (
+                            <ContactRowData key ={contact.id} contact ={contact} />
                         ))}
                     </TableBody>
                 </Table>
