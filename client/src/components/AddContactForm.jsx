@@ -6,6 +6,9 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
+
+import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+
 import axios from 'axios';
 
 import MenuItem from '@material-ui/core/MenuItem';
@@ -98,6 +101,7 @@ class AddContactForm extends Component {
                     </DialogContentText>
                    
                     <form > 
+
                     <TextField
                       required
                       margin="normal"
