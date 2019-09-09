@@ -18,7 +18,7 @@ class ContactsTable extends Component {
 
     }
     componentDidMount() {
-        axios.get('/api/subcategories')
+        axios.get('/api/contacts')
         .then((response)=> {
            
             this.setState({
