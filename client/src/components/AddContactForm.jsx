@@ -100,7 +100,9 @@ class AddContactForm extends Component {
                       Please put corresponding information for the contact.
                     </DialogContentText>
                    
-                    <form > 
+                   <form>
+
+                    
 
                     <TextField
                       required
@@ -162,16 +164,19 @@ class AddContactForm extends Component {
                         value = {this.state.email}
                       />
                  
-                    </form>
-                  </DialogContent>
-                  <DialogActions>
+                 <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={this.handleCreateContact} color="primary">
+                    <Button type="submit"onClick={this.handleCreateContact} color="primary">
                       Add
                     </Button>
-                  </DialogActions>
+                 </DialogActions>
+                  </form>
+                  </DialogContent>
+              
+                  
+                  
                 </Dialog>
               </span>
             );
