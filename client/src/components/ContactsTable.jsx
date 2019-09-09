@@ -15,14 +15,14 @@ class ContactsTable extends Component {
         super(props);
 
         this.state = {
-        
+        contacts: []
         };
 
     }
     componentDidMount() {
         axios.get('/api/contacts')
         .then((response)=> {
-           
+           console.log(response.data);
             this.setState({
                 contacts: response.data
              });
