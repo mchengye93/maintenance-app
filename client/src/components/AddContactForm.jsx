@@ -7,7 +7,9 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
-import { ValidatorForm, TextValidator} from 'react-material-ui-form-validator';
+
+
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 
 import axios from 'axios';
 
@@ -112,9 +114,10 @@ class AddContactForm extends Component {
                       name="name"
                       placeholder="Full name"
                       onChange={this.handleInputChange}
-                      margin="normal"
-                      variant="outlined"
+                     
+                      // variant="outlined"
                       value = {this.state.name}
+                      floatingLabelFixed={true}
                     />
                     <TextField
                         required 
