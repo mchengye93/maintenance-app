@@ -5,6 +5,8 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import ContactRowData from './ContactRowData.jsx';
+
 import axios from 'axios';
 
 
@@ -30,7 +32,7 @@ class ContactsTable extends Component {
 
     render() {
             return (
-                <Table >
+                <Table>
                     <TableHead><TableRow><TableCell colSpan={4} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Contacts</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>

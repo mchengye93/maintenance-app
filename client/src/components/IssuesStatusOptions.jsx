@@ -55,6 +55,7 @@ class IssueStatusOptions extends Component {
                 <Tab label="In Progress" value={1}/>
                 <Tab label="Resolved" value={2}/>
                 <Tab label="Report" value={3}/>
+                <Tab label ="Contacts" value={4}/>
               </Tabs>
         </Paper>
         );

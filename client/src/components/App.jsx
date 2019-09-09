@@ -13,6 +13,7 @@ import ReportData from './ReportData.jsx';
 
 import CreateIssueForm from './CreateIssueForm.jsx';
 import AddContactForm from './AddContactForm.jsx';
+import ContactsTable from './ContactsTable.jsx';
 
 class App extends Component {
     constructor(props) {
@@ -170,7 +171,19 @@ class App extends Component {
                 
                 </div>
             )
-        }   
+        } else if (this.state.status == 4) {
+            return (
+                <div id ="app">
+                <AppBar color="primary" position="static">
+                    <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
+                </AppBar> 
+                <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
+                
+                <ContactsTable/>
+            
+            </div>
+            )
+        }
     }
 }
 export default App;
