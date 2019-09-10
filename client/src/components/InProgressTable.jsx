@@ -32,13 +32,13 @@ class InProgressTable extends Component {
                     </TableHead>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Room ID</TableCell>
-                            <TableCell>Category</TableCell>
-                            <TableCell>SubCategory</TableCell>
-                            <TableCell>Issued Date</TableCell>
-                            <TableCell>Received Date</TableCell>
-                            <TableCell>Contact</TableCell>
-                            <TableCell></TableCell>
+                            <TableCell align='center'>Room ID</TableCell>
+                            <TableCell align='center'>Category</TableCell>
+                            <TableCell align='center'>SubCategory</TableCell>
+                            <TableCell align='center'>Issued Date</TableCell>
+                            <TableCell align='center'>Received Date</TableCell>
+                            <TableCell align='center'>Contact</TableCell>
+                            <TableCell align='center'></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
