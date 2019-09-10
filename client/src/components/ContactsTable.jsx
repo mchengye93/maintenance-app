@@ -29,7 +29,7 @@ class ContactsTable extends Component {
     componentDidMount() {
         axios.get('/api/contacts')
         .then((response)=> {
-           console.log(response.data);
+          
             this.setState({
                 contacts: response.data,
                 contactsByCategory: response.data
@@ -42,18 +42,17 @@ class ContactsTable extends Component {
     handleCategoryChange(e) {
         e.preventDefault();
         let categoryId = e.currentTarget.value;
-        console.log(categoryId);
+     
         let category = e.currentTarget.innerText;
         let contacts = this.state.contacts;
         let contactsByCategory = [];
-        console.log(contacts);
+        
         for (let i = 0; i < contacts.length; i++) {
-            console.log(contacts[i]);
             if (contacts[i].category_id == categoryId) {
                 contactsByCategory.push(contacts[i]);
             }
         }
-        console.log(contactsByCategory);
+       
         this.setState({
             contactsByCategory: contactsByCategory , 
             category: category });
@@ -64,7 +63,7 @@ class ContactsTable extends Component {
 
 
     render() {
-        console.log(this.state);
+       
             return (
                 <div id="contacts">
                   <Grid item xs={12}>
