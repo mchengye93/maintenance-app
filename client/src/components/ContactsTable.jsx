@@ -27,9 +27,21 @@ class ContactsTable extends Component {
             this.setState({
                 contacts: response.data
              });
+             this.getAllCategories(response.data);
             
         });   
         
+    }
+    getAllCategories(data) {
+        let categories = {};
+        let category = [];
+        for (let i = 0; i < data.length; i++) {
+            if(categories[data[i].category] === undefined) {
+                categories[data[i].category] = 1;
+                category.push(data[i].category);
+            }
+        }
+        console.log(category);
     }
 
 
