@@ -42,14 +42,21 @@ class ContactsTable extends Component {
     handleCategoryChange(e) {
         e.preventDefault();
         let categoryId = e.currentTarget.value;
+        console.log(categoryId);
         let category = e.currentTarget.innerText;
+        let contacts = this.state.contacts;
         let contactsByCategory = [];
-        for (let i = 0; i < this.state.contacts; i++) {
-            if (this.state.contacts[i].category_id === categoryId) {
-                contactsByCategory.push(this.state.contacts[i]);
+        console.log(contacts);
+        for (let i = 0; i < contacts.length; i++) {
+            console.log(contacts[i]);
+            if (contacts[i].category_id == categoryId) {
+                contactsByCategory.push(contacts[i]);
             }
         }
-        this.setState({contactsByCategory: contactsByCategory , category: category });
+        console.log(contactsByCategory);
+        this.setState({
+            contactsByCategory: contactsByCategory , 
+            category: category });
         
      
     }
@@ -68,7 +75,7 @@ class ContactsTable extends Component {
                     </ButtonGroup>
                  </Grid>
                  <Table>
-                    <TableHead><TableRow><TableCell colSpan={this.props.categories.length} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}> {this.state.category} Contacts</TableCell></TableRow></TableHead>
+                    <TableHead><TableRow><TableCell colSpan={this.props.categories.length} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}> {this.state.category} CONTACTS</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>
                             <TableCell>Category</TableCell>
