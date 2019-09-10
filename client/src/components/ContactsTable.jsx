@@ -10,7 +10,7 @@ import Button from '@material-ui/core/Button';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 
 import ContactRowData from './ContactRowData.jsx';
-
+import AddContactForm from './AddContactForm.jsx';
 import axios from 'axios';
 
 
@@ -32,7 +32,7 @@ class ContactsTable extends Component {
           
             this.setState({
                 contacts: response.data,
-                contactsByCategory: response.data
+                contactsByCategory: response.data,
              });
             
             
@@ -66,6 +66,7 @@ class ContactsTable extends Component {
        
             return (
                 <div id="contacts">
+                <AddContactForm categories={this.props.categories} /> 
                   <Grid item xs={12}>
                     <ButtonGroup fullWidth aria-label="full width outlined button group">
                     {this.props.categories.map(category => (

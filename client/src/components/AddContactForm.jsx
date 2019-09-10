@@ -52,14 +52,14 @@ class AddContactForm extends Component {
       }
 
     handleCreateContact(event) {
-    
+       event.preventDefault();
             const contact = {
                 categoryId: this.state.categoryId,
                 email: this.state.email,
                 phone: this.state.phone,
                 name: this.state.name,
             }
-            console.log(contact);
+           
 
             axios.post('/api/contact', contact).then((response)=> {
                 this.setState({
