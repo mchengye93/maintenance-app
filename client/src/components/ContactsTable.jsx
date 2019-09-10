@@ -97,7 +97,7 @@ class ContactsTable extends Component {
        
             return (
                 <div id="contacts">
-                <AddContactForm categories={this.props .categories} changeCategory={this.changeCategory} /> 
+                <AddContactForm categories={this.props.categories} changeCategory={this.changeCategory} /> 
                   <Grid item xs={12}>
                     <ButtonGroup fullWidth aria-label="full width outlined button group">
                     {this.props.categories.map(category => (
