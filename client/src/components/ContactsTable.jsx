@@ -30,12 +30,22 @@ class ContactsTable extends Component {
     componentDidMount() {
         axios.get('/api/contacts')
         .then((response)=> {
-          
+            let contacts = response.data;
+            let categories = {};
+            for (let i = 0; i < contacts.length; i++) {
+                let contact = contacts[i];
+
+                if (categories[contact.category] === undefined) {
+                    categories[contact.category_id] = contact.category;
+                }
+
+            }
             this.setState({
                 contacts: response.data,
                 contactsByCategory: response.data,
+                categories: categories
              });
-            
+             
             
         });   
         
@@ -48,12 +58,11 @@ class ContactsTable extends Component {
         let contacts = this.state.contacts;
         let contactsByCategory = [];
 
-        let categories = {};
         
         for (let i = 0; i < contacts.length; i++) {
             if (contacts[i].category_id == categoryId) {
                 contactsByCategory.push(contacts[i]);
-                categories[categoryId] = contacts[i].category;
+                
             }
         }
        
@@ -80,7 +89,7 @@ class ContactsTable extends Component {
             this.setState({
                 contacts: contacts,
                 contactsByCategory: contactsByCategory , 
-                category: this.state.categories[categoryId] 
+                category: this.state.categories[categoryId].toUpperCase() 
                 
              });
             
