@@ -19,7 +19,7 @@ const bodyParser = require('body-parser');
 // const cors = require('cors');
 const issues = require('../db-postgres/controller.js');
 
-const port = 3000;
+const port = 3001;
 const app = express();
 
 // // Example simple middleware logging function
