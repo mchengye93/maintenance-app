@@ -32,7 +32,7 @@ class ResolvedTable extends Component {
                 <TableHead>
                     <TableRow>
                         <TableCell colSpan={8} align='center' variant='head' style={{backgroundColor:'#006600', color: 'white' ,fontSize:'14px'}}>
-                        Resolved
+                        RESOLVED
                         </TableCell>
                     </TableRow>
                 </TableHead>
