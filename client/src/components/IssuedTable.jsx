@@ -24,7 +24,13 @@ class IssuedTable extends Component {
     render() {
             return (
                 <Table >
-                    <TableHead><TableRow><TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Pending</TableCell></TableRow></TableHead>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell colSpan={5} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>
+                            PENDING
+                            </TableCell>
+                            </TableRow>
+                            </TableHead>
                     <TableHead>
                         <TableRow>
                             <TableCell>Room ID</TableCell>
