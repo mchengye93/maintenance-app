@@ -38,7 +38,7 @@ class ResolvedTable extends Component {
                 </TableHead>
                 <TableHead>
                     <TableRow>
-                        <TableCel align='center'l>Room ID</TableCell>
+                        <TableCell align='center'>Room ID</TableCell>
                         <TableCell align='center'>Category</TableCell>
                         <TableCell align='center'>SubCategory</TableCell>
                         <TableCell align='center'>Issued Date</TableCell>
