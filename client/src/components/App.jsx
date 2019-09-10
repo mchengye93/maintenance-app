@@ -181,7 +181,7 @@ class App extends Component {
                 </AppBar> 
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                 
-                <ContactsTable/>
+                <ContactsTable categories={this.state.categories}/>
             
             </div>
             )

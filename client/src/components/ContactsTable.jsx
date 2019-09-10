@@ -5,6 +5,10 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import Grid from '@material-ui/core/Grid';
+import Button from '@material-ui/core/Button';
+import ButtonGroup from '@material-ui/core/ButtonGroup';
+
 import ContactRowData from './ContactRowData.jsx';
 
 import axios from 'axios';
@@ -17,33 +21,36 @@ class ContactsTable extends Component {
         this.state = {
         contacts: [],
         categories:[],
-        contactByCategory: [],
+        contactsByCategory: [],
+        category: '',
         };
-        this.getAllCategories = this.getAllCategories.bind(this);
+        this.handleCategoryChange = this.handleCategoryChange.bind(this);
     }
     componentDidMount() {
         axios.get('/api/contacts')
         .then((response)=> {
            console.log(response.data);
             this.setState({
-                contacts: response.data
+                contacts: response.data,
+                contactsByCategory: response.data
              });
-             this.getAllCategories(response.data);
+            
             
         });   
         
     }
-    getAllCategories(data) {
-        let category = {};
-        let categories = []
-        
-        for (let i = 0; i < data.length; i++) {
-            if(category[data[i].category] === undefined) {
-                category[data[i].category] = data[i].category_id;
-               categories.push({'category': data[i].category,'value':data[i].category_id });
+    handleCategoryChange(e) {
+        e.preventDefault();
+        let categoryId = e.currentTarget.value;
+        let category = e.currentTarget.innerText;
+        let contactsByCategory = [];
+        for (let i = 0; i < this.state.contacts; i++) {
+            if (this.state.contacts[i].category_id === categoryId) {
+                contactsByCategory.push(this.state.contacts[i]);
             }
         }
-        this.setState({categories: categories});
+        this.setState({contactsByCategory: contactsByCategory , category: category });
+        
      
     }
 
@@ -52,16 +59,16 @@ class ContactsTable extends Component {
     render() {
         console.log(this.state);
             return (
-                
-                <Table>
-                     <TableRow>
-                         {this.state.categories.map(category => (
-                             <TableCell>{category.category}</TableCell>
-                        ))}
-                    </TableRow>
-                    
-                    
-                    <TableHead><TableRow><TableCell colSpan={4} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Contacts</TableCell></TableRow></TableHead>
+                <div id="contacts">
+                  <Grid item xs={12}>
+                    <ButtonGroup fullWidth aria-label="full width outlined button group">
+                    {this.props.categories.map(category => (
+                        <Button variant="outlined" color='primary' onClick={this.handleCategoryChange} value={category.id}>{category.category}</Button>
+                    ))}
+                    </ButtonGroup>
+                 </Grid>
+                 <Table>
+                    <TableHead><TableRow><TableCell colSpan={this.props.categories.length} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}> {this.state.category} Contacts</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>
                             <TableCell>Category</TableCell>
@@ -71,11 +78,13 @@ class ContactsTable extends Component {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {this.state.contacts.map(contact => (
+                        {this.state.contactsByCategory.map(contact => (
                             <ContactRowData key ={contact.id} contact ={contact} />
                         ))}
                     </TableBody>
                 </Table>
+                </div>
+                
             );
     }
 }
