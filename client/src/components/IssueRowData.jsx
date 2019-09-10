@@ -51,12 +51,12 @@ class IssueRowData extends Component {
                 <TableRow key={this.props.issue.id}>
                     <TableCell align='center'>{this.props.issue.room_id}</TableCell>
                     <TableCell align='center'>{this.props.issue.category}</TableCell>
-                    <TableCell >{this.props.issue.subcategory}</TableCell>
-                    <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                    <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
-                    <TableCell>{this.props.issue.date_resolved.split('T')[0]}</TableCell>
-                    <TableCell>{this.props.issue.name}</TableCell>
-                    <TableCell>{this.props.issue.cost}</TableCell>
+                    <TableCell align='center'>{this.props.issue.subcategory}</TableCell>
+                    <TableCell align='center'>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                    <TableCell align='center'>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                    <TableCell align='center'>{this.props.issue.date_resolved.split('T')[0]}</TableCell>
+                    <TableCell align='center'>{this.props.issue.name}</TableCell>
+                    <TableCell align='center'>{this.props.issue.cost}</TableCell>
                 </TableRow>                 
             );
         }
