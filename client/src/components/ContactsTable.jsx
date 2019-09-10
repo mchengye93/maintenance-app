@@ -15,9 +15,10 @@ class ContactsTable extends Component {
         super(props);
 
         this.state = {
-        contacts: []
+        contacts: [],
+        categories:[],
         };
-
+        this.getAllCategories = this.getAllCategories.bind(this);
     }
     componentDidMount() {
         axios.get('/api/contacts')
@@ -26,12 +27,17 @@ class ContactsTable extends Component {
             this.setState({
                 contacts: response.data
              });
+            
         });   
         
     }
 
+
+
     render() {
+
             return (
+                
                 <Table>
                     <TableHead><TableRow><TableCell colSpan={4} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Contacts</TableCell></TableRow></TableHead>
                     <TableHead>
