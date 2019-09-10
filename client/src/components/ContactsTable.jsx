@@ -25,6 +25,7 @@ class ContactsTable extends Component {
         category: '',
         };
         this.handleCategoryChange = this.handleCategoryChange.bind(this);
+        this.changeCategory = this.changeCategory.bind(this);
     }
     componentDidMount() {
         axios.get('/api/contacts')
@@ -59,6 +60,32 @@ class ContactsTable extends Component {
         
      
     }
+    changeCategory(categoryId, category) {
+      
+        let contactsByCategory = [];
+
+        axios.get('/api/contacts')
+        .then((response)=> {
+            let contacts = response.data;
+            
+            for (let i = 0; i < contacts.length; i++) {
+                if (contacts[i].category_id == categoryId) {
+                    contactsByCategory.push(contacts[i]);
+                }
+            }
+
+            this.setState({
+                contacts: contacts,
+                contactsByCategory: contactsByCategory , 
+                category: category 
+                
+             });
+            
+            
+        });   
+        
+
+    }
 
 
 
@@ -66,7 +93,7 @@ class ContactsTable extends Component {
        
             return (
                 <div id="contacts">
-                <AddContactForm categories={this.props.categories} /> 
+                <AddContactForm categories={this.props .categories} changeCategory={this.changeCategory} /> 
                   <Grid item xs={12}>
                     <ButtonGroup fullWidth aria-label="full width outlined button group">
                     {this.props.categories.map(category => (
