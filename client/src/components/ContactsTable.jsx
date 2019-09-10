@@ -20,7 +20,7 @@ class ContactsTable extends Component {
 
         this.state = {
         contacts: [],
-        categories:[],
+        categories:{},
         contactsByCategory: [],
         category: '',
         };
@@ -47,10 +47,13 @@ class ContactsTable extends Component {
         let category = e.currentTarget.innerText;
         let contacts = this.state.contacts;
         let contactsByCategory = [];
+
+        let categories = {};
         
         for (let i = 0; i < contacts.length; i++) {
             if (contacts[i].category_id == categoryId) {
                 contactsByCategory.push(contacts[i]);
+                categories[categoryId] = contacts[i].category;
             }
         }
        
@@ -60,7 +63,7 @@ class ContactsTable extends Component {
         
      
     }
-    changeCategory(categoryId, category) {
+    changeCategory(categoryId) {
       
         let contactsByCategory = [];
 
@@ -77,7 +80,7 @@ class ContactsTable extends Component {
             this.setState({
                 contacts: contacts,
                 contactsByCategory: contactsByCategory , 
-                category: category 
+                category: this.state.categories[categoryId] 
                 
              });
             
@@ -90,6 +93,7 @@ class ContactsTable extends Component {
 
 
     render() {
+        console.log(this.state);
        
             return (
                 <div id="contacts">

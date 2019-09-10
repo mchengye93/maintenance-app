@@ -29,6 +29,7 @@ class AddContactForm extends Component {
         categoryId: 1,
         email: '',
         phone: '',
+        category: '',
        
         };
 
@@ -58,6 +59,7 @@ class AddContactForm extends Component {
                 email: this.state.email,
                 phone: this.state.phone,
                 name: this.state.name,
+                
             }
            
 
@@ -69,6 +71,8 @@ class AddContactForm extends Component {
                   email: ''
 
                 });
+                this.props.changeCategory(this.state.categoryId);
+
             }).catch((error)=> {
                 alert('Error adding contact');
             })
