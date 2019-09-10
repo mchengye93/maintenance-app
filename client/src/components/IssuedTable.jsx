@@ -35,7 +35,7 @@ class IssuedTable extends Component {
                         <TableRow>
                             <TableCell align='center'>Room ID</TableCell>
                             <TableCell align='center'>Category</TableCell>
-                            <TableCell align='center'>SubCategory</TableCell>
+                            <TableCell align='center'>Subcategory</TableCell>
                             <TableCell align='center'>Issued Date</TableCell>
                             <TableCell align='center'></TableCell>
                         </TableRow>
