@@ -33,11 +33,11 @@ class IssuedTable extends Component {
                             </TableHead>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Room ID</TableCell>
-                            <TableCell>Category</TableCell>
-                            <TableCell>SubCategory</TableCell>
-                            <TableCell>Issued Date</TableCell>
-                            <TableCell></TableCell>
+                            <TableCell align='center'>Room ID</TableCell>
+                            <TableCell align='center'>Category</TableCell>
+                            <TableCell align='center'>SubCategory</TableCell>
+                            <TableCell align='center'>Issued Date</TableCell>
+                            <TableCell align='center'></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

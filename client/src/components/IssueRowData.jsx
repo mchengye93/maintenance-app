@@ -21,11 +21,11 @@ class IssueRowData extends Component {
         if(this.props.status == 0) {
             return (
                 <TableRow key={this.props.issue.id}>
-                    <TableCell>{this.props.issue.room_id}</TableCell>
-                    <TableCell>{this.props.issue.category}</TableCell>
-                    <TableCell>{this.props.issue.subcategory}</TableCell>
-                    <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                    <TableCell>
+                    <TableCell align='center'>{this.props.issue.room_id}</TableCell>
+                    <TableCell align='center'>{this.props.issue.category}</TableCell>
+                    <TableCell align='center'>{this.props.issue.subcategory}</TableCell>
+                    <TableCell align='center'>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                    <TableCell align='center'>
                         <TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/>
                     </TableCell>
                 </TableRow>
@@ -34,13 +34,13 @@ class IssueRowData extends Component {
         } else if (this.props.status == 1) {
             return (
                 <TableRow key={this.props.issue.id}>
-                    <TableCell>{this.props.issue.room_id}</TableCell>
-                    <TableCell>{this.props.issue.category}</TableCell>
-                    <TableCell>{this.props.issue.subcategory}</TableCell>
-                    <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                    <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
-                    <TableCell>{this.props.issue.name}</TableCell>
-                    <TableCell>
+                    <TableCell align='center'>{this.props.issue.room_id}</TableCell>
+                    <TableCell align='center'>{this.props.issue.category}</TableCell>
+                    <TableCell align='center'>{this.props.issue.subcategory}</TableCell>
+                    <TableCell align='center'>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                    <TableCell align='center'>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                    <TableCell align='center'>{this.props.issue.name}</TableCell>
+                    <TableCell align='center'>
                         <SolveForm issue= {this.props.issue} changeIssueStatus = {this.props.changeIssueStatus}/>
                     </TableCell>
                 </TableRow>
@@ -49,9 +49,9 @@ class IssueRowData extends Component {
         } else if (this.props.status == 2) {
             return (
                 <TableRow key={this.props.issue.id}>
-                    <TableCell>{this.props.issue.room_id}</TableCell>
-                    <TableCell>{this.props.issue.category}</TableCell>
-                    <TableCell>{this.props.issue.subcategory}</TableCell>
+                    <TableCell align='center'>{this.props.issue.room_id}</TableCell>
+                    <TableCell align='center'>{this.props.issue.category}</TableCell>
+                    <TableCell >{this.props.issue.subcategory}</TableCell>
                     <TableCell>{this.props.issue.date_issued.split('T')[0]}</TableCell>
                     <TableCell>{this.props.issue.date_received.split('T')[0]}</TableCell>
                     <TableCell>{this.props.issue.date_resolved.split('T')[0]}</TableCell>
