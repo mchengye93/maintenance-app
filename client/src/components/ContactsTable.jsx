@@ -36,8 +36,8 @@ class ContactsTable extends Component {
                     <TableHead><TableRow><TableCell colSpan={4} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Contacts</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
                             <TableCell>Category</TableCell>
+                            <TableCell>Name</TableCell>
                             <TableCell>Phone</TableCell>
                             <TableCell>Email</TableCell>
                         </TableRow>
