@@ -19,8 +19,8 @@ class ContactRowData extends Component {
    
             return (
                 <TableRow key={this.props.contact.id}>
-                    <TableCell>{this.props.contact.name}</TableCell>
                     <TableCell>{this.props.contact.category}</TableCell>
+                    <TableCell>{this.props.contact.name}</TableCell>
                     <TableCell>{this.props.contact.phone}</TableCell>
                     <TableCell>{this.props.contact.email}</TableCell>
                 </TableRow>
