@@ -17,6 +17,7 @@ class ContactsTable extends Component {
         this.state = {
         contacts: [],
         categories:[],
+        contactByCategory: [],
         };
         this.getAllCategories = this.getAllCategories.bind(this);
     }
@@ -33,24 +34,33 @@ class ContactsTable extends Component {
         
     }
     getAllCategories(data) {
-        let categories = {};
-        let category = [];
+        let category = {};
+        let categories = []
+        
         for (let i = 0; i < data.length; i++) {
-            if(categories[data[i].category] === undefined) {
-                categories[data[i].category] = 1;
-                category.push(data[i].category);
+            if(category[data[i].category] === undefined) {
+                category[data[i].category] = data[i].category_id;
+               categories.push({'category': data[i].category,'value':data[i].category_id });
             }
         }
-        console.log(category);
+        this.setState({categories: categories});
+     
     }
 
 
 
     render() {
-
+        console.log(this.state);
             return (
                 
                 <Table>
+                     <TableRow>
+                         {this.state.categories.map(category => (
+                             <TableCell>{category.category}</TableCell>
+                        ))}
+                    </TableRow>
+                    
+                    
                     <TableHead><TableRow><TableCell colSpan={4} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}>Contacts</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>
