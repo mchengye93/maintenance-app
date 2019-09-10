@@ -126,7 +126,6 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
-                    <AddContactForm categories={this.state.categories}/>
                     <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></IssuedTable>
                 </div>     
                 );
@@ -140,9 +139,7 @@ class App extends Component {
                     </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                    
                     <CreateIssueForm categories={this.state.categories}/>
-                    <AddContactForm categories={this.state.categories}/> 
                     <InProgressTable issues={this.state.receivedIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></InProgressTable>
                 </div>     
                 );
@@ -157,7 +154,6 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
-                    <AddContactForm categories={this.state.categories}/>
                     <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
                 );
@@ -180,7 +176,7 @@ class App extends Component {
                     <h2 style={{textAlign: 'center', fontFamily: "Roboto"}}>Maintenance App</h2>
                 </AppBar> 
                 <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
-                
+                <AddContactForm categories={this.state.categories}/> 
                 <ContactsTable categories={this.state.categories}/>
             
             </div>
