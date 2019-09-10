@@ -74,7 +74,7 @@ class ContactsTable extends Component {
                     </ButtonGroup>
                  </Grid>
                  <Table>
-                    <TableHead><TableRow><TableCell colSpan={this.props.categories.length} align='center' variant='head' style={{backgroundColor:'#E23232', color: 'white' ,fontSize:'14px'}}> {this.state.category} CONTACTS</TableCell></TableRow></TableHead>
+                    <TableHead><TableRow><TableCell colSpan={this.props.categories.length} align='center' variant='head' style={{backgroundColor:'#3f51b5', color: 'white' ,fontSize:'14px'}}> {this.state.category} CONTACTS</TableCell></TableRow></TableHead>
                     <TableHead>
                         <TableRow>
                             <TableCell>Category</TableCell>

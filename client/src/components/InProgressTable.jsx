@@ -26,7 +26,7 @@ class InProgressTable extends Component {
                     <TableHead>
                         <TableRow>
                             <TableCell colSpan={7} align='center' variant='head' style={{backgroundColor:'#bda800', color: 'white' ,fontSize:'14px'}}>
-                            In Progress
+                            IN PROGRESS
                             </TableCell>
                         </TableRow>
                     </TableHead>
