@@ -16,13 +16,13 @@ class ContactRowData extends Component {
 
     render() {
        
-   
+        let sendEmail = "mailto:"+ this.props.contact.email +"?cc=admin@maintenanceapp.com&Subject=Maintenance App";
             return (
                 <TableRow key={this.props.contact.id}>
                     <TableCell>{this.props.contact.category}</TableCell>
                     <TableCell>{this.props.contact.name}</TableCell>
                     <TableCell>{this.props.contact.phone}</TableCell>
-                    <TableCell>{this.props.contact.email}</TableCell>
+                    <TableCell><a href={sendEmail} target="_top">{this.props.contact.email}</a></TableCell>
                 </TableRow>
                              
             );
