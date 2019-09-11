@@ -15,7 +15,6 @@ import CreateIssueForm from './CreateIssueForm.jsx';
 
 import ContactsTable from './ContactsTable.jsx';
 
-import { ExportReactCSV } from './ExportReactCSV.jsx'
 import {ExportCSV} from './ExportCSV.jsx';
 
 
@@ -118,7 +117,7 @@ class App extends Component {
 
     render() {
         let today = new Date();
-        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();;
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
         if (this.state.status == 0) {
 
             return (

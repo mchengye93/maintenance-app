@@ -102,11 +102,13 @@ class ContactsTable extends Component {
 
 
     render() {
-        console.log(this.state);
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
        
             return (
                 <div id="contacts">
                 <AddContactForm categories={this.props.categories} changeCategory={this.changeCategory} /> 
+                <ExportCSV csvData={this.state.contactsByCategory} fileName={"maintenanceContacts"+date}/>
                   <Grid item xs={12}>
                     <ButtonGroup fullWidth aria-label="full width outlined button group">
                     {this.props.categories.map(category => (
