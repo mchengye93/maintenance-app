@@ -16,7 +16,7 @@ import CreateIssueForm from './CreateIssueForm.jsx';
 import ContactsTable from './ContactsTable.jsx';
 
 import { ExportReactCSV } from './ExportReactCSV.jsx'
-
+import {ExportCSV} from './ExportCSV.jsx';
 
 
 class App extends Component {
@@ -128,6 +128,7 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
+                    <ExportCSV csvData={this.state.pendingIssues} fileName="pendingMaintenanceIssues" />
                     <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></IssuedTable>
                 </div>     
                 );
@@ -156,7 +157,7 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
-                    <ExportReactCSV csvData={this.state.resolvedIssues} fileName="resolvedMaintenanceIssues.xlsx" />
+                    <ExportReactCSV csvData={this.state.resolvedIssues} fileName="resolvedMaintenanceIssues" />
                     <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
                 );
