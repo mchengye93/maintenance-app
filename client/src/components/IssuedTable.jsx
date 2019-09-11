@@ -5,6 +5,7 @@ import TableCell from '@material-ui/core/TableCell';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
+import { ExportReactCSV } from './ExportReactCSV.jsx'
 import IssueRowData from './IssueRowData.jsx';
 
 
@@ -37,7 +38,9 @@ class IssuedTable extends Component {
                             <TableCell align='center'>Category</TableCell>
                             <TableCell align='center'>Subcategory</TableCell>
                             <TableCell align='center'>Issued Date</TableCell>
-                            <TableCell align='center'></TableCell>
+                            <TableCell align='center'>
+                            <ExportReactCSV csvData={this.props.issues} fileName="pendingMaintenanceIssues" />
+                            </TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
