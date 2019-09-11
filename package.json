@@ -35,7 +35,6 @@
     "nodemon": "^1.19.1",
     "pg": "^7.12.0",
     "react": "^16.9.0",
-    "react-csv": "^1.1.1",
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.9.0",
     "react-material-ui-form-validator": "^2.0.9",
