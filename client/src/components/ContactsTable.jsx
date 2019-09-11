@@ -13,6 +13,7 @@ import ContactRowData from './ContactRowData.jsx';
 import AddContactForm from './AddContactForm.jsx';
 import axios from 'axios';
 
+import {ExportCSV} from './ExportCSV.jsx';
 
 class ContactsTable extends Component {
     constructor(props) {
@@ -108,7 +109,7 @@ class ContactsTable extends Component {
             return (
                 <div id="contacts">
                 <AddContactForm categories={this.props.categories} changeCategory={this.changeCategory} /> 
-                <ExportCSV csvData={this.state.contactsByCategory} fileName={"maintenanceContacts"+date}/>
+                <ExportCSV csvData={this.state.contactsByCategory} fileName={"maintenanceContacts"+this.state.category+date}/>
                   <Grid item xs={12}>
                     <ButtonGroup fullWidth aria-label="full width outlined button group">
                     {this.props.categories.map(category => (
