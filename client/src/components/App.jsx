@@ -156,7 +156,7 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
-                    <ExportReactCSV csvData={this.state.resolvedIssues} fileName="resolvedMaintenanceIssues" />
+                    <ExportReactCSV csvData={this.state.resolvedIssues} fileName="resolvedMaintenanceIssues.xlsx" />
                     <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
                 );
