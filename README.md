@@ -1,5 +1,5 @@
 # Maintenance-app 
-This web application allows user to keep record of maintenance progress, maintenance worker contacts and reports montly maintenance cost.
+This web application allows user to keep a record of maintenance progress, maintenance worker contacts and reports monthly maintenance cost.
 
  
 ## How to Get Started ##
