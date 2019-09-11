@@ -1,5 +1,6 @@
 import React from 'react'
 
+import Button from '@material-ui/core/Button';
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 
@@ -17,6 +18,6 @@ export const ExportCSV = ({csvData, fileName}) => {
     }
 
     return (
-        <button variant="warning" onClick={(e) => exportToCSV(csvData,fileName)}>EXPORT</button>
+        <Button  variant="contained" color="secondary"  onClick={(e) => exportToCSV(csvData,fileName)}>EXPORT</Button>
     )
 }

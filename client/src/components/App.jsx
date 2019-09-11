@@ -117,7 +117,8 @@ class App extends Component {
 
 
     render() {
-
+        let today = new Date();
+        let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();;
         if (this.state.status == 0) {
 
             return (
@@ -128,7 +129,7 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
-                    <ExportCSV csvData={this.state.pendingIssues} fileName="pendingMaintenanceIssues" />
+                    <ExportCSV csvData={this.state.pendingIssues} fileName={"pendingMaintenanceIssues"+date} />
                     <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></IssuedTable>
                 </div>     
                 );
@@ -143,6 +144,7 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/>
+                    <ExportCSV csvData={this.state.receivedIssues} fileName={"inProgressMaintenanceIssues"+date }/>
                     <InProgressTable issues={this.state.receivedIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></InProgressTable>
                 </div>     
                 );
@@ -157,7 +159,7 @@ class App extends Component {
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
-                    <ExportReactCSV csvData={this.state.resolvedIssues} fileName="resolvedMaintenanceIssues" />
+                    <ExportCSV csvData={this.state.resolvedIssues} fileName={"resolvedMaintenanceIssues"+date} />
                     <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
                 );
