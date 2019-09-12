@@ -32,7 +32,38 @@ describe('Test Suite: CRUD Issue', () => {
         expect(typeof dateIssued).toBe('string');
 
 
-        expect();
+        done();
+      }));
+  test('It properly fetch issue id=1',
+    async done => request(app)
+      .get('/api/issue/?issueId=1')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(({ body }) => {
+        const firstIssue = body[0];
+        const { id } = firstIssue;
+        const roomId = firstIssue.room_id;
+        const categoryId = firstIssue.category_id;
+        const subcategoryId = firstIssue.subcategory_id;
+        const dateIssued = firstIssue.date_issued;
+
+
+        expect(id).toBeDefined();
+        expect(typeof id).toBe('number');
+        expect(id).toBe(1);
+
+        expect(roomId).toBeDefined();
+        expect(typeof roomId).toBe('number');
+
+        expect(categoryId).toBeDefined();
+        expect(typeof categoryId).toBe('number');
+
+        expect(subcategoryId).toBeDefined();
+        expect(typeof subcategoryId).toBe('number');
+
+        expect(dateIssued).toBeDefined();
+        expect(typeof dateIssued).toBe('string');
+
 
         done();
       }));
