@@ -152,7 +152,7 @@ app.get('/api/issue', async (req, res) => {
     const issue = await issues.getIssue(issueId);
     res.status(200).send(issue);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send({ error: e });
   }
 });
 

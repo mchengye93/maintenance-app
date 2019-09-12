@@ -75,6 +75,8 @@ describe('Test Suite: Get Issue', () => {
       .expect('Content-Type', /json/)
       .expect(400)
       .then(({ body }) => {
+        console.log(body);
+        expect(body).toHaveProperty('error');
         done();
       }));
 });
