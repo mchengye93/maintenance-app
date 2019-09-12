@@ -8,6 +8,7 @@ describe('Test Suite: CRUD Issue', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(({ body }) => {
+        console.log(body);
         const { id } = body;
 
         expect(id).toBeDefined();

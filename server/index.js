@@ -60,8 +60,8 @@ app.post('/api/issue', async (req, res) => {
 // GET all issues
 app.get('/api/issues', async (req, res) => {
   try {
-    const rows = await issues.getAllIssues();
-    res.status(200).send(rows);
+    const allIssues = await issues.getAllIssues();
+    res.status(200).send(allIssues.rows);
   } catch (e) {
     res.status(400).send(e);
   }
