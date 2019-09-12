@@ -78,6 +78,7 @@ describe('Test Suite: Get Pending Issue', () => {
       .then(({ body }) => {
         done();
       }));
+
   test('Return Error when given no paramenter input',
     async done => request(app)
       .get('/api/issues/pending/category')
