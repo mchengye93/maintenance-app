@@ -106,7 +106,7 @@ app.get('/api/issues/received/category', async (req, res) => {
     const receviedIssues = await issues.getAllReceivedIssuesByCategory(categoryId);
     res.status(200).send(receviedIssues);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send({ error: e });
   }
 });
 
