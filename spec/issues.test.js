@@ -253,7 +253,7 @@ describe('Test Suite: Get Resolved Issues', () => {
 
   test('For resolved issue dateReceived >= dateIssue',
     async done => request(app)
-      .get('/api/issues/received/category?categoryId=1')
+      .get('/api/issues/resolved/category?categoryId=1')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(({ body }) => {
@@ -278,7 +278,7 @@ describe('Test Suite: Get Resolved Issues', () => {
 
   test('For resolved issue dateResolved >= dateReceived',
     async done => request(app)
-      .get('/api/issues/received/category?categoryId=1')
+      .get('/api/issues/resolved/category?categoryId=1')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(({ body }) => {
