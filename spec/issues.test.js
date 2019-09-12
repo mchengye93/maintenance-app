@@ -34,6 +34,7 @@ describe('Test Suite: CRUD Issue', () => {
 
         done();
       }));
+
   test('It properly fetch issue id=1',
     async done => request(app)
       .get('/api/issue/?issueId=1')
@@ -64,7 +65,15 @@ describe('Test Suite: CRUD Issue', () => {
         expect(dateIssued).toBeDefined();
         expect(typeof dateIssued).toBe('string');
 
-
+        done();
+      }));
+  test('Check if given wrong variable issue id=1',
+    async done => request(app)
+      .get('/api/issue/?id=1')
+      .expect('Content-Type', /json/)
+      .expect(400)
+      .then(({ body }) => {
+        console.log(body);
         done();
       }));
 });
