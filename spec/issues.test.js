@@ -211,9 +211,9 @@ describe('Test Suite: Get In Progress Issues', () => {
 
 
 describe('Test Suite: Get Resolved Issues', () => {
-  test('It properly fetches all inProgress issues by categoryId=1',
+  test('It properly fetches all resolved issues by categoryId=1',
     async done => request(app)
-      .get('/api/issues/received/category?categoryId=1')
+      .get('/api/issues/resolved/category?categoryId=1')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(({ body }) => {
@@ -224,6 +224,7 @@ describe('Test Suite: Get Resolved Issues', () => {
         const subcategoryId = firstIssue.subcategory_id;
         const dateIssued = firstIssue.date_issued;
         const dateReceived = firstIssue.date_received;
+        const dateResolved = firstIssue.date_resolved;
 
         expect(id).toBeDefined();
         expect(typeof id).toBe('number');
@@ -243,6 +244,9 @@ describe('Test Suite: Get Resolved Issues', () => {
 
         expect(dateReceived).toBeDefined();
         expect(typeof dateReceived).toBe('string');
+
+        expect(dateResolved).toBeDefined();
+        expect(typeof dateResolved).toBe('string');
 
         done();
       }));
