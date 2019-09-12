@@ -21,7 +21,7 @@ const getAllIssues = () => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      resolve(results);
+      resolve(results.rows);
     });
   });
 };

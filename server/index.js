@@ -61,7 +61,7 @@ app.post('/api/issue', async (req, res) => {
 app.get('/api/issues', async (req, res) => {
   try {
     const allIssues = await issues.getAllIssues();
-    res.status(200).send(allIssues.rows);
+    res.status(200).send(allIssues);
   } catch (e) {
     res.status(400).send(e);
   }
