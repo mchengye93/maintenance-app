@@ -69,9 +69,18 @@ describe('Test Suite: Get Pending Issue', () => {
         done();
       }));
 
+
   test('Return Error when given wrong paramenter id=1',
     async done => request(app)
       .get('/api/issues/pending/category?id=1')
+      .expect('Content-Type', /json/)
+      .expect(400)
+      .then(({ body }) => {
+        done();
+      }));
+  test('Return Error when given no paramenter input',
+    async done => request(app)
+      .get('/api/issues/pending/category')
       .expect('Content-Type', /json/)
       .expect(400)
       .then(({ body }) => {
