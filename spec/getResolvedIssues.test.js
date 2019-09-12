@@ -93,4 +93,3 @@ describe('Test Suite: Get Resolved Issues', () => {
         done();
       }));
 });
-
