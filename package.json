@@ -38,6 +38,7 @@
     "react-d3-components": "^0.9.1",
     "react-dom": "^16.9.0",
     "react-material-ui-form-validator": "^2.0.9",
+    "supertest": "^4.0.2",
     "xlsx": "^0.15.1"
   },
   "devDependencies": {
