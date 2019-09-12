@@ -77,6 +77,7 @@ describe('Test Suite: Get Pending Issue', () => {
       .expect('Content-Type', /json/)
       .expect(400)
       .then(({ body }) => {
+        expect(body).toHaveProperty('error');
         done();
       }));
 
@@ -86,6 +87,7 @@ describe('Test Suite: Get Pending Issue', () => {
       .expect('Content-Type', /json/)
       .expect(400)
       .then(({ body }) => {
+        expect(body).toHaveProperty('error');
         done();
       }));
 });

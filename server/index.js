@@ -95,7 +95,7 @@ app.get('/api/issues/pending/category', async (req, res) => {
 
     res.status(200).send(pendingIssues.rows);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send({ error: e });
   }
 });
 
