@@ -62,4 +62,14 @@ describe('Test Suite: Get In Progress Issues', () => {
 
         done();
       }));
+
+  test('Check if given wrong parameter for InProgressIssue issue id=1',
+    async done => request(app)
+      .get('/api/issues/received/?id=1')
+      .expect('Content-Type', /json/)
+      .expect(400)
+      .then(({ body }) => {
+        expect(body).toHaveProperty('error');
+        done();
+      }));
 });
