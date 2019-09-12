@@ -67,6 +67,7 @@ describe('Test Suite: Get Issue', () => {
 
         done();
       }));
+
   test('Check if given wrong variable issue id=1',
     async done => request(app)
       .get('/api/issue/?id=1')
