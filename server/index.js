@@ -1,16 +1,16 @@
 // File Upload
-const multer = require('multer');
+// const multer = require('multer');
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    cb(null, './uploads/');
-  },
-  filename: (req, file, cb) => {
-    cb(null, new Date().toISOString() + file.originalname);
-  },
-});
+// const storage = multer.diskStorage({
+//   destination: (req, file, cb) => {
+//     cb(null, './uploads/');
+//   },
+//   filename: (req, file, cb) => {
+//     cb(null, new Date().toISOString() + file.originalname);
+//   },
+// });
 
-const upload = multer({ storage });
+// const upload = multer({ storage });
 
 // Server
 const express = require('express');
@@ -19,7 +19,7 @@ const bodyParser = require('body-parser');
 // const cors = require('cors');
 const issues = require('../db-postgres/controller.js');
 
-const port = 3001;
+
 const app = express();
 
 // // Example simple middleware logging function
