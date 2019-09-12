@@ -275,4 +275,30 @@ describe('Test Suite: Get Resolved Issues', () => {
 
         done();
       }));
+
+  test('For resolved issue dateResolved >= dateReceived',
+    async done => request(app)
+      .get('/api/issues/received/category?categoryId=1')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(({ body }) => {
+        const firstIssue = body[0];
+
+
+        const dateReceived = firstIssue.date_received;
+        const dateResolved = firstIssue.date_resolved;
+
+        const dateDifference = new Date(dateResolved) - new Date(dateReceived);
+
+
+        expect(dateReceived).toBeDefined();
+        expect(typeof dateReceived).toBe('string');
+
+        expect(dateResolved).toBeDefined();
+        expect(typeof dateResolved).toBe('string');
+
+        expect(dateDifference).toBeGreaterThanOrEqual(0);
+
+        done();
+      }));
 });
