@@ -251,7 +251,7 @@ describe('Test Suite: Get Resolved Issues', () => {
         done();
       }));
 
-  test('For inProgress issue dateReceived >= dateIssue',
+  test('For resolved issue dateReceived >= dateIssue',
     async done => request(app)
       .get('/api/issues/received/category?categoryId=1')
       .expect('Content-Type', /json/)
@@ -261,6 +261,7 @@ describe('Test Suite: Get Resolved Issues', () => {
 
         const dateIssued = firstIssue.date_issued;
         const dateReceived = firstIssue.date_received;
+
 
         const dateDifference = new Date(dateReceived) - new Date(dateIssued);
 
