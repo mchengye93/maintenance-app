@@ -8,7 +8,7 @@
     "start": "nodemon server/server.js",
     "server": "nodemon server/server.js",
     "react-dev": "webpack -d --watch",
-    "test": "jest"
+    "test": "jest --detectOpenHandles"
   },
   "repository": {
     "type": "git",
