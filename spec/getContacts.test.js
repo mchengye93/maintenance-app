@@ -43,7 +43,6 @@ describe('Test Suite: Get Contacts', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(({ body }) => {
-        console.log(body);
         const firstContact = body[0];
         const { id } = firstContact;
         const categoryId = firstContact.category_id;
