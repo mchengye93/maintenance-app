@@ -329,7 +329,7 @@ app.get('/api/contacts/categoryId', async (req, res) => {
     const contacts = await issues.getAllContactByCategoryId(categoryId);
     res.status(200).send(contacts);
   } catch (e) {
-    res.status(400).send(e);
+    res.status(400).send({ error: e });
   }
 });
 app.put('/api/contact', async (req, res) => {
