@@ -72,6 +72,17 @@ describe('Test Suite: Get Contacts', () => {
         done();
       }));
 
+
+  test('Check for contacts given categoryId that does not exist',
+    async done => request(app)
+      .get('/api/contacts/categoryId?categoryId=10')
+      .expect('Content-Type', /json/)
+      .expect(200)
+      .then(({ body }) => {
+        expect(body).toBe([]);
+        done();
+      }));
+
   test('Check for contacts of wrong paramenter',
     async done => request(app)
       .get('/api/contacts/categoryId?catId=10')
