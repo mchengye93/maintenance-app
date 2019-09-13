@@ -326,8 +326,8 @@ app.get('/api/contacts', async (req, res) => {
 app.get('/api/contacts/categoryId', async (req, res) => {
   const { categoryId } = req.query;
   try {
-    const rows = await issues.getAllContactByCategoryId(categoryId);
-    res.status(200).send(rows);
+    const contacts = await issues.getAllContactByCategoryId(categoryId);
+    res.status(200).send(contacts);
   } catch (e) {
     res.status(400).send(e);
   }

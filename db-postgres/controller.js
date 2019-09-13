@@ -360,7 +360,7 @@ const getAllContactByCategoryId = (categoryId) => {
   return new Promise((resolve, reject) => {
     connection.query(query, (err, results) => {
       if (err) return reject(err);
-      return resolve(results);
+      return resolve(results.rows);
     });
   });
 };
