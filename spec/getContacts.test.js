@@ -72,9 +72,9 @@ describe('Test Suite: Get Contacts', () => {
         done();
       }));
 
-  test('Check if given wrong parameter for InProgressIssue issue id=1',
+  test('Check for contacts of non exisiting categoryId',
     async done => request(app)
-      .get('/api/issues/received/category?id=1')
+      .get('/api/contacts/categoryId?categoryId=10')
       .expect('Content-Type', /json/)
       .expect(400)
       .then(({ body }) => {
