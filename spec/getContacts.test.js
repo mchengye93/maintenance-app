@@ -79,7 +79,7 @@ describe('Test Suite: Get Contacts', () => {
       .expect('Content-Type', /json/)
       .expect(200)
       .then(({ body }) => {
-        expect(body).toBe([]);
+        expect(body).toEqual([]);
         done();
       }));
 
