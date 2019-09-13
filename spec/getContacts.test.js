@@ -37,26 +37,38 @@ describe('Test Suite: Get Contacts', () => {
         done();
       }));
 
-  test('For inProgress issue dateReceived >= dateIssue',
+  test('Get contact by categoryId=1',
     async done => request(app)
-      .get('/api/issues/received/category?categoryId=1')
+      .get('/api/contacts/categoryId?categoryId=1')
       .expect('Content-Type', /json/)
       .expect(200)
       .then(({ body }) => {
+        console.log(body);
         const firstContact = body[0];
+        const { id } = firstContact;
+        const categoryId = firstContact.category_id;
+        const { name } = firstContact;
+        const { phone } = firstContact;
+        const { email } = firstContact;
 
-        const dateIssued = firstContact.date_issued;
-        const dateReceived = firstContact.date_received;
 
-        const dateDifference = new Date(dateReceived) - new Date(dateIssued);
+        expect(id).toBeDefined();
+        expect(typeof id).toBe('number');
 
-        expect(dateIssued).toBeDefined();
-        expect(typeof dateIssued).toBe('string');
 
-        expect(dateReceived).toBeDefined();
-        expect(typeof dateReceived).toBe('string');
+        expect(categoryId).toBeDefined();
+        expect(typeof categoryId).toBe('number');
+        expect(categoryId).toBe(1);
 
-        expect(dateDifference).toBeGreaterThanOrEqual(0);
+        expect(name).toBeDefined();
+        expect(typeof name).toBe('string');
+
+        expect(phone).toBeDefined();
+        expect(typeof phone).toBe('string');
+
+
+        expect(email).toBeDefined();
+        expect(typeof email).toBe('string');
 
         done();
       }));
