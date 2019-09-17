@@ -34,7 +34,7 @@ class TakeIssueForm extends Component {
         axios.get('/api/contacts/categoryId', {params: {categoryId: this.props.issue.category_id}})
         .then((response)=> {
             this.setState({
-                contacts: response.data.rows
+                contacts: response.data
              });
           
         });
