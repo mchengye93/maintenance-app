@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 import React, {Component} from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
@@ -8,9 +6,10 @@ import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
 import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
-
+import axios from 'axios';
 
 import MenuItem from '@material-ui/core/MenuItem';
+
 
 class UpdateIssueForm extends Component {
     constructor(props) {
@@ -18,124 +17,178 @@ class UpdateIssueForm extends Component {
 
         this.state = {
         open: false,
-        contactId: 1,
-        contacts: []
-
+        categoryId: this.props.issue.category_id,
+        subcategoryId: this.props.issue.subcategory_id,
+        subcategories: [],
+        subcategoriesByCategory: [],
+        roomId: this.props.issue.room_id,
+        description:this.props.issue.description,
         };
 
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
+        this.handleUpdate = this.handleUpdate.bind(this);
         this.handleInputChange = this.handleInputChange.bind(this);
-        this.handleUpdateIssue = this.handleUpdateIssue.bind(this);
+        this.handleUpdateSubcategories = this.handleUpdateSubcategories.bind(this);
 
     }
-    componentDidMount() {
 
-        axios.get('/api/contacts/categoryId', {params: {categoryId: this.props.issue.category_id}})
+    componentDidMount() {
+        this.setState({categories: this.props.categories});
+        axios.get('/api/subcategories')
         .then((response)=> {
+           
             this.setState({
-                contacts: response.data
+                subcategories: response.data
              });
-          
-        });
-                
+             this.handleUpdateSubcategories(1);
+        });       
     }
 
     handleClickOpen() {
         this.setState({open: true});
-    }
+      }
 
     handleClose() {
         this.setState({open: false});
+      }
+
+    handleUpdate(event) {
+    
+            const issue = {
+                categoryId: this.state.categoryId,
+                subcategoryId: this.state.subcategoryId,
+                roomId: this.state.roomId,
+                description: this.state.description
+            }
+
+            axios.put('/api/issue', issue).then((response)=> {
+               
+            }).catch((error)=> {
+                alert('Error creating issue');
+            })
+
     }
 
-    handleUpdateIssue() {
-       
-        let issue = {
-            contactId: this.state.contactId,
-            issueId: this.props.issue.id
+    handleUpdateSubcategories(categoryId) {
+        //on categorychange update currentSubcategoryChoice 
+        const subcategories = this.state.subcategories;
+        let subcategoriesByCategory = [];
+
+        for (let i = 0; i < subcategories.length; i++) {
+            if (subcategories[i]['category_id'] === categoryId) {
+                subcategoriesByCategory.push(subcategories[i]);
+            }
         }
-  
-        axios.put('/api/issue/received', issue).then((response)=> {
-            this.setState({open: false});
-            this.props.changeIssueStatus(0);
-           
-        }).catch((error)=> {
-            alert('Error taking issue');
-        })
- 
-      
+        this.setState({
+            subcategoriesByCategory,
+            subcategoryId: subcategoriesByCategory[0].id});
+
     }
 
     handleInputChange(event) {
         const target = event.target;
         const value = target.type === 'checkbox' ? target.checked : target.value;
         const name = target.name;
-       
-     
-        this.setState({
+ 
+        if (name === 'categoryId') {
+            this.handleUpdateSubcategories(value);
+            this.setState({categoryId: value});
+          
+        } else {
+            this.setState({
                 [name]: value
               });
-      
+        }
       }
 
     render() {
    
             return (
-              
-              <div>
-                <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
-                  Take Issue
+                <span>
+                <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
+                  Create
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
-                  <DialogTitle id="form-dialog-title">
-                  <b>Issue #{this.props.issue.id} - {this.props.issue.category} - {this.props.issue.subcategory}</b>
-                  </DialogTitle>
+                  <DialogTitle id="form-dialog-title">Create Issue</DialogTitle>
                   <DialogContent>
                     <DialogContentText>
-                      
-                    <b>Room No.</b>{this.props.issue.room_id} <br></br>
-                    <b>Category:</b> {this.props.issue.category} <br></br>
-                    <b>Subcategory:</b> {this.props.issue.subcategory} <br></br>
-                    <b>Issued Date:</b> {this.props.issue.date_issued.split('T')[0]} <br></br>
-                    <b>Details:</b> {this.props.issue.description} <br></br> <br></br>
-                     <b>Please pick the person in charge of issue #{this.props.issue.id}.</b> <br></br>
+                      Please put corresponding information for the issue.
                     </DialogContentText>
                    
-                    <form> 
-                   
+                    <form  enctype="multipart/form-data" > 
+                    <TextField
+                      autoFocus
+                      margin="dense"
+                      id="roomId"
+                      label="Room No."
+                      name="roomId"
+                      onChange={this.handleInputChange}
+                      type="Number"
+                      margin="normal"
+                      variant="outlined"
+                      inputProps={{ min: "1", max: "100"}}
+                      value = {this.state.roomId}
+                    />
                     <TextField
                         id="outlined-select-categories"
                         select
-                        label="Contact"
-                        value={this.state.contactId}
+                        label="Category"
+                        value={this.state.categoryId}
                         onChange={this.handleInputChange}
-                        helperText="Select a contact person"
                         margin="normal"
                         variant="outlined"
-                        name='contactId'
+                        name='categoryId'
                     >
-                        {this.state.contacts.map(contact => (
-                        <MenuItem key={contact.id} value={contact.id} >
-                            {contact.name}
+                        {this.props.categories.map(category => (
+                        <MenuItem key={category.id} value={category.id} >
+                            {category.category}
                         </MenuItem>
                         ))}
-                    </TextField>                     
+                    </TextField>
+                    <TextField
+                        id="outlined-select-subcategories"
+                        select
+                        label="Subcategory"
+                        value={this.state.subcategoryId}
+                        onChange={this.handleInputChange}
+                        margin="normal"
+                        variant="outlined"
+                        name='subcategoryId'
+                    >
+                        {this.state.subcategoriesByCategory.map(subcategory => (
+                        <MenuItem key={subcategory.id} value={subcategory.id} >
+                            {subcategory.subcategory}
+                        </MenuItem>
+                        ))}
+                    </TextField>
+                    <TextField
+                      id="outlined-multiline-static"
+                      label="Comments"
+                      multiline
+                      rows="4"
+                      placeholder="Additional details"
+                      margin="normal"
+                      variant="outlined"
+                      name="description"
+                      onChange={this.handleInputChange}
+                    />
+                            
+                     
                     </form>
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={this.handleClose} color="primary">
                       Cancel
                     </Button>
-                    <Button onClick={this.handleUpdateIssue} color="primary">
-                      Take Issue
+                    <Button onClick={this.handleUpdate} color="primary">
+                      Update
                     </Button>
                   </DialogActions>
                 </Dialog>
-              </div>
-       
+              </span>
             );
-        } 
+        }
 }
 
 export default UpdateIssueForm;
