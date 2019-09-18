@@ -59,7 +59,6 @@ class App extends Component {
 
           });
 
-    
     }
 
     searchCategory(categoryId) {
@@ -140,7 +139,8 @@ class App extends Component {
                     </AppBar> 
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                    <CreateIssueForm categories={this.state.categories} subcategories={this.state.subcategories}/> 
+                    { this.state.categories.length!==0 && this.state.subcategories.length !== 0 ? <CreateIssueForm categories={this.state.categories} subcategories={this.state.subcategories}/> : null }
+                    {/* <CreateIssueForm categories={this.state.categories} subcategories={this.state.subcategories}/>  */}
                     <ExportCSV csvData={this.state.pendingIssues} fileName={"pendingMaintenanceIssues"+date} />
                     <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus} categories={this.state.categories}></IssuedTable>
                 </div>     

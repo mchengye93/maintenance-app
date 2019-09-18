@@ -34,12 +34,9 @@ class CreateIssueForm extends Component {
     }
 
     componentDidMount() {
-  
-        if (this.props.subcategories.length !== 0) {
-            this.handleUpdateSubcategories(1);
-        }
+
+        this.handleUpdateSubcategories(1);
         
-     
     }
 
     handleClickOpen() {
@@ -73,7 +70,6 @@ class CreateIssueForm extends Component {
 
     handleUpdateSubcategories(categoryId) {
         //on categorychange update currentSubcategoryChoice 
-        
         const subcategories = this.props.subcategories;
         let subcategoriesByCategory = [];
 
@@ -82,19 +78,13 @@ class CreateIssueForm extends Component {
                 subcategoriesByCategory.push(subcategories[i]);
             }
         }
-        console.log(subcategoriesByCategory);
+        // console.log(subcategoriesByCategory);
 
         this.setState(
             {subcategoriesByCategory: subcategoriesByCategory , 
             subcategoryId: subcategoriesByCategory[0].id});
         
-           
-
- 
-        
-        
-        
-   
+        console.log('handleUpdateSubcategory called!');
 
     }
 
