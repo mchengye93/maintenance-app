@@ -45,7 +45,6 @@ class App extends Component {
             axios.get('/api/issues/pending'),
             axios.get('/api/categories'),
             axios.get('/api/subcategories')
-
           ])
           .then(responseArr => {
             //this will be executed only when all requests are complete
@@ -60,23 +59,7 @@ class App extends Component {
 
           });
 
-        // axios.get('/api/issues/pending')
-        // .then((response)=> {
-        //     this.setState({pendingIssues: response.data});
-        // });
-        // axios.get('/api/categories')
-        // .then((response)=> {
-        //     this.setState({categories: response.data});
-        // });
-
-        // axios.get('/api/subcategories')
-        // .then((response)=> {
-           
-        //     this.setState({
-        //         subcategories: response.data
-        //      });
-        // });
-
+    
     }
 
     searchCategory(categoryId) {
