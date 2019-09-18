@@ -35,8 +35,10 @@ class CreateIssueForm extends Component {
 
     componentDidMount() {
   
-       
-        this.handleUpdateSubcategories(1);
+        if (this.props.subcategories.length !== 0) {
+            this.handleUpdateSubcategories(1);
+        }
+        
      
     }
 
@@ -71,7 +73,8 @@ class CreateIssueForm extends Component {
 
     handleUpdateSubcategories(categoryId) {
         //on categorychange update currentSubcategoryChoice 
-        const subcategories = this.state.subcategories;
+        
+        const subcategories = this.props.subcategories;
         let subcategoriesByCategory = [];
 
         for (let i = 0; i < subcategories.length; i++) {
@@ -79,9 +82,19 @@ class CreateIssueForm extends Component {
                 subcategoriesByCategory.push(subcategories[i]);
             }
         }
-        this.setState({
-            subcategoriesByCategory,
+        console.log(subcategoriesByCategory);
+
+        this.setState(
+            {subcategoriesByCategory: subcategoriesByCategory , 
             subcategoryId: subcategoriesByCategory[0].id});
+        
+           
+
+ 
+        
+        
+        
+   
 
     }
 
@@ -103,6 +116,7 @@ class CreateIssueForm extends Component {
 
     render() {
             console.log(this.props);
+            console.log(this.state);
             return (
                 <span>
                 <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>

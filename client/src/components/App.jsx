@@ -40,22 +40,42 @@ class App extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/issues/pending')
-        .then((response)=> {
-            this.setState({pendingIssues: response.data});
-        });
-        axios.get('/api/categories')
-        .then((response)=> {
-            this.setState({categories: response.data});
-        });
 
-        axios.get('/api/subcategories')
-        .then((response)=> {
-           
+        axios.all([
+            axios.get('/api/issues/pending'),
+            axios.get('/api/categories'),
+            axios.get('/api/subcategories')
+
+          ])
+          .then(responseArr => {
+            //this will be executed only when all requests are complete
+            console.log('Date created: ', responseArr[0].data);
+            console.log('Date created: ', responseArr[1].data);
+            console.log('Date created: ', responseArr[2].data);
             this.setState({
-                subcategories: response.data
-             });
-        });
+                pendingIssues: responseArr[0].data,
+                categories: responseArr[1].data,
+                subcategories: responseArr[2].data
+            });
+
+          });
+
+        // axios.get('/api/issues/pending')
+        // .then((response)=> {
+        //     this.setState({pendingIssues: response.data});
+        // });
+        // axios.get('/api/categories')
+        // .then((response)=> {
+        //     this.setState({categories: response.data});
+        // });
+
+        // axios.get('/api/subcategories')
+        // .then((response)=> {
+           
+        //     this.setState({
+        //         subcategories: response.data
+        //      });
+        // });
 
     }
 
