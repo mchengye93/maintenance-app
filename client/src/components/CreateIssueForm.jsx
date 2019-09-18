@@ -19,7 +19,7 @@ class CreateIssueForm extends Component {
         open: false,
         categoryId: 1,
         subcategoryId: 0,
-        subcategories: [],
+        subcategories: this.props.subcategories,
         subcategoriesByCategory: [],
         roomId: 1,
         description:'',
@@ -34,15 +34,10 @@ class CreateIssueForm extends Component {
     }
 
     componentDidMount() {
-        this.setState({categories: this.props.categories});
-        axios.get('/api/subcategories')
-        .then((response)=> {
-           
-            this.setState({
-                subcategories: response.data
-             });
-             this.handleUpdateSubcategories(1);
-        });       
+  
+       
+        this.handleUpdateSubcategories(1);
+     
     }
 
     handleClickOpen() {
@@ -107,7 +102,7 @@ class CreateIssueForm extends Component {
       }
 
     render() {
-   
+            console.log(this.props);
             return (
                 <span>
                 <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>

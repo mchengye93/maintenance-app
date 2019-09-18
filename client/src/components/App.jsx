@@ -30,6 +30,7 @@ class App extends Component {
             solvedIssues: [],
             resolvedIssues: [],
             categories: [],
+            subcategories: [],
             contactCategory: '',
         };
 
@@ -46,6 +47,14 @@ class App extends Component {
         axios.get('/api/categories')
         .then((response)=> {
             this.setState({categories: response.data});
+        });
+
+        axios.get('/api/subcategories')
+        .then((response)=> {
+           
+            this.setState({
+                subcategories: response.data
+             });
         });
 
     }
@@ -128,7 +137,7 @@ class App extends Component {
                     </AppBar> 
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                    <CreateIssueForm categories={this.state.categories}/> 
+                    <CreateIssueForm categories={this.state.categories} subcategories={this.state.subcategories}/> 
                     <ExportCSV csvData={this.state.pendingIssues} fileName={"pendingMaintenanceIssues"+date} />
                     <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus} categories={this.state.categories}></IssuedTable>
                 </div>     
@@ -143,7 +152,7 @@ class App extends Component {
                     </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                    <CreateIssueForm categories={this.state.categories}/>
+                    <CreateIssueForm categories={this.state.categories} subcategories={this.state.subcategories}/>
                     <ExportCSV csvData={this.state.receivedIssues} fileName={"inProgressMaintenanceIssues"+date }/>
                     <InProgressTable issues={this.state.receivedIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus} categories={this.state.categories}></InProgressTable>
                 </div>     
@@ -158,7 +167,7 @@ class App extends Component {
                     </AppBar>
                     <IssuesStatusOptions changeIssueStatus={this.changeIssueStatus}/>
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
-                    <CreateIssueForm categories={this.state.categories}/> 
+                    <CreateIssueForm categories={this.state.categories} subcategories={this.state.subcategories}/> 
                     <ExportCSV csvData={this.state.resolvedIssues} fileName={"resolvedMaintenanceIssues"+date} />
                     <ResolvedTable issues={this.state.resolvedIssues} status={this.state.status}></ResolvedTable>
                 </div>     
