@@ -173,6 +173,7 @@ class UpdateIssueForm extends Component {
                       margin="normal"
                       variant="outlined"
                       name="description"
+                      value={this.state.description}
                       onChange={this.handleInputChange}
                     />
                             
