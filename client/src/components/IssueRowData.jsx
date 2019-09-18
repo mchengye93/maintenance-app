@@ -4,6 +4,7 @@ import TableRow from '@material-ui/core/TableRow';
 
 import TakeIssueForm from './TakeIssueForm.jsx';
 import SolveForm from './SolveForm.jsx';
+import UpdateIssueForm from './UpdateIssueForm.jsx';
 
 class IssueRowData extends Component {
     constructor(props) {
@@ -42,6 +43,7 @@ class IssueRowData extends Component {
                     <TableCell align='center'>{this.props.issue.name}</TableCell>
                     <TableCell align='center'>
                         <SolveForm issue= {this.props.issue} changeIssueStatus = {this.props.changeIssueStatus}/>
+                        <UpdateIssueForm issue= {this.props.issue} categories={this.props.categories}/>
                     </TableCell>
                 </TableRow>
                              

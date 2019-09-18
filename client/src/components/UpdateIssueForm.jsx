@@ -19,6 +19,7 @@ class UpdateIssueForm extends Component {
         open: false,
         categoryId: this.props.issue.category_id,
         subcategoryId: this.props.issue.subcategory_id,
+        categories:this.props.categories ,
         subcategories: [],
         subcategoriesByCategory: [],
         roomId: this.props.issue.room_id,
@@ -34,14 +35,14 @@ class UpdateIssueForm extends Component {
     }
 
     componentDidMount() {
-        this.setState({categories: this.props.categories});
+        console.log('calling api subcategory')
         axios.get('/api/subcategories')
         .then((response)=> {
-           
+             console.log('response from apu subcategory', response);
             this.setState({
                 subcategories: response.data
              });
-             this.handleUpdateSubcategories(1);
+             this.handleUpdateSubcategories(this.props.issue.subcategory_id);
         });       
     }
 
@@ -88,7 +89,7 @@ class UpdateIssueForm extends Component {
 
     handleInputChange(event) {
         const target = event.target;
-        const value = target.type === 'checkbox' ? target.checked : target.value;
+        const value = target.value;
         const name = target.name;
  
         if (name === 'categoryId') {
@@ -103,11 +104,12 @@ class UpdateIssueForm extends Component {
       }
 
     render() {
-   
+        console.log(this.props);
+        console.log(this.state);
             return (
                 <span>
                 <Button variant="contained" color="secondary" onClick={this.handleClickOpen}>
-                  Create
+                  Update
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
                   <DialogTitle id="form-dialog-title">Create Issue</DialogTitle>

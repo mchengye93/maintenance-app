@@ -116,6 +116,7 @@ class App extends Component {
 
 
     render() {
+        console.log(this.state);
         let today = new Date();
         let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
         if (this.state.status == 0) {
@@ -129,7 +130,7 @@ class App extends Component {
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/> 
                     <ExportCSV csvData={this.state.pendingIssues} fileName={"pendingMaintenanceIssues"+date} />
-                    <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></IssuedTable>
+                    <IssuedTable issues={this.state.pendingIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus} categories={this.state.categories}></IssuedTable>
                 </div>     
                 );
 
@@ -144,7 +145,7 @@ class App extends Component {
                     <CategorySearch categories={this.state.categories} searchCategory = {this.searchCategory}/>
                     <CreateIssueForm categories={this.state.categories}/>
                     <ExportCSV csvData={this.state.receivedIssues} fileName={"inProgressMaintenanceIssues"+date }/>
-                    <InProgressTable issues={this.state.receivedIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus}></InProgressTable>
+                    <InProgressTable issues={this.state.receivedIssues} status={this.state.status} changeIssueStatus = {this.changeIssueStatus} categories={this.state.categories}></InProgressTable>
                 </div>     
                 );
 

@@ -87,7 +87,7 @@ const getAllPendingIssuesByCategoryId = (categoryId) => {
 };
 
 const getAllReceivedIssuesByCategory = (categoryId) => {
-  const query = 'SELECT issues.id, issues.room_id, issues.category_id, categories.category, '
+  const query = 'SELECT issues.id, issues.room_id, issues.category_id, categories.category, issues.description, '
   + 'issues.subcategory_id, subcategories.subcategory ,issues.date_issued, contacts.name, issues.contact_id, issues.date_received '
   + 'FROM issues '
   + 'INNER JOIN categories ON issues.category_id= categories.id '
