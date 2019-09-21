@@ -12,9 +12,7 @@ import IssuesStatusOptions from './IssuesStatusOptions.jsx';
 import ReportData from './ReportData.jsx';
 
 import CreateIssueForm from './CreateIssueForm.jsx';
-
 import ContactsTable from './ContactsTable.jsx';
-
 import {ExportCSV} from './ExportCSV.jsx';
 
 
