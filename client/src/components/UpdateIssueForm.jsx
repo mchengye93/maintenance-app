@@ -42,7 +42,7 @@ class UpdateIssueForm extends Component {
             this.setState({
                 subcategories: response.data
              });
-             this.handleUpdateSubcategories(this.props.issue.subcategory_id);
+            //  this.handleUpdateSubcategories(this.props.issue.category_id);
         });       
     }
 
