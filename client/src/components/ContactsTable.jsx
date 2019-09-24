@@ -32,15 +32,15 @@ class ContactsTable extends Component {
         axios.get('/api/contacts')
         .then((response)=> {
             let contacts = response.data;
-            let categories = {};
-            for (let i = 0; i < contacts.length; i++) {
-                let contact = contacts[i];
+        
 
-                if (categories[contact.category] === undefined) {
-                    categories[contact.category_id] = contact.category;
+            let categories = contacts.reduce((accumulator, contact) => {
+                if (accumulator[contact.category] === undefined) {
+                    accumulator[contact.category_id] = contact.category;
                 }
-
-            }
+                return accumulator;
+            }, {});
+        
             this.setState({
                 contacts: response.data,
                 contactsByCategory: response.data,
@@ -75,7 +75,6 @@ class ContactsTable extends Component {
     }
     changeCategory(categoryId) {
       
-        console.log('changeCategory called!');
 
         axios.get('/api/contacts')
         .then((response)=> {
