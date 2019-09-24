@@ -8,16 +8,11 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-
-
-
 import axios from 'axios';
 
 import MenuItem from '@material-ui/core/MenuItem';
 
 // import MaskedInput from 'react-input-mask';
-
-
 
 class AddContactForm extends Component {
     constructor(props) {
@@ -61,8 +56,7 @@ class AddContactForm extends Component {
                 name: this.state.name,
                 
             }
-           
-
+            
             axios.post('/api/contact', contact).then((response)=> {
                 this.setState({
                   open: false,
@@ -85,10 +79,7 @@ class AddContactForm extends Component {
         const value = target.value;
         const name = target.name;
  
-  
-        this.setState({
-                [name]: value
-              });
+        this.setState({ [name]: value });
         
       }
 
@@ -109,8 +100,6 @@ class AddContactForm extends Component {
                    
                    <form>
 
-                    
-
                     <TextField
                       required
                       margin="normal"
@@ -119,11 +108,12 @@ class AddContactForm extends Component {
                       name="name"
                       placeholder="Full name"
                       onChange={this.handleInputChange}
-                     
                       // variant="outlined"
                       value = {this.state.name}
                       floatingLabelFixed={true}
+                      
                     />
+                    <br/>
                     <TextField
                         required 
                         id="outlined-select-categories"
@@ -133,7 +123,7 @@ class AddContactForm extends Component {
                         onChange={this.handleInputChange}
                         margin="normal"
                         variant="outlined"
-                        name='categoryId'
+                        name='categoryId'    
                     >
                         {this.props.categories.map(category => (
                         <MenuItem key={category.id} value={category.id} >
@@ -141,9 +131,8 @@ class AddContactForm extends Component {
                         </MenuItem>
                         ))}
                     </TextField>
+                    <br/>
 
-
-                    
                     <TextField
                       required 
                       margin="normal"
@@ -151,14 +140,14 @@ class AddContactForm extends Component {
                       label="Phone"
                       name="phone"
                       type="text"
-                      
                       onChange={this.handleInputChange}
                       margin="normal"
                       variant="outlined"
                       placeholder = "(999) 999-9999"
                       value = {this.state.phone}
+                      
                     />
-                  
+                    <br/>
                     <TextField
                         margin="normal"
                         id="outlined-email-input"
@@ -182,9 +171,7 @@ class AddContactForm extends Component {
                  </DialogActions>
                   </form>
                   </DialogContent>
-              
-                  
-                  
+             
                 </Dialog>
               </span>
             );
