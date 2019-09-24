@@ -45,10 +45,6 @@ class App extends Component {
             axios.get('/api/subcategories')
           ])
           .then(responseArr => {
-            //this will be executed only when all requests are complete
-            console.log('Date created: ', responseArr[0].data);
-            console.log('Date created: ', responseArr[1].data);
-            console.log('Date created: ', responseArr[2].data);
             this.setState({
                 pendingIssues: responseArr[0].data,
                 categories: responseArr[1].data,
@@ -125,7 +121,6 @@ class App extends Component {
 
 
     render() {
-        console.log(this.state);
         let today = new Date();
         let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'-'+today.getHours() + "-" + today.getMinutes() + "-" + today.getSeconds();
         if (this.state.status == 0) {
