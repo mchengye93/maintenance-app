@@ -126,6 +126,7 @@ class CreateIssueForm extends Component {
                       inputProps={{ min: "1", max: "100"}}
                       value = {this.state.roomId}
                     />
+                    <br/>
                     <TextField
                         id="outlined-select-categories"
                         select
@@ -142,6 +143,7 @@ class CreateIssueForm extends Component {
                         </MenuItem>
                         ))}
                     </TextField>
+                    <br/>
                     <TextField
                         id="outlined-select-subcategories"
                         select
@@ -158,6 +160,7 @@ class CreateIssueForm extends Component {
                         </MenuItem>
                         ))}
                     </TextField>
+                    <br/>
                     <TextField
                       id="outlined-multiline-static"
                       label="Comments"
@@ -169,6 +172,7 @@ class CreateIssueForm extends Component {
                       name="description"
                       onChange={this.handleInputChange}
                     />
+                    <br/>
                                
 {/*                     
                       <input 
