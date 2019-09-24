@@ -75,17 +75,13 @@ class ContactsTable extends Component {
     }
     changeCategory(categoryId) {
       
-        let contactsByCategory = [];
+        console.log('changeCategory called!');
 
         axios.get('/api/contacts')
         .then((response)=> {
             let contacts = response.data;
             
-            for (let i = 0; i < contacts.length; i++) {
-                if (contacts[i].category_id == categoryId) {
-                    contactsByCategory.push(contacts[i]);
-                }
-            }
+            let contactsByCategory = contacts.filter(contact => contact.category_id == categoryId);
 
             this.setState({
                 contacts: contacts,

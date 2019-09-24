@@ -75,6 +75,7 @@ class CreateIssueForm extends Component {
         let subcategoriesByCategory = subcategories.filter(
             subcategory => subcategory['category_id'] === categoryId);
 
+
         this.setState(
             {subcategoriesByCategory: subcategoriesByCategory , 
             subcategoryId: subcategoriesByCategory[0].id});
