@@ -57,15 +57,10 @@ class ContactsTable extends Component {
      
         let category = e.currentTarget.innerText;
         let contacts = this.state.contacts;
-        let contactsByCategory = [];
-
-        
-        for (let i = 0; i < contacts.length; i++) {
-            if (contacts[i].category_id == categoryId) {
-                contactsByCategory.push(contacts[i]);
-                
-            }
-        }
+      
+        let contactsByCategory = contacts.filter(
+            contact => contact.category_id == categoryId);
+       
        
         this.setState({
             contactsByCategory: contactsByCategory , 
