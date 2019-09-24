@@ -74,13 +74,11 @@ class UpdateIssueForm extends Component {
     handleUpdateSubcategories(categoryId) {
         //on categorychange update currentSubcategoryChoice 
         const subcategories = this.state.subcategories;
-        let subcategoriesByCategory = [];
+       
+        let subcategoriesByCategory = subcategories.filter( 
+          subcategory => subcategory['category_id'] === categoryId );
 
-        for (let i = 0; i < subcategories.length; i++) {
-            if (subcategories[i]['category_id'] === categoryId) {
-                subcategoriesByCategory.push(subcategories[i]);
-            }
-        }
+
         this.setState({
             subcategoriesByCategory,
             subcategoryId: subcategoriesByCategory[0].id});
