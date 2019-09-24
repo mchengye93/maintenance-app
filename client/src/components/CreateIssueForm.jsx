@@ -71,15 +71,10 @@ class CreateIssueForm extends Component {
     handleUpdateSubcategories(categoryId) {
         //on categorychange update currentSubcategoryChoice 
         const subcategories = this.props.subcategories;
-       
-        let subcategoriesByCategory = subcategories.reduce((accumulator, subcategory) => {
-            if (subcategory['category_id'] === categoryId) {
-                accumulator.push(subcategory);
-            }
-            return accumulator;
-        },[]);
-    
-      
+     
+        let subcategoriesByCategory = subcategories.filter(
+            subcategory => subcategory['category_id'] === categoryId);
+
         this.setState(
             {subcategoriesByCategory: subcategoriesByCategory , 
             subcategoryId: subcategoriesByCategory[0].id});
