@@ -10,19 +10,18 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogTitle from '@material-ui/core/DialogTitle';
 
 
-import MenuItem from '@material-ui/core/MenuItem';
-
 class IssueInfo extends Component {
     constructor(props) {
         super(props);
-
+        this.state = {
+          open:false
+        };
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
 
     }
     componentDidMount() {
-
-                
+       
     }
 
     handleClickOpen() {
@@ -38,7 +37,7 @@ class IssueInfo extends Component {
             return (
               
               <div>
-                <Button variant="contained" color="primary" onClick={this.handleClickOpen}>
+                <Button onClick={this.handleClickOpen}>
                   {this.props.issue.room_id}
                 </Button>
                 <Dialog open={this.state.open} onClose={this.handleClose} aria-labelledby="form-dialog-title">
@@ -56,7 +55,6 @@ class IssueInfo extends Component {
                      
                     </DialogContentText>
                    
-                
                   </DialogContent>
                   <DialogActions>
                     <Button onClick={this.handleClose} color="primary">

@@ -5,6 +5,7 @@ import TableRow from '@material-ui/core/TableRow';
 import TakeIssueForm from './TakeIssueForm.jsx';
 import SolveForm from './SolveForm.jsx';
 import UpdateIssueForm from './UpdateIssueForm.jsx';
+import IssueInfo from './IssueInfo.jsx';
 
 class IssueRowData extends Component {
     constructor(props) {
@@ -22,7 +23,7 @@ class IssueRowData extends Component {
         if(this.props.status == 0) {
             return (
                 <TableRow key={this.props.issue.id}>
-                    <TableCell align='center'>{this.props.issue.room_id}</TableCell>
+                    <TableCell align='center'><IssueInfo issue={this.props.issue}/></TableCell>
                     <TableCell align='center'>{this.props.issue.category}</TableCell>
                     <TableCell align='center'>{this.props.issue.subcategory}</TableCell>
                     <TableCell align='center'>{this.props.issue.date_issued.split('T')[0]}</TableCell>
