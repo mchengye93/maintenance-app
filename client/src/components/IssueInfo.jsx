@@ -18,6 +18,7 @@ class IssueInfo extends Component {
         };
         this.handleClickOpen = this.handleClickOpen.bind(this);
         this.handleClose = this.handleClose.bind(this);
+       
 
     }
     componentDidMount() {
@@ -31,10 +32,11 @@ class IssueInfo extends Component {
     handleClose() {
         this.setState({open: false});
     }
+   
 
     render() {
-      
-            let contact ='<b>Contacts:</b>this.props.issue.name<br/>';
+            // const contact = <div><b>Contact: </b> {this.props.issue.name} </br></div>;
+          
             return (
               
               <div>
@@ -53,11 +55,13 @@ class IssueInfo extends Component {
                     <b>Subcategory:</b> {this.props.issue.subcategory} <br></br>
                     <b>Issued Date:</b> {this.props.issue.date_issued.split('T')[0]} <br></br>
                     <b>Details:</b> {this.props.issue.description} <br></br> <br></br>
-            {this.props.issue.name ? contact : contact}
-
-            {/* {this.props.issues.map(issue => (
-                            <IssueRowData issue = {issue} status={1} changeIssueStatus = {this.props.changeIssueStatus} categories={this.props.categories}/>
-                        ))} */}
+                    {(() => {
+                            if (this.props.issue.name) {
+                              return (
+                                <div><b>Contact: </b>{this.props.issue.name}</div>
+                              )
+                            } 
+                          })()}
                     </DialogContentText>
                    
                   </DialogContent>
