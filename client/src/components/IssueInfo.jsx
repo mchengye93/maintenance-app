@@ -56,7 +56,15 @@ class IssueInfo extends Component {
                     <b>Issued Date:</b> {this.props.issue.date_issued.split('T')[0]} <br></br>
                     <b>Details:</b> {this.props.issue.description} <br></br> <br></br>
                     {(() => {
-                            if (this.props.issue.date_received) {
+                      console.log(this.props.issue);
+                            if (this.props.issue.date_resolved) {
+                              <div>
+                                  <b>Contact: </b>{this.props.issue.name} <br/>
+                                  <b>Received Date: </b>{this.props.issue.date_received.split('T')[0]} <br/>
+                                  <b>Resolved Date: </b>{this.props.issue.date_resolved.split('T')[0]} <br/>
+                                  <b>Cost: </b> {this.props.issue.cost} <br/>
+                                </div>
+                            } else if (this.props.issue.date_received) {
                               return (
                                 
                                 <div>
@@ -64,14 +72,8 @@ class IssueInfo extends Component {
                                   <b>Received Date: </b>{this.props.issue.date_received.split('T')[0]}
                                 </div>
                               )
-                            } else if (this.props.issue.date_resolved) {
-                              <div>
-                                  <b>Contact: </b>{this.props.issue.name} <br/>
-                                  <b>Received Date: </b>{this.props.issue.date_received.split('T')[0]} <br/>
-                                  <b>Resolved Date: </b>{this.props.issue.date_resolved.split('T')[0]} <br/>
-                                  <b>Cost: </b> {this.props.issue.cost} <br/>
-                                </div>
-                            }
+                            } 
+                            
                           })()}
 
 
