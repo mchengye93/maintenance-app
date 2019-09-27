@@ -35,8 +35,7 @@ class IssueInfo extends Component {
    
 
     render() {
-            // const contact = <div><b>Contact: </b> {this.props.issue.name} </br></div>;
-          
+       
             return (
               
               <div>
@@ -56,7 +55,6 @@ class IssueInfo extends Component {
                     <b>Issued Date:</b> {this.props.issue.date_issued.split('T')[0]} <br></br>
                     <b>Details:</b> {this.props.issue.description} <br></br> <br></br>
                     {(() => {
-                     
                             if (this.props.issue.date_resolved) {
                               return(
                               <div>
@@ -68,14 +66,12 @@ class IssueInfo extends Component {
                               )
                             } else if (this.props.issue.date_received) {
                               return (
-                                
                                 <div>
                                   <b>Contact: </b>{this.props.issue.name} <br/>
                                   <b>Received Date: </b>{this.props.issue.date_received.split('T')[0]}
                                 </div>
                               )
                             } 
-                            
                           })()}
 
 
