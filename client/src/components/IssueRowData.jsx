@@ -19,6 +19,50 @@ class IssueRowData extends Component {
     }
 
     render() {
+        return (
+            <TableRow key={this.props.issue.id}>
+                <TableCell align='center'><IssueInfo issue={this.props.issue}/></TableCell>
+                <TableCell align='center'>{this.props.issue.category}</TableCell>
+                <TableCell align='center'>{this.props.issue.subcategory}</TableCell>
+                <TableCell align='center'>{this.props.issue.date_issued.split('T')[0]}</TableCell>
+                {/* <TableCell align='center'>
+                    <TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/>
+                </TableCell> */}
+                {(() => {
+                        if (this.props.status == 0) {
+                          return(
+                              <>
+                            <TableCell align='center'>
+                            <TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/>
+                            </TableCell>
+                            </>
+                          )
+                        } else if (this.props.status == 1) {
+                          return (
+                              <>
+                            <TableCell align='center'>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                            <TableCell align='center'>{this.props.issue.name}</TableCell>
+                            <TableCell align='center'>
+                                <SolveForm issue= {this.props.issue} changeIssueStatus = {this.props.changeIssueStatus}/>
+                                <UpdateIssueForm issue= {this.props.issue} categories={this.props.categories}/>
+                            </TableCell> 
+                            </>
+                          )
+                        } else if (this.props.status ==2) {
+                            return(
+                                <>
+                                <TableCell align='center'>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                                <TableCell align='center'>{this.props.issue.date_resolved.split('T')[0]}</TableCell>
+                                <TableCell align='center'>{this.props.issue.name}</TableCell>
+                                <TableCell align='center'>{this.props.issue.cost}</TableCell>
+                                </>
+                            )
+
+                        } 
+                      })()}
+            </TableRow>
+                         
+        );
        
         if(this.props.status == 0) {
             return (
@@ -30,6 +74,38 @@ class IssueRowData extends Component {
                     <TableCell align='center'>
                         <TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/>
                     </TableCell>
+                    {(() => {
+                            if (this.props.status == 0) {
+                              return(
+                                  <div>
+                                <TableCell align='center'>
+                                <TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/>
+                                </TableCell>
+                                </div>
+                              )
+                            } else if (this.props.status == 1) {
+                              return (
+                                  <div>
+                                <TableCell align='center'>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                                <TableCell align='center'>{this.props.issue.name}</TableCell>
+                                <TableCell align='center'>
+                                    <SolveForm issue= {this.props.issue} changeIssueStatus = {this.props.changeIssueStatus}/>
+                                    <UpdateIssueForm issue= {this.props.issue} categories={this.props.categories}/>
+                                </TableCell> 
+                                </div>
+                              )
+                            } else if (this.props.status ==2) {
+                                return(
+                                    <div>
+                                    <TableCell align='center'>{this.props.issue.date_received.split('T')[0]}</TableCell>
+                                    <TableCell align='center'>{this.props.issue.date_resolved.split('T')[0]}</TableCell>
+                                    <TableCell align='center'>{this.props.issue.name}</TableCell>
+                                    <TableCell align='center'>{this.props.issue.cost}</TableCell>
+                                    </div>
+                                )
+
+                            } 
+                          })()}
                 </TableRow>
                              
             );
