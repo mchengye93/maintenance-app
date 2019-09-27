@@ -32,7 +32,6 @@ class IssueInfo extends Component {
     handleClose() {
         this.setState({open: false});
     }
-   
 
     render() {
        
@@ -47,8 +46,7 @@ class IssueInfo extends Component {
                   <b>Issue #{this.props.issue.id} - {this.props.issue.category} - {this.props.issue.subcategory}</b>
                   </DialogTitle>
                   <DialogContent>
-                    <DialogContentText>
-                      
+                    <DialogContentText>  
                     <b>Room No.</b>{this.props.issue.room_id} <br/>
                     <b>Category:</b> {this.props.issue.category} <br/>
                     <b>Subcategory:</b> {this.props.issue.subcategory} <br/>

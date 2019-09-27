@@ -25,9 +25,7 @@ class IssueRowData extends Component {
                 <TableCell align='center'>{this.props.issue.category}</TableCell>
                 <TableCell align='center'>{this.props.issue.subcategory}</TableCell>
                 <TableCell align='center'>{this.props.issue.date_issued.split('T')[0]}</TableCell>
-                {/* <TableCell align='center'>
-                    <TakeIssueForm issue= {this.props.issue}  changeIssueStatus = {this.props.changeIssueStatus}/>
-                </TableCell> */}
+             
                 {(() => {
                         if (this.props.status == 0) {
                           return(
