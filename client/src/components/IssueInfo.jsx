@@ -49,27 +49,27 @@ class IssueInfo extends Component {
                   <DialogContent>
                     <DialogContentText>
                       
-                    <b>Room No.</b>{this.props.issue.room_id} <br></br>
-                    <b>Category:</b> {this.props.issue.category} <br></br>
-                    <b>Subcategory:</b> {this.props.issue.subcategory} <br></br>
-                    <b>Issued Date:</b> {this.props.issue.date_issued.split('T')[0]} <br></br>
-                    <b>Details:</b> {this.props.issue.description} <br></br> <br></br>
+                    <b>Room No.</b>{this.props.issue.room_id} <br/>
+                    <b>Category:</b> {this.props.issue.category} <br/>
+                    <b>Subcategory:</b> {this.props.issue.subcategory} <br/>
+                    <b>Issued Date:</b> {this.props.issue.date_issued.split('T')[0]} <br/>
+                    <b>Details:</b> {this.props.issue.description} <br/> 
                     {(() => {
                             if (this.props.issue.date_resolved) {
                               return(
-                              <div>
+                              <>
                                   <b>Contact: </b>{this.props.issue.name} <br/>
                                   <b>Received Date: </b>{this.props.issue.date_received.split('T')[0]} <br/>
                                   <b>Resolved Date: </b>{this.props.issue.date_resolved.split('T')[0]} <br/>
                                   <b>Cost: </b> {this.props.issue.cost} <br/>
-                                </div>
+                                </>
                               )
                             } else if (this.props.issue.date_received) {
                               return (
-                                <div>
+                                <>
                                   <b>Contact: </b>{this.props.issue.name} <br/>
                                   <b>Received Date: </b>{this.props.issue.date_received.split('T')[0]}
-                                </div>
+                                </>
                               )
                             } 
                           })()}

@@ -48,7 +48,7 @@ class IssueRowData extends Component {
                             </TableCell> 
                             </>
                           )
-                        } else if (this.props.status ==2) {
+                        } else if (this.props.status == 2) {
                             return(
                                 <>
                                 <TableCell align='center'>{this.props.issue.date_received.split('T')[0]}</TableCell>
